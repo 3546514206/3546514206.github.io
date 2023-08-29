@@ -62,8 +62,8 @@
         <category>Spring</category>
       </categories>
       <tags>
-        <tag>Spring</tag>
         <tag>Java EE</tag>
+        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
@@ -75,8 +75,8 @@
         <category>读书笔记</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>Java</tag>
+        <tag>C++</tag>
         <tag>回调</tag>
       </tags>
   </entry>
@@ -101,10 +101,10 @@
         <category>Tomcat</category>
       </categories>
       <tags>
-        <tag>Java EE</tag>
         <tag>Tomcat</tag>
         <tag>Java Web</tag>
         <tag>Servlet</tag>
+        <tag>Java EE</tag>
       </tags>
   </entry>
   <entry>
@@ -117,8 +117,8 @@
         <category>C++</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>Java</tag>
+        <tag>C++</tag>
         <tag>回调</tag>
       </tags>
   </entry>
@@ -132,8 +132,8 @@
         <category>编程理论</category>
       </categories>
       <tags>
-        <tag>C++</tag>
         <tag>Java</tag>
+        <tag>C++</tag>
         <tag>回调</tag>
       </tags>
   </entry>
