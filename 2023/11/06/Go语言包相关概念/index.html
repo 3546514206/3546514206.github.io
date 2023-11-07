@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.9k</span>
+            <span class="post-count">2.8k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">7 分钟</span>
+            <span class="post-count">10 分钟</span>
         </span>
     </span>
 </div>
@@ -156,8 +156,50 @@
 <h4 id="6-1、包的绝对路径"><a href="#6-1、包的绝对路径" class="headerlink" title="6.1、包的绝对路径"></a><strong>6.1、包的绝对路径</strong></h4><p>&ensp;&ensp;&ensp;&ensp; 包的绝对路径就是 $GOROOT&#x2F;src 或 $GOPATH&#x2F;src 后面包的源码的全路径，比如下面的包引用：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;common/upload&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;database/sql/driver&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;database/sql&quot;</span></span><br></pre></td></tr></table></figure>
 
-<p>&ensp;&ensp;&ensp;&ensp; upload 包是自定义的包，其源码位于 $GOPATH&#x2F;src&#x2F;common&#x2F;upload 目录下，代码包导入使用的路径就是代码包在工作区的 src 目录下的相对路径，比如 upload 的绝对路径为 &#x2F;home&#x2F;setsunayang&#x2F;gocode&#x2F;src&#x2F;common&#x2F;upload ，而 &#x2F;home&#x2F;setsunayang&#x2F;gocode 是被包含在环境变量 GOPATH 中的工作区目录路径，则其代码包导入路径就是common&#x2F;upload。</p>
- 
+<p>&ensp;&ensp;&ensp;&ensp; upload 包是自定义的包，其源码位于 $GOPATH&#x2F;src&#x2F;common&#x2F;upload 目录下，代码包导入使用的路径就是代码包在工作区的 src 目录下的相对路径，比如 upload 的绝对路径为 &#x2F;home&#x2F;setsunayang&#x2F;gocode&#x2F;src&#x2F;common&#x2F;upload ，而 &#x2F;home&#x2F;setsunayang&#x2F;gocode 是被包含在环境变量 GOPATH 中的工作区目录路径，则其代码包导入路径就是 common&#x2F;upload。</p>
+<p>&ensp;&ensp;&ensp;&ensp; sql 和 driver 包的源码分别位于 $GOROOT&#x2F;src&#x2F;database&#x2F;sql 和 $GOROOT&#x2F;src&#x2F;database&#x2F;sql&#x2F;driver 下。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 编译器会首先查找 Go 的安装目录，然后才会按顺序查找 GOPATH 变量里列出的目录。一旦编译器找到一个满足 import 语句的包，就停止进一步查找。</p>
+<h4 id="6-2、相对路径引用"><a href="#6-2、相对路径引用" class="headerlink" title="6.2、相对路径引用"></a><strong>6.2、相对路径引用</strong></h4><p>&ensp;&ensp;&ensp;&ensp; 相对路径只能用于引用 $GOPATH 下的包，标准包的引用只能使用全路径引用。比如下面两个包：包 a 的路径是 $GOPATH&#x2F;src&#x2F;lab&#x2F;a ，包 b 的源码路径为 $GOPATH&#x2F;src&#x2F;lab&#x2F;b ，假设 b 引用了 a 包，则可以使用相对路径引用方式。示例如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 相对路径引用</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;../a&quot;</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">// 绝对路径引用</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;lab/a&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="6-3、引用格式"><a href="#6-3、引用格式" class="headerlink" title="6.3、引用格式"></a><strong>6.3、引用格式</strong></h4><p>&ensp;&ensp;&ensp;&ensp; 常用的包引用有以下 4 种格式，我们以 fmt 包为例进行说明。</p>
+<ul>
+<li>标准引用方式</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt”</span></span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 此时可以用 fmt. </p>
+<ul>
+<li>别名引用方式</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> F <span class="string">&quot;fmt”</span></span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 此时相当于给包 fmt 起了个别名 F ，用 F. 代替标准的 fmt.作为前缀引用 fmt 包内可导出元素。</p>
+<ul>
+<li>省略引用方式</li>
+</ul>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> . <span class="string">&quot;fmt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 此时相当于把包 fmt 的命名空间直接合并到当前程序的命名空间中，使用 fmt 包内可导出元素可以不用前缀 fmt. ，直接引用。示例如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"><span class="keyword">import</span> . <span class="string">&quot;fmt&quot;</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">// 不需要加前级fmt.</span></span><br><span class="line">    Println(<span class="string">&quot;hello , world”)</span></span><br><span class="line"><span class="string">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>仅执行包初始化 init 函数</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp; 使用标准格式引用包，但是代码中却没有使用包，编译器会报错。如果包中有 init 初始化函数，则通过 import packageName 这种方式引用包，仅执行包的初始化函数，即使包没有 init 初始化函数，也不会引发编译器报错。示例如下：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span>  _ <span class="string">&quot;fmt&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 下划线字符 _ 在 Go 语言里称为空白标识符，这个标识符用来抛弃不想继续使用的值，如给导入的包赋予一个空名字，或者忽略函数返回的你不感兴趣的值。</p>
+<ul>
+<li>远程导入</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp; Go 工具链会使用导入路径确定需要获取的代码在网络的什么地方。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;github.com/net/http&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 用导入路径编译程序时， go build 命令会使用 GOPATH 的设置，在磁盘上搜索这个包。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 事实上，这个导入路径代表一个 URL ，指向 GitHub 上的代码库。如果路径包含 URL ，可以使用 Go 工具链从分布式版本控制系统获取包，并把包的源代码保存在 GOPATH 指向的路径里与 URL 匹配的目录里。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 这个获取过程使用 go get 命令完成。go get 将获取任意指定的 URL 的包，或者一个已经导入的包所依赖的其它包。由于 go get 的这种递归特性，这个命令会扫描某个包的源码树，获取能找到的所有依赖包。</p>
+<h4 id="6-3、综合实践"><a href="#6-3、综合实践" class="headerlink" title="6.3、综合实践"></a><strong>6.3、综合实践</strong></h4> 
       <!-- reward -->
       
       <div id="reword-out">
