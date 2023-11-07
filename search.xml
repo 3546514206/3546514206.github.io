@@ -94,7 +94,51 @@
 <p>&ensp;&ensp;&ensp;&ensp; 用导入路径编译程序时， go build 命令会使用 GOPATH 的设置，在磁盘上搜索这个包。</p>
 <p>&ensp;&ensp;&ensp;&ensp; 事实上，这个导入路径代表一个 URL ，指向 GitHub 上的代码库。如果路径包含 URL ，可以使用 Go 工具链从分布式版本控制系统获取包，并把包的源代码保存在 GOPATH 指向的路径里与 URL 匹配的目录里。</p>
 <p>&ensp;&ensp;&ensp;&ensp; 这个获取过程使用 go get 命令完成。go get 将获取任意指定的 URL 的包，或者一个已经导入的包所依赖的其它包。由于 go get 的这种递归特性，这个命令会扫描某个包的源码树，获取能找到的所有依赖包。</p>
-<h4 id="6-3、综合实践"><a href="#6-3、综合实践" class="headerlink" title="6.3、综合实践"></a><strong>6.3、综合实践</strong></h4>]]></content>
+<h4 id="6-3、综合实践"><a href="#6-3、综合实践" class="headerlink" title="6.3、综合实践"></a><strong>6.3、综合实践</strong></h4><p>&ensp;&ensp;&ensp;&ensp; 当导入多个代码包时，需要用圆括号括起它们，且每个代码包名独占一行。在调用被导入代码包中的函数或使用其中的结构体、变量或常量时，需要使用包路径的最后一个元素加 . 的方式指定代码所在的包。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 例如，如果我们有两个包 logging 和 go_lib&#x2F;logging , 并且有相同的方法 logging_print() ，且有一个源码文件需要导入这两个包（标准引用）：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    <span class="string">&quot;logging&quot;</span></span><br><span class="line">    <span class="string">&quot;go_lib/logging&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 则这句代码 logging.logging_print() 就会引起冲突， Go 语言无法知道 logging.Xxx() 代表的是哪一个包。所以，在 Go 语言中，如果在同一个源码文件中使用上述方法导入多个代码包，那么代码包路径的最后一个元素不可以重复。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 如果用这段代码包导入代码，在编译代码时，Go 语言会抛出：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">”logging redeclared as imported package name”</span><br></pre></td></tr></table></figure>
+
+<p>的错误。如果确实需要导入，当有这类重复时，我们可以给它们起个别名来区别（别名引用）：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    la <span class="string">&quot;logging&quot;</span></span><br><span class="line">    lb <span class="string">&quot;go_lib/logging&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>调用包中的代码以如下方式：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> logger la.Logger = la.logging_print()</span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 这里不必给每个引起冲突的代码包都起一个别名，只要能够区分它们就可以了。如果我们想直接调用某个依赖包的程序，就可以用 . 来代替别名（省略引用）。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    . <span class="string">&quot;logging&quot;</span></span><br><span class="line">    lb <span class="string">&quot;go_lib/logging&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>在当前源码文件中，可以直接进行代码调用了：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> logger Logger = logging_print()</span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; Go 语言把变量、常量、函数、结构体和接口统称为程序实体，而把它们的名字统称为标识符。标识符可以是任何 Unicode 编码可以表示的字母字符、数字以及下划线 ”_”，并且，首字母不能是数字。标识符的首字母的大小写控制着对应程序实体的访问权限。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 如果标识符的首字母是大写的，那么它对应的程序实体就可以被本代码包之外的代码访问到，也可以称其为可导出的。否则对应的程序实体就只能被本包内的代码访问。当然，还需要有以下两个额外条件：</p>
+<ul>
+<li>(1)、程序实体必须是非局部的。局部程序实体是被定义在函数或结构体的内部。</li>
+<li>(2)、代码包所在的目录必须被包含在环境变量 GOPATH 中的工作区目录中。</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp; 如果代码包 logging 中有一个叫做 getSimpleLogger 的函数，那么光从这个函数的名字上我们就可以看出，这个函数是不能被包外代码调用的。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 如果我们只想初始化某个代码包而不需要在当前源码文件中使用那个代码包中的任何代码，即可以用 _ 来代替别名（仅执行包初始化 init 函数的引用方式）。</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> (</span><br><span class="line">    _ <span class="string">&quot;logging&quot;</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-5、注意事项"><a href="#6-5、注意事项" class="headerlink" title="6.5、注意事项"></a><strong>6.5、注意事项</strong></h4><p>&ensp;&ensp;&ensp;&ensp; 一个包可以有多个 init 函数，包加载会执行全部的 init 函数，但并不能保证执行顺序，所以不建议在一个包中放入多个 init 函数，将需要初始化的逻辑放到一个 init 函数里面。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 包不能出现循环引用。比如包 a 引用了包 b ，包 b 引用了包 c，如果包 c 又引用了包 a，则编译不能通过。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 包的重复引用是允许的。比如包 a 引用了包 b 和包 c ，包 b 和包 c 都引用了包 d 。这种场景相当于重复引用了d，这种情况是允许的， 并且 Go 编译器保证 d 的 init 函数只会执行一次。</p>
+<h4 id="7、包初始化"><a href="#7、包初始化" class="headerlink" title="7、包初始化"></a><strong>7、包初始化</strong></h4><p>&ensp;&ensp;&ensp;&ensp; 在 Go 语言中，可以有专门的函数负责代码包初始化。这个函数需要无参数声明和结果声明，且名称必须为 init ，如下：</p>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="built_in">println</span>(<span class="string">&quot;Initialize&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; Go 语言会在程序真正执行前对整个程序的依赖进行分析，并初始化相关的代码包。也就是说，所有的代码包初始化函数都会在 main 函数（命令源码文件中的入口函数）之前执行完成，而且只会执行一次。并且，当前代码包中的所有全局变量的初始化都会在代码包初始化函数执行前完成。这就避免了在代码包初始化函数对某个变量进行赋值之后又被该变量声明中赋予的值覆盖掉的问题。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 每个包可以包含任意多个 init 函数，这些函数都会在程序执行开始的时候被调用。所有被编译器发现的 init 函数都会安排在 main 函数之前执行。 init 函数用在设置包、初始化变量或者其他要在程序运行前优先完成的引导工作。</p>
+<p>&ensp;&ensp;&ensp;&ensp; Go 里面有两个保留的函数： init 函数（能够应用于所有的 package ）和 main 函数（只能应用于 package main ）。这两个函数在定义时不能有任何的参数和返回值。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 虽然一个 package 里面可以写任意多个 init 函数，但这无论是对于可读性还是以后的可维护性来说，我们都强烈建议用户在一个 package 中每个文件只写一个 init 函数。</p>
+<p>&ensp;&ensp;&ensp;&ensp; Go 程序会自动调用 init() 和 main() ，所以不需要在任何地方调用这两个函数。每个 package 中的 init 函数都是可选的，但 package main 只能包含一个 main 函数。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 程序的初始化和执行都起始于 main 包。如果 main 包还导入了其它的包，那么就会在编译时将它们依次导入。有时一个包会被多个包同时导入，那么它只会被导入一次（例如很多包可能都会用到 fmt 包，但它只会被导入一次，因为没有必要导入多次）。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 当一个包被导入时，如果该包还导入了其它的包，那么会先将其它包导入进来，然后再对这些包中的包级常量和变量进行初始化，接着执行 init 函数（如果有的话），依次类推。等所有被导入的包都加载完毕了，就会开始对 main 包中的包级常量和变量进行初始化，然后执行 main 包中的 init 函数（如果存在的话），最后执行 main 函数。下图详细地解释了整个执行过程：</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Go%E8%AF%AD%E8%A8%80%E5%8C%85%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/%E5%8C%85%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E8%BF%87%E7%A8%8B.jpg" alt="包的初始化过程"></p>
+]]></content>
       <categories>
         <category>基本功</category>
         <category>编程语言</category>
