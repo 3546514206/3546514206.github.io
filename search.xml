@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Kubernetes的网络模型：Overlay和Underlay</title>
+    <url>/2023/11/08/Kubernetes%E7%9A%84%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%EF%BC%9AOverlay%E5%92%8CUnderlay/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>&ensp;&ensp;&ensp;&ensp; 本文分别介绍 Overlay 网络模型和 Underlay 网络模型。</p>
+<p>&ensp;&ensp;&ensp;&ensp; Overlay 网络模型物理网络模型中，连通多个物理网桥上的主机的一个简单办法是通过媒介直接连接这些网桥设备，各个主机处于同一个局域网（LAN）之中，管理员只需要确保各个网桥上每个主机的 IP 地址不相互冲突即可。类似地，若能够直接连接宿主机上的虚拟网桥形成一个大的局域网，就能在数据链路层打通各宿主机上的内部网络，让容器可通过自有IP地址直接通信。为避免各容器间的 IP 地址冲突，一个常见的解决方案是将每个宿主机分配到同一网络中的不同子网，各主机基于自有子网向其容器分配 IP 地址。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 显然，主机间的网络通信只能经由主机上可对外通信的网络接口进行，跨主机在数据链路层直接连接虚拟网桥的需求必然难以实现，除非借助宿主机间的通信网络构建的通信“隧道”进行数据帧转发。这种于某个通信网络之上构建出的另一个逻辑通信网络通常即 10.1.2 节提及的 Overlay 网络或Underlay 网络。图 10-7 为 Overlay 网络功能示意图。</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E4%BA%91%E8%AE%A1%E7%AE%97/K8S/Kubernetes%E7%9A%84%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B%EF%BC%9AOverlay%E5%92%8CUnderlay/overlay%E7%BD%91%E7%BB%9C%E6%A8%A1%E5%9E%8B.png" alt="Overlay网络功能示意图"></p>
+<p>&ensp;&ensp;&ensp;&ensp; 隧道转发的本质是将容器双方的通信报文分别封装成各自宿主机之间的报文，借助宿主机的网络“隧道”完成数据交换。这种虚拟网络的基本要求是各宿主机只需支持隧道协议即可，对于底层网络没有特殊要求。VXLAN 协议是目前最流行的 Overlay 网络隧道协议之一，它也是由 IETF 定义的 NVO3（Network Virtualization over Layer 3）标准技术之一，采用 L2 over L4（MAC-in-UDP）的报文封装模式，将二层报文用三层协议进行封装，可实现二层网络在三层范围内进行扩展，将“二层域”突破规模限制形成“大二层域”。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 那么，同一大二层域就类似于传统网络中 VLAN（虚拟局域网）的概念，只不过在 VXLAN 网络中，它被称作 Bridge-Domain，以下简称为BD。类似于不同的VLAN需要通过VLAN ID进行区分，各BD要通过VNI加以标识。但是，为了确保VXLAN机制通信过程的正确性，涉及VXLAN通信的IP报文一律不能分片，这就要求物理网络的链路层实现中必须提供足够大的MTU值，或修改其MTU值以保证VXLAN报文的顺利传输。不过，降低默认MTU值，以及额外的头部开销，必然会影响到报文传输性能。VXLAN的显著的优势之一是对底层网络没有侵入性，管理员只需要在原有网络之上添加一些额外设备即可构建出虚拟的逻辑网络来。这个额外添加的设备称为VTEP（VXLAN Tunnel Endpoints），它工作于VXLAN网络的边缘，负责相关协议报文的封包和解包等操作，从作用来说相当于VXLAN隧道的出入口设备。VTEP代表着一类支持VXLAN协议的交换机，而支持VXLAN协议的操作系统也可将一台主机模拟为VTEP，Linux内核自3.7版本开始通过vxlan内核模块原生支持此协议。于是，各主机上由虚拟网桥构建的LAN便可借助vxlan内核模块模拟的VTEP设备与其他主机上的VTEP设备进行对接，形成隧道网络。同一个二层域内的各VTEP之间都需要建立VXLAN隧道，因此跨主机的容器间直接进行二层通信的VXLAN隧道是各VTEP之间的点对点隧道，如图10-8所示。</p>
+]]></content>
+      <categories>
+        <category>工程</category>
+        <category>云计算</category>
+        <category>K8S</category>
+      </categories>
+      <tags>
+        <tag>K8S</tag>
+        <tag>工程</tag>
+        <tag>网络</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Go语言包相关概念</title>
     <url>/2023/11/06/Go%E8%AF%AD%E8%A8%80%E5%8C%85%E7%9B%B8%E5%85%B3%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="1、包的相关概念"><a href="#1、包的相关概念" class="headerlink" title="1、包的相关概念"></a><strong>1、包的相关概念</strong></h4><p>&ensp;&ensp;&ensp;&ensp; Go 语言是使用包来组织源代码的，并实现命名空间的管理。任何源代码文件必须属于某个包。源码文件的第一行有效代码必须是 package pacakgeName 语句，通过该语句声明自己所在的包。</p>
