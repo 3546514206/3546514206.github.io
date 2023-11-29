@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="" />
+    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,6 +42,7 @@
     <option name="showMembers" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -66,6 +69,8 @@
       <updated>1700812388072</updated>
       <workItem from="1700812389197" duration="1288000" />
       <workItem from="1701165291043" duration="122000" />
+      <workItem from="1701249805150" duration="637000" />
+      <workItem from="1701251444636" duration="1000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -81,15 +86,24 @@
       <option name="project" value="LOCAL" />
       <updated>1701165339149</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Java 技术全栈">
+      <created>1701249840158</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1701249840158</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="更新" />
     <MESSAGE value="常见队列" />
-    <option name="LAST_COMMIT_MESSAGE" value="常见队列" />
+    <MESSAGE value="Java 技术全栈" />
+    <option name="LAST_COMMIT_MESSAGE" value="Java 技术全栈" />
   </component>
 </project>
