@@ -71,6 +71,9 @@
       <workItem from="1701165291043" duration="122000" />
       <workItem from="1701249805150" duration="637000" />
       <workItem from="1701251444636" duration="1000" />
+      <workItem from="1701251506542" duration="352000" />
+      <workItem from="1701305510317" duration="452000" />
+      <workItem from="1701306037129" duration="1022000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -93,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701249840158</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="JS 技术全栈图">
+      <created>1701251554834</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1701251554834</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +114,7 @@
     <MESSAGE value="更新" />
     <MESSAGE value="常见队列" />
     <MESSAGE value="Java 技术全栈" />
-    <option name="LAST_COMMIT_MESSAGE" value="Java 技术全栈" />
+    <MESSAGE value="JS 技术全栈图" />
+    <option name="LAST_COMMIT_MESSAGE" value="JS 技术全栈图" />
   </component>
 </project>
