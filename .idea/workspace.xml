@@ -4,29 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="三高">
+    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023/12/04/三高：高可用、高性能、高扩展/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/12/04/三高：高可用、高性能、高扩展/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/2023/12/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/2023/12/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/2023/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/2023/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/2023/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/2023/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/2023/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/2023/page/3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/2023/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/2023/page/4/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/page/3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/archives/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/page/4/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/基本功/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/categories/基本功/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/基本功/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/categories/基本功/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/基本功/编程语言/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/categories/基本功/编程语言/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/基本功/编程语言/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/categories/基本功/编程语言/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/categories/工程/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/categories/工程/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/4/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/search.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags/JVM/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/tags/JVM/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +82,7 @@
       <workItem from="1701656716996" duration="1079000" />
       <workItem from="1701675688834" duration="1406000" />
       <workItem from="1701677800911" duration="13000" />
+      <workItem from="1701678135780" duration="595000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -167,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701675727314</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="三高">
+      <created>1701678315579</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1701678315579</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
