@@ -88,6 +88,7 @@
       <workItem from="1701680918760" duration="46000" />
       <workItem from="1701681136997" duration="830000" />
       <workItem from="1701685117359" duration="66000" />
+      <workItem from="1701685482166" duration="24000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -208,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701685151120</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="一键部署单机K8S集群">
+      <created>1701685498942</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1701685498942</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
