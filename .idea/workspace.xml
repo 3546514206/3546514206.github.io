@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -94,6 +92,7 @@
       <workItem from="1701685904600" duration="155000" />
       <workItem from="1701736882246" duration="599000" />
       <workItem from="1701740695164" duration="1206000" />
+      <workItem from="1701744341798" duration="49000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -228,7 +227,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701685924554</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="数学地图">
+      <created>1701744382666</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1701744382666</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,9 +249,9 @@
     <MESSAGE value="JDBC" />
     <MESSAGE value="JS 执行上下文" />
     <MESSAGE value="更行目录结构" />
-    <MESSAGE value="数学地图" />
     <MESSAGE value="三高" />
     <MESSAGE value="一键部署单机K8S集群" />
-    <option name="LAST_COMMIT_MESSAGE" value="一键部署单机K8S集群" />
+    <MESSAGE value="数学地图" />
+    <option name="LAST_COMMIT_MESSAGE" value="数学地图" />
   </component>
 </project>
