@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="" />
+    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,6 +106,7 @@
       <workItem from="1701769848999" duration="631000" />
       <workItem from="1701824850035" duration="58000" />
       <workItem from="1701826221718" duration="538000" />
+      <workItem from="1701851441194" duration="641000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -287,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1701826237732</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="常见的算法时间复杂度">
+      <created>1701851467315</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1701851467315</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -311,6 +321,7 @@
     <MESSAGE value="调整目录；Java 对象头" />
     <MESSAGE value="Java 对象头" />
     <MESSAGE value="粒子物理学" />
-    <option name="LAST_COMMIT_MESSAGE" value="粒子物理学" />
+    <MESSAGE value="常见的算法时间复杂度" />
+    <option name="LAST_COMMIT_MESSAGE" value="常见的算法时间复杂度" />
   </component>
 </project>
