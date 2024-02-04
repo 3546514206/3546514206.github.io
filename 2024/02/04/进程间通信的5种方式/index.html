@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>归档 |  杨海波</title>
+      <title>进程间通信的5种方式 |  杨海波</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/SETSUNAYANG.JPG" />
@@ -52,246 +52,150 @@
       
     <main class="content on">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="post-进程间通信的5种方式"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
     
-    
-    <h1 class="page-type-title">归档</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2023" class="archive-year">2023</a>
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  进程间通信的5种方式
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/02/04/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="article-date">
+  <time datetime="2024-02-04T07:15:16.000Z" itemprop="datePublished">2024-02-04</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">408</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">1 分钟</span>
+        </span>
+    </span>
+</div>
+ 
     </div>
-    <div class="archives">
       
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/12/02/%E6%95%B0%E5%AD%A6%E5%9C%B0%E5%9B%BE/" class="archive-article-date">
-  <time datetime="2023-12-02T12:58:22.000Z" itemprop="datePublished">12/02</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/12/02/%E6%95%B0%E5%AD%A6%E5%9C%B0%E5%9B%BE/"
-    >数学地图</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/12/01/%E5%AF%B9%E4%BF%AE%E9%A5%B0%E7%AC%A6final%E5%92%8Cstatic%E7%9A%84%E6%B5%85%E6%9E%90/" class="archive-article-date">
-  <time datetime="2023-12-01T07:23:34.000Z" itemprop="datePublished">12/01</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/12/01/%E5%AF%B9%E4%BF%AE%E9%A5%B0%E7%AC%A6final%E5%92%8Cstatic%E7%9A%84%E6%B5%85%E6%9E%90/"
-    >对修饰符final和static的浅析</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/30/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/" class="archive-article-date">
-  <time datetime="2023-11-30T07:36:22.000Z" itemprop="datePublished">11/30</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/11/30/JavaScript%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87/"
-    >JavaScript执行上下文</a> 
-</h2>
- 
 
-    </header>
-    
-    
-  </div>
-</article>
-      
   
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/30/JDBC%E5%B1%82%E6%AC%A1%E5%85%B3%E7%B3%BB%E5%9B%BE/" class="archive-article-date">
-  <time datetime="2023-11-30T01:11:25.000Z" itemprop="datePublished">11/30</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/11/30/JDBC%E5%B1%82%E6%AC%A1%E5%85%B3%E7%B3%BB%E5%9B%BE/"
-    >JDBC层次关系图</a> 
-</h2>
- 
+  <p>以下是类UNIX操作系统（如Linux）中常见的5种通讯机制。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F.jpeg" alt="HTTPS是如何工作的"></p>
+<p>&ensp;&ensp;&ensp;&ensp; 管道（Pipes）:管道是指连接两个或多个进程的输入和输出，常用于流式传输数据。例如，shell脚本通常使用管道运算符“|” 将命令链接在一起：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/syslog | grep &#x27;error&#x27; | less</span><br></pre></td></tr></table></figure>
 
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/29/%E5%89%8D%E6%AE%B5%E5%BC%80%E5%8F%91%E4%BD%93%E7%B3%BB/" class="archive-article-date">
-  <time datetime="2023-11-29T09:41:07.000Z" itemprop="datePublished">11/29</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/11/29/%E5%89%8D%E6%AE%B5%E5%BC%80%E5%8F%91%E4%BD%93%E7%B3%BB/"
-    >前端开发体系</a> 
-</h2>
+<p>&ensp;&ensp;&ensp;&ensp; 消息队列（Message Queues）：消息队列通过允许进程以消息的形式交换数据来提供异步通信。写入队列的消息按先进先出的顺序处理。</p>
+<p>例如，服务器可能将作业分派到队列中，消费守护进程从中拉取并独立处理。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 信号（Signals）：信号提供了一种通知系统，能够让进程立即收到重要事件，如被强制终止。例如，SIGKILL提供了一种可靠的方法来结束无响应的应用程序。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 信号量（Semaphores）：信号量是是一种在多线程环境中使用的同步机制，旨在确保多个线程不会同时访问同一块共享内存区域或其他临界资源。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 共享内存（Shared Memory）：共享内存是允许直接访问共享内存区域，以便多个进程可以高效地读取和修改数据，而无需复制。一个示例用例是处理大型图像帧的程序，其中多个进程可以同时访问和处理图像的不同部分。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 这些IPC机制有时被组合在一起以实现高效的进程通信。</p>
  
-
-    </header>
-    
-    
-  </div>
-</article>
+      <!-- reward -->
       
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/29/%E5%89%8D%E7%AB%AF%E9%87%8F%E5%AD%90%E7%89%B9%E6%95%88/" class="archive-article-date">
-  <time datetime="2023-11-29T09:19:07.000Z" itemprop="datePublished">11/29</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/11/29/%E5%89%8D%E7%AB%AF%E9%87%8F%E5%AD%90%E7%89%B9%E6%95%88/"
-    >前端量子特效</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/29/Java%E6%8A%80%E6%9C%AF%E5%85%A8%E6%A0%88%E5%9B%BE/" class="archive-article-date">
-  <time datetime="2023-11-29T09:16:45.000Z" itemprop="datePublished">11/29</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/11/29/Java%E6%8A%80%E6%9C%AF%E5%85%A8%E6%A0%88%E5%9B%BE/"
-    >Java技术全栈图</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/28/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%98%9F%E5%88%97/" class="archive-article-date">
-  <time datetime="2023-11-28T08:17:43.000Z" itemprop="datePublished">11/28</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/11/28/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%98%9F%E5%88%97/"
-    >常见的队列</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/24/%E5%B7%A6%E5%80%BC%E5%92%8C%E5%8F%B3%E5%80%BC/" class="archive-article-date">
-  <time datetime="2023-11-24T07:47:33.000Z" itemprop="datePublished">11/24</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/11/24/%E5%B7%A6%E5%80%BC%E5%92%8C%E5%8F%B3%E5%80%BC/"
-    >C++ 中的左值（Lvalues）和右值（Rvalues）</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2023/11/16/Java%E8%B5%84%E6%BA%90%E5%A4%A7%E5%85%A8/" class="archive-article-date">
-  <time datetime="2023-11-16T06:17:55.000Z" itemprop="datePublished">11/16</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/11/16/Java%E8%B5%84%E6%BA%90%E5%A4%A7%E5%85%A8/"
-    >Java资源大全</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
       
     </div>
-  </div>
-  
-  
-
-  
-  <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/archives/">上一页</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="extend next" rel="next" href="/archives/page/3/">下一页</a>
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://3546514206.github.io/2024/02/04/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2024/02/04/HTTPS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">HTTPS是如何工作的</div>
+      </a>
+    
   </nav>
+
   
+   
+  
+    
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -424,6 +328,22 @@
 <script src="/js/lazyload.min.js"></script>
 
 <!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
 
 <script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
 <link

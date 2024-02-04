@@ -4,8 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="">
+    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="404.html&#10;2023&#10;2024&#10;archives&#10;assets&#10;categories&#10;css&#10;dist&#10;favicon.ico&#10;images&#10;index.html&#10;js&#10;lib&#10;page&#10;pic&#10;search.xml&#10;tags">
+      <change afterPath="$PROJECT_DIR$/2024/02/04/进程间通信的5种方式/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pic/基本功/编程基础/ 常见的算法时间复杂度/复杂度.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2024/02/04/HTTPS是如何工作的/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2024/02/04/HTTPS是如何工作的/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archives/2024/02/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/2024/02/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archives/2024/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/2024/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archives/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archives/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/page/2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archives/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/page/3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archives/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/page/4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/archives/page/5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/archives/page/5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/search.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +132,8 @@
       <workItem from="1706165267191" duration="25000" />
       <workItem from="1707027361803" duration="122000" />
       <workItem from="1707027487286" duration="6000" />
+      <workItem from="1707027867682" duration="60000" />
+      <workItem from="1707031278857" duration="16000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -327,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707027415731</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="https 是如何工作的">
+      <created>1707027890969</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1707027890969</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
