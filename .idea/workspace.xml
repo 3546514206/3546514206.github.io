@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="" />
+    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="">
+      <change afterPath="$PROJECT_DIR$/tags/进程间通信/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,6 +119,7 @@
       <workItem from="1707027867682" duration="60000" />
       <workItem from="1707031278857" duration="16000" />
       <workItem from="1707031390422" duration="53000" />
+      <workItem from="1707040239865" duration="45000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -342,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707031424366</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="没有图">
+      <created>1707040268339</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1707040268339</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +390,8 @@
     <MESSAGE value="常见的算法时间复杂度" />
     <MESSAGE value="https 是如何工作的" />
     <MESSAGE value="进程间通信的五种方式" />
-    <option name="LAST_COMMIT_MESSAGE" value="进程间通信的五种方式" />
+    <MESSAGE value="没有图" />
+    <option name="LAST_COMMIT_MESSAGE" value="没有图" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
