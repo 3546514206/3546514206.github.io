@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="">
-      <change afterPath="$PROJECT_DIR$/tags/进程间通信/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -120,6 +118,7 @@
       <workItem from="1707031278857" duration="16000" />
       <workItem from="1707031390422" duration="53000" />
       <workItem from="1707040239865" duration="45000" />
+      <workItem from="1707040313120" duration="22000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -352,7 +351,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707040268339</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="没有图">
+      <created>1707040328366</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1707040328366</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
