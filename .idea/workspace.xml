@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="tuoming">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -124,6 +122,7 @@
       <workItem from="1707358601080" duration="1247000" />
       <workItem from="1708095364695" duration="46000" />
       <workItem from="1708095415803" duration="102000" />
+      <workItem from="1708095610136" duration="24000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -370,7 +369,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707358619448</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="更新">
+      <created>1708095626036</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1708095626036</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,7 +397,6 @@
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="更新" />
     <MESSAGE value="常见队列" />
     <MESSAGE value="Java 技术全栈" />
     <MESSAGE value="JS 技术全栈图" />
@@ -410,7 +415,8 @@
     <MESSAGE value="进程间通信的五种方式" />
     <MESSAGE value="没有图" />
     <MESSAGE value="tuoming" />
-    <option name="LAST_COMMIT_MESSAGE" value="tuoming" />
+    <MESSAGE value="更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
