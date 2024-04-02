@@ -3,12 +3,61 @@
   <entry>
     <title>C++从遗忘到入门</title>
     <url>/2024/04/02/C-%E4%BB%8E%E9%81%97%E5%BF%98%E5%88%B0%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>&ensp;&ensp;&ensp;&ensp; <strong>1、受众</strong> </p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>1、受众</strong> </p>
 <p>&ensp;&ensp;&ensp;&ensp; 本文主要面向的是曾经学过、了解过C++的同学，旨在帮助这些同学唤醒C++的记忆，提升下自身的技术储备。如果之前完全没接触过C++，也可以整体了解下这门语言。</p>
 <p>&ensp;&ensp;&ensp;&ensp; C++是一种通用编程语言，它被广泛用于软件开发。C++以其强大的功能、高效的性能和灵活性而著称。以下是一些关键特点：</p>
 <p>&ensp;&ensp;&ensp;&ensp; <strong>面向对象：</strong> C++支持面向对象编程（OOP）的四大特性：封装、继承、多态和抽象。通过类和对象，程序员能够创建模块化的代码，更容易地进行维护和扩展。</p>
 <p>&ensp;&ensp;&ensp;&ensp; <strong>泛型编程：</strong> C++支持模板编程，允许编写与数据类型无关的代码。模板是实现泛型编程的关键工具，它们提高了代码的复用性。</p>
 <p>&ensp;&ensp;&ensp;&ensp; <strong>直接内存管理：</strong> C++提供了对内存的直接操作能力，允许程序员手动管理内存分配和释放，这是C++的一个强大特性，也是需要谨慎使用的地方，因为不当的内存管理可能会导致资源泄露和其他问题。</p>
+<p>&ensp;&ensp;&ensp;&ensp; <strong>性能：</strong> C++编写的程序通常有很高的执行效率，这是因为C++提供了与底层硬件直接对话的能力。这使得C++成为开发要求性能的系统软件（如操作系统、游戏引擎）的理想选择。</p>
+<p>&ensp;&ensp;&ensp;&ensp; <strong>C 语言兼容：</strong> 大部分C语言程序可以在C++编译器上编译并运行。这一特性简化了从C到C++的过渡。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 多编程范式支持：除了面向对象和泛型编程外，C++还支持过程式编程和函数式编程等范式，使其成为一个多样化的工具，能适应不同的编程需求。</p>
+<p>&ensp;&ensp;&ensp;&ensp; C++语言的复杂劝退了很多人，诸如指针、虚函数、泛型等语言特性让C++变得特别复杂。事实也确实如此，不过C++的作者说过：“轻松地使用这种语言。不要觉得必须使用所有的特性，不要在第一次学习时就试图使用所有特性。”</p>
+<p>&ensp;&ensp;&ensp;&ensp; 本文主要内容是介绍现代C++（C++11及之后的版本）中的语法和特性，不会深入语法细节，每小节最后可能会列出一些相关的拓展知识点，感兴趣的同学可以自行了解。</p>
+<p><strong>2、语法基础</strong></p>
+<p><strong>2.1、类型</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; C++是静态编译语言，所有变量在声明时都要指定具体的变量类型，或者能让编译器推导出具体的变量类型（比如使用 auto、decltype 关键字的场景），类型检查不通过将导致编译期出错。</p>
+<p><strong>2.1.1、基础类型</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; C++的基础类型可以按照其所能表示的数据类型来分类。以下表格列出了C++的基础类型及其常见的大小和范围（请注意，实际的大小和范围可能根据平台和编译器的不同而有所变化）：</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%81%97%E5%BF%98%E5%88%B0%E5%85%A5%E9%97%A8/%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B.png" alt="基础类型"></p>
+<p>&ensp;&ensp;&ensp;&ensp; 语法示例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 声明未初始化，使用前建议手动初始化</span></span><br><span class="line">nt a;      </span><br><span class="line"><span class="type">char</span> b = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="comment">// C++中默认小数是double类型，加上f可以指定为float</span></span><br><span class="line"><span class="type">float</span> c = <span class="number">1.0f</span>;  </span><br><span class="line"><span class="type">double</span> d = <span class="number">2.0</span>;</span><br><span class="line"><span class="comment">// 编译器自动推导auto为 int 类型</span></span><br><span class="line"><span class="keyword">auto</span> e = <span class="number">20</span>;  </span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 编译器自动进行的类型转换，不需要程序员进行任何操作。这些转换通常在类型兼容的情况下发生，比如从小的整数类型转换到大的整数类型。下面是经常遇到的隐式类型转换：</p>
+<p>&ensp;&ensp;&ensp;&ensp; 安全的隐式转换：</p>
+<ul>
+<li><p>整型提升：小的整型（如 char、short）会自动转换成较大的整型（如 int）。</p>
+</li>
+<li><p>算数转换：例如，当 int 和 double 混合运算时，int 会转换为 double。</p>
+</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp; 存在隐患的隐式转换：</p>
+<ul>
+<li><p>窄化转换：大的整数类型转换到小的整数类型，或者浮点数转换到整数，可能会造成数据丢失或截断。</p>
+</li>
+<li><p>指针转换：例如，将 void* 转换为具体类型的指针时，如果转换不正确，会导致未定义行为。</p>
+</li>
+</ul>
+<p><strong>2.1.2、结构体（struct）</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 结构体是不同类型数据的集合，允许将数据组织成有意义的组合。语法示例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 结构体定义</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Person</span> &#123;    </span><br><span class="line">    std::string name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结构体初始化，</span></span><br><span class="line">Person person = &#123;<span class="string">&quot;Jim&quot;</span>, <span class="number">20</span>&#125;;    </span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建另一个实例</span></span><br><span class="line">Person person2; </span><br><span class="line"><span class="comment">// 将person中的值复制到person2中，默认是浅拷贝，在有指针的情况下有潜在风险</span></span><br><span class="line">person2 = person;</span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 枚举是一种用户定义的类型，它可以赋予一组整数值具有更易读的别名。语法示例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123; RED, GREEN, BLUE &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">Color myColor = RED;</span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; C++11引入了新的枚举类型，作用域枚举。语法示例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">enum class</span> <span class="title class_">Color</span> &#123;</span><br><span class="line">    RED,</span><br><span class="line">    GREEN,</span><br><span class="line">    BLUE</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用作用域解析运算符(::)访问枚举值</span></span><br><span class="line">Color myColor = Color::RED; </span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 作用域枚举解决了传统枚举可能导致命名冲突的问题，并提供了更强的类型检查。</p>
+<p>&ensp;&ensp;&ensp;&ensp; __2.1.3、联合体（union）</p>
+<p>联合体允许在相同的内存位置存储不同类型的数据，但一次只能使用其一。语法示例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 联合体的定义</span></span><br><span class="line"><span class="keyword">union</span> <span class="title class_">Data</span> &#123;</span><br><span class="line">    <span class="type">int</span> intValue;</span><br><span class="line">    <span class="type">float</span> floatValue;</span><br><span class="line">    <span class="type">char</span> charValue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 联合体一次只能保存一种类型的数据，每次赋值都会覆盖内存中之前的值</span></span><br><span class="line"><span class="comment">// 因此联合体一般是配合结构体来使用，下面是一个示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义数据类型的枚举</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">DataType</span> &#123;</span><br><span class="line">    INT,</span><br><span class="line">    FLOAT,</span><br><span class="line">    CHAR</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个结构体，它包含一个联合体和一个枚举标签</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">SafeUnion</span> &#123;</span><br><span class="line">    <span class="comment">// 标记当前联合体中存储的数据类型</span></span><br><span class="line">    DataType type;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义联合体</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="type">int</span> intValue;</span><br><span class="line">        <span class="type">float</span> floatValue;</span><br><span class="line">        <span class="type">char</span> charValue;</span><br><span class="line">    &#125; data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 赋值操作</span></span><br><span class="line">SafeUnion su;</span><br><span class="line">su.type = FLOAT;</span><br><span class="line">su.data.floatValue = <span class="number">1.0f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用时，通过type判断类型然后访问联合体对应的成员变量</span></span><br><span class="line"><span class="keyword">switch</span>(su.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> FLOAT:</span><br><span class="line">        cout &lt;&lt; su.data.floatValue &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.1.3、类（class）</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 类是C++的核心特性，是面向对象的基础，允许将数据和操作这些数据的函数封装为一个对象。这里先只介绍定义。语法示例：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">doWork</span><span class="params">()</span></span>;     <span class="comment">// 方法，类对外提供的一系列操作实例的函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string name;   <span class="comment">// 成员变量，封装到类中的属性，保存内部状态信息</span></span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><strong>2.1.3、类（class）</strong></p>
 ]]></content>
       <categories>
         <category>基本功</category>
@@ -21,7 +70,7 @@
   <entry>
     <title>男人开始变成熟的迹象</title>
     <url>/2024/03/31/%E7%94%B7%E4%BA%BA%E5%BC%80%E5%A7%8B%E5%8F%98%E6%88%90%E7%86%9F%E7%9A%84%E8%BF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"autoplay":true,"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/男人开始变成熟地迹象/男人开始变成熟的迹象.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/男人开始变成熟地迹象/男人开始变成熟的迹象.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <categories>
         <category>其他</category>
