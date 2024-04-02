@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>C++从遗忘到入门</title>
+    <url>/2024/04/02/C-%E4%BB%8E%E9%81%97%E5%BF%98%E5%88%B0%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>&ensp;&ensp;&ensp;&ensp; <strong>1、受众</strong> </p>
+<p>&ensp;&ensp;&ensp;&ensp; 本文主要面向的是曾经学过、了解过C++的同学，旨在帮助这些同学唤醒C++的记忆，提升下自身的技术储备。如果之前完全没接触过C++，也可以整体了解下这门语言。</p>
+<p>&ensp;&ensp;&ensp;&ensp; C++是一种通用编程语言，它被广泛用于软件开发。C++以其强大的功能、高效的性能和灵活性而著称。以下是一些关键特点：</p>
+<p>&ensp;&ensp;&ensp;&ensp; <strong>面向对象：</strong> C++支持面向对象编程（OOP）的四大特性：封装、继承、多态和抽象。通过类和对象，程序员能够创建模块化的代码，更容易地进行维护和扩展。</p>
+<p>&ensp;&ensp;&ensp;&ensp; <strong>泛型编程：</strong> C++支持模板编程，允许编写与数据类型无关的代码。模板是实现泛型编程的关键工具，它们提高了代码的复用性。</p>
+<p>&ensp;&ensp;&ensp;&ensp; <strong>直接内存管理：</strong> C++提供了对内存的直接操作能力，允许程序员手动管理内存分配和释放，这是C++的一个强大特性，也是需要谨慎使用的地方，因为不当的内存管理可能会导致资源泄露和其他问题。</p>
+]]></content>
+      <categories>
+        <category>基本功</category>
+        <category>编程基础</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>男人开始变成熟的迹象</title>
     <url>/2024/03/31/%E7%94%B7%E4%BA%BA%E5%BC%80%E5%A7%8B%E5%8F%98%E6%88%90%E7%86%9F%E7%9A%84%E8%BF%B9%E8%B1%A1/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer0" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer0"),"autoplay":true,"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/男人开始变成熟地迹象/男人开始变成熟的迹象.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
@@ -8066,8 +8084,8 @@ use one vs other -->
         <category>编程基础</category>
       </categories>
       <tags>
-        <tag>Java</tag>
         <tag>C++</tag>
+        <tag>Java</tag>
         <tag>回调</tag>
       </tags>
   </entry>
