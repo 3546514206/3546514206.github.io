@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.7k</span>
+            <span class="post-count">2.6k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">6 分钟</span>
+            <span class="post-count">10 分钟</span>
         </span>
     </span>
 </div>
@@ -152,7 +152,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum class</span> <span class="title class_">Color</span> &#123;</span><br><span class="line">    RED,</span><br><span class="line">    GREEN,</span><br><span class="line">    BLUE</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用作用域解析运算符(::)访问枚举值</span></span><br><span class="line">Color myColor = Color::RED; </span><br></pre></td></tr></table></figure>
 
 <p>&ensp;&ensp;&ensp;&ensp; 作用域枚举解决了传统枚举可能导致命名冲突的问题，并提供了更强的类型检查。</p>
-<p>&ensp;&ensp;&ensp;&ensp; __2.1.3、联合体（union）</p>
+<p>&ensp;&ensp;&ensp;&ensp; <strong>2.1.3、联合体（union）</strong></p>
 <p>联合体允许在相同的内存位置存储不同类型的数据，但一次只能使用其一。语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 联合体的定义</span></span><br><span class="line"><span class="keyword">union</span> <span class="title class_">Data</span> &#123;</span><br><span class="line">    <span class="type">int</span> intValue;</span><br><span class="line">    <span class="type">float</span> floatValue;</span><br><span class="line">    <span class="type">char</span> charValue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 联合体一次只能保存一种类型的数据，每次赋值都会覆盖内存中之前的值</span></span><br><span class="line"><span class="comment">// 因此联合体一般是配合结构体来使用，下面是一个示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义数据类型的枚举</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">DataType</span> &#123;</span><br><span class="line">    INT,</span><br><span class="line">    FLOAT,</span><br><span class="line">    CHAR</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个结构体，它包含一个联合体和一个枚举标签</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">SafeUnion</span> &#123;</span><br><span class="line">    <span class="comment">// 标记当前联合体中存储的数据类型</span></span><br><span class="line">    DataType type;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义联合体</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="type">int</span> intValue;</span><br><span class="line">        <span class="type">float</span> floatValue;</span><br><span class="line">        <span class="type">char</span> charValue;</span><br><span class="line">    &#125; data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 赋值操作</span></span><br><span class="line">SafeUnion su;</span><br><span class="line">su.type = FLOAT;</span><br><span class="line">su.data.floatValue = <span class="number">1.0f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用时，通过type判断类型然后访问联合体对应的成员变量</span></span><br><span class="line"><span class="keyword">switch</span>(su.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> FLOAT:</span><br><span class="line">        cout &lt;&lt; su.data.floatValue &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -160,7 +160,34 @@
 <p>&ensp;&ensp;&ensp;&ensp; 类是C++的核心特性，是面向对象的基础，允许将数据和操作这些数据的函数封装为一个对象。这里先只介绍定义。语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">doWork</span><span class="params">()</span></span>;     <span class="comment">// 方法，类对外提供的一系列操作实例的函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string name;   <span class="comment">// 成员变量，封装到类中的属性，保存内部状态信息</span></span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><strong>2.1.3、类（class）</strong></p>
+<p><strong>2.1.4、列表初始化</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 现代C++提供了一种新的统一的变量初始化方式 - 列表初始化，推荐优先使用这种初始化方式，它能提供更加直观和统一的数据初始化方式。列表初始化使用 {} 来初始化数据对象，包括基础类型、数组、结构体、类和容器等复杂的数据类型。语法示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基础类型</span></span><br><span class="line"><span class="type">int</span> a&#123;<span class="number">0</span>&#125;;  </span><br><span class="line"><span class="type">double</span> b&#123;<span class="number">3.14</span>&#125;; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 结构体</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MyStruct</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">double</span> y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyStruct s&#123;<span class="number">1</span>, <span class="number">2.0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> a, <span class="type">double</span> b) : <span class="built_in">a_</span>(a), <span class="built_in">b_</span>(b) &#123;&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> a_;</span><br><span class="line">    <span class="type">double</span> b_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyClass obj&#123;<span class="number">5</span>, <span class="number">3.14</span>&#125;; <span class="comment">// MyClass 必须有一个匹配这个参数列表的构造函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">3</span>]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面介绍的都是现代C++推荐写法，省略 = </span></span><br><span class="line"><span class="comment">// 下面的2种写法绝大多数情况下是等价的</span></span><br><span class="line"><span class="type">float</span> arr[<span class="number">2</span>]&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;        <span class="comment">// 写法1</span></span><br><span class="line"><span class="type">float</span> arr[<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;    <span class="comment">// 写法2</span></span><br><span class="line"><span class="comment">// 编译器对这两种写法的处理是一致的，方法2并不会产生临时变量和拷贝赋值，包括类的声明</span></span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 现代C++推荐优先使用列表初始化来初始化变量，因为这种方式不允许进行窄化转换这能避免一些问题的发生，示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">7.7</span>;   <span class="comment">// 编译能通过，但是有warning</span></span><br><span class="line"><span class="type">int</span> b = &#123;<span class="number">1.0</span>&#125;; <span class="comment">// 编译器拒绝通过，因为浮点到整形的转换会丢失精度</span></span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 列表初始化支持参数列表小于数据对象的个数，这种情况下会默认进行其他变量的零初始化。</p>
+<p><strong>2.2、数组</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; C++的数组是一个固定大小的序列容器，它可以存储特定类型的元素的集合。数组中的元素在内存中连续存储，这允许快速的随机访问，即可以直接通过索引访问任何元素，而无需遍历数组。</p>
+<p><strong>2.2.1、数组的声明</strong></p>
+<p>数组的声明形式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Typename arrayName[Size];    </span><br><span class="line"></span><br><span class="line"><span class="comment">// 基本类型</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>];</span><br><span class="line"><span class="type">char</span> charArr[<span class="number">30</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 复杂类型</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">int</span> y;</span><br><span class="line">&#125;</span><br><span class="line">Point points[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 这里 Typename 是数组中元素的数据类型，arrayName 是数组的变量名，Size 是数组的元素个数，在这种声明形式下必须是整形的常量。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 这里介绍的方式是数组的静态声明方式，即数组的元素个数在编译期间就能确定，数组占用的内存分配在栈内存中，实际开发中更多的情况可能是更具运行时的值确定数组的大小，这时需要动态的方式声明数组，后面会介绍。</p>
+<p><strong>2.2.1、数组的初始化</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 数组定义时如果未进行初始化，那么数组中的元素的值都是内存中残留的数据，而这些数据通常没有意义，直接使用会导致不可预知的问题。因此声明数组后需要对数组进行必要的初始化。数组支持列表初始化语法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组大小为5，编译器自动确定</span></span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="comment">// 数组前三项确定为1，2，3，其余被初始化为0     </span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;   </span><br><span class="line"><span class="comment">// 整个数组全部为0 </span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;         </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
  
       <!-- reward -->
       
@@ -231,6 +258,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2024/04/05/%E5%BA%94%E7%94%A8%E7%9A%84JVM%E4%BC%98%E5%8C%96%E6%A1%88%E4%BE%8B/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            应用的JVM优化案例
+          
+        </div>
+      </a>
     
     
       <a href="/2024/03/31/%E7%94%B7%E4%BA%BA%E5%BC%80%E5%A7%8B%E5%8F%98%E6%88%90%E7%86%9F%E7%9A%84%E8%BF%B9%E8%B1%A1/" class="article-nav-link">

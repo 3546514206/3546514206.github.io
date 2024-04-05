@@ -146,6 +146,60 @@
     
     
     <article
+  id="post-应用的JVM优化案例"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/04/05/%E5%BA%94%E7%94%A8%E7%9A%84JVM%E4%BC%98%E5%8C%96%E6%A1%88%E4%BE%8B/"
+    >应用的JVM优化案例</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/04/05/%E5%BA%94%E7%94%A8%E7%9A%84JVM%E4%BC%98%E5%8C%96%E6%A1%88%E4%BE%8B/" class="article-date">
+  <time datetime="2024-04-05T08:47:33.000Z" itemprop="datePublished">2024-04-05</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E7%A8%8B/">工程</a> / <a class="article-category-link" href="/categories/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/">服务端</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/%E4%B8%80%E6%AC%A1%E5%BA%94%E7%94%A8%E7%9A%84JVM%E8%B0%83%E4%BC%98%E7%A4%BA%E4%BE%8B/JVM%E8%B0%83%E4%BC%98%E7%A4%BA%E4%BE%8B.jpg" alt="应用的JVM优化案例"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C/" rel="tag">工作</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-C-从遗忘到入门"
   class="article article-type-post"
   itemscope
@@ -223,7 +277,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum class</span> <span class="title class_">Color</span> &#123;</span><br><span class="line">    RED,</span><br><span class="line">    GREEN,</span><br><span class="line">    BLUE</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用作用域解析运算符(::)访问枚举值</span></span><br><span class="line">Color myColor = Color::RED; </span><br></pre></td></tr></table></figure>
 
 <p>&ensp;&ensp;&ensp;&ensp; 作用域枚举解决了传统枚举可能导致命名冲突的问题，并提供了更强的类型检查。</p>
-<p>&ensp;&ensp;&ensp;&ensp; __2.1.3、联合体（union）</p>
+<p>&ensp;&ensp;&ensp;&ensp; <strong>2.1.3、联合体（union）</strong></p>
 <p>联合体允许在相同的内存位置存储不同类型的数据，但一次只能使用其一。语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 联合体的定义</span></span><br><span class="line"><span class="keyword">union</span> <span class="title class_">Data</span> &#123;</span><br><span class="line">    <span class="type">int</span> intValue;</span><br><span class="line">    <span class="type">float</span> floatValue;</span><br><span class="line">    <span class="type">char</span> charValue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 联合体一次只能保存一种类型的数据，每次赋值都会覆盖内存中之前的值</span></span><br><span class="line"><span class="comment">// 因此联合体一般是配合结构体来使用，下面是一个示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义数据类型的枚举</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">DataType</span> &#123;</span><br><span class="line">    INT,</span><br><span class="line">    FLOAT,</span><br><span class="line">    CHAR</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个结构体，它包含一个联合体和一个枚举标签</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">SafeUnion</span> &#123;</span><br><span class="line">    <span class="comment">// 标记当前联合体中存储的数据类型</span></span><br><span class="line">    DataType type;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义联合体</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="type">int</span> intValue;</span><br><span class="line">        <span class="type">float</span> floatValue;</span><br><span class="line">        <span class="type">char</span> charValue;</span><br><span class="line">    &#125; data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 赋值操作</span></span><br><span class="line">SafeUnion su;</span><br><span class="line">su.type = FLOAT;</span><br><span class="line">su.data.floatValue = <span class="number">1.0f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用时，通过type判断类型然后访问联合体对应的成员变量</span></span><br><span class="line"><span class="keyword">switch</span>(su.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> FLOAT:</span><br><span class="line">        cout &lt;&lt; su.data.floatValue &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -231,7 +285,34 @@
 <p>&ensp;&ensp;&ensp;&ensp; 类是C++的核心特性，是面向对象的基础，允许将数据和操作这些数据的函数封装为一个对象。这里先只介绍定义。语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">doWork</span><span class="params">()</span></span>;     <span class="comment">// 方法，类对外提供的一系列操作实例的函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string name;   <span class="comment">// 成员变量，封装到类中的属性，保存内部状态信息</span></span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<p><strong>2.1.3、类（class）</strong></p>
+<p><strong>2.1.4、列表初始化</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 现代C++提供了一种新的统一的变量初始化方式 - 列表初始化，推荐优先使用这种初始化方式，它能提供更加直观和统一的数据初始化方式。列表初始化使用 {} 来初始化数据对象，包括基础类型、数组、结构体、类和容器等复杂的数据类型。语法示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基础类型</span></span><br><span class="line"><span class="type">int</span> a&#123;<span class="number">0</span>&#125;;  </span><br><span class="line"><span class="type">double</span> b&#123;<span class="number">3.14</span>&#125;; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 结构体</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MyStruct</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">double</span> y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyStruct s&#123;<span class="number">1</span>, <span class="number">2.0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> a, <span class="type">double</span> b) : <span class="built_in">a_</span>(a), <span class="built_in">b_</span>(b) &#123;&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> a_;</span><br><span class="line">    <span class="type">double</span> b_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyClass obj&#123;<span class="number">5</span>, <span class="number">3.14</span>&#125;; <span class="comment">// MyClass 必须有一个匹配这个参数列表的构造函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">3</span>]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面介绍的都是现代C++推荐写法，省略 = </span></span><br><span class="line"><span class="comment">// 下面的2种写法绝大多数情况下是等价的</span></span><br><span class="line"><span class="type">float</span> arr[<span class="number">2</span>]&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;        <span class="comment">// 写法1</span></span><br><span class="line"><span class="type">float</span> arr[<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;    <span class="comment">// 写法2</span></span><br><span class="line"><span class="comment">// 编译器对这两种写法的处理是一致的，方法2并不会产生临时变量和拷贝赋值，包括类的声明</span></span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 现代C++推荐优先使用列表初始化来初始化变量，因为这种方式不允许进行窄化转换这能避免一些问题的发生，示例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">7.7</span>;   <span class="comment">// 编译能通过，但是有warning</span></span><br><span class="line"><span class="type">int</span> b = &#123;<span class="number">1.0</span>&#125;; <span class="comment">// 编译器拒绝通过，因为浮点到整形的转换会丢失精度</span></span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 列表初始化支持参数列表小于数据对象的个数，这种情况下会默认进行其他变量的零初始化。</p>
+<p><strong>2.2、数组</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; C++的数组是一个固定大小的序列容器，它可以存储特定类型的元素的集合。数组中的元素在内存中连续存储，这允许快速的随机访问，即可以直接通过索引访问任何元素，而无需遍历数组。</p>
+<p><strong>2.2.1、数组的声明</strong></p>
+<p>数组的声明形式如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Typename arrayName[Size];    </span><br><span class="line"></span><br><span class="line"><span class="comment">// 基本类型</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>];</span><br><span class="line"><span class="type">char</span> charArr[<span class="number">30</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 复杂类型</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">int</span> y;</span><br><span class="line">&#125;</span><br><span class="line">Point points[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 这里 Typename 是数组中元素的数据类型，arrayName 是数组的变量名，Size 是数组的元素个数，在这种声明形式下必须是整形的常量。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 这里介绍的方式是数组的静态声明方式，即数组的元素个数在编译期间就能确定，数组占用的内存分配在栈内存中，实际开发中更多的情况可能是更具运行时的值确定数组的大小，这时需要动态的方式声明数组，后面会介绍。</p>
+<p><strong>2.2.1、数组的初始化</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 数组定义时如果未进行初始化，那么数组中的元素的值都是内存中残留的数据，而这些数据通常没有意义，直接使用会导致不可预知的问题。因此声明数组后需要对数组进行必要的初始化。数组支持列表初始化语法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组大小为5，编译器自动确定</span></span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="comment">// 数组前三项确定为1，2，3，其余被初始化为0     </span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;   </span><br><span class="line"><span class="comment">// 整个数组全部为0 </span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;         </span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
  
       <!-- reward -->
       
@@ -393,14 +474,14 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>&ensp;&ensp;&ensp;&ensp; <strong>1、JVM运行时数据区域</strong></p>
+  <p><strong>1、JVM运行时数据区域</strong></p>
 <p>&ensp;&ensp;&ensp;&ensp; 堆、方法区（元空间）、虚拟机栈、本地方法栈、程序计数器。</p>
 <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E8%BF%99%E4%BA%9B%E5%B9%B4%E8%83%8C%E8%BF%87%E7%9A%84%E9%9D%A2%E8%AF%95%E9%A2%98%E2%80%94%E2%80%94JVM%E7%AF%87/%E5%86%85%E5%AD%98%E5%88%92%E5%88%86.webp" alt="内存划分"></p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>Heap(堆)：</strong></p>
+<p><strong>Heap(堆)：</strong></p>
 <p>&ensp;&ensp;&ensp;&ensp; 对象的实例以及数组的内存都是要在堆上进行分配的，堆是线程共享的一块区域，用来存放对象实例，也是垃圾回收（GC）的主要区域；开启逃逸分析后，某些未逃逸的对象可以通过标量替换的方式在栈中分配。堆细分：新生代、老年代，对于新生代又分为：Eden 区和 Surviver1 和 Surviver2 区。</p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>方法区：</strong></p>
+<p><strong>方法区：</strong></p>
 <p>&ensp;&ensp;&ensp;&ensp; 对于 JVM 的方法区也可以称之为永久区，它储存的是已经被 java 虚拟机加载的类信息、常量、静态变量；Jdk1.8以后取消了方法区这个概念，称之为元空间（MetaSpace）；当应用中的 Java 类过多时，比如 Spring 等一些使用动态代理的框架生成了很多类，如果占用空间超出了我们的设定值，就会发生元空间溢出。</p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>虚拟机栈：</strong></p>
+<p><strong>虚拟机栈：</strong></p>
 <p>&ensp;&ensp;&ensp;&ensp; 虚拟机栈是线程私有的，他的生命周期和线程的生命周期是一致的。里面装的是一个一个的栈帧，每一个方法在执行的时候都会创建一个栈帧，栈帧中用来存放（局部变量表、操作数栈 、动态链接 、返回地址）；在Java虚拟机规范中，对此区域规定了两种异常状况：如果线程请求的栈深度大于虚拟机所允许的深度，将会抛出StackOverflowError异常；如果虚拟机栈动态扩展时无法申请到足够的内存，就会抛出OutOfMemoryError异常。</p>
 <p>&ensp;&ensp;&ensp;&ensp; 局部变量表：局部变量表是一组变量值存储空间，用来存放方法参数、方法内部定义的局部变量。底层是变量槽（variable slot）</p>
 <p>&ensp;&ensp;&ensp;&ensp; 操作数栈：是用来记录一个方法在执行的过程中，字节码指令向操作数栈中进行入栈和出栈的过程。大小在编译的时候已经确定了，当一个方法刚开始执行的时候，操作数栈中是空发的，在方法执行的过程中会有各种字节码指令往操作数栈中入栈和出栈。</p>
@@ -408,6 +489,8 @@
 <p>&ensp;&ensp;&ensp;&ensp; 返回地址（returnAddress）：类型（指向了一条字节码指令的地址）</p>
 <p>&ensp;&ensp;&ensp;&ensp; JIT即时编译器（Just In Time Compiler），简称 JIT 编译器: </p>
 <p>&ensp;&ensp;&ensp;&ensp; 为了提高热点代码的执行效率，在运行时，虚拟机将会把这些代码编译成与本地平台相关的机器码，并进行各种层次的优化，比如锁粗化等。</p>
+<p><strong>本地方法栈：</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 本地方法栈和虚拟机栈类似，不同的是虚拟机栈服务的是Java方法，而本地方法栈服务的是Native方法。在HotSpot虚拟机实现中是把本地方法栈和虚拟机栈合二为一的，同理它也会抛出StackOverflowError和OOM异常。</p>
  
       <!-- reward -->
       
@@ -691,61 +774,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%92%E8%81%94%E7%BD%91/" rel="tag">互联网</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-String引用传值问题"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2024/03/01/String%E5%BC%95%E7%94%A8%E4%BC%A0%E5%80%BC%E9%97%AE%E9%A2%98/"
-    >String引用传值问题</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2024/03/01/String%E5%BC%95%E7%94%A8%E4%BC%A0%E5%80%BC%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2024-03-01T01:05:27.000Z" itemprop="datePublished">2024-03-01</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%9F%BA%E6%9C%AC%E5%8A%9F/">基本功</a> / <a class="article-category-link" href="/categories/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/">编程基础</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>&ensp;&ensp;&ensp;&ensp; Java 中是没有引用传递的，Java 中只有值传递。Java 中所谓的引用传递，也只是传递了”引用变量保存的地址值”。 Java 中判断”引用传递”有没有达到你预期的效果，前提要基于内存模型，并结合你的上下文，根据有没有利用引用变量”传递”的这个地址值去修改实际内存对象的数据来判断。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> edu.zjnu;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 杨海波</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/2/29 20:49</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> String 引用传值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        test01();</span><br><span class="line">        test02();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test01</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;out&quot;</span>;</span><br><span class="line">        <span class="comment">// str = &quot;out2&quot;;</span></span><br><span class="line">        f01(str);</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 工程实践表明，java 中没有引用传递，只有值传递。</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * Java 中所谓的引用传递，也只是传递了&quot;引用变量保存的地址值&quot;，如果无法做到</span></span><br><span class="line"><span class="comment">     * 根据这个引用指向的地址去修改实际对象的值，那么函数外部的实际对象无法被修改。</span></span><br><span class="line"><span class="comment">     * 特别的，String 是不可变对象：</span></span><br><span class="line"><span class="comment">     * 在 test01 这个例子中， 外部的 &#x27; str = &quot;out2&quot;;  这行代码只是在方法区的</span></span><br><span class="line"><span class="comment">     * 字符串常量池新建了一个字符串常量对象 &quot;out2&quot;,并将该对象的地址赋值给引用变</span></span><br><span class="line"><span class="comment">     * 量 str。内部的 str = &quot;in&quot;; 也是同理，但是当 f01 函数执行 str = &quot;in&quot;; </span></span><br><span class="line"><span class="comment">     * 这行代码时，引用变量保存的值（该值是尊从值传递的）是新的字符串常量对象 &quot;in&quot; </span></span><br><span class="line"><span class="comment">     * 的地址，当 f01 执行完毕，这个值尊从函数作用域规则消失了。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">f01</span><span class="params">(String str)</span> &#123;</span><br><span class="line">        str = <span class="string">&quot;in&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 解决办法如下</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test02</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">StringWrapper</span> <span class="variable">str</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringWrapper</span>(<span class="string">&quot;out&quot;</span>);</span><br><span class="line">        f02(str);</span><br><span class="line">        System.out.println(str.value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">f02</span><span class="params">(StringWrapper str)</span> &#123;</span><br><span class="line">        str.value = <span class="string">&quot;in&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">StringWrapper</span> &#123;</span><br><span class="line">        <span class="comment">// 实际值</span></span><br><span class="line">        <span class="keyword">public</span> String value;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">StringWrapper</span><span class="params">(String value)</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.value = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag">基础知识</a></li></ul>
 
     </footer>
   </div>
