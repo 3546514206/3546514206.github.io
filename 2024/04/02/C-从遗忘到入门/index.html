@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.6k</span>
+            <span class="post-count">5k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">10 分钟</span>
+            <span class="post-count">19 分钟</span>
         </span>
     </span>
 </div>
@@ -176,18 +176,108 @@
 
 <p>&ensp;&ensp;&ensp;&ensp; 这里 Typename 是数组中元素的数据类型，arrayName 是数组的变量名，Size 是数组的元素个数，在这种声明形式下必须是整形的常量。</p>
 <p>&ensp;&ensp;&ensp;&ensp; 这里介绍的方式是数组的静态声明方式，即数组的元素个数在编译期间就能确定，数组占用的内存分配在栈内存中，实际开发中更多的情况可能是更具运行时的值确定数组的大小，这时需要动态的方式声明数组，后面会介绍。</p>
-<p><strong>2.2.1、数组的初始化</strong></p>
+<p><strong>2.2.2、数组的初始化</strong></p>
 <p>&ensp;&ensp;&ensp;&ensp; 数组定义时如果未进行初始化，那么数组中的元素的值都是内存中残留的数据，而这些数据通常没有意义，直接使用会导致不可预知的问题。因此声明数组后需要对数组进行必要的初始化。数组支持列表初始化语法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组大小为5，编译器自动确定</span></span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="comment">// 数组前三项确定为1，2，3，其余被初始化为0     </span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;   </span><br><span class="line"><span class="comment">// 整个数组全部为0 </span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;         </span><br></pre></td></tr></table></figure>
 
+<p><strong>2.2.3、数组的使用</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 数组中的元素可以通过索引来访问和修改，索引从0开始，第一元素索引是0，最后一个索引是Size-1。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 零初始化</span></span><br><span class="line">nt arr[<span class="number">10</span>] = &#123;&#125;;  </span><br><span class="line"><span class="comment">// 修改数组第一个元素值为10</span></span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">10</span>;      </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>数组在声明后（无论静态声明还是动态声明），数组的大小即固定，不可更改；</p>
+</li>
+<li><p>数组不提供任何内置的方法来获取其大小，通常需要额外保存数组的大小，或者使用特殊标记结束元素（C风格的字符串使用’\0’表示数组结束）；</p>
+</li>
+<li><p>数组不提供边界检查，越界访问的代码是可以通过编译的（静态数组编译器会给出警告），可能导致很多潜在问题。</p>
+</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp; 下面是越界访问的案例：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;; </span><br><span class="line"><span class="comment">// 最大的有效索引是9，这里出现越界，但编译器能顺利编译通过（有警告） </span></span><br><span class="line"><span class="type">int</span> a = arr[<span class="number">10</span>];   </span><br><span class="line"><span class="comment">// a中的值是不确定的，没有实际意义的，这里是读取，危害可能有限</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">10</span>] = <span class="number">99</span>; </span><br><span class="line"><span class="comment">// 可怕的是该语句也能通过编译，但这里进行了更加危险的操作，</span></span><br><span class="line"><span class="comment">// 越界访问了一块内存并修改了其内容，这很可能导致程序崩溃</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>2.2.4、多维数组</strong></p>
+<p><strong>2.2.4.1、二维数组</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 上面提到的数组存储的是一维的，即一系列同类型数据，但有时需要存储一个表格数据，需要区分行列，这时可以使用二维数组来存储。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Rows是行数， Columns是列数， 必须常量</span></span><br><span class="line">Typename arrayName[Rows][Columns];  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 实际示例</span></span><br><span class="line"><span class="comment">// 定义了一个10*10的二维数组</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>][<span class="number">10</span>];  </span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 下面是二维数组的初始化：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 完全初始化</span></span><br><span class="line"><span class="type">int</span> matrix[<span class="number">2</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">    &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 部分初始化</span></span><br><span class="line"><span class="type">int</span> matrix[<span class="number">2</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">    &#123;<span class="number">1</span>, <span class="number">2</span>&#125;, <span class="comment">// 第一行的最后一个元素将被初始化为 0</span></span><br><span class="line">    &#123;<span class="number">4</span>&#125;     <span class="comment">// 第二行的第二个和第三个元素将被初始化为 0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单行初始化</span></span><br><span class="line"><span class="type">int</span> matrix[<span class="number">2</span>][<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;; <span class="comment">// 只初始化第一行，其他行将默认初始化为0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自动推断，和一维数组一样，编译器会根据数组推断二维数组第一维的大小</span></span><br><span class="line"><span class="type">int</span> matrix[][<span class="number">3</span>] = &#123;</span><br><span class="line">    &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
+<p><strong>2.2.4.1、多维数组</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 多维数据是和二维数组类似，在基础上再增加一维:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Typename arrayName[Depth][Rows][Columns];</span><br></pre></td></tr></table></figure>
 
+<p>&ensp;&ensp;&ensp;&ensp; 当然可以推广这个概念，定义出四维、五维等等数组形式，这里不展开。</p>
+<p><strong>2.2.5、数组的替代</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 数组本身是一种常见的C++数据类型，使用范围很广，但是本身也存在局限性。因此为了提升开发效率，C++标准库中提供了更加灵活的数据容器供开发者使用：</p>
+<ul>
+<li><p>std::vector: 可变大小的数组。提供对元素的快速随机访问，并能高效地在尾部添加和删除元素。</p>
+</li>
+<li><p>std::list 双向链表。支持在任何位置快速插入和删除元素，但不支持快速随机访问。</p>
+</li>
+<li><p>std::deque: 双端队列。类似于std::vector，但提供在头部和尾部快速添加和删除元素的能力。</p>
+</li>
+<li><p>std::array (C++11): 固定大小的数组。提供对元素的快速随机访问，并且其大小在编译时确定。</p>
+</li>
+<li><p>std::forward_list (C++11): 单向链表。提供在任何位置快速插入和删除元素，但不支持快速随机访问。</p>
+</li>
+<li><p>std::stack: 栈容器适配器。提供后进先出(LIFO)的数据结构。</p>
+</li>
+<li><p>std::queue: 队列容器适配器。提供先进先出(FIFO)的数据结构。</p>
+</li>
+<li><p>std::priority_queue: 优先队列容器适配器。元素按优先级出队，通常使用堆数据结构实现。</p>
+</li>
+<li><p>std::set: 一个包含排序唯一元素的集合。基于红黑树实现。</p>
+</li>
+<li><p>std::multiset: 一个包含排序元素的集合，元素可以重复。基于红黑树实现。</p>
+</li>
+<li><p>std::unordered_set (C++11): 一个包含唯一元素的集合，但不排序。基于散列函数实现。</p>
+</li>
+<li><p>std::unordered_multiset (C++11): 一个包含元素的集合，元素可以重复，但不排序。基于散列函数实现。</p>
+</li>
+</ul>
+<p><strong>2.3、指针</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 在C++中，指针是一种基础数据类型，它存储了内存地址的值。通过指针，可以直接读取或修改相应内存地址处的数据。指针是C&#x2F;C++强大功能的一个关键组成部分，允许直接操作内存，这在底层编程和系统编程中非常有用，但这一切能力的代价就是指针操作的高风险。</p>
+<p><strong>2.3.1、理解指针</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 下面是简单的整形变量和整形指针变量在内存中的示意图:</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%81%97%E5%BF%98%E5%88%B0%E5%85%A5%E9%97%A8/%E7%90%86%E8%A7%A3%E6%8C%87%E9%92%88.webp" alt="理解指针"></p>
+<p>&ensp;&ensp;&ensp;&ensp; 可以看出：</p>
+<ul>
+<li><p>a是一个整形，占用4个字节（一般int类型占用4字节），0xffffffffffffecdc是其首地址，内存中的值是2568，即代码中的赋值（具体的存储细节可以搜索 大端序、小端序）。</p>
+</li>
+<li><p>p是一个整形指针，占用8个字节（64位系统），0xffffffffffffece0是其首地址，内存中的值是a变量内存的首地址，即0xffffffffffffecdc。</p>
+</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp; 通过示意图，可以知道指针本身是一种变量类型，和int、bool这些类型没有本质的区别，只不过其他类型的变量中存储的是数据，而指针类型变量中存储的内存地址。一旦理解了这个概念，那么指针的指针这一概念也不难理解，它本身是一个指针类型，其中存储的值是另一个指针的地址。</p>
+<p><strong>2.3.2、指针的定义</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 指针的定义语法：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Typename * ptrName;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指针定义风格，下面的声明都正确</span></span><br><span class="line"><span class="type">int</span> *p;   <span class="comment">// C风格，旨在强调 （*p）是一个整形值</span></span><br><span class="line"><span class="type">int</span>* p;    <span class="comment">// 经典C++风格，只在强调 p是一个整形指针类型（int*）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 阿里集团推荐的风格,指针、引用都是居中，两边留空格</span></span><br><span class="line"><span class="type">int</span> * p;     <span class="comment">// 指针</span></span><br><span class="line"><span class="type">int</span> &amp; a = xx;  <span class="comment">// 左值引用</span></span><br><span class="line"><span class="type">int</span> &amp;&amp; a = xx;  <span class="comment">// 右值引用</span></span><br></pre></td></tr></table></figure>
 
+<p><strong>2.3.3、指针的初始化和访问</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 指针的赋值和访问语法如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> * p = &amp;a;      <span class="comment">// &amp; 取地址运算符</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// * 用在指针这里是解引用运算符，可以获取指针指向的地址的值</span></span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;   <span class="comment">// 输出  5</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> b = <span class="number">10</span>;</span><br><span class="line">p = &amp;b;          <span class="comment">// 指针变量可以修改其指向地址</span></span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;    <span class="comment">// 输出 10</span></span><br></pre></td></tr></table></figure>
 
+<p><strong>2.3.4、常量指针 vs 指针常量</strong></p>
+<p><strong>2.3.4.1、常量指针</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 常量指针指向一个常量值，不管指向的变量本身是否声明为常量都不能通过指针来修改指向的内容，但指针本身可以重新赋值指向新的地址。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> value = <span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> * p = &amp;value;    <span class="comment">// p是一个常量指针</span></span><br><span class="line"><span class="type">int</span> <span class="type">const</span> * q = &amp;value;   <span class="comment">// 和上面的声明等价 </span></span><br><span class="line">*p = <span class="number">10</span>;           <span class="comment">// 非法，*p是常量不能修改</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a = <span class="number">6</span>;</span><br><span class="line">p = &amp;a;            <span class="comment">// 合法，p本身不是常量，可以重新赋值</span></span><br></pre></td></tr></table></figure>
 
+<p>&ensp;&ensp;&ensp;&ensp; 常量指针在函数传参时非常有用，它可以限制函数内部通过指针非法地修改原始内容。</p>
+<p><strong>2.3.4.2、指针常量</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 指针常量表示指针本身是常量，必须在声明时初始化，之后不能指向其他地址，但可以通过指针修改指向的内容。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> value = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> * <span class="type">const</span> p = &amp;value;   <span class="comment">// p是常量</span></span><br><span class="line">*p = <span class="number">6</span>;     <span class="comment">// 合法</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a = <span class="number">7</span>;</span><br><span class="line">p = &amp;a;    <span class="comment">// 非法</span></span><br></pre></td></tr></table></figure>
 
+<p>&ensp;&ensp;&ensp;&ensp; 要记住这两种声明的区别有个简单的方法：看 const 修饰是什么：const int * p ：const修饰 *p，即 *p 是常量；int * const p ：const修饰 p，即 p 是常量。</p>
+<p><strong>2.3.5、指针与数组</strong></p>
+<p><strong>2.3.5.1、指针和数组名的异同</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 在C++中，数组名在绝大多数场景下可以看做是指针，在这些场景下数组名和指向该数组首个元素的指针是等价的。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> * p1 = arr;     <span class="comment">// arr 被当做指向数组首元素的指针</span></span><br><span class="line"><span class="type">int</span> * p2 = &amp;arr[<span class="number">0</span>];    <span class="comment">// 取arr首个元素的地址</span></span><br><span class="line"><span class="comment">// 这种情况下 p1 和 p2 是等价的</span></span><br><span class="line"><span class="keyword">if</span> (p1 == P2) &#123;      <span class="comment">// 检测会通过</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;p1,p2是等价的&quot;</span> &lt;&lt; endl;  </span><br><span class="line">    cout &lt;&lt; *p1 &lt;&lt; endl;  <span class="comment">// 打印 1</span></span><br><span class="line">    cout &lt;&lt; *p2 &lt;&lt; endl;   <span class="comment">// 打印 1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用指针访问数组</span></span><br><span class="line"><span class="comment">// 指针方式</span></span><br><span class="line">cout &lt;&lt; *(p1 + <span class="number">1</span>) &lt;&lt; endl;  <span class="comment">// 访问数组第二个元素，这种方式符合指针的计算规则</span></span><br><span class="line"><span class="comment">// 类似数组名的使用方式</span></span><br><span class="line">cout &lt;&lt; p1[<span class="number">1</span>] &lt;&lt; endl;<span class="comment">// p1虽然是指针，索引访问方式依然有效，本质是*(p1 + 1)的语法糖</span></span><br></pre></td></tr></table></figure>
 
+<p>&ensp;&ensp;&ensp;&ensp; 指针和数组名有区别的地方：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> * p1 = arr;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">sizeof</span>(arr) &lt;&lt; endl;  <span class="comment">// 打印结果：20 </span></span><br><span class="line">cout &lt;&lt; <span class="built_in">sizeof</span>(p1) &lt;&lt; endl;    <span class="comment">// 打印结果：8</span></span><br><span class="line"><span class="comment">// sizeof(arr)为数组本身的大小，这里是 5个int占用20字节</span></span><br><span class="line"><span class="comment">// sizeof(p1)为指针本身大小，64位系统中占用8个字节</span></span><br></pre></td></tr></table></figure>
+
+<p>&ensp;&ensp;&ensp;&ensp; 此外 &amp;取地址运算符对于 指针和数组名的处理也是不同的：</p>
  
       <!-- reward -->
       
@@ -269,9 +359,9 @@
       </a>
     
     
-      <a href="/2024/03/31/%E7%94%B7%E4%BA%BA%E5%BC%80%E5%A7%8B%E5%8F%98%E6%88%90%E7%86%9F%E7%9A%84%E8%BF%B9%E8%B1%A1/" class="article-nav-link">
+      <a href="/2024/03/28/%E4%B8%AA%E4%BA%BA%E7%AE%80%E5%8E%86/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">男人开始变成熟的迹象</div>
+        <div class="article-nav-title">个人简历</div>
       </a>
     
   </nav>
