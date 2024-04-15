@@ -2355,8 +2355,8 @@
         <category>云计算</category>
       </categories>
       <tags>
-        <tag>K8S</tag>
         <tag>工程</tag>
+        <tag>K8S</tag>
         <tag>网络</tag>
       </tags>
   </entry>
@@ -8751,8 +8751,8 @@ use one vs other -->
         <category>云计算</category>
       </categories>
       <tags>
-        <tag>云计算领域</tag>
         <tag>K8S</tag>
+        <tag>云计算领域</tag>
       </tags>
   </entry>
   <entry>
@@ -8808,6 +8808,20 @@ use one vs other -->
       </tags>
   </entry>
   <entry>
+    <title>Spring全景</title>
+    <url>/2023/08/29/Spring%E5%85%A8%E6%99%AF/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/Spring/Spring%E5%85%A8%E6%99%AF/Spring%E5%85%A8%E6%99%AF.png" alt="Spring 全景图"></p>
+]]></content>
+      <categories>
+        <category>工程</category>
+        <category>服务端</category>
+      </categories>
+      <tags>
+        <tag>Spring</tag>
+        <tag>Java EE</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dubbo 架构图</title>
     <url>/2023/08/29/dubbo%E6%9E%B6%E6%9E%84%E5%9B%BE/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
@@ -8818,22 +8832,8 @@ use one vs other -->
         <category>服务端</category>
       </categories>
       <tags>
+        <tag>Java EE</tag>
         <tag>Dubbo</tag>
-        <tag>Java EE</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Spring全景</title>
-    <url>/2023/08/29/Spring%E5%85%A8%E6%99%AF/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/Spring/Spring%E5%85%A8%E6%99%AF/Spring%E5%85%A8%E6%99%AF.png" alt="Spring 全景图"></p>
-]]></content>
-      <categories>
-        <category>工程</category>
-        <category>服务端</category>
-      </categories>
-      <tags>
-        <tag>Java EE</tag>
-        <tag>Spring</tag>
       </tags>
   </entry>
   <entry>
