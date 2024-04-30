@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="更新C++入门" />
+    <list default="true" id="5db134aa-36f7-44e0-8be1-78d75af8be06" name="变更" comment="更新">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -167,6 +169,9 @@
       <workItem from="1712389813382" duration="348000" />
       <workItem from="1712804099028" duration="1907000" />
       <workItem from="1712910535558" duration="2431000" />
+      <workItem from="1713146913295" duration="185000" />
+      <workItem from="1713147357816" duration="983000" />
+      <workItem from="1713226619391" duration="458000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <created>1700812422351</created>
@@ -483,14 +488,6 @@
       <option name="project" value="LOCAL" />
       <updated>1709260097062</updated>
     </task>
-    <task id="LOCAL-00046" summary="变更">
-      <option name="closed" value="true" />
-      <created>1712308956690</created>
-      <option name="number" value="00046" />
-      <option name="presentableId" value="LOCAL-00046" />
-      <option name="project" value="LOCAL" />
-      <updated>1712308956690</updated>
-    </task>
     <task id="LOCAL-00047" summary="更新个人简历">
       <option name="closed" value="true" />
       <created>1712389856655</created>
@@ -515,7 +512,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712910556642</updated>
     </task>
-    <option name="localTasksCounter" value="50" />
+    <task id="LOCAL-00050" summary="更新">
+      <option name="closed" value="true" />
+      <created>1713146934987</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1713146934987</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -554,11 +559,11 @@
     <MESSAGE value="进程间通信的五种方式" />
     <MESSAGE value="没有图" />
     <MESSAGE value="tuoming" />
-    <MESSAGE value="更新" />
     <MESSAGE value="变更" />
     <MESSAGE value="更新个人简历" />
     <MESSAGE value="更新C++入门" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新C++入门" />
+    <MESSAGE value="更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
