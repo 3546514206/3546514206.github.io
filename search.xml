@@ -8525,8 +8525,7 @@ use one vs other -->
   <entry>
     <title>Dubbo 架构图</title>
     <url>/2023/08/29/dubbo%E6%9E%B6%E6%9E%84%E5%9B%BE/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><hr>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/dubbo/dubbo%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg" alt="Dubbo 架构图"></p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/dubbo/dubbo%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg" alt="Dubbo 架构图"></p>
 ]]></content>
       <tags>
         <tag>Dubbo</tag>
@@ -8537,6 +8536,9 @@ use one vs other -->
     <url>/2023/08/29/%E4%BF%9D%E6%8C%81%E6%95%AC%E7%95%8F%E4%B9%8B%E5%BF%83/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>&ensp;&ensp;&ensp;&ensp; 世界何其广大，能人异士很多。 搞清楚自己的能力边界很重要。对未知或者模糊不清的事物保持敬畏之心，不鲁莽下结论， 避免盲目自负也很重要。</p>
 ]]></content>
+      <tags>
+        <tag>成长</tag>
+      </tags>
   </entry>
   <entry>
     <title>命令行常用指令</title>
