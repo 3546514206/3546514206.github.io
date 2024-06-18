@@ -146,6 +146,123 @@
     
     
     <article
+  id="post-三高：高可用、高性能、高扩展"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/12/04/%E4%B8%89%E9%AB%98%EF%BC%9A%E9%AB%98%E5%8F%AF%E7%94%A8%E3%80%81%E9%AB%98%E6%80%A7%E8%83%BD%E3%80%81%E9%AB%98%E6%89%A9%E5%B1%95/"
+    >三高：高可用、高性能、高扩展</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/12/04/%E4%B8%89%E9%AB%98%EF%BC%9A%E9%AB%98%E5%8F%AF%E7%94%A8%E3%80%81%E9%AB%98%E6%80%A7%E8%83%BD%E3%80%81%E9%AB%98%E6%89%A9%E5%B1%95/" class="article-date">
+  <time datetime="2023-12-04T07:12:24.000Z" itemprop="datePublished">2023-12-04</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>&ensp;&ensp;&ensp;&ensp; 我们经常被要求设计高可用性、高可扩展性和高性能。上图包含了针对“三高”的常见解决方案。</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/%E4%B8%89%E9%AB%98%EF%BC%9A%E9%AB%98%E5%8F%AF%E7%94%A8%E3%80%81%E9%AB%98%E6%80%A7%E8%83%BD%E3%80%81%E9%AB%98%E6%89%A9%E5%B1%95/640.gif" alt="git 分支模型"></p>
+<p><strong>高可用性</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 这意味着我们需要确保系统高水平的正常运行时间。我们经常将设计目标描述为“3个9”或“4个9”。“4个9”，即99.99%的正常运行时间，意味着服务每天只能停机8.64秒。 为了实现高可用性，我们需要在系统中增加冗余节点。 有以下几种方法可以做到这一点：</p>
+<ul>
+<li><p>hot-hot结构：两个实例接收相同的输入并将输出发送到下游服务。如果其中一个实例停机，另一个实例可以立即接管。由于双方都向下游发送输出，下游系统需要进行重复数据删除。</p>
+</li>
+<li><p>hot-warm结构：两个实例接收相同的输入，只有hot实例将输出发送到下游服务。如果hot实例发生故障，warm实例将接管并开始向下游服务发送输出。</p>
+</li>
+<li><p>single-leader Cluster：一个leader实例从上游系统接收数据并复制到其他副本。</p>
+</li>
+<li><p>Leaderless cluster：在这种类型的集群中没有领导者。任何写入操作都会被复制到其他实例。只要写入实例的数量加上读取实例的数量大于实例的总数，我们就会得到有效数据。</p>
+</li>
+</ul>
+<p><strong>高性能</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 这意味着服务需要在一段时间内处理大量请求。常用的指标是QPS（每秒查询数）或TPS（每秒事务数）。为了实现高性能，我们经常在架构中添加缓存，这样请求就可以在不命中数据库或磁盘等较慢的I&#x2F;O设备的情况下返回。我们还可以增加计算密集型任务的线程数量。然而，添加太多线程可能会降低性能。最后，我们需要识别系统中的瓶颈并提高其性能。使用异步处理通常可以有效地隔离繁重的组件。</p>
+<p><strong>高可扩展性</strong></p>
+<p>&ensp;&ensp;&ensp;&ensp; 这意味着系统可以快速轻松地扩展以容纳更多容量（横向可扩展性）或更多功能（纵向可扩展性）。通常，我们会观察响应时间以决定是否需要扩展系统。为了实现高可扩展性，重要的是将服务的职责分离。为此，微服务被广泛采用。我们还利用服务注册表和负载均衡器将请求路由到适当的实例。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag">架构</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-Hotspot源码目录结构"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/12/04/Hotspot%E6%BA%90%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/"
+    >Hotspot源码目录结构</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/12/04/Hotspot%E6%BA%90%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/" class="article-date">
+  <time datetime="2023-12-04T02:20:15.000Z" itemprop="datePublished">2023-12-04</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/Hotspot%E6%BA%90%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/Hotspot%E6%BA%90%E7%A0%81%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84.png" alt="Hotspot源码目录结构"></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-数学地图"
   class="article article-type-post"
   itemscope
@@ -223,7 +340,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <div id="dplayer6" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer6"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/男人开始变成熟地迹象/男人开始变成熟的迹象.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+  <div id="dplayer7" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer7"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/男人开始变成熟地迹象/男人开始变成熟的迹象.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
  
       <!-- reward -->
       
@@ -645,140 +762,13 @@
 </article>
 
     
-    <article
-  id="post-常见的队列"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/28/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%98%9F%E5%88%97/"
-    >常见的队列</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/28/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%98%9F%E5%88%97/" class="article-date">
-  <time datetime="2023-11-28T08:17:43.000Z" itemprop="datePublished">2023-11-28</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>&ensp;&ensp;&ensp;&ensp; 队列是系统中广泛使用的流行数据结构。上图显示了我们经常使用的4种不同类型的队列。</p>
-<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%98%9F%E5%88%97/640.gif" alt="常见的队列"></p>
-<ul>
-<li><strong>简单的FIFO队列</strong></li>
-</ul>
-<p>&ensp;&ensp;&ensp;&ensp; 简单队列遵循 FIFO（先进先出）。新元素插入到队列的尾部，元素从队列的头部移除。如果我们想在收到付款响应时向用户发送电子邮件通知，我们可以使用 FIFO 队列。电子邮件将以与付款响应相同的顺序发送。</p>
-<ul>
-<li><strong>环形队列</strong></li>
-</ul>
-<p>&ensp;&ensp;&ensp;&ensp; 环形队列也称为环形缓冲区或环形缓冲区。它的最后一个元素链接到第一个元素。插入发生在队列的前端，删除发生在队列的末尾。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 一个著名的实现是LMAX的低延迟环形缓冲区。交易组件通过环形缓冲区相互通信。这是在内存中实现的，速度非常快。</p>
-<ul>
-<li><strong>优先队列</strong></li>
-</ul>
-<p>&ensp;&ensp;&ensp;&ensp; 优先级队列中的元素具有预定义的优先级。我们从队列中取出具有最高（或最低）优先级的元素。在幕后，它使用最大堆或最小堆实现，其中具有最大或最低优先级的元素位于堆的根。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 一个典型的用例是将病情最严重的患者分配到急诊室，而将其他患者分配到普通病房。</p>
-<ul>
-<li><strong>Deque</strong></li>
-</ul>
-<p>&ensp;&ensp;&ensp;&ensp; Deque 也称为双端队列。插入和删除可以在头部和尾部同时发生。Deque 支持 FIFO 和 LIFO（后进先出），因此我们可以使用它来实现堆栈数据结构。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-左值和右值"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/11/24/%E5%B7%A6%E5%80%BC%E5%92%8C%E5%8F%B3%E5%80%BC/"
-    >C++ 中的左值（Lvalues）和右值（Rvalues）</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/11/24/%E5%B7%A6%E5%80%BC%E5%92%8C%E5%8F%B3%E5%80%BC/" class="article-date">
-  <time datetime="2023-11-24T07:47:33.000Z" itemprop="datePublished">2023-11-24</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>&ensp;&ensp;&ensp;&ensp; C++ 中有两种类型的表达式：</p>
-<ul>
-<li>左值（lvalue）：指向内存位置的表达式被称为左值（lvalue）表达式。左值可以出现在赋值号的左边或右边。</li>
-<li>右值（rvalue）：术语右值（rvalue）指的是存储在内存中某些地址的数值。右值是不能对其进行赋值的表达式，也就是说，右值可以出现在赋值号的右边，但不能出现在赋值号的左边。</li>
-</ul>
-<p>&ensp;&ensp;&ensp;&ensp; 变量是左值，因此可以出现在赋值号的左边。数值型的字面值是右值，因此不能被赋值，不能出现在赋值号的左边。下面是一个有效的语句：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> g = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 但是下面这个就不是一个有效的语句，会生成编译时错误：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> = <span class="number">20</span>;</span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
   </nav>
   
 </section>
