@@ -107,11 +107,19 @@
   
   
   
+
 <div class="notice" style="margin-top:50px">
     <i class="ri-heart-fill"></i>
-    <div class="notice-content">第一性原理、长期主义者</div>
+    <div class="notice-content" id="broad"></div>
 </div>
-
+<script type="text/javascript">
+    fetch('https://v1.hitokoto.cn')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("broad").innerHTML = data.hitokoto;
+        })
+        .catch(console.error)
+</script>
 
 <style>
     .notice {
@@ -750,7 +758,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <div id="dplayer17" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer17"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/这段话彻底治好了我对于原生家庭的焦虑/这段话彻底治好了我对于原生家庭的焦虑.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> 
+  <div id="dplayer16" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer16"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/这段话彻底治好了我对于原生家庭的焦虑/这段话彻底治好了我对于原生家庭的焦虑.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> 
       <!-- reward -->
       
     </div>
