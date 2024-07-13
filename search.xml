@@ -3,8 +3,8 @@
   <entry>
     <title>草台班子</title>
     <url>/2024/07/13/%E5%B9%82%E7%AD%89%E5%B1%85%E7%84%B6%E9%9C%80%E8%A6%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8E%BB%E6%8A%8A%E6%8E%A7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; 当然我没有在针对谁，只是什么时候开始，用户层点了两次按钮，服务端就理所当然可以出问题了？客户端不做防重复提交，服务端就没有幂等性了？</p>
-<p>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp; 认真考虑下来，其实不单单是这个功能。整个系统的微服务改造其实没有任何意义，是为了微服务而微服务。于性能、于运维成本，都没有做到 10 到 5 的减负，反而是加了那部分 5 之后，10 的部分依旧尾大不掉，最终的负重变成了 15+。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>&ensp;&ensp;&ensp;;&ensp; 当然我没有在针对谁，只是什么时候开始，用户层点了两次按钮，服务端就理所当然可以出问题了？客户端不做防重复提交，服务端就没有幂等性了？</p>
+<p>&ensp;&ensp;&ensp;;&ensp; 认真考虑下来，其实不单单是这个功能。整个系统的微服务改造其实没有任何意义，是为了微服务而微服务。于性能、于运维成本，都没有做到 10 到 5 的减负，反而是加了那部分 5 之后，10 的部分依旧尾大不掉，最终的负重变成了 15+。</p>
 <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%B9%82%E7%AD%89%E7%AC%91%E8%AF%9D/%E5%B9%82%E7%AD%89%E7%AC%91%E8%AF%9D.jpg" alt="幂等笑话"></p>
 ]]></content>
       <tags>
@@ -1029,7 +1029,7 @@
   <entry>
     <title>你越静，就越赢</title>
     <url>/2024/02/12/%E4%BD%A0%E8%B6%8A%E9%9D%99%EF%BC%8C%E5%B0%B1%E8%B6%8A%E8%B5%A2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer3" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer3"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你越静，就越赢/你越静，就越赢.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你越静，就越赢/你越静，就越赢.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -1327,7 +1327,7 @@
   <entry>
     <title>你必须非常坚定的成为你想成为的那种人</title>
     <url>/2023/12/01/%E4%BD%A0%E5%BF%85%E9%A1%BB%E9%9D%9E%E5%B8%B8%E5%9D%9A%E5%AE%9A%E7%9A%84%E6%88%90%E4%B8%BA%E4%BD%A0%E6%83%B3%E6%88%90%E4%B8%BA%E7%9A%84%E9%82%A3%E7%A7%8D%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你必须非常坚定的成为你想成为的那种人/你必须非常坚定的成为你想成为的那种人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer5" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer5"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你必须非常坚定的成为你想成为的那种人/你必须非常坚定的成为你想成为的那种人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -2257,7 +2257,7 @@
   <entry>
     <title>允许一切发生</title>
     <url>/2023/11/14/%E5%85%81%E8%AE%B8%E4%B8%80%E5%88%87%E5%8F%91%E7%94%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer5" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer5"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer3" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer3"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
