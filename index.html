@@ -233,7 +233,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1.drawio.png" alt="基于转加密的握手式国密通信"></p>
+  <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1.png" alt="基于转加密的握手式国密通信"></p>
 <p>&ensp;&ensp;&ensp;&ensp; 1、客户端上送 SM4 密钥密文：</p>
 <ul>
 <li><p>客户端根据算法生成两把 SM4 密钥:sm4_key、h_mac_key；</p>
@@ -275,7 +275,7 @@
 <li><p>服务端接收到通讯加密报文后使用 sm4_key 进行解密得到交易明文，使用 h_mac_key 对交易明文计算 hmac 并与上送的 hmac 进行对比校验报文的完整性。</p>
 </li>
 </ul>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E5%AF%86%E7%A0%81%E6%9C%BA%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1%E7%AC%AC%E4%BA%8C%E7%89%88.drawio.png" alt="基于密码机转加密的握手式国密通信第二版"></p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E5%AF%86%E7%A0%81%E6%9C%BA%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1%E7%AC%AC%E4%BA%8C%E7%89%88.png" alt="基于密码机转加密的握手式国密通信第二版"></p>
 <p>&ensp;&ensp;&ensp;&ensp; 由于密码机接口的设计问题，上述 3 步骤中，需要调用密码机两次，分别发送 sm4_key 和 h_mac_key 给服务端。修改为第二版之后，h_mac_key 用 sm4_key 进行 SM4 加密，这样经过服务端转加密流程解出 sm4_key 之后，直接解密 h_mac_cipher_key 得到 h_mac_key。</p>
  
       <!-- reward -->
@@ -433,7 +433,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <div id="dplayer11" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer11"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+  <div id="dplayer10" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer10"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
 
  
