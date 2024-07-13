@@ -154,434 +154,6 @@
     
     
     <article
-  id="post-K8S架构图"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/08/29/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE/"
-    >K8S架构图</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/08/29/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE/" class="article-date">
-  <time datetime="2023-08-29T02:33:27.000Z" itemprop="datePublished">2023-08-29</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>&ensp;&ensp;&ensp;&ensp; 谷歌早期内部 Brog 系统架构图：</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E4%BA%91%E8%AE%A1%E7%AE%97/K8S/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE/Brog%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="Brog架构图"></p>
-<p>&ensp;&ensp;&ensp;&ensp; K8S 架构图：</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E4%BA%91%E8%AE%A1%E7%AE%97/K8S/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="K8S架构图"></p>
-<p>&ensp;&ensp;&ensp;&ensp; K8S 分层架构：</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E4%BA%91%E8%AE%A1%E7%AE%97/K8S/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE/K8S%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84.webp" alt="K8S分层架构"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/" rel="tag">云计算</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-IP数据报"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/08/29/IP%E6%95%B0%E6%8D%AE%E6%8A%A5/"
-    >IP数据报</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/08/29/IP%E6%95%B0%E6%8D%AE%E6%8A%A5/" class="article-date">
-  <time datetime="2023-08-28T17:29:54.000Z" itemprop="datePublished">2023-08-29</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>&ensp;&ensp;&ensp;&ensp; IP 协议控制传输的协议单元称为 IP 数据报（IP Datagram，IP数据报、IP包或IP分组）。IP协议屏蔽了下层各种物理子网的差异，能够向上层提供统一格式的IP数据报。lP数据报采用数据报分组传输的方式，提供的服务是无连接方式。IP数据报的格式能够说明lP协议具有什么功能。IPv4数据报由报头和数据两部分组成，其中，数据是高层需要传输的数据，报头是为了正确传输高层数据而增加的控制信息。报头的前一部分长度固定，共20字节，是所有IP数据报必须具有。在首部固定部分的后面是可选字段，长度可变。</p>
-<!-- ![IP报文结构](https://github.com/3546514206/ImageHost.Github.IO/blob/main/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/IP%E6%95%B0%E6%8D%AE%E6%8A%A5/IP%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84.png?raw=true) -->
-
-
-<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/IP%E6%95%B0%E6%8D%AE%E6%8A%A5/IP%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84.png" alt="IP报文结构"></p>
-<h4 id="1、固定部分"><a href="#1、固定部分" class="headerlink" title="1、固定部分"></a><strong>1、固定部分</strong></h4><ul>
-<li>版本：占 4 位，指 IP 协议的版本。通信双方使用的 IP 协议版本必须一致。广泛使用的 IP 协议版本号为 4（即 IPv4）。关于 IPv6，还处于草案阶段。</li>
-<li>首部长度：占 4 位，可表示的最大十进制数值是 15。请注意，这个字段所表示数的单位是 32 位字长（1 个 32 位字长是 4 字节），因此，当 IP 的首部长度为 1111 时（即十进制的 15），首部长度就达到 60 字节。当 IP 分组的首部长度不是 4 字节的整数倍时，必须利用最后的填充字段加以填充。因此数据部分永远在 4 字节的整数倍开始，这样在实现 IP 协议时较为方便。首部长度限制为 60 字节的缺点是有时可能不够用。但这样做是希望用户尽量减少开销。最常用的首部长度就是 20 字节（即首部长度为 0101），这时不使用任何选项。</li>
-<li>区分服务：占 8 位，用来获得更好的服务。这个字段在旧标准中叫做服务类型，但实际上一直没有被使用过。1998 年 IETF 把这个字段改名为区分服务DS(Differentiated Services)。只有在使用区分服务时，这个字段才起作用。</li>
-<li>总长度：总长度指首部和数据之和的长度，单位为字节。总长度字长为 16 位，因此数据报的最大长度为 2^16-1&#x3D;65535 字节。在 IP 层下面的每一种数据链路层都有自己的帧格式，其中包括帧格式中的数据字段的最大长度，这称为最大传送单元 MTU（Maximum Transfer Unit）。当一个数据报封装成链路层的帧时，此数据报的总长度（即首部加上数据部分）一定不能超过下面的数据链路层的 MTU 值。</li>
-<li>标识：占 16 位。IP 软件在存储器中维持一个计数器，每产生一个数据报，计数器就加1，并将此值赋给标识字段。但这个“标识”并不是序号，因为IP是无连接服务，数据报不存在按序接收的问题。当数据报由于长度超过网络的 MTU 而必须分片时，这个标识字段的值就被复制到所有的数据报的标识字段中。相同的标识字段的值使分片后的各数据报片最后能正确地重装成为原来的数据报。</li>
-<li>标志：占 3 位，但只有 2 位有意义。标志字段中的最低位记为 MF（More Fragment）。MF&#x3D;1 即表示后面“还有分片”的数据报。MF&#x3D;0 表示这已是若干数据报片中的最后一个。标志字段中间的一位记为 DF（Don’t Fragment），意思是“不能分片”。只有当 DF&#x3D;0 时才允许分片。</li>
-<li>片偏移：占 13 位。片偏移指出：较长的分组在分片后，某片在原分组中的相对位置。也就是说，相对用户数据字段的起点，该片从何处开始。片偏移以 8  个字节为偏移单位。这就是说，除了最后一个分片，每个分片的长度一定是 8 字节（64 位）的整数倍。</li>
-<li>生存时间：占 8 位，生存时间字段常用的的英文缩写是 TTL（Time To Live），表明是数据报在网络中的寿命。由发出数据报的源点设置这个字段。其目的是防止无法交付的数据报无限制地在因特网中兜圈子，因而白白消耗网络资源。最初的设计是以秒作为 TTL 的单位。每经过一个路由器时，就把 TTL 减去数据报在路由器消耗掉的一段时间。若数据报在路由器消耗的时间小于 1 秒，就把 TTL 值减 1。当 TTL 值为 0 时，就丢弃这个数据报。后来把 TTL 字段的功能改为“跳数限制”（但名称不变）。路由器在转发数据报之前就把 TTL 值减 1。若 TTL 值减少到零，就丢弃这个数据报，不再转发。因此，TTL 的单位不再是秒，而是跳数。TTL 的意义是指明数据报在网络中至多可经过多少个路由器。显然，数据报在网络上经过的路由器的最大数值是 255。若把 TTL 的初始值设为 1，就表示这个数据报只能在本局域网中传送。</li>
-<li>协议：占 8 位，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的 IP 层知道应将数据部分上交给哪个处理过程。6 指 TCP 协议，17 指的是 UDP 协议。</li>
-<li>首部校验和：占16位。这个字段只检验数据报的首部，但不包括数据部分。这是因为数据报每经过一个路由器，路由器都要重新计算一下首部检验和（一些字段，如生存时间、标志、片偏移等都可能发生变化）。不检验数据部分可减少计算的工作量。</li>
-<li>源地址和目的地址：32位，IPV4 地址。</li>
-</ul>
-<h4 id="2、可变部分"><a href="#2、可变部分" class="headerlink" title="2、可变部分"></a><strong>2、可变部分</strong></h4><p>&ensp;&ensp;&ensp;&ensp; IP 首部的可变部分就是一个可选字段。选项字段用来支持排错、测量以及安全等措施，内容很丰富。此字段的长度可变，从 1 个字节到 40 个字节不等，取决于所选择的项目。某些选项项目只需要 1 个字节，它只包括 1 个字节的选项代码。但还有些选项需要多个字节，这些选项一个个拼接起来，中间不需要有分隔符，最后用全 0 的填充字段补齐成为 4 字节的整数倍。增加首部的可变部分是为了增加 IP 数据报的功能，但这同时也使得 IP 数据报的首部长度成为可变的。这就增加了每一个路由器处理数据报的开销。实际上这些选项很少被使用。新的 IP 版本 IPv6 就将 IP 数据报的首部长度做成固定的。这些任选项定义如下：</p>
-<ul>
-<li>安全和处理限制（用于军事领域）。</li>
-<li>记录路径（让每个路由器都记下它的IP地址）。</li>
-<li>时间戳（Time Stamp）（让每个路由器都记下IP数据报经过每一个路由器的IP地址和当地时间）。</li>
-<li>宽松的源站路由（Loose Source Route）（为数据报指定一系列必须经过的IP地址）。</li>
-<li>严格的源站路由（Strict Source Route）（与宽松的源站路由类似，但是要求只能经过指定的这些地址，不能经过其他的地址）。</li>
-</ul>
-<p>&ensp;&ensp;&ensp;&ensp; 这些选项很少被使用，并非所有主机和路由器都支持这些选项。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-Innodb中的事务隔离级别和锁实现"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/08/29/Innodb%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E5%92%8C%E9%94%81%E5%AE%9E%E7%8E%B0/"
-    >Innodb中的事务隔离级别和锁实现</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/08/29/Innodb%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E5%92%8C%E9%94%81%E5%AE%9E%E7%8E%B0/" class="article-date">
-  <time datetime="2023-08-28T17:28:46.000Z" itemprop="datePublished">2023-08-29</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-   
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-Spring全景"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/08/29/Spring%E5%85%A8%E6%99%AF/"
-    >Spring全景</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/08/29/Spring%E5%85%A8%E6%99%AF/" class="article-date">
-  <time datetime="2023-08-28T17:20:39.000Z" itemprop="datePublished">2023-08-29</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/Spring/Spring%E5%85%A8%E6%99%AF/Spring%E5%85%A8%E6%99%AF.png" alt="Spring 全景图"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-dubbo架构图"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/08/29/dubbo%E6%9E%B6%E6%9E%84%E5%9B%BE/"
-    >Dubbo 架构图</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/08/29/dubbo%E6%9E%B6%E6%9E%84%E5%9B%BE/" class="article-date">
-  <time datetime="2023-08-28T17:20:39.000Z" itemprop="datePublished">2023-08-29</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/dubbo/dubbo%E6%9E%B6%E6%9E%84%E5%9B%BE.jpg" alt="Dubbo 架构图"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dubbo/" rel="tag">Dubbo</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-命令行常用指令"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/08/29/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/"
-    >命令行常用指令</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/08/29/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/" class="article-date">
-  <time datetime="2023-08-28T17:17:53.000Z" itemprop="datePublished">2023-08-29</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>&ensp;&ensp; MySQL 创建数据库并指定字符集：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drop schema if exists `test`;</span><br><span class="line">CREATE DATABASE `test` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp; Brew 相关的</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// 先卸载Homebrew</span><br><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;</span><br><span class="line">// 然后在安装</span><br><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line">// 搜索包</span><br><span class="line">brew search mysql</span><br><span class="line">// 安装包</span><br><span class="line">brew install mysql</span><br><span class="line">// 查看包信息，比如目前的版本，依赖，安装后注意事项等</span><br><span class="line">brew info mysql</span><br><span class="line">// 卸载包</span><br><span class="line">brew uninstall wget</span><br><span class="line">// 显示已安装的包</span><br><span class="line">brew list</span><br><span class="line">// 查看brew的帮助</span><br><span class="line">brew –help</span><br><span class="line">// 更新， 这会更新 Homebrew 自己</span><br><span class="line">brew update</span><br><span class="line">// 检查过时（是否有新版本），这会列出所有安装的包里，哪些可以升级</span><br><span class="line">brew outdated</span><br><span class="line">brew outdated mysql</span><br><span class="line">// 升级所有可以升级的软件们</span><br><span class="line">brew upgrade</span><br><span class="line">brew upgrade mysql</span><br><span class="line">// 清理不需要的版本极其安装包缓存</span><br><span class="line">brew cleanup</span><br><span class="line">brew cleanup mysql</span><br></pre></td></tr></table></figure>
-<p>&ensp;&ensp; MySQL 源码构建参数(将目录修改为你自己的)</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-DCMAKE_BUILD_TYPE=Debug</span><br><span class="line">-DWITH_BOOST=/Users/setsunayang/Documents/learning/mysql/boost_1_77_0</span><br><span class="line">-DCMAKE_INSTALL_PREFIX=/Users/setsunayang/Documents/learning/mysql/build</span><br><span class="line">-DWITH_SSL=system</span><br><span class="line"></span><br><span class="line">./mysqld --basedir=/Users/setsunayang/Documents/learning/mysql/build \</span><br><span class="line">--datadir=/Users/setsunayang/Documents/learning/mysql/build/data \</span><br><span class="line">--initialize-insecure --user=mysql</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp; Git 相关</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin </span><br><span class="line">git remote add origin [url]</span><br><span class="line">git config --global user.name &quot;杨海波&quot;</span><br><span class="line">git config --global user.email “3546514206@QQ.COM&quot;</span><br><span class="line"></span><br><span class="line">git rm -r --cached</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp; 设置主机名称</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo scutil --set HostName SetsunaYang</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp; Macbook Pro 显示被隐藏的文件或文件夹</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -boolean true;killall Finder </span><br><span class="line">defaults write com.apple.finder AppleShowAllFiles -boolean false;killall Finder</span><br><span class="line"></span><br><span class="line">chflags hidden</span><br><span class="line">chflags nohidden</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp; 设置环境变量</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;export PATH=&quot;/opt/homebrew/opt/go@1.20/bin:$PATH&quot;&#x27; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp; 修改环境变量相关</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前 shell 是 zsh 还是 bash</span></span><br><span class="line">dscl . -read /Users/$USER UserShell</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果是 bash</span></span><br><span class="line">open ~/.bash_profile</span><br><span class="line">source ~/.bash_profile</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> 如果是 zsh</span></span><br><span class="line">open ~/.zshrc </span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp; IDEA 相关</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决 Goland 无法调试的问题。在 bin/goland.vmoptions 增加如下虚拟机参数</span></span><br><span class="line">-Djava.net.preferIPv4Stack=true</span><br><span class="line">-Djava.net.preferIPv6Addresses=true</span><br></pre></td></tr></table></figure>
-
-
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-回调机制"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2023/08/29/%E5%9B%9E%E8%B0%83%E6%9C%BA%E5%88%B6/"
-    >回调机制</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2023/08/29/%E5%9B%9E%E8%B0%83%E6%9C%BA%E5%88%B6/" class="article-date">
-  <time datetime="2023-08-28T17:12:29.000Z" itemprop="datePublished">2023-08-29</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h4 id="1、C语言中的回调"><a href="#1、C语言中的回调" class="headerlink" title="1、C语言中的回调"></a><strong>1、C语言中的回调</strong></h4><p>&ensp;&ensp;&ensp;&ensp; 函数指针是指向函数的指针变量。通常我们说的指针变量是指向一个整型、字符型或数 组等变量，而函数指针是指向函数。函数指针可以像一般函数一样，用于调用函数、传递参 数。函数指针变量的声明： typedef int (*fun_ptr)(int,int); &#x2F;&#x2F; 声明一个指向同样参数、返回值的函数指针类型 以下实例声明了函数指针变量 p，指向函数 max：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y)</span> </span>&#123; <span class="keyword">return</span> x &gt; y ? x : y; &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/* p 是函数指针 */</span></span><br><span class="line">    <span class="built_in">int</span> (*p)(<span class="type">int</span>, <span class="type">int</span>) = &amp;max; <span class="comment">// &amp;可以省略 </span></span><br><span class="line">    <span class="type">int</span> a, b, c, d;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;请输入三个数字:&quot;</span>);</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d %d %d&quot;</span>, &amp;a, &amp;b, &amp;c);</span><br><span class="line">    <span class="comment">/* 与直接调用函数等价，d = max(max(a, b), c) */</span></span><br><span class="line">    d = <span class="built_in">p</span>(<span class="built_in">p</span>(a, b), c);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;最大的数字是: %d\n&quot;</span>, d);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 输出的结果：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">请输入三个数字:1 2 3 </span><br><span class="line">最大的数字是: 3</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 函数指针变量可以作为某个函数的参数来使用的，回调函数就是一个通过函数指针调用 的函数。下面的实例中 populate_array 函数定义了三个参数，其中第三个参数是函数的指 针，通过该函数来设置数组的值。实例中我们定义了回调函数 getNextRandomValue，它返 回一个随机值，它作为一个函数指针传递给 populate_array 函数。populate_array 将调 用 10 次回调函数，并将回调函数的返回值赋值给数组。编译执行，输出结果如下： </p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">16807 282475249 1622650073 984943658 1144108930 470211272 101027544 1457850878 1458777923 2007237709</span><br></pre></td></tr></table></figure>
-
-<h4 id="2、什么是回调"><a href="#2、什么是回调" class="headerlink" title="2、什么是回调"></a><strong>2、什么是回调</strong></h4><p>&ensp;&ensp;&ensp;&ensp; 软件模块之间总是存在着一定的接口，从调用方式上，可以把他们分为三类：同步调 用、回调和异步调用。回调是一种双向调用的模式，也就是说，被调用方在接口被调用时也 会调用对方的接口。 </p>
-<p>&ensp;&ensp;&ensp;&ensp; 同步调用：一种阻塞式调用，调用方要等待对方执行完毕才能返回，它是一种单向调 用。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 回调：一种双向调用模式，也就是说，被调用方在接口被调用时也会调用对方的接口。 </p>
-<p>&ensp;&ensp;&ensp;&ensp; 异步调用：一种类似消息或事件的机制，不过它的调用方向刚好相反，接口的服务在收 到某种讯息或发生某种事件时，会主动通知客户方（即调用客户方的接口）。 回调和异步调用的关系非常紧密：通常可以使用回调来实现异步消息的注册，通过异步 调用来实现消息的通知。</p>
-<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%9B%9E%E8%B0%83%E6%9C%BA%E5%88%B6/%E5%9B%9E%E8%B0%83%E6%9C%BA%E5%88%B6.jpg" alt="程序调用的几种方式"></p>
-<p>&ensp;&ensp;&ensp;&ensp; 回调机制的实现通常需要实现一个回调函数，回调函数，顾名思义，用于回调的函数。回调函数只是一个功能片段，由用户按照回调函数调用约定来实现的一个函数。回调函数是一个工作流的一部分，由工作流来决定函数的调用（回调）时机。回调函数包含下面几个特性：</p>
-<ul>
-<li><p>属于工作流的一个部分； </p>
-</li>
-<li><p>必须按照工作流指定的调用约定来申明（定义）； </p>
-</li>
-<li><p>他的调用时机由工作流决定，回调函数的实现者不能直接调用回调 函数来实现工作流的功能。</p>
-</li>
-</ul>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/" rel="tag">C++</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
   id="post-GC—基础知识"
   class="article article-type-post"
   itemscope
@@ -733,7 +305,209 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <div id="dplayer26" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer26"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/让我疯狂自律的一段话/让我疯狂自律的一段话.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+  <div id="dplayer13" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer13"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/让我疯狂自律的一段话/让我疯狂自律的一段话.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%88%90%E9%95%BF/" rel="tag">成长</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-千万不要看见别人发光，就觉得自己黯淡"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/07/28/%E5%8D%83%E4%B8%87%E4%B8%8D%E8%A6%81%E7%9C%8B%E8%A7%81%E5%88%AB%E4%BA%BA%E5%8F%91%E5%85%89%EF%BC%8C%E5%B0%B1%E8%A7%89%E5%BE%97%E8%87%AA%E5%B7%B1%E9%BB%AF%E6%B7%A1/"
+    >千万不要看见别人发光，就觉得自己黯淡</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/28/%E5%8D%83%E4%B8%87%E4%B8%8D%E8%A6%81%E7%9C%8B%E8%A7%81%E5%88%AB%E4%BA%BA%E5%8F%91%E5%85%89%EF%BC%8C%E5%B0%B1%E8%A7%89%E5%BE%97%E8%87%AA%E5%B7%B1%E9%BB%AF%E6%B7%A1/" class="article-date">
+  <time datetime="2023-07-28T04:12:44.000Z" itemprop="datePublished">2023-07-28</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <div id="dplayer6" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer6"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/千万不要看见别人发光，就觉得自己黯淡/千万不要看见别人发光，就觉得自己黯淡.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%88%90%E9%95%BF/" rel="tag">成长</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-风起于青萍之末，止于草莽之间"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/06/29/%E9%A3%8E%E8%B5%B7%E4%BA%8E%E9%9D%92%E8%90%8D%E4%B9%8B%E6%9C%AB%EF%BC%8C%E6%AD%A2%E4%BA%8E%E8%8D%89%E8%8E%BD%E4%B9%8B%E9%97%B4/"
+    >风起于青萍之末，止于草莽之间</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/06/29/%E9%A3%8E%E8%B5%B7%E4%BA%8E%E9%9D%92%E8%90%8D%E4%B9%8B%E6%9C%AB%EF%BC%8C%E6%AD%A2%E4%BA%8E%E8%8D%89%E8%8E%BD%E4%B9%8B%E9%97%B4/" class="article-date">
+  <time datetime="2023-06-29T08:47:14.000Z" itemprop="datePublished">2023-06-29</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <div id="dplayer14" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer14"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/风起于青萍之末，止于草莽之间/风起于青萍之末，止于草莽之间.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%88%90%E9%95%BF/" rel="tag">成长</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-学习的本质"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/06/06/%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%9C%AC%E8%B4%A8/"
+    >学习的本质</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/06/06/%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%9C%AC%E8%B4%A8/" class="article-date">
+  <time datetime="2023-06-06T09:01:16.000Z" itemprop="datePublished">2023-06-06</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <div id="dplayer8" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer8"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/学习的本质/学习的本质.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%88%90%E9%95%BF/" rel="tag">成长</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-做个狠人"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2023/05/02/%E5%81%9A%E4%B8%AA%E7%8B%A0%E4%BA%BA/"
+    >做个狠人</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/02/%E5%81%9A%E4%B8%AA%E7%8B%A0%E4%BA%BA/" class="article-date">
+  <time datetime="2023-05-02T09:04:16.000Z" itemprop="datePublished">2023-05-02</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 
  
       <!-- reward -->
@@ -762,7 +536,7 @@
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/7/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/9/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/7/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
   </nav>
   
 </section>
