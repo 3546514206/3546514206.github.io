@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>大大方方去做想要做的事情 |  杨海波</title>
+      <title>基于转加密的握手式国密通信 |  杨海波</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/SETSUNAYANG.JPG" />
@@ -41,7 +41,7 @@
           font-size: 1.6rem;
         }
       </style>
-    <script src="/assets/js/DPlayer.min.js"></script></head>
+    </head>
   </html>
 </html>
 
@@ -53,7 +53,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-大大方方去做想要做的事情"
+  id="post-基于转加密的握手式国密通信"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -64,7 +64,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  大大方方去做想要做的事情
+  基于转加密的握手式国密通信
 </h1>
  
 
@@ -72,15 +72,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/09/18/%E5%A4%A7%E5%A4%A7%E6%96%B9%E6%96%B9%E5%8E%BB%E5%81%9A%E6%83%B3%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85/" class="article-date">
-  <time datetime="2023-09-18T05:58:35.000Z" itemprop="datePublished">2023-09-18</time>
+      <a href="/2024/07/13/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/" class="article-date">
+  <time datetime="2024-07-13T09:56:30.000Z" itemprop="datePublished">2024-07-13</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">63</span>
+            <span class="post-count">440</span>
         </span>
     </span>
 
@@ -102,8 +102,50 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <div id="dplayer6" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer6"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/大大方方去做想要做的事情/大大方方去做想要做的事情.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
-
+  <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1.drawio.png" alt="基于转加密的握手式国密通信"></p>
+<p>&ensp;&ensp;&ensp;&ensp; 1、客户端上送 SM4 密钥密文：</p>
+<ul>
+<li><p>客户端根据算法生成两把 SM4 密钥:sm4_key、h_mac_key；</p>
+</li>
+<li><p>客户端使用内置 SM2 公钥对 sm4_key、h_mac_key 加密得到密文 sm4_cipher_key、h_mac_cipher_key；</p>
+</li>
+<li><p>调用服务端握手接口将  sm4_cipher_key、h_mac_cipher_key 发送到服务端；</p>
+</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp; 2、服务端转加密取 SM4 密钥报文</p>
+<ul>
+<li><p>服务端根据算法生成 SM4 密钥 sm4_transfer_key 用于转加密；</p>
+</li>
+<li><p>服务端使用内置的 SM2 公钥对 sm4_transfer_key 加密得到密文 sm4_transfer_cipher_key；</p>
+</li>
+<li><p>调用机密机接口上送 sm4_cipher_key、h_mac_cipher_key 密文和 sm4_transfer_cipher_key ；</p>
+</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp; 3、加密机做转加密</p>
+<ul>
+<li><p>加密机用 SM2 私钥对 sm4 密文解密得到 sm4_key;</p>
+</li>
+<li><p>机密机用 SM2 私钥对 sm4_transfer_cipher_key 解密得到 sm4_transfer_key;</p>
+</li>
+<li><p>加密机用 sm4_transfer 对 sm4_key 加密 sm4_key_cipher_transfer 并返回;</p>
+</li>
+<li><p>加密机用 用同样的方式得到 h_mac_key_cipher_transfer 并返回;</p>
+</li>
+</ul>
+<p>&ensp;&ensp;&ensp;&ensp; 4、服务端获取 SM4 密钥明文与 h_mac_key 明文并缓存作为后续报文交互。</p>
+<p>&ensp;&ensp;&ensp;&ensp; 5、报文通讯加解密</p>
+<ul>
+<li><p>客户端使用 sm4_key 对交易明文加密得到交易密文；</p>
+</li>
+<li><p>客户端使用 h_mac_key 对交易明文计算 hmac ；</p>
+</li>
+<li><p>客户端上送通讯加密报文（交易密文+hmac）；</p>
+</li>
+<li><p>服务端接收到通讯加密报文后使用 sm4_key 进行解密得到交易明文，使用 h_mac_key 对交易明文计算 hmac 并与上送的 hmac 进行对比校验报文的完整性。</p>
+</li>
+</ul>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E5%AF%86%E7%A0%81%E6%9C%BA%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1%E7%AC%AC%E4%BA%8C%E7%89%88.drawio.png" alt="基于密码机转加密的握手式国密通信第二版"></p>
+<p>&ensp;&ensp;&ensp;&ensp; 由于密码机接口的设计问题，上述 3 步骤中，需要调用密码机两次，分别发送 sm4_key 和 h_mac_key 给服务端。修改为第二版之后，h_mac_key 用 sm4_key 进行 SM4 加密，这样经过服务端转加密流程解出 sm4_key 之后，直接解密 h_mac_cipher_key 得到 h_mac_key。</p>
  
       <!-- reward -->
       
@@ -162,12 +204,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://3546514206.github.io/2023/09/18/%E5%A4%A7%E5%A4%A7%E6%96%B9%E6%96%B9%E5%8E%BB%E5%81%9A%E6%83%B3%E8%A6%81%E5%81%9A%E7%9A%84%E4%BA%8B%E6%83%85/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://3546514206.github.io/2024/07/13/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%88%90%E9%95%BF/" rel="tag">成长</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8/" rel="tag">安全</a></li></ul>
 
     </footer>
   </div>
@@ -175,19 +217,10 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/10/25/Linux%E6%80%A7%E8%83%BD%E5%B7%A5%E5%85%B7/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            Linux性能工具
-          
-        </div>
-      </a>
     
-    
-      <a href="/2023/09/15/TCP%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84%E5%92%8C%E5%8A%9F%E8%83%BD%E7%AE%80%E6%9E%90/" class="article-nav-link">
+      <a href="/2024/07/11/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">TCP报文结构和功能简析</div>
+        <div class="article-nav-title">基于服务端的握手式国密通信</div>
       </a>
     
   </nav>
