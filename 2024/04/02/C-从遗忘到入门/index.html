@@ -41,7 +41,7 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
   </html>
 </html>
 
@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">15.1k</span>
+            <span class="post-count">14.7k</span>
         </span>
     </span>
 
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">61 分钟</span>
+            <span class="post-count">58 分钟</span>
         </span>
     </span>
 </div>
@@ -102,809 +102,495 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p><strong>1、受众</strong> </p>
-<p>&ensp;&ensp;&ensp;&ensp; 本文主要面向的是曾经学过、了解过C++的同学，旨在帮助这些同学唤醒C++的记忆，提升下自身的技术储备。如果之前完全没接触过C++，也可以整体了解下这门语言。</p>
-<p>&ensp;&ensp;&ensp;&ensp; C++是一种通用编程语言，它被广泛用于软件开发。C++以其强大的功能、高效的性能和灵活性而著称。以下是一些关键特点：</p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>面向对象：</strong> C++支持面向对象编程（OOP）的四大特性：封装、继承、多态和抽象。通过类和对象，程序员能够创建模块化的代码，更容易地进行维护和扩展。</p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>泛型编程：</strong> C++支持模板编程，允许编写与数据类型无关的代码。模板是实现泛型编程的关键工具，它们提高了代码的复用性。</p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>直接内存管理：</strong> C++提供了对内存的直接操作能力，允许程序员手动管理内存分配和释放，这是C++的一个强大特性，也是需要谨慎使用的地方，因为不当的内存管理可能会导致资源泄露和其他问题。</p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>性能：</strong> C++编写的程序通常有很高的执行效率，这是因为C++提供了与底层硬件直接对话的能力。这使得C++成为开发要求性能的系统软件（如操作系统、游戏引擎）的理想选择。</p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>C 语言兼容：</strong> 大部分C语言程序可以在C++编译器上编译并运行。这一特性简化了从C到C++的过渡。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 多编程范式支持：除了面向对象和泛型编程外，C++还支持过程式编程和函数式编程等范式，使其成为一个多样化的工具，能适应不同的编程需求。</p>
-<p>&ensp;&ensp;&ensp;&ensp; C++语言的复杂劝退了很多人，诸如指针、虚函数、泛型等语言特性让C++变得特别复杂。事实也确实如此，不过C++的作者说过：“轻松地使用这种语言。不要觉得必须使用所有的特性，不要在第一次学习时就试图使用所有特性。”</p>
-<p>&ensp;&ensp;&ensp;&ensp; 本文主要内容是介绍现代C++（C++11及之后的版本）中的语法和特性，不会深入语法细节，每小节最后可能会列出一些相关的拓展知识点，感兴趣的同学可以自行了解。</p>
+  <p><strong>1、受众</strong></p>
+<p>     本文主要面向的是曾经学过、了解过C++的同学，旨在帮助这些同学唤醒C++的记忆，提升下自身的技术储备。如果之前完全没接触过C++，也可以整体了解下这门语言。</p>
+<p>     C++是一种通用编程语言，它被广泛用于软件开发。C++以其强大的功能、高效的性能和灵活性而著称。以下是一些关键特点：</p>
+<p>     <strong>面向对象：</strong> C++支持面向对象编程（OOP）的四大特性：封装、继承、多态和抽象。通过类和对象，程序员能够创建模块化的代码，更容易地进行维护和扩展。</p>
+<p>     <strong>泛型编程：</strong> C++支持模板编程，允许编写与数据类型无关的代码。模板是实现泛型编程的关键工具，它们提高了代码的复用性。</p>
+<p>     <strong>直接内存管理：</strong> C++提供了对内存的直接操作能力，允许程序员手动管理内存分配和释放，这是C++的一个强大特性，也是需要谨慎使用的地方，因为不当的内存管理可能会导致资源泄露和其他问题。</p>
+<p>     <strong>性能：</strong> C++编写的程序通常有很高的执行效率，这是因为C++提供了与底层硬件直接对话的能力。这使得C++成为开发要求性能的系统软件（如操作系统、游戏引擎）的理想选择。</p>
+<p>     <strong>C 语言兼容：</strong> 大部分C语言程序可以在C++编译器上编译并运行。这一特性简化了从C到C++的过渡。</p>
+<p>     多编程范式支持：除了面向对象和泛型编程外，C++还支持过程式编程和函数式编程等范式，使其成为一个多样化的工具，能适应不同的编程需求。</p>
+<p>     C++语言的复杂劝退了很多人，诸如指针、虚函数、泛型等语言特性让C++变得特别复杂。事实也确实如此，不过C++的作者说过：“轻松地使用这种语言。不要觉得必须使用所有的特性，不要在第一次学习时就试图使用所有特性。”</p>
+<p>     本文主要内容是介绍现代C++（C++11及之后的版本）中的语法和特性，不会深入语法细节，每小节最后可能会列出一些相关的拓展知识点，感兴趣的同学可以自行了解。</p>
 <p><strong>2、语法基础</strong></p>
 <p><strong>2.1、类型</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; C++是静态编译语言，所有变量在声明时都要指定具体的变量类型，或者能让编译器推导出具体的变量类型（比如使用 auto、decltype 关键字的场景），类型检查不通过将导致编译期出错。</p>
+<p>     C++是静态编译语言，所有变量在声明时都要指定具体的变量类型，或者能让编译器推导出具体的变量类型（比如使用 auto、decltype 关键字的场景），类型检查不通过将导致编译期出错。</p>
 <p><strong>2.1.1、基础类型</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; C++的基础类型可以按照其所能表示的数据类型来分类。以下表格列出了C++的基础类型及其常见的大小和范围（请注意，实际的大小和范围可能根据平台和编译器的不同而有所变化）：</p>
+<p>     C++的基础类型可以按照其所能表示的数据类型来分类。以下表格列出了C++的基础类型及其常见的大小和范围（请注意，实际的大小和范围可能根据平台和编译器的不同而有所变化）：</p>
 <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%81%97%E5%BF%98%E5%88%B0%E5%85%A5%E9%97%A8/%E5%9F%BA%E7%A1%80%E7%B1%BB%E5%9E%8B.png" alt="基础类型"></p>
-<p>&ensp;&ensp;&ensp;&ensp; 语法示例：</p>
+<p>     语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 声明未初始化，使用前建议手动初始化</span></span><br><span class="line">nt a;      </span><br><span class="line"><span class="type">char</span> b = <span class="string">&#x27;a&#x27;</span>;</span><br><span class="line"><span class="comment">// C++中默认小数是double类型，加上f可以指定为float</span></span><br><span class="line"><span class="type">float</span> c = <span class="number">1.0f</span>;  </span><br><span class="line"><span class="type">double</span> d = <span class="number">2.0</span>;</span><br><span class="line"><span class="comment">// 编译器自动推导auto为 int 类型</span></span><br><span class="line"><span class="keyword">auto</span> e = <span class="number">20</span>;  </span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 编译器自动进行的类型转换，不需要程序员进行任何操作。这些转换通常在类型兼容的情况下发生，比如从小的整数类型转换到大的整数类型。下面是经常遇到的隐式类型转换：</p>
-<p>&ensp;&ensp;&ensp;&ensp; 安全的隐式转换：</p>
+<p>     编译器自动进行的类型转换，不需要程序员进行任何操作。这些转换通常在类型兼容的情况下发生，比如从小的整数类型转换到大的整数类型。下面是经常遇到的隐式类型转换：</p>
+<p>     安全的隐式转换：</p>
 <ul>
-<li><p>整型提升：小的整型（如 char、short）会自动转换成较大的整型（如 int）。</p>
+<li>
+<p>整型提升：小的整型（如 char、short）会自动转换成较大的整型（如 int）。</p>
 </li>
-<li><p>算数转换：例如，当 int 和 double 混合运算时，int 会转换为 double。</p>
+<li>
+<p>算数转换：例如，当 int 和 double 混合运算时，int 会转换为 double。</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 存在隐患的隐式转换：</p>
+<p>     存在隐患的隐式转换：</p>
 <ul>
-<li><p>窄化转换：大的整数类型转换到小的整数类型，或者浮点数转换到整数，可能会造成数据丢失或截断。</p>
+<li>
+<p>窄化转换：大的整数类型转换到小的整数类型，或者浮点数转换到整数，可能会造成数据丢失或截断。</p>
 </li>
-<li><p>指针转换：例如，将 void* 转换为具体类型的指针时，如果转换不正确，会导致未定义行为。</p>
+<li>
+<p>指针转换：例如，将 void* 转换为具体类型的指针时，如果转换不正确，会导致未定义行为。</p>
 </li>
 </ul>
 <p><strong>2.1.2、结构体（struct）</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 结构体是不同类型数据的集合，允许将数据组织成有意义的组合。语法示例：</p>
+<p>     结构体是不同类型数据的集合，允许将数据组织成有意义的组合。语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 结构体定义</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Person</span> &#123;    </span><br><span class="line">    std::string name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结构体初始化，</span></span><br><span class="line">Person person = &#123;<span class="string">&quot;Jim&quot;</span>, <span class="number">20</span>&#125;;    </span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建另一个实例</span></span><br><span class="line">Person person2; </span><br><span class="line"><span class="comment">// 将person中的值复制到person2中，默认是浅拷贝，在有指针的情况下有潜在风险</span></span><br><span class="line">person2 = person;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 枚举是一种用户定义的类型，它可以赋予一组整数值具有更易读的别名。语法示例：</p>
+<p>     枚举是一种用户定义的类型，它可以赋予一组整数值具有更易读的别名。语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> <span class="title class_">Color</span> &#123; RED, GREEN, BLUE &#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">Color myColor = RED;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; C++11引入了新的枚举类型，作用域枚举。语法示例：</p>
+<p>     C++11引入了新的枚举类型，作用域枚举。语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum class</span> <span class="title class_">Color</span> &#123;</span><br><span class="line">    RED,</span><br><span class="line">    GREEN,</span><br><span class="line">    BLUE</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用作用域解析运算符(::)访问枚举值</span></span><br><span class="line">Color myColor = Color::RED; </span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 作用域枚举解决了传统枚举可能导致命名冲突的问题，并提供了更强的类型检查。</p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>2.1.3、联合体（union）</strong></p>
+<p>     作用域枚举解决了传统枚举可能导致命名冲突的问题，并提供了更强的类型检查。</p>
+<p>     <strong>2.1.3、联合体（union）</strong></p>
 <p>联合体允许在相同的内存位置存储不同类型的数据，但一次只能使用其一。语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 联合体的定义</span></span><br><span class="line"><span class="keyword">union</span> <span class="title class_">Data</span> &#123;</span><br><span class="line">    <span class="type">int</span> intValue;</span><br><span class="line">    <span class="type">float</span> floatValue;</span><br><span class="line">    <span class="type">char</span> charValue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 联合体一次只能保存一种类型的数据，每次赋值都会覆盖内存中之前的值</span></span><br><span class="line"><span class="comment">// 因此联合体一般是配合结构体来使用，下面是一个示例</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义数据类型的枚举</span></span><br><span class="line"><span class="keyword">enum</span> <span class="title class_">DataType</span> &#123;</span><br><span class="line">    INT,</span><br><span class="line">    FLOAT,</span><br><span class="line">    CHAR</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义一个结构体，它包含一个联合体和一个枚举标签</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">SafeUnion</span> &#123;</span><br><span class="line">    <span class="comment">// 标记当前联合体中存储的数据类型</span></span><br><span class="line">    DataType type;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义联合体</span></span><br><span class="line">    <span class="keyword">union</span> &#123;</span><br><span class="line">        <span class="type">int</span> intValue;</span><br><span class="line">        <span class="type">float</span> floatValue;</span><br><span class="line">        <span class="type">char</span> charValue;</span><br><span class="line">    &#125; data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 赋值操作</span></span><br><span class="line">SafeUnion su;</span><br><span class="line">su.type = FLOAT;</span><br><span class="line">su.data.floatValue = <span class="number">1.0f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用时，通过type判断类型然后访问联合体对应的成员变量</span></span><br><span class="line"><span class="keyword">switch</span>(su.type) &#123;</span><br><span class="line">    <span class="keyword">case</span> FLOAT:</span><br><span class="line">        cout &lt;&lt; su.data.floatValue &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>2.1.3、类（class）</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 类是C++的核心特性，是面向对象的基础，允许将数据和操作这些数据的函数封装为一个对象。这里先只介绍定义。语法示例：</p>
+<p>     类是C++的核心特性，是面向对象的基础，允许将数据和操作这些数据的函数封装为一个对象。这里先只介绍定义。语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">doWork</span><span class="params">()</span></span>;     <span class="comment">// 方法，类对外提供的一系列操作实例的函数</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string name;   <span class="comment">// 成员变量，封装到类中的属性，保存内部状态信息</span></span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p><strong>2.1.4、列表初始化</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 现代C++提供了一种新的统一的变量初始化方式 - 列表初始化，推荐优先使用这种初始化方式，它能提供更加直观和统一的数据初始化方式。列表初始化使用 {} 来初始化数据对象，包括基础类型、数组、结构体、类和容器等复杂的数据类型。语法示例：</p>
+<p>     现代C++提供了一种新的统一的变量初始化方式 - 列表初始化，推荐优先使用这种初始化方式，它能提供更加直观和统一的数据初始化方式。列表初始化使用 {} 来初始化数据对象，包括基础类型、数组、结构体、类和容器等复杂的数据类型。语法示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 基础类型</span></span><br><span class="line"><span class="type">int</span> a&#123;<span class="number">0</span>&#125;;  </span><br><span class="line"><span class="type">double</span> b&#123;<span class="number">3.14</span>&#125;; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 结构体</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">MyStruct</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">double</span> y;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyStruct s&#123;<span class="number">1</span>, <span class="number">2.0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> a, <span class="type">double</span> b) : <span class="built_in">a_</span>(a), <span class="built_in">b_</span>(b) &#123;&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> a_;</span><br><span class="line">    <span class="type">double</span> b_;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyClass obj&#123;<span class="number">5</span>, <span class="number">3.14</span>&#125;; <span class="comment">// MyClass 必须有一个匹配这个参数列表的构造函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 数组</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">3</span>]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上面介绍的都是现代C++推荐写法，省略 = </span></span><br><span class="line"><span class="comment">// 下面的2种写法绝大多数情况下是等价的</span></span><br><span class="line"><span class="type">float</span> arr[<span class="number">2</span>]&#123;<span class="number">1</span>, <span class="number">2</span>&#125;;        <span class="comment">// 写法1</span></span><br><span class="line"><span class="type">float</span> arr[<span class="number">2</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>&#125;;    <span class="comment">// 写法2</span></span><br><span class="line"><span class="comment">// 编译器对这两种写法的处理是一致的，方法2并不会产生临时变量和拷贝赋值，包括类的声明</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 现代C++推荐优先使用列表初始化来初始化变量，因为这种方式不允许进行窄化转换这能避免一些问题的发生，示例：</p>
+<p>     现代C++推荐优先使用列表初始化来初始化变量，因为这种方式不允许进行窄化转换这能避免一些问题的发生，示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">7.7</span>;   <span class="comment">// 编译能通过，但是有warning</span></span><br><span class="line"><span class="type">int</span> b = &#123;<span class="number">1.0</span>&#125;; <span class="comment">// 编译器拒绝通过，因为浮点到整形的转换会丢失精度</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 列表初始化支持参数列表小于数据对象的个数，这种情况下会默认进行其他变量的零初始化。</p>
+<p>     列表初始化支持参数列表小于数据对象的个数，这种情况下会默认进行其他变量的零初始化。</p>
 <p><strong>2.2、数组</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; C++的数组是一个固定大小的序列容器，它可以存储特定类型的元素的集合。数组中的元素在内存中连续存储，这允许快速的随机访问，即可以直接通过索引访问任何元素，而无需遍历数组。</p>
+<p>     C++的数组是一个固定大小的序列容器，它可以存储特定类型的元素的集合。数组中的元素在内存中连续存储，这允许快速的随机访问，即可以直接通过索引访问任何元素，而无需遍历数组。</p>
 <p><strong>2.2.1、数组的声明</strong></p>
 <p>数组的声明形式如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Typename arrayName[Size];    </span><br><span class="line"></span><br><span class="line"><span class="comment">// 基本类型</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>];</span><br><span class="line"><span class="type">char</span> charArr[<span class="number">30</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">// 复杂类型</span></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Point</span> &#123;</span><br><span class="line">    <span class="type">int</span> x;</span><br><span class="line">    <span class="type">int</span> y;</span><br><span class="line">&#125;</span><br><span class="line">Point points[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 这里 Typename 是数组中元素的数据类型，arrayName 是数组的变量名，Size 是数组的元素个数，在这种声明形式下必须是整形的常量。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 这里介绍的方式是数组的静态声明方式，即数组的元素个数在编译期间就能确定，数组占用的内存分配在栈内存中，实际开发中更多的情况可能是更具运行时的值确定数组的大小，这时需要动态的方式声明数组，后面会介绍。</p>
+<p>     这里 Typename 是数组中元素的数据类型，arrayName 是数组的变量名，Size 是数组的元素个数，在这种声明形式下必须是整形的常量。</p>
+<p>     这里介绍的方式是数组的静态声明方式，即数组的元素个数在编译期间就能确定，数组占用的内存分配在栈内存中，实际开发中更多的情况可能是更具运行时的值确定数组的大小，这时需要动态的方式声明数组，后面会介绍。</p>
 <p><strong>2.2.2、数组的初始化</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 数组定义时如果未进行初始化，那么数组中的元素的值都是内存中残留的数据，而这些数据通常没有意义，直接使用会导致不可预知的问题。因此声明数组后需要对数组进行必要地初始化。数组支持列表初始化语法：</p>
+<p>     数组定义时如果未进行初始化，那么数组中的元素的值都是内存中残留的数据，而这些数据通常没有意义，直接使用会导致不可预知的问题。因此声明数组后需要对数组进行必要地初始化。数组支持列表初始化语法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组大小为5，编译器自动确定</span></span><br><span class="line"><span class="type">int</span> arr[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="comment">// 数组前三项确定为1，2，3，其余被初始化为0     </span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;   </span><br><span class="line"><span class="comment">// 整个数组全部为0 </span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;;         </span><br></pre></td></tr></table></figure>
-
 <p><strong>2.2.3、数组的使用</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 数组中的元素可以通过索引来访问和修改，索引从0开始，第一元素索引是0，最后一个索引是Size-1。</p>
+<p>     数组中的元素可以通过索引来访问和修改，索引从0开始，第一元素索引是0，最后一个索引是Size-1。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 零初始化</span></span><br><span class="line">nt arr[<span class="number">10</span>] = &#123;&#125;;  </span><br><span class="line"><span class="comment">// 修改数组第一个元素值为10</span></span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">10</span>;      </span><br></pre></td></tr></table></figure>
-
 <ul>
-<li><p>数组在声明后（无论静态声明还是动态声明），数组的大小即固定，不可更改；</p>
+<li>
+<p>数组在声明后（无论静态声明还是动态声明），数组的大小即固定，不可更改；</p>
 </li>
-<li><p>数组不提供任何内置的方法来获取其大小，通常需要额外保存数组的大小，或者使用特殊标记结束元素（C风格的字符串使用’\0’表示数组结束）；</p>
+<li>
+<p>数组不提供任何内置的方法来获取其大小，通常需要额外保存数组的大小，或者使用特殊标记结束元素（C风格的字符串使用’\0’表示数组结束）；</p>
 </li>
-<li><p>数组不提供边界检查，越界访问的代码是可以通过编译的（静态数组编译器会给出警告），可能导致很多潜在问题。</p>
+<li>
+<p>数组不提供边界检查，越界访问的代码是可以通过编译的（静态数组编译器会给出警告），可能导致很多潜在问题。</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 下面是越界访问的案例：</p>
+<p>     下面是越界访问的案例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[<span class="number">10</span>] = &#123;<span class="number">0</span>&#125;; </span><br><span class="line"><span class="comment">// 最大的有效索引是9，这里出现越界，但编译器能顺利编译通过（有警告） </span></span><br><span class="line"><span class="type">int</span> a = arr[<span class="number">10</span>];   </span><br><span class="line"><span class="comment">// a中的值是不确定的，没有实际意义的，这里是读取，危害可能有限</span></span><br><span class="line"></span><br><span class="line">arr[<span class="number">10</span>] = <span class="number">99</span>; </span><br><span class="line"><span class="comment">// 可怕的是该语句也能通过编译，但这里进行了更加危险的操作，</span></span><br><span class="line"><span class="comment">// 越界访问了一块内存并修改了其内容，这很可能导致程序崩溃</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>2.2.4、多维数组</strong></p>
 <p><strong>2.2.4.1、二维数组</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 上面提到的数组存储的是一维的，即一系列同类型数据，但有时需要存储一个表格数据，需要区分行列，这时可以使用二维数组来存储。</p>
+<p>     上面提到的数组存储的是一维的，即一系列同类型数据，但有时需要存储一个表格数据，需要区分行列，这时可以使用二维数组来存储。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Rows是行数， Columns是列数， 必须常量</span></span><br><span class="line">Typename arrayName[Rows][Columns];  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 实际示例</span></span><br><span class="line"><span class="comment">// 定义了一个10*10的二维数组</span></span><br><span class="line"><span class="type">int</span> arr[<span class="number">10</span>][<span class="number">10</span>];  </span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 下面是二维数组的初始化：</p>
+<p>     下面是二维数组的初始化：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 完全初始化</span></span><br><span class="line"><span class="type">int</span> matrix[<span class="number">2</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">    &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 部分初始化</span></span><br><span class="line"><span class="type">int</span> matrix[<span class="number">2</span>][<span class="number">3</span>] = &#123;</span><br><span class="line">    &#123;<span class="number">1</span>, <span class="number">2</span>&#125;, <span class="comment">// 第一行的最后一个元素将被初始化为 0</span></span><br><span class="line">    &#123;<span class="number">4</span>&#125;     <span class="comment">// 第二行的第二个和第三个元素将被初始化为 0</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 单行初始化</span></span><br><span class="line"><span class="type">int</span> matrix[<span class="number">2</span>][<span class="number">3</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;; <span class="comment">// 只初始化第一行，其他行将默认初始化为0</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 自动推断，和一维数组一样，编译器会根据数组推断二维数组第一维的大小</span></span><br><span class="line"><span class="type">int</span> matrix[][<span class="number">3</span>] = &#123;</span><br><span class="line">    &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;,</span><br><span class="line">    &#123;<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-
 <p><strong>2.2.4.1、多维数组</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 多维数据是和二维数组类似，在基础上再增加一维:</p>
+<p>     多维数据是和二维数组类似，在基础上再增加一维:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Typename arrayName[Depth][Rows][Columns];</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 当然可以推广这个概念，定义出四维、五维等等数组形式，这里不展开。</p>
+<p>     当然可以推广这个概念，定义出四维、五维等等数组形式，这里不展开。</p>
 <p><strong>2.2.5、数组的替代</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 数组本身是一种常见的C++数据类型，使用范围很广，但是本身也存在局限性。因此为了提升开发效率，C++标准库中提供了更加灵活的数据容器供开发者使用：</p>
+<p>     数组本身是一种常见的C++数据类型，使用范围很广，但是本身也存在局限性。因此为了提升开发效率，C++标准库中提供了更加灵活的数据容器供开发者使用：</p>
 <ul>
-<li><p>std::vector: 可变大小的数组。提供对元素的快速随机访问，并能高效地在尾部添加和删除元素。</p>
+<li>
+<p>std::vector: 可变大小的数组。提供对元素的快速随机访问，并能高效地在尾部添加和删除元素。</p>
 </li>
-<li><p>std::list 双向链表。支持在任何位置快速插入和删除元素，但不支持快速随机访问。</p>
+<li>
+<p>std::list 双向链表。支持在任何位置快速插入和删除元素，但不支持快速随机访问。</p>
 </li>
-<li><p>std::deque: 双端队列。类似于std::vector，但提供在头部和尾部快速添加和删除元素的能力。</p>
+<li>
+<p>std::deque: 双端队列。类似于std::vector，但提供在头部和尾部快速添加和删除元素的能力。</p>
 </li>
-<li><p>std::array (C++11): 固定大小的数组。提供对元素的快速随机访问，并且其大小在编译时确定。</p>
+<li>
+<p>std::array (C++11): 固定大小的数组。提供对元素的快速随机访问，并且其大小在编译时确定。</p>
 </li>
-<li><p>std::forward_list (C++11): 单向链表。提供在任何位置快速插入和删除元素，但不支持快速随机访问。</p>
+<li>
+<p>std::forward_list (C++11): 单向链表。提供在任何位置快速插入和删除元素，但不支持快速随机访问。</p>
 </li>
-<li><p>std::stack: 栈容器适配器。提供后进先出(LIFO)的数据结构。</p>
+<li>
+<p>std::stack: 栈容器适配器。提供后进先出(LIFO)的数据结构。</p>
 </li>
-<li><p>std::queue: 队列容器适配器。提供先进先出(FIFO)的数据结构。</p>
+<li>
+<p>std::queue: 队列容器适配器。提供先进先出(FIFO)的数据结构。</p>
 </li>
-<li><p>std::priority_queue: 优先队列容器适配器。元素按优先级出队，通常使用堆数据结构实现。</p>
+<li>
+<p>std::priority_queue: 优先队列容器适配器。元素按优先级出队，通常使用堆数据结构实现。</p>
 </li>
-<li><p>std::set: 一个包含排序唯一元素的集合。基于红黑树实现。</p>
+<li>
+<p>std::set: 一个包含排序唯一元素的集合。基于红黑树实现。</p>
 </li>
-<li><p>std::multiset: 一个包含排序元素的集合，元素可以重复。基于红黑树实现。</p>
+<li>
+<p>std::multiset: 一个包含排序元素的集合，元素可以重复。基于红黑树实现。</p>
 </li>
-<li><p>std::unordered_set (C++11): 一个包含唯一元素的集合，但不排序。基于散列函数实现。</p>
+<li>
+<p>std::unordered_set (C++11): 一个包含唯一元素的集合，但不排序。基于散列函数实现。</p>
 </li>
-<li><p>std::unordered_multiset (C++11): 一个包含元素的集合，元素可以重复，但不排序。基于散列函数实现。</p>
+<li>
+<p>std::unordered_multiset (C++11): 一个包含元素的集合，元素可以重复，但不排序。基于散列函数实现。</p>
 </li>
 </ul>
 <p><strong>2.3、指针</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 在C++中，指针是一种基础数据类型，它存储了内存地址的值。通过指针，可以直接读取或修改相应内存地址处的数据。指针是C&#x2F;C++强大功能的一个关键组成部分，允许直接操作内存，这在底层编程和系统编程中非常有用，但这一切能力的代价就是指针操作的高风险。</p>
+<p>     在C++中，指针是一种基础数据类型，它存储了内存地址的值。通过指针，可以直接读取或修改相应内存地址处的数据。指针是C/C++强大功能的一个关键组成部分，允许直接操作内存，这在底层编程和系统编程中非常有用，但这一切能力的代价就是指针操作的高风险。</p>
 <p><strong>2.3.1、理解指针</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 下面是简单的整形变量和整形指针变量在内存中的示意图:</p>
+<p>     下面是简单的整形变量和整形指针变量在内存中的示意图:</p>
 <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%BB%8E%E9%81%97%E5%BF%98%E5%88%B0%E5%85%A5%E9%97%A8/%E7%90%86%E8%A7%A3%E6%8C%87%E9%92%88.webp" alt="理解指针"></p>
-<p>&ensp;&ensp;&ensp;&ensp; 可以看出：</p>
+<p>     可以看出：</p>
 <ul>
-<li><p>a是一个整形，占用4个字节（一般int类型占用4字节），0xffffffffffffecdc是其首地址，内存中的值是2568，即代码中的赋值（具体的存储细节可以搜索 大端序、小端序）。</p>
+<li>
+<p>a是一个整形，占用4个字节（一般int类型占用4字节），0xffffffffffffecdc是其首地址，内存中的值是2568，即代码中的赋值（具体的存储细节可以搜索 大端序、小端序）。</p>
 </li>
-<li><p>p是一个整形指针，占用8个字节（64位系统），0xffffffffffffece0是其首地址，内存中的值是a变量内存的首地址，即0xffffffffffffecdc。</p>
+<li>
+<p>p是一个整形指针，占用8个字节（64位系统），0xffffffffffffece0是其首地址，内存中的值是a变量内存的首地址，即0xffffffffffffecdc。</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 通过示意图，可以知道指针本身是一种变量类型，和int、bool这些类型没有本质的区别，只不过其他类型的变量中存储的是数据，而指针类型变量中存储的内存地址。一旦理解了这个概念，那么指针的指针这一概念也不难理解，它本身是一个指针类型，其中存储的值是另一个指针的地址。</p>
+<p>     通过示意图，可以知道指针本身是一种变量类型，和int、bool这些类型没有本质的区别，只不过其他类型的变量中存储的是数据，而指针类型变量中存储的内存地址。一旦理解了这个概念，那么指针的指针这一概念也不难理解，它本身是一个指针类型，其中存储的值是另一个指针的地址。</p>
 <p><strong>2.3.2、指针的定义</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 指针的定义语法：</p>
+<p>     指针的定义语法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Typename * ptrName;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指针定义风格，下面的声明都正确</span></span><br><span class="line"><span class="type">int</span> *p;   <span class="comment">// C风格，旨在强调 （*p）是一个整形值</span></span><br><span class="line"><span class="type">int</span>* p;    <span class="comment">// 经典C++风格，只在强调 p是一个整形指针类型（int*）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 阿里集团推荐的风格,指针、引用都是居中，两边留空格</span></span><br><span class="line"><span class="type">int</span> * p;     <span class="comment">// 指针</span></span><br><span class="line"><span class="type">int</span> &amp; a = xx;  <span class="comment">// 左值引用</span></span><br><span class="line"><span class="type">int</span> &amp;&amp; a = xx;  <span class="comment">// 右值引用</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>2.3.3、指针的初始化和访问</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 指针的赋值和访问语法如下：</p>
+<p>     指针的赋值和访问语法如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> a = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> * p = &amp;a;      <span class="comment">// &amp; 取地址运算符</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// * 用在指针这里是解引用运算符，可以获取指针指向的地址的值</span></span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;   <span class="comment">// 输出  5</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> b = <span class="number">10</span>;</span><br><span class="line">p = &amp;b;          <span class="comment">// 指针变量可以修改其指向地址</span></span><br><span class="line">cout &lt;&lt; *p &lt;&lt; endl;    <span class="comment">// 输出 10</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>2.3.4、常量指针 vs 指针常量</strong></p>
 <p><strong>2.3.4.1、常量指针</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 常量指针指向一个常量值，不管指向的变量本身是否声明为常量都不能通过指针来修改指向的内容，但指针本身可以重新赋值指向新的地址。</p>
+<p>     常量指针指向一个常量值，不管指向的变量本身是否声明为常量都不能通过指针来修改指向的内容，但指针本身可以重新赋值指向新的地址。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> value = <span class="number">5</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> * p = &amp;value;    <span class="comment">// p是一个常量指针</span></span><br><span class="line"><span class="type">int</span> <span class="type">const</span> * q = &amp;value;   <span class="comment">// 和上面的声明等价 </span></span><br><span class="line">*p = <span class="number">10</span>;           <span class="comment">// 非法，*p是常量不能修改</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a = <span class="number">6</span>;</span><br><span class="line">p = &amp;a;            <span class="comment">// 合法，p本身不是常量，可以重新赋值</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 常量指针在函数传参时非常有用，它可以限制函数内部通过指针非法地修改原始内容。</p>
+<p>     常量指针在函数传参时非常有用，它可以限制函数内部通过指针非法地修改原始内容。</p>
 <p><strong>2.3.4.2、指针常量</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 指针常量表示指针本身是常量，必须在声明时初始化，之后不能指向其他地址，但可以通过指针修改指向的内容。</p>
+<p>     指针常量表示指针本身是常量，必须在声明时初始化，之后不能指向其他地址，但可以通过指针修改指向的内容。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> value = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> * <span class="type">const</span> p = &amp;value;   <span class="comment">// p是常量</span></span><br><span class="line">*p = <span class="number">6</span>;     <span class="comment">// 合法</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a = <span class="number">7</span>;</span><br><span class="line">p = &amp;a;    <span class="comment">// 非法</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 要记住这两种声明的区别有个简单的方法：看 const 修饰是什么：const int * p ：const修饰 *p，即 *p 是常量；int * const p ：const修饰 p，即 p 是常量。</p>
+<p>     要记住这两种声明的区别有个简单的方法：看 const 修饰是什么：const int * p ：const修饰 *p，即 *p 是常量；int * const p ：const修饰 p，即 p 是常量。</p>
 <p><strong>2.3.5、指针与数组</strong></p>
 <p><strong>2.3.5.1、指针和数组名的异同</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 在C++中，数组名在绝大多数场景下可以看做是指针，在这些场景下数组名和指向该数组首个元素的指针是等价的。</p>
+<p>     在C++中，数组名在绝大多数场景下可以看做是指针，在这些场景下数组名和指向该数组首个元素的指针是等价的。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> * p1 = arr;     <span class="comment">// arr 被当做指向数组首元素的指针</span></span><br><span class="line"><span class="type">int</span> * p2 = &amp;arr[<span class="number">0</span>];    <span class="comment">// 取arr首个元素的地址</span></span><br><span class="line"><span class="comment">// 这种情况下 p1 和 p2 是等价的</span></span><br><span class="line"><span class="keyword">if</span> (p1 == P2) &#123;      <span class="comment">// 检测会通过</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;p1,p2是等价的&quot;</span> &lt;&lt; endl;  </span><br><span class="line">    cout &lt;&lt; *p1 &lt;&lt; endl;  <span class="comment">// 打印 1</span></span><br><span class="line">    cout &lt;&lt; *p2 &lt;&lt; endl;   <span class="comment">// 打印 1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用指针访问数组</span></span><br><span class="line"><span class="comment">// 指针方式</span></span><br><span class="line">cout &lt;&lt; *(p1 + <span class="number">1</span>) &lt;&lt; endl;  <span class="comment">// 访问数组第二个元素，这种方式符合指针的计算规则</span></span><br><span class="line"><span class="comment">// 类似数组名的使用方式</span></span><br><span class="line">cout &lt;&lt; p1[<span class="number">1</span>] &lt;&lt; endl;<span class="comment">// p1虽然是指针，索引访问方式依然有效，本质是*(p1 + 1)的语法糖</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 指针和数组名有区别的地方：</p>
+<p>     指针和数组名有区别的地方：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> arr[<span class="number">5</span>] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line"><span class="type">int</span> * p1 = arr;</span><br><span class="line"></span><br><span class="line">cout &lt;&lt; <span class="built_in">sizeof</span>(arr) &lt;&lt; endl;  <span class="comment">// 打印结果：20 </span></span><br><span class="line">cout &lt;&lt; <span class="built_in">sizeof</span>(p1) &lt;&lt; endl;    <span class="comment">// 打印结果：8</span></span><br><span class="line"><span class="comment">// sizeof(arr)为数组本身的大小，这里是 5个int占用20字节</span></span><br><span class="line"><span class="comment">// sizeof(p1)为指针本身大小，64位系统中占用8个字节</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 此外 &amp;取地址运算符对于 指针和数组名的处理也是不同的：</p>
+<p>     此外 &amp;取地址运算符对于 指针和数组名的处理也是不同的：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 0x16b98aa40</span></span><br><span class="line">cout &lt;&lt; &amp;arr &lt;&lt; endl;      </span><br><span class="line"><span class="comment">// 0x16b98aa54</span></span><br><span class="line">cout &lt;&lt; &amp;arr + <span class="number">1</span> &lt;&lt; endl;   </span><br><span class="line"><span class="comment">// 0x16b98aa40 </span></span><br><span class="line">cout &lt;&lt; &amp;arr[<span class="number">0</span>] &lt;&lt; endl;    </span><br><span class="line"><span class="comment">// 0x16b98aa44</span></span><br><span class="line">cout &lt;&lt; &amp;arr[<span class="number">0</span>] + <span class="number">1</span> &lt;&lt; endl;  </span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以看出 &amp;arr 和 &amp;arr[0] 的值是一样的，但是指针偏移1后</span></span><br><span class="line"><span class="comment">// (&amp;arr + 1) 在 &amp;arr 的基础上偏移了20（0x14）个字节</span></span><br><span class="line"><span class="comment">// (&amp;arr[0] + 1) 在 &amp;arr[0] 的基础上偏移了4个字节</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 对于数组名进行 &amp; 取地址，得到的整个数组的地址，虽然值和首元素地址相同，但其指针类型是不同的。</p>
+<p>     对于数组名进行 &amp; 取地址，得到的整个数组的地址，虽然值和首元素地址相同，但其指针类型是不同的。</p>
 <ul>
-<li><p>&amp;arr 得到的类型是 int (*)[5] ，这是一个指向包含5个整数数组的指针。</p>
+<li>
+<p>&amp;arr 得到的类型是 int (*)[5] ，这是一个指向包含5个整数数组的指针。</p>
 </li>
-<li><p>&amp;arr[0]得到的类型是 int *，这是一个整型指针。</p>
+<li>
+<p>&amp;arr[0]得到的类型是 int *，这是一个整型指针。</p>
 </li>
 </ul>
 <p><strong>2.3.5.2、动态数组</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 前面介绍的数据都是静态数组，实际开发中，可能更希望更具实际需要动态申请指定长度的数组，这时就需要动态数组。因为标准库中提供了std::vector容器，提供了更加方便的动态数组解决方案，因此这里简单介绍下：</p>
+<p>     前面介绍的数据都是静态数组，实际开发中，可能更希望更具实际需要动态申请指定长度的数组，这时就需要动态数组。因为标准库中提供了std::vector容器，提供了更加方便的动态数组解决方案，因此这里简单介绍下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nt * arr = <span class="keyword">new</span> <span class="type">int</span>[<span class="number">10</span>];   <span class="comment">// new操作符在堆内存中申请10个int类型大小的连续空间，并返回首地址</span></span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">arr[<span class="number">1</span>] = <span class="number">2</span>;</span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"><span class="keyword">delete</span>[] arr;      <span class="comment">// new操作符申请的内存需要使用delete操作符释放，数组使用delete[]</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 多维数组的创建和释放比一维要复杂一些，下面是示例：</p>
+<p>     多维数组的创建和释放比一维要复杂一些，下面是示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 二维数组的动态创建 &amp; 释放</span></span><br><span class="line"><span class="type">int</span> rows = <span class="number">5</span>; <span class="comment">// 行数</span></span><br><span class="line"><span class="type">int</span> cols = <span class="number">3</span>; <span class="comment">// 列数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 动态创建二维数组</span></span><br><span class="line"><span class="type">int</span> ** array = <span class="keyword">new</span> <span class="type">int</span>*[rows]; <span class="comment">// 创建行指针</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; ++i) &#123;</span><br><span class="line">    array[i] = <span class="keyword">new</span> <span class="type">int</span>[cols]; <span class="comment">// 为每行分配内存</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化二维数组</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; cols; ++j) &#123;</span><br><span class="line">        array[i][j] = i * cols + j; <span class="comment">// 或者任何其他的赋值逻辑</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用二维数组，例如打印它</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; ++i) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; cols; ++j) &#123;</span><br><span class="line">        std::cout &lt;&lt; array[i][j] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 动态释放二维数组</span></span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; ++i) &#123;</span><br><span class="line">    <span class="keyword">delete</span>[] array[i]; <span class="comment">// 释放每行的内存</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">delete</span>[] array; <span class="comment">// 释放行指针数组的内存</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>2.4、函数</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 在 C++ 中，函数是一段执行特定任务的代码块，它具有一个名字，可以接受输入参数（也可以不接受），并可以返回一个值（也可以不返回，即返回类型为 void）。函数的主要目的是使代码更模块化、更易于管理，并且可以重用。</p>
+<p>     在 C++ 中，函数是一段执行特定任务的代码块，它具有一个名字，可以接受输入参数（也可以不接受），并可以返回一个值（也可以不返回，即返回类型为 void）。函数的主要目的是使代码更模块化、更易于管理，并且可以重用。</p>
 <p><strong>2.4.1、函数基础</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; C++的完整函数定义包括以下几个要素：</p>
+<p>     C++的完整函数定义包括以下几个要素：</p>
 <ul>
-<li><p>返回类型：函数可能返回的值的数据类型。如果函数不返回任何值，则使用关键字 void。</p>
+<li>
+<p>返回类型：函数可能返回的值的数据类型。如果函数不返回任何值，则使用关键字 void。</p>
 </li>
-<li><p>函数名：用于识别函数的唯一名称。</p>
+<li>
+<p>函数名：用于识别函数的唯一名称。</p>
 </li>
-<li><p>参数列表：括号内的变量列表，用于从调用者那里接收输入值。如果函数不接受任何参数，则参数列表为空。</p>
+<li>
+<p>参数列表：括号内的变量列表，用于从调用者那里接收输入值。如果函数不接受任何参数，则参数列表为空。</p>
 </li>
-<li><p>函数体：花括号 {} 内包含的代码块，当函数被调用时将执行这些代码。</p>
+<li>
+<p>函数体：花括号 {} 内包含的代码块，当函数被调用时将执行这些代码。</p>
 </li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是一个简单函数定义</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用</span></span><br><span class="line"><span class="type">int</span> sum = <span class="built_in">add</span>(<span class="number">3</span>, <span class="number">7</span>);  <span class="comment">// sum值为10</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 此外，函数定义时需要定义函数原型（也叫函数声明），函数原型告知编译器关于函数的名称、返回类型、参数，但是不提供函数体。一般函数原型都定义在头文件中，包含该头文件即可调用相关函数。</p>
+<p>     此外，函数定义时需要定义函数原型（也叫函数声明），函数原型告知编译器关于函数的名称、返回类型、参数，但是不提供函数体。一般函数原型都定义在头文件中，包含该头文件即可调用相关函数。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面是一个函数原型的定义</span></span><br><span class="line"><span class="comment">// 函数原型的参数列表可以省略参数名</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">draw</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span>;        </span><br><span class="line"><span class="comment">// 建议加上参数名，可以更直观的了解参数含义</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">draw</span><span class="params">(<span class="type">int</span> width, <span class="type">int</span> height)</span></span>;</span><br></pre></td></tr></table></figure>
-
 <p><strong>2.4.2、参数传递</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; C++中函数的参数传递方式包含：</p>
+<p>     C++中函数的参数传递方式包含：</p>
 <ul>
-<li><p>值传递</p>
+<li>
+<p>值传递</p>
 </li>
-<li><p>指针传递</p>
+<li>
+<p>指针传递</p>
 </li>
-<li><p>引用传递（特指左值）</p>
+<li>
+<p>引用传递（特指左值）</p>
 </li>
-<li><p>右值传递</p>
+<li>
+<p>右值传递</p>
 </li>
 </ul>
 <p><strong>2.4.2.1、值传递</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 该传递方式中函数的实参的值被复制到形参中。函数操作的是实参的副本（拷贝）。 见下例：</p>
+<p>     该传递方式中函数的实参的值被复制到形参中。函数操作的是实参的副本（拷贝）。 见下例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> tmp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> x = <span class="number">5</span>; </span><br><span class="line"><span class="type">int</span> y = <span class="number">7</span>;</span><br><span class="line"><span class="built_in">swap</span>(x, y);      <span class="comment">// x = 5  y = 7</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 调用swap(x, y)时，函数swap接受两个参数a（x的拷贝），b（y的拷贝），此时在函数中对ab的操作不会影响到外部的实参 x、y。</p>
+<p>     调用swap(x, y)时，函数swap接受两个参数a（x的拷贝），b（y的拷贝），此时在函数中对ab的操作不会影响到外部的实参 x、y。</p>
 <p><strong>2.4.2.2、指针传递</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 在该传递方式中函数的实参的地址被传递给了形参，本质其实是指针类型的值传递。因为指针能操作其对应的地址的值，因此可以通过指针完成对实参的修改。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 上面的swap函数并没有实际完成其命名的功能（交换两个变量的数值），这里利用指针传递改造，见下面代码：</p>
+<p>     在该传递方式中函数的实参的地址被传递给了形参，本质其实是指针类型的值传递。因为指针能操作其对应的地址的值，因此可以通过指针完成对实参的修改。</p>
+<p>     上面的swap函数并没有实际完成其命名的功能（交换两个变量的数值），这里利用指针传递改造，见下面代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> * a, <span class="type">int</span> * b)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> tmp = *a;</span><br><span class="line">    *a = *b;</span><br><span class="line">    *b = tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> x = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> y = <span class="number">7</span>;</span><br><span class="line"><span class="built_in">swap</span>(&amp;x, &amp;y);      <span class="comment">// x = 7  y = 5</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 对于需要传递数组参数的场景，指针传递是唯一的选择，数组传参的示例如下：</p>
+<p>     对于需要传递数组参数的场景，指针传递是唯一的选择，数组传参的示例如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum</span><span class="params">(<span class="type">int</span> arr[], <span class="type">int</span> size)</span></span>;<span class="comment">// 定义1，这种定义的好处是清晰，调用者一看就知道传递数组指针</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">sum</span><span class="params">(<span class="type">int</span> * arr, <span class="type">int</span> size)</span></span>;<span class="comment">// 定义2，这种定义更符合数组传参的本质</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 特殊说明</span></span><br><span class="line"><span class="comment">// 不管定义1还是定义2，通过参数传递数组指针后，数组指针（前面介绍过，即数组名）会退化为首个元素</span></span><br><span class="line"><span class="comment">// 的地址指针，因此一定要通过size参数传递数组的大小给函数</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>2.4.2.3、引用传递（左值传递）</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 传递方式中形参成为实参的别名（引用），所以任何对形参的操作实际上都是在实参上进行的。引用就是别名。编译器在底层可能会使用指针来实现引用，但会提供更严格的语义和更简单的语法。引用的声明方式如下：</p>
+<p>     传递方式中形参成为实参的别名（引用），所以任何对形参的操作实际上都是在实参上进行的。引用就是别名。编译器在底层可能会使用指针来实现引用，但会提供更严格的语义和更简单的语法。引用的声明方式如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nt a = <span class="number">5</span>；</span><br><span class="line"><span class="type">int</span> &amp; ra = a;  <span class="comment">// ra的类型是 int&amp;（引用），必须声明时立即初始化</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> b = <span class="number">6</span>;</span><br><span class="line">ra = b;      <span class="comment">// 非法，引用变量不支持重新赋值</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 依然以交换函数swap举例：</p>
+<p>     依然以交换函数swap举例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">swap</span><span class="params">(<span class="type">int</span> &amp; a, <span class="type">int</span> &amp; b)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> tmp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = tmp;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> x = <span class="number">5</span>;</span><br><span class="line"><span class="type">int</span> y = <span class="number">7</span>;</span><br><span class="line"><span class="built_in">swap</span>(x, y);      <span class="comment">// x = 7 y = 5</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>2.4.2.4、右值传递</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 右值传递同引用传递类似，是传递右值引用到函数内部的传递方式。主要被用来实现移动语义和完美转发。详细内容请自行搜索。在下面介绍类的移动语义的部分会有涉及右值。</p>
+<p>     右值传递同引用传递类似，是传递右值引用到函数内部的传递方式。主要被用来实现移动语义和完美转发。详细内容请自行搜索。在下面介绍类的移动语义的部分会有涉及右值。</p>
 <ul>
-<li><p>左值（lvalue）：左值是指表达式结束后依然存在的持久性对象，可以出现在赋值语句的左边。左值可以被取地址，即可以通过取地址运算符&amp;获取其地址。通常，变量、数组元素、引用、返回左值引用的函数等都是左值。</p>
+<li>
+<p>左值（lvalue）：左值是指表达式结束后依然存在的持久性对象，可以出现在赋值语句的左边。左值可以被取地址，即可以通过取地址运算符&amp;获取其地址。通常，变量、数组元素、引用、返回左值引用的函数等都是左值。</p>
 </li>
-<li><p>右值（rvalue）：右值是指表达式结束后不再存在的临时对象，不能出现在赋值语句的左边。右值不能被取地址，即不能通过取地址运算符&amp;获取其地址。通常，字面量、临时对象、返回右值引用的函数等都是右值。</p>
+<li>
+<p>右值（rvalue）：右值是指表达式结束后不再存在的临时对象，不能出现在赋值语句的左边。右值不能被取地址，即不能通过取地址运算符&amp;获取其地址。通常，字面量、临时对象、返回右值引用的函数等都是右值。</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; C++11引入了右值引用（rvalue reference）的概念，通过&amp;&amp;来声明一个右值引用。右值引用可以绑定到临时对象，从而支持移动语义和完美转发。移动语义允许将资源（如动态分配的内存）从一个对象“移动”到另一个对象，而不是进行昂贵的复制操作。完美转发允许将参数以原样传递给其他函数，避免不必要的拷贝。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 总的来说，C++11中的左值和右值概念更加严格和明确，为语言引入了更多的灵活性和性能优化的可能性。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 拓展：纯右值、将亡值、泛左值 、std::move、类型萃取。</p>
+<p>     C++11引入了右值引用（rvalue reference）的概念，通过&amp;&amp;来声明一个右值引用。右值引用可以绑定到临时对象，从而支持移动语义和完美转发。移动语义允许将资源（如动态分配的内存）从一个对象“移动”到另一个对象，而不是进行昂贵的复制操作。完美转发允许将参数以原样传递给其他函数，避免不必要的拷贝。</p>
+<p>     总的来说，C++11中的左值和右值概念更加严格和明确，为语言引入了更多的灵活性和性能优化的可能性。</p>
+<p>     拓展：纯右值、将亡值、泛左值 、std::move、类型萃取。</p>
 <p><strong>2.4.2.5、参数修改保护</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 对于使用指针传递方式和引用方式传递参数的函数，因为函数内部有修改外部变量数据的能力，因此使用不当可能出现问题。对于一个命名为 printInfo 函数大概率只会使用数据而不会修改数据，应该避免在之后的维护中出现修改参数的情况，这时可以通过 const 关键字来修饰函数的参数，达到禁止函数修改参数的目的。示例如下：</p>
+<p>     对于使用指针传递方式和引用方式传递参数的函数，因为函数内部有修改外部变量数据的能力，因此使用不当可能出现问题。对于一个命名为 printInfo 函数大概率只会使用数据而不会修改数据，应该避免在之后的维护中出现修改参数的情况，这时可以通过 const 关键字来修饰函数的参数，达到禁止函数修改参数的目的。示例如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面指针传递示例</span></span><br><span class="line"><span class="comment">// 内部可修改arr</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printInfo</span><span class="params">(<span class="type">int</span> arr[]， <span class="type">int</span> size)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 内部不可修改arr</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printInfo</span><span class="params">(<span class="type">const</span> <span class="type">int</span> arr[], <span class="type">int</span> size)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面是引用传递示例</span></span><br><span class="line"><span class="comment">// 内部可以修改info</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printInfo</span><span class="params">(std::string&amp; info)</span></span>; </span><br><span class="line"></span><br><span class="line"><span class="comment">// 内部不可以修改info</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printInfo</span><span class="params">(<span class="type">const</span> std::string&amp; info)</span></span>; </span><br></pre></td></tr></table></figure>
-
 <p><strong>2.4.2.6、传参方式选择原则</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 在函数定义时，选择合适的参数传递方式对于代码的性能和可读性至关重要。以下是一些常见的实践做法。对于仅使用参数的值，并不会进行修改的函数而言，应尽量遵循下面的原则：</p>
+<p>     在函数定义时，选择合适的参数传递方式对于代码的性能和可读性至关重要。以下是一些常见的实践做法。对于仅使用参数的值，并不会进行修改的函数而言，应尽量遵循下面的原则：</p>
 <ul>
-<li><p>如果数据对象很小，如内置数据类型或者小型结构，这按值传递。</p>
+<li>
+<p>如果数据对象很小，如内置数据类型或者小型结构，这按值传递。</p>
 </li>
-<li><p>如果数据对象是数组，这使用指针，因为这是唯一的选择，并将指针声明为常量指针。</p>
+<li>
+<p>如果数据对象是数组，这使用指针，因为这是唯一的选择，并将指针声明为常量指针。</p>
 </li>
-<li><p>如果数据对象较大的结构，则使用常量指针或者const引用，可以节省复制结构所需要的时间和空间，提高程序的效率。</p>
+<li>
+<p>如果数据对象较大的结构，则使用常量指针或者const引用，可以节省复制结构所需要的时间和空间，提高程序的效率。</p>
 </li>
-<li><p>如果数据对象是类对象，则使用const引用。类设计的语义常常要求使用引用。这是C++增加引用的主要原因。因此传递类对参数的标准方式是按引用传递。</p>
+<li>
+<p>如果数据对象是类对象，则使用const引用。类设计的语义常常要求使用引用。这是C++增加引用的主要原因。因此传递类对参数的标准方式是按引用传递。</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 而对于需要通过参数修改原来变量值的函数，应遵循下面的原则：</p>
+<p>     而对于需要通过参数修改原来变量值的函数，应遵循下面的原则：</p>
 <ul>
-<li><p>如果数据对象是内置数据类型，则使用指针。</p>
+<li>
+<p>如果数据对象是内置数据类型，则使用指针。</p>
 </li>
-<li><p>如果数据对象是数组，则只能使用指针。</p>
+<li>
+<p>如果数据对象是数组，则只能使用指针。</p>
 </li>
-<li><p>如果数据对象是结构，则使用指针或者引用。</p>
+<li>
+<p>如果数据对象是结构，则使用指针或者引用。</p>
 </li>
-<li><p>如果数据对象是类对象，则使用引用。</p>
+<li>
+<p>如果数据对象是类对象，则使用引用。</p>
 </li>
 </ul>
 <p><strong>2.4.3、函数重载</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 函数重载是一种允许多个具有相同名称但参数列表不同的函数共存的特性。函数重载允许使用相同的函数名来执行不同的任务，只要它们的参数类型或数量不同即可。编译器通过查看函数的参数列表（也称之为函数签名）来区分重载的函数。</p>
+<p>     函数重载是一种允许多个具有相同名称但参数列表不同的函数共存的特性。函数重载允许使用相同的函数名来执行不同的任务，只要它们的参数类型或数量不同即可。编译器通过查看函数的参数列表（也称之为函数签名）来区分重载的函数。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面是一组重载函数，同样是计算两个数的和，针对不同类型提供了不同的定义</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;        <span class="comment">// 版本1</span></span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;      </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">float</span> <span class="title">add</span><span class="params">(<span class="type">float</span> a, <span class="type">float</span> b)</span> </span>&#123;    <span class="comment">// 版本2</span></span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">add</span><span class="params">(<span class="type">double</span> a, <span class="type">double</span> b)</span> </span>&#123;  <span class="comment">// 版本3</span></span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;  </span><br><span class="line"></span><br><span class="line"><span class="built_in">add</span>(<span class="number">1</span>, <span class="number">2</span>);      <span class="comment">// 匹配版本1</span></span><br><span class="line"><span class="built_in">add</span>(<span class="number">1.0f</span>, <span class="number">2.0f</span>);   <span class="comment">// 匹配版本2</span></span><br><span class="line"><span class="built_in">add</span>(<span class="number">1.0</span>, <span class="number">2.0</span>);    <span class="comment">// 匹配版本3</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">add</span>(<span class="number">1.0f</span>, <span class="number">2.0</span>)    <span class="comment">// 匹配 ？？？（匹配版本3，原因可以搜索 ”重载解析“）</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>2.4.3.1、重载规则</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 先介绍一个概念：函数签名。在C++中函数签名包含两个部分：</p>
+<p>     先介绍一个概念：函数签名。在C++中函数签名包含两个部分：</p>
 <ul>
-<li><p>函数名称。</p>
+<li>
+<p>函数名称。</p>
 </li>
-<li><p>参数列表：包括参数的类型、数量和顺序。注意一个参数是否使用引用并不能作为签名不同的依据。参数是否是 const 能作为不同的依据。</p>
+<li>
+<p>参数列表：包括参数的类型、数量和顺序。注意一个参数是否使用引用并不能作为签名不同的依据。参数是否是 const 能作为不同的依据。</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 函数重载遵循下面的原则：</p>
+<p>     函数重载遵循下面的原则：</p>
 <ul>
-<li><p>函数签名必须不同.</p>
+<li>
+<p>函数签名必须不同.</p>
 </li>
-<li><p>作用域必须相同：重载的函数必须处于同一个作用域，否则它们被视为不同作用域中的不相关函数。</p>
+<li>
+<p>作用域必须相同：重载的函数必须处于同一个作用域，否则它们被视为不同作用域中的不相关函数。</p>
 </li>
-<li><p>最佳实践是尽量保持重载函数的明确性，避免产生容易混淆的重载集合。</p>
+<li>
+<p>最佳实践是尽量保持重载函数的明确性，避免产生容易混淆的重载集合。</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 一些注意点：</p>
+<p>     一些注意点：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 下面两个版本的函数不算重载，因为两者调用时的表达式都是 add(x, y), 编译器无法区分</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> &amp; a, <span class="type">int</span> &amp; b)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 下面两个版本算重载，编译器会根据实参是否是常量来匹配更合适的版本</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">const</span> <span class="type">int</span> a, <span class="type">const</span> <span class="type">int</span> b)</span></span>;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 拓展：重载函数匹配规则。</p>
+<p>     拓展：重载函数匹配规则。</p>
 <p><strong>2.4.4、函数模板</strong></p>
 <p><strong>2.4.4.1、函数模板的声明</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; C++ 中泛型编程的基础构建块。它们允许程序员编写与类型无关的代码，从而使得相同的函数逻辑可以应用于不同的数据类型。函数模板通过模板参数化来实现，在实例化时，编译器根据传递给模板的实际参数类型生成具体的函数实例。对于在函数重载一节提到过的add函数，可以看到所有add函数的实现代码都是一样的，只是数据类型不一致。这里通过函数模板来实现同样的功能。</p>
+<p>     C++ 中泛型编程的基础构建块。它们允许程序员编写与类型无关的代码，从而使得相同的函数逻辑可以应用于不同的数据类型。函数模板通过模板参数化来实现，在实例化时，编译器根据传递给模板的实际参数类型生成具体的函数实例。对于在函数重载一节提到过的add函数，可以看到所有add函数的实现代码都是一样的，只是数据类型不一致。这里通过函数模板来实现同样的功能。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T a, T b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多类型的定义</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">funcName</span><span class="params">(T1 a, T2 b)</span></span>;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 下面是一个实际示例:</p>
+<p>     下面是一个实际示例:</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数原型</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T a, T b)</span></span>;    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">add</span>(<span class="number">1</span>, <span class="number">2</span>) &lt;&lt; endl;       <span class="comment">// 3</span></span><br><span class="line">    cout &lt;&lt; <span class="built_in">add</span>(<span class="number">1.0f</span>, <span class="number">2.1f</span>) &lt;&lt; endl;   <span class="comment">// 3.1</span></span><br><span class="line">    cout &lt;&lt; <span class="built_in">add</span>(<span class="number">1.0</span>, <span class="number">3.2</span>) &lt;&lt; endl;    <span class="comment">// 4.2</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T a, T b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span>  a + b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 注意，编译器在编译时会根据调用的参数类型生成对应的实际函数，这个过程被称为模板的实例化，该示例中实际会生成3个版本的add函数，只是不可见而已。另外使用模板不会减小最终的可执行程序，因为最终程序中依然会包含多个版本的add函数实例。</p>
+<p>     注意，编译器在编译时会根据调用的参数类型生成对应的实际函数，这个过程被称为模板的实例化，该示例中实际会生成3个版本的add函数，只是不可见而已。另外使用模板不会减小最终的可执行程序，因为最终程序中依然会包含多个版本的add函数实例。</p>
 <p><strong>2.4.4.2、重载的模板</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 依然以add函数举例，现在需要一个计算3个数据和的函数，并且也可能需要多种类型的版本，可以这么做：</p>
+<p>     依然以add函数举例，现在需要一个计算3个数据和的函数，并且也可能需要多种类型的版本，可以这么做：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数原型</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T a, T b)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">class</span> <span class="title class_">T</span>&gt;      <span class="comment">// 声明模板时 typename 和 class 等价</span></span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T a, T b, T c)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数定义略</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>2.4.4.3、模板的局限</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 考虑下面的模板：</p>
+<p>     考虑下面的模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">funcName</span><span class="params">(T1 x, T2 y)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    ?type? temp = x + y;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; temp 这行应该怎么声明呢？这个类型取决于 x + y 的结果，可能是int， double，甚至更加复杂。C++11为了解决这个问题提供了 decltype 关键字，可以这样使用：</p>
+<p>     temp 这行应该怎么声明呢？这个类型取决于 x + y 的结果，可能是int， double，甚至更加复杂。C++11为了解决这个问题提供了 decltype 关键字，可以这样使用：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">funcName</span><span class="params">(T1 x, T2 y)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">decltype</span>(x + y) temp = x + y;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 关于 decltype 如何确定最终类型，可以自行搜索，这里不展开。下面考虑另一个模板：</p>
+<p>     关于 decltype 如何确定最终类型，可以自行搜索，这里不展开。下面考虑另一个模板：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">emplate &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line">？type？<span class="built_in">funcName</span>(T1 x, T2 y) &#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 这里的返回值类型应该怎么声明？好像可以使用 decltype(x + y)，但这里不行，因为这里还未定义x、y，编译器无法使用这种方式推断。C++11新增了新的语法返回类型后置解决该问题：</p>
+<p>     这里的返回值类型应该怎么声明？好像可以使用 decltype(x + y)，但这里不行，因为这里还未定义x、y，编译器无法使用这种方式推断。C++11新增了新的语法返回类型后置解决该问题：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 正常函数声明</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>;</span><br><span class="line"><span class="comment">// 返回类型后置声明</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> -&gt; <span class="type">int</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用该语法可以这么声明上面的函数（推荐C+11中使用）</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T1, <span class="keyword">typename</span> T2&gt;</span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">funcName</span><span class="params">(T1 x, T2 y)</span> -&gt; <span class="title">decltype</span><span class="params">(x + y)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// C++14及以后得标准拓展了auto的类型推导能力</span></span><br><span class="line"><span class="function"><span class="keyword">auto</span> <span class="title">funcName</span><span class="params">(T1 x, T2 y)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">return</span> x + y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 更多拓展：模板函数具体化、全特化 (Full Specialization)、 auto类型推导规则（区分C+11、C++14）、decltype类型推导规则、模板元编程。</p>
+<p>     更多拓展：模板函数具体化、全特化 (Full Specialization)、 auto类型推导规则（区分C+11、C++14）、decltype类型推导规则、模板元编程。</p>
 <p><strong>2.4.5、回调函数</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 在复杂的应用程序中，回调函数是经常需要使用的技术。在C++中要实现回调函数有以下几种方式。</p>
+<p>     在复杂的应用程序中，回调函数是经常需要使用的技术。在C++中要实现回调函数有以下几种方式。</p>
 <p><strong>2.4.5.1、函数指针</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 函数名本身就是函数的指针。函数指针在定义时必须指明所指向函数的类型，包括返回类型和参数列表。以下是函数指针的定义语法：</p>
+<p>     函数名本身就是函数的指针。函数指针在定义时必须指明所指向函数的类型，包括返回类型和参数列表。以下是函数指针的定义语法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 返回类型 (*指针变量名)(参数列表);</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 示例</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">int</span> (*pf)(<span class="type">int</span>, <span class="type">int</span>) = add;  <span class="comment">// 可以这么理解定义：因为(*pf)表示函数，那么pf就是函数的指针</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 类似数组，函数指针也有两种使用方式</span></span><br><span class="line">cout &lt;&lt; (*pf)(<span class="number">2</span>, <span class="number">3</span>) &lt;&lt; endl;    <span class="comment">// 5 指针使用方式</span></span><br><span class="line">cout &lt;&lt; <span class="built_in">pf</span>(<span class="number">2</span>, <span class="number">3</span>) &lt;&lt; endl;    <span class="comment">// 5 直接作为函数名使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数指针的定义一般都不怎么直接，使用也不方面</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 经典C++中可以使用typedef简化这个定义</span></span><br><span class="line"><span class="function"><span class="keyword">typedef</span> <span class="title">int</span> <span class="params">(*p_fun)</span><span class="params">(<span class="type">int</span>, <span class="type">int</span>)</span></span>;    <span class="comment">// 现在p_fun就是一种类型名称</span></span><br><span class="line">p_fun pAdd = add;          <span class="comment">// 精简很多</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 现代C++提供了 using 语法让这个过程更加直观，推荐使用</span></span><br><span class="line"><span class="keyword">using</span> p_fun = <span class="built_in">int</span> (*)(<span class="type">int</span>, <span class="type">int</span>);   <span class="comment">// 可读性更强</span></span><br><span class="line">p_fun pAdd = add;</span><br><span class="line"></span><br><span class="line"><span class="comment">// auto大杀器</span></span><br><span class="line"><span class="keyword">auto</span> pAdd = add;          <span class="comment">// 懒人利器</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 知道怎么定义函数指针类型后，就可以定义支持回调函数的函数了，如下：</p>
+<p>     知道怎么定义函数指针类型后，就可以定义支持回调函数的函数了，如下：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">callBack</span><span class="params">(<span class="type">int</span> costTimeMs)</span></span>;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">work</span><span class="params">(<span class="type">void</span> (*pf)(<span class="type">int</span>))</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">work</span>(callBack);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">callBack</span><span class="params">(<span class="type">int</span> costTimeMs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;costTime:&quot;</span> &lt;&lt; costTimeMs &lt;&lt; endl; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">work</span><span class="params">(<span class="type">void</span> (*pf)(<span class="type">int</span>))</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;do some work&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="built_in">pf</span>(<span class="number">123</span>);  <span class="comment">// (*pf)(123) 也ok</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>2.4.5.2、std::function</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 上面介绍的函数指针在定义时不怎么直观，C++标准库中提供了std::function 容器来简化这个过程。其实现技术原理可以自行搜索。这里给出代码示例：</p>
+<p>     上面介绍的函数指针在定义时不怎么直观，C++标准库中提供了std::function 容器来简化这个过程。其实现技术原理可以自行搜索。这里给出代码示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;functional&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">callBack</span><span class="params">(<span class="type">int</span> costTimeMs)</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;costTime:&quot;</span> &lt;&lt; costTimeMs &lt;&lt; endl; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">work</span><span class="params">(function&lt;<span class="type">void</span>(<span class="type">int</span>)&gt; callBack)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">callBack</span>(<span class="number">1234</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    function&lt;<span class="type">void</span>(<span class="type">int</span>)&gt; func = callBack;</span><br><span class="line">    <span class="built_in">work</span>(func);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>2.4.5.3、更多方式</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; C++是面向对象的语言，回调的场景更多的涉及到对象。对此C++提供了 函数对象（Functors、成员函数指针和 std::bind 作为回调函数。这里先不展开。</p>
+<p>     C++是面向对象的语言，回调的场景更多的涉及到对象。对此C++提供了 函数对象（Functors、成员函数指针和 std::bind 作为回调函数。这里先不展开。</p>
 <p><strong>2.5、类（class）</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; C++通过引入类支持了面向对象编程（OOP）。在 C++ 中，类是创建自定义数据类型的核心概念之一。类用于定义与特定类型相关的数据（成员变量）及操作这些数据的函数（成员函数）。通过类，可以实现面向对象编程（OOP）的基本原则，如封装、继承和多态。关于C++类的知识非常多且复杂，这里介绍常用和重要的部分。</p>
+<p>     C++通过引入类支持了面向对象编程（OOP）。在 C++ 中，类是创建自定义数据类型的核心概念之一。类用于定义与特定类型相关的数据（成员变量）及操作这些数据的函数（成员函数）。通过类，可以实现面向对象编程（OOP）的基本原则，如封装、继承和多态。关于C++类的知识非常多且复杂，这里介绍常用和重要的部分。</p>
 <p><strong>2.5.1、定义类</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 类是通过关键字 class 定义的，后跟类名和类体：</p>
+<p>     类是通过关键字 class 定义的，后跟类名和类体：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 公共成员，通常的对外提供的方法定义</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setMember</span><span class="params">(<span class="type">int</span> member)</span></span>;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 私有成员，成员变量，仅供内部调用函数</span></span><br><span class="line">    <span class="type">int</span> mMember;    <span class="comment">// 集团规范推荐,使用m前缀</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">innerFunc</span><span class="params">()</span></span>;  <span class="comment">// 函数一律小驼峰</span></span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="comment">// 受保护成员，成员变量，供子类调用函数</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 下面是类的实际定义：</p>
+<p>     下面是类的实际定义：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// person.hpp</span></span><br><span class="line"><span class="comment">// C++一般使用 hpp 后缀的头文件，表明包含C++特性的代码（模板、引用、类等）</span></span><br><span class="line"><span class="comment">// .h .hpp只是约定的做法，不是语法上的必要性</span></span><br><span class="line"><span class="comment">// 类的定义一般放到头文件中，用来对外声明类</span></span><br><span class="line"><span class="comment">// 类的头文件规范：类名小写 + &#x27;_&#x27;分割(如果有多个单词的case)</span></span><br><span class="line"><span class="comment">// 如果类名：PersonInfo 对应头文件：person_info.hpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">ifndef</span> PERSON_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> PERSON_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明 &#x27;Person&#x27; 类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造函数声明</span></span><br><span class="line">    <span class="built_in">Person</span>(<span class="type">const</span> std::string &amp; name, <span class="type">int</span> age);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 成员函数声明</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">printInfo</span><span class="params">()</span> <span class="type">const</span></span>; <span class="comment">// const成员函数，保证函数不会修改调用对象</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// Setters 和 Getters 声明</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setName</span><span class="params">(<span class="type">const</span> std::string &amp; name)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">const</span> std::string &amp; <span class="title">getName</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setAge</span><span class="params">(<span class="type">int</span> age)</span></span>;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getAge</span><span class="params">()</span> <span class="type">const</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 成员变量</span></span><br><span class="line">    std::string mName;</span><br><span class="line">    <span class="type">int</span> mAge;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// PERSON_H</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// person.cpp</span></span><br><span class="line"><span class="comment">// 实现代码放到同名cpp文件中</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;person.hpp&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 构造函数定义</span></span><br><span class="line">Person::<span class="built_in">Person</span>(<span class="type">const</span> std::string &amp; name, <span class="type">int</span> age) : <span class="built_in">mName</span>(name), <span class="built_in">mAge</span>(age) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 成员函数定义</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Person::printInfo</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Name: &quot;</span> &lt;&lt; mName &lt;&lt; <span class="string">&quot;, Age: &quot;</span> &lt;&lt; mAge &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Setters 和 Getters 定义</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Person::setName</span><span class="params">(<span class="type">const</span> std::string &amp; name)</span> </span>&#123;</span><br><span class="line">    mName = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">const</span> std::string &amp; <span class="title">Person::getName</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mName;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Person::setAge</span><span class="params">(<span class="type">int</span> age)</span> </span>&#123;</span><br><span class="line">    mAge = age;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">Person::getAge</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mAge;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 拓展：const成员函数。</p>
+<p>     拓展：const成员函数。</p>
 <p><strong>2.5.2、访问控制</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 类成员的访问权限可以是 public、private 或 protected：</p>
+<p>     类成员的访问权限可以是 public、private 或 protected：</p>
 <ul>
-<li><p>Public（公共）：公共成员可以在类的外部被访问。</p>
+<li>
+<p>Public（公共）：公共成员可以在类的外部被访问。</p>
 </li>
-<li><p>Private（私有）：私有成员只能在类的内部被访问。</p>
+<li>
+<p>Private（私有）：私有成员只能在类的内部被访问。</p>
 </li>
-<li><p>Protected（受保护）：受保护成员可以在类的内部以及其派生类中被访问。</p>
+<li>
+<p>Protected（受保护）：受保护成员可以在类的内部以及其派生类中被访问。</p>
 </li>
 </ul>
 <p><strong>2.5.3、构造函数</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 构造函数是一种特殊的成员函数，它在创建类实例时自动调用。构造函数可以被重载，以提供不同的初始化方式。成员初始化列表提供了初始化成员变量的一种更高效的方式，对于类中的常量成员、引用成员来说，成员初始化列表是必须的：</p>
+<p>     构造函数是一种特殊的成员函数，它在创建类实例时自动调用。构造函数可以被重载，以提供不同的初始化方式。成员初始化列表提供了初始化成员变量的一种更高效的方式，对于类中的常量成员、引用成员来说，成员初始化列表是必须的：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> m1, <span class="type">int</span> m2, <span class="type">int</span> m3) : <span class="built_in">mM1</span>(m1), <span class="built_in">mM2</span>(m2), <span class="built_in">mM3</span>(m3) &#123;&#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> mM1;</span><br><span class="line">    <span class="type">const</span> <span class="type">int</span> mM2；</span><br><span class="line">    <span class="type">int</span> &amp; mM3;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类的初始化方式</span></span><br><span class="line"><span class="function">MyClass <span class="title">a1</span><span class="params">(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)</span></span>;         <span class="comment">// 传统构造函数</span></span><br><span class="line">MyClass a1 = <span class="built_in">MyClass</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>);   <span class="comment">// 同上</span></span><br><span class="line">MyClass a2 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;     <span class="comment">// 列表初始化，会匹配最合适的构造函数</span></span><br><span class="line">MyClass a3&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;        <span class="comment">// 同上</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 拓展：explicit 关键字。</p>
+<p>     拓展：explicit 关键字。</p>
 <p><strong>2.5.4、构造函数</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 析构函数是类的一个特殊成员函数，它在类的对象生命周期结束时自动被调用以执行清理工作。主要用途是释放对象占用的资源，并执行一些必要的清理操作，例如释放动态分配的内存、关闭文件和数据库连接等。示例：</p>
+<p>     析构函数是类的一个特殊成员函数，它在类的对象生命周期结束时自动被调用以执行清理工作。主要用途是释放对象占用的资源，并执行一些必要的清理操作，例如释放动态分配的内存、关闭文件和数据库连接等。示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>() &#123;</span><br><span class="line">        <span class="comment">// 构造函数分配资源或执行初始化</span></span><br><span class="line">        data = <span class="keyword">new</span> <span class="type">int</span>[<span class="number">10</span>]; <span class="comment">// 假设动态分配了内存</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">MyClass</span>() &#123;</span><br><span class="line">        <span class="comment">// 析构函数释放资源</span></span><br><span class="line">        <span class="keyword">delete</span>[] data;     <span class="comment">// 释放动态分配的内存</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span>* data;         <span class="comment">// 指向动态分配的内存</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 自动调用析构函数的情况：</p>
+<p>     自动调用析构函数的情况：</p>
 <ul>
-<li><p>局部对象：当局部对象的作用域结束时，例如函数结束时，其中的局部对象会被销毁，调用析构函数。</p>
+<li>
+<p>局部对象：当局部对象的作用域结束时，例如函数结束时，其中的局部对象会被销毁，调用析构函数。</p>
 </li>
-<li><p>动态分配的对象：当使用 delete 操作符删除一个动态分配的对象时，析构函数会被调用。</p>
+<li>
+<p>动态分配的对象：当使用 delete 操作符删除一个动态分配的对象时，析构函数会被调用。</p>
 </li>
-<li><p>静态和全局对象：当程序结束时，所有的静态和全局对象会被销毁，调用析构函数。</p>
+<li>
+<p>静态和全局对象：当程序结束时，所有的静态和全局对象会被销毁，调用析构函数。</p>
 </li>
-<li><p>临时对象：当临时对象的生命周期结束时，例如临时对象作为函数参数传递，或者在它们创建的表达式结束后，析构函数会被调用。</p>
+<li>
+<p>临时对象：当临时对象的生命周期结束时，例如临时对象作为函数参数传递，或者在它们创建的表达式结束后，析构函数会被调用。</p>
 </li>
-<li><p>通过 std::unique_ptr 或 std::shared_ptr 管理的对象：当智能指针销毁或被重新赋值，造成引用计数降为零时，析构函数会被调用。</p>
+<li>
+<p>通过 std::unique_ptr 或 std::shared_ptr 管理的对象：当智能指针销毁或被重新赋值，造成引用计数降为零时，析构函数会被调用。</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 在 C++ 中，通常应用“资源获取即初始化”（RAII）原则来管理资源。RAII 建议在构造函数中获取资源，并在析构函数中释放资源。这样，资源的生命周期就与包含它的对象的生命周期绑定在一起，简化了资源管理并防止了资源泄漏。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 当正确使用 RAII 原则时，通常不需要手动调用析构函数，因为 C++ 会确保在对象生命周期结束时自动调用析构函数。然而，如果你使用“裸”指针手动管理资源，就必须非常小心地确保每个分配的资源最终都被释放，否则可能会导致资源泄漏。智能指针（如 std::unique_ptr 和 std::shared_ptr）是现代 C++ 推荐的资源管理方式，它们可以自动管理资源的生命周期，从而避免直接手动管理资源的复杂性和危险。</p>
+<p>     在 C++ 中，通常应用“资源获取即初始化”（RAII）原则来管理资源。RAII 建议在构造函数中获取资源，并在析构函数中释放资源。这样，资源的生命周期就与包含它的对象的生命周期绑定在一起，简化了资源管理并防止了资源泄漏。</p>
+<p>     当正确使用 RAII 原则时，通常不需要手动调用析构函数，因为 C++ 会确保在对象生命周期结束时自动调用析构函数。然而，如果你使用“裸”指针手动管理资源，就必须非常小心地确保每个分配的资源最终都被释放，否则可能会导致资源泄漏。智能指针（如 std::unique_ptr 和 std::shared_ptr）是现代 C++ 推荐的资源管理方式，它们可以自动管理资源的生命周期，从而避免直接手动管理资源的复杂性和危险。</p>
 <p><strong>2.5.5、运算符重载</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 类可以重载各种运算符，以提供类似于内建类型的行为：</p>
+<p>     类可以重载各种运算符，以提供类似于内建类型的行为：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>() : <span class="built_in">data</span>(<span class="keyword">new</span> <span class="type">int</span>[<span class="number">10</span>]) &#123; &#125;   <span class="comment">// 构造函数</span></span><br><span class="line">    ~<span class="built_in">MyClass</span>() &#123; <span class="keyword">delete</span>[] data; &#125;     <span class="comment">// 析构函数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拷贝赋值运算符</span></span><br><span class="line">    MyClass &amp; <span class="keyword">operator</span>=(<span class="type">const</span> MyClass&amp; other) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;other) &#123; <span class="comment">// 避免自赋值</span></span><br><span class="line">            std::<span class="built_in">copy</span>(other.data, other.data + <span class="number">10</span>, data);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span>* data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line">MyClass a;</span><br><span class="line">MyClass b = a;    <span class="comment">// 默认的赋值操作是浅拷贝，这里因为重载了 = 运算符，变成深拷贝</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// C++11开始可以删除默认的赋值操作符，从而防止因浅拷贝带来的风险</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass2</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    MyClass2 &amp; <span class="keyword">operator</span>=(<span class="type">const</span> MyClass2 &amp; other) = <span class="keyword">delete</span>; <span class="comment">// 禁用赋值操作符</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyClass2 a;</span><br><span class="line">MyClass2 b = a; <span class="comment">// 非法，MyClass2的 = 运算符被禁用</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 一些注意事项：</p>
+<p>     一些注意事项：</p>
 <ul>
-<li><p>运算符重载并不改变运算符的优先级、结合性或操作数个数。这些都是由语言规范定义的。</p>
+<li>
+<p>运算符重载并不改变运算符的优先级、结合性或操作数个数。这些都是由语言规范定义的。</p>
 </li>
-<li><p>不要滥用运算符重载。重载的运算符应该和它的原始意图保持相关性，否则可能导致代码难以阅读和理解。</p>
+<li>
+<p>不要滥用运算符重载。重载的运算符应该和它的原始意图保持相关性，否则可能导致代码难以阅读和理解。</p>
 </li>
-<li><p>记得检查自赋值。特别是在重载赋值运算符时（如 operator&#x3D;），要确保它能正确处理自赋值的情况。</p>
+<li>
+<p>记得检查自赋值。特别是在重载赋值运算符时（如 operator=），要确保它能正确处理自赋值的情况。</p>
 </li>
-<li><p>为了保持一致性，考虑重载对应的复合赋值运算符。例如，如果你重载了 operator+，那么也应该重载 operator+&#x3D;。</p>
+<li>
+<p>为了保持一致性，考虑重载对应的复合赋值运算符。例如，如果你重载了 operator+，那么也应该重载 operator+=。</p>
 </li>
-<li><p>当重载某些运算符，如 &#x3D;&#x3D;，通常也需要重载相应的运算符，如 !&#x3D;，以确保逻辑一致性。</p>
+<li>
+<p>当重载某些运算符，如 ==，通常也需要重载相应的运算符，如 !=，以确保逻辑一致性。</p>
 </li>
-<li><p>某些运算符最好重载为非成员函数。像 &lt;&lt; 和 &gt;&gt; 这类运算符，如果要用于输入输出流的话，通常作为非成员函数重载比较合适，因为它们的左操作数通常是流对象。</p>
+<li>
+<p>某些运算符最好重载为非成员函数。像 &lt;&lt; 和 &gt;&gt; 这类运算符，如果要用于输入输出流的话，通常作为非成员函数重载比较合适，因为它们的左操作数通常是流对象。</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 拓展：</p>
+<p>     拓展：</p>
 <ul>
-<li><p>C++支持重载的运算符。</p>
+<li>
+<p>C++支持重载的运算符。</p>
 </li>
-<li><p>转换函数（这个不算运算符重载，例：operator int()）。</p>
+<li>
+<p>转换函数（这个不算运算符重载，例：operator int()）。</p>
 </li>
 </ul>
 <p><strong>2.5.6、拷贝构造函数和拷贝赋值运算符</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 对象的赋值操作是常见的操作，应该尽量避免使用浅拷贝，因为这种方式存在潜在风向。为解决这个问题类可以定义专门的拷贝构造函数和拷贝赋值运算符，以控制对象如何被复制：</p>
+<p>     对象的赋值操作是常见的操作，应该尽量避免使用浅拷贝，因为这种方式存在潜在风向。为解决这个问题类可以定义专门的拷贝构造函数和拷贝赋值运算符，以控制对象如何被复制：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>() : <span class="built_in">data</span>(<span class="keyword">new</span> <span class="type">int</span>[<span class="number">10</span>]) &#123; &#125; <span class="comment">// 默认构造函数</span></span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">MyClass</span>() &#123; <span class="keyword">delete</span>[] data; &#125; <span class="comment">// 析构函数</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拷贝构造函数</span></span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">const</span> MyClass &amp; other) : <span class="built_in">data</span>(<span class="keyword">new</span> <span class="type">int</span>[<span class="number">10</span>]) &#123;</span><br><span class="line">        std::<span class="built_in">copy</span>(other.data, other.data + <span class="number">10</span>, data);</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;copy init&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 拷贝赋值运算符</span></span><br><span class="line">    MyClass &amp; <span class="keyword">operator</span>=(<span class="type">const</span> MyClass &amp; other) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;other) &#123; <span class="comment">// 避免自赋值</span></span><br><span class="line">            std::<span class="built_in">copy</span>(other.data, other.data + <span class="number">10</span>, data);</span><br><span class="line">        &#125;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;copy =&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span>* data;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MyClass a;</span><br><span class="line">    MyClass b;</span><br><span class="line">    MyClass c = a;</span><br><span class="line">    c = b;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 程序输出</span></span><br><span class="line"><span class="comment">// copy init</span></span><br><span class="line"><span class="comment">// copy =</span></span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 拓展：浅拷贝、深拷贝。</p>
+<p>     拓展：浅拷贝、深拷贝。</p>
 <p><strong>2.5.7、移动构造函数和移动赋值运算符（C++11）</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 在 C++11 中引入了移动语义，允许从临时对象“移动”资源，而不是复制它们：</p>
+<p>     在 C++11 中引入了移动语义，允许从临时对象“移动”资源，而不是复制它们：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BigMemoryPool</span> &#123;</span><br><span class="line">    <span class="keyword">private</span>:</span><br><span class="line">        <span class="type">static</span> <span class="type">const</span> <span class="type">int</span> POOL_SIZE = <span class="number">4096</span>;</span><br><span class="line">        <span class="type">int</span>* mPool;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">BigMemoryPool</span>() : <span class="built_in">mPool</span>(<span class="keyword">new</span> <span class="type">int</span>[POOL_SIZE]&#123;<span class="number">0</span>&#125;) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;call default init&quot;</span> &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 编译器会优化移动构造函数，正常情况可能不会被执行</span></span><br><span class="line">        <span class="comment">// 可以添加编译选项 “-fno-elide-constructors” 关闭优化来观察效果</span></span><br><span class="line">        <span class="built_in">BigMemoryPool</span>(BigMemoryPool &amp;&amp; other) <span class="keyword">noexcept</span> &#123;</span><br><span class="line">            mPool = other.mPool;</span><br><span class="line">            other.mPool = <span class="literal">nullptr</span>;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;call move init&quot;</span> &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        BigMemoryPool &amp; <span class="keyword">operator</span>=(BigMemoryPool &amp;&amp; other) <span class="keyword">noexcept</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">this</span> != &amp;other) &#123;</span><br><span class="line">                <span class="keyword">this</span>-&gt;mPool = other.mPool;</span><br><span class="line">                other.mPool = <span class="literal">nullptr</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;call op move&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span> *<span class="keyword">this</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="type">void</span> <span class="title">showPoolAddr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;pool addr:&quot;</span> &lt;&lt; &amp;(mPool[<span class="number">0</span>]) &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ~<span class="built_in">BigMemoryPool</span>() &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;call destructor&quot;</span> &lt;&lt; endl;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function">BigMemoryPool <span class="title">makeBigMemoryPool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    BigMemoryPool x;  <span class="comment">// 调用默认构造函数</span></span><br><span class="line">    x.<span class="built_in">showPoolAddr</span>();</span><br><span class="line">    <span class="keyword">return</span> x;         <span class="comment">// 返回临时变量，属于右值</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">BigMemoryPool <span class="title">a</span><span class="params">(makeBigMemoryPool())</span></span>;  </span><br><span class="line">    a.<span class="built_in">showPoolAddr</span>();</span><br><span class="line">    a = <span class="built_in">makeBigMemoryPool</span>();  </span><br><span class="line">    a.<span class="built_in">showPoolAddr</span>();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输出内容</span></span><br><span class="line">call <span class="keyword">default</span> init</span><br><span class="line">pool addr:<span class="number">0x152009600</span></span><br><span class="line">instance addr:<span class="number">0x16fdfeda0</span></span><br><span class="line">pool addr:<span class="number">0x152009600</span></span><br><span class="line">instance addr:<span class="number">0x16fdfeda0</span>  <span class="comment">// 编译器优化，这里a和x其实是同一个实例，因此不会触发移动构造</span></span><br><span class="line">call <span class="keyword">default</span> init</span><br><span class="line">pool addr:<span class="number">0x15200e600</span>    <span class="comment">// 新的临时变量，堆内存重新分配</span></span><br><span class="line">instance addr:<span class="number">0x16fdfed88</span>  <span class="comment">// 临时变量对象地址</span></span><br><span class="line">call op move        <span class="comment">// 移动赋值</span></span><br><span class="line">call destructor</span><br><span class="line">pool addr:<span class="number">0x15200e600</span>    <span class="comment">// a的Pool指向的内存地址变成新临时对象分配的地址，完成转移</span></span><br><span class="line">instance addr:<span class="number">0x16fdfeda0</span>  <span class="comment">// a对象的地址没有变化</span></span><br><span class="line">call destructor</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 拓展：返回值优化（RVO）、命名返回值优化（NRVO）。</p>
-<p>&ensp;&ensp;&ensp;&ensp; C++11引入移动语义之前，类似的做法需要返回指针或者通过拷贝的方式来保存临时对象，前者会引入资源管理问题后者会有拷贝的性能损耗。</p>
+<p>     拓展：返回值优化（RVO）、命名返回值优化（NRVO）。</p>
+<p>     C++11引入移动语义之前，类似的做法需要返回指针或者通过拷贝的方式来保存临时对象，前者会引入资源管理问题后者会有拷贝的性能损耗。</p>
 <p><strong>2.5.8、友元函数和友元类</strong></p>
 <p><strong>2.5.8.1、友元函数</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 友元函数是定义在类外部的普通函数，它被某个类声明为其“友元”。这意味着友元函数可以访问该类的所有成员，包括私有和受保护的成员。友元函数不是类成员函数，也不受类的封装性约束。友元函数的声明方式是在类的定义内部使用关键字 friend，后跟函数的原型，友元函数实现时不能加类名作用域限定：</p>
+<p>     友元函数是定义在类外部的普通函数，它被某个类声明为其“友元”。这意味着友元函数可以访问该类的所有成员，包括私有和受保护的成员。友元函数不是类成员函数，也不受类的封装性约束。友元函数的声明方式是在类的定义内部使用关键字 friend，后跟函数的原型，友元函数实现时不能加类名作用域限定：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明 Vector2D 类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Vector2D</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">float</span> x_;</span><br><span class="line">    <span class="type">float</span> y_;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Vector2D</span>(<span class="type">float</span> x = <span class="number">0.0f</span>, <span class="type">float</span> y = <span class="number">0.0f</span>) : <span class="built_in">x_</span>(x), <span class="built_in">y_</span>(y) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 友元函数声明，用于重载 + 操作符</span></span><br><span class="line">    <span class="keyword">friend</span> Vector2D <span class="keyword">operator</span>+(<span class="type">const</span> Vector2D &amp; a, <span class="type">const</span> Vector2D &amp; b);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 输出 Vector2D 对象的友元函数</span></span><br><span class="line">    <span class="keyword">friend</span> std::ostream &amp; <span class="keyword">operator</span>&lt;&lt;(std::ostream &amp; out, <span class="type">const</span> Vector2D &amp; v);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重载 + 操作符的友元函数定义</span></span><br><span class="line">Vector2D <span class="keyword">operator</span>+(<span class="type">const</span> Vector2D &amp; a, <span class="type">const</span> Vector2D &amp; b) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Vector2D</span>(a.x_ + b.x_, a.y_ + b.y_);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 重载 &lt;&lt; 操作符的友元函数定义，用于输出 Vector2D 对象</span></span><br><span class="line">std::ostream &amp; <span class="keyword">operator</span>&lt;&lt;(std::ostream &amp; out, <span class="type">const</span> Vector2D &amp; v) &#123;</span><br><span class="line">    out &lt;&lt; <span class="string">&quot;(&quot;</span> &lt;&lt; v.x_ &lt;&lt; <span class="string">&quot;, &quot;</span> &lt;&lt; v.y_ &lt;&lt; <span class="string">&quot;)&quot;</span>;</span><br><span class="line">    <span class="keyword">return</span> out;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Vector2D <span class="title">vec1</span><span class="params">(<span class="number">1.0</span>, <span class="number">2.0</span>)</span></span>;</span><br><span class="line">    <span class="function">Vector2D <span class="title">vec2</span><span class="params">(<span class="number">3.0</span>, <span class="number">4.0</span>)</span></span>;</span><br><span class="line">    Vector2D vec3;</span><br><span class="line"></span><br><span class="line">    vec3 = vec1 + vec2; <span class="comment">// 使用友元函数重载的 + 操作符</span></span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;vec1: &quot;</span> &lt;&lt; vec1 &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;vec2: &quot;</span> &lt;&lt; vec2 &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;vec3: &quot;</span> &lt;&lt; vec3 &lt;&lt; std::endl; <span class="comment">// 输出: vec3: (4, 6)</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><strong>2.5.8.2、友元类</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 友元类是一个允许特定类访问另一个类的私有和受保护成员的机制。在 C++ 中，通常情况下，一个类无法访问另一个类的私有（private）和受保护（protected）成员，即使它们需要彼此协作。友元类提供了一种方式，让你可以指定某些类之间有更紧密的关系，并允许它们访问对方的非公共接口。下面是示例：</p>
+<p>     友元类是一个允许特定类访问另一个类的私有和受保护成员的机制。在 C++ 中，通常情况下，一个类无法访问另一个类的私有（private）和受保护（protected）成员，即使它们需要彼此协作。友元类提供了一种方式，让你可以指定某些类之间有更紧密的关系，并允许它们访问对方的非公共接口。下面是示例：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span>; <span class="comment">// 前向声明</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明一个类（FriendClass），该类将访问MyClass的私有和受保护成员</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FriendClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">accessMyClass</span><span class="params">(MyClass &amp; obj)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 声明主类（MyClass）</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> secret;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MyClass</span>(<span class="type">int</span> val) : <span class="built_in">secret</span>(val) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 声明FriendClass为MyClass的友元类</span></span><br><span class="line">    <span class="keyword">friend</span> <span class="keyword">class</span> <span class="title class_">FriendClass</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// FriendClass成员函数实现</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">FriendClass::accessMyClass</span><span class="params">(MyClass &amp; obj)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 可以访问MyClass的私有成员&#x27;secret&#x27;</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;MyClass secret value is: &quot;</span> &lt;&lt; obj.secret &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">MyClass <span class="title">obj</span><span class="params">(<span class="number">42</span>)</span></span>;       <span class="comment">// 创建MyClass对象</span></span><br><span class="line">    FriendClass friendObj; <span class="comment">// 创建FriendClass对象</span></span><br><span class="line"></span><br><span class="line">    friendObj.<span class="built_in">accessMyClass</span>(obj); <span class="comment">// 访问MyClass的私有成员</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 使用友元可能会破坏类的封装性和数据隐藏原则，因为它们允许外部函数或者类直接访问类的私有成员。因此，建议谨慎使用友元，只在确实需要时才使用，并寻找是否有其他设计替代方案。在设计类时，应尽可能通过公共成员函数或成员函数的重载来提供类的行为和操作，而将友元作为特定情况下的解决方案。</p>
+<p>     使用友元可能会破坏类的封装性和数据隐藏原则，因为它们允许外部函数或者类直接访问类的私有成员。因此，建议谨慎使用友元，只在确实需要时才使用，并寻找是否有其他设计替代方案。在设计类时，应尽可能通过公共成员函数或成员函数的重载来提供类的行为和操作，而将友元作为特定情况下的解决方案。</p>
 <p><strong>2.5.9、继承</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 类可以从其他类继承，从而获得基类的成员和行为：</p>
+<p>     类可以从其他类继承，从而获得基类的成员和行为：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span> &#123;</span><br><span class="line">    <span class="comment">// 基类成员</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Derived</span> : <span class="keyword">public</span> Base &#123;</span><br><span class="line">    <span class="comment">// 派生类成员</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p>C++继承方式有三种：</p>
 <ul>
-<li><p>公有继承（public）最常见的继承类型。在公有继承中，基类的公有成员和保护成员在派生类中保持其原有的访问级别，而基类的私有成员在派生类中是不可访问的。</p>
+<li>
+<p>公有继承（public）最常见的继承类型。在公有继承中，基类的公有成员和保护成员在派生类中保持其原有的访问级别，而基类的私有成员在派生类中是不可访问的。</p>
 </li>
-<li><p>保护继承（protected）基类的公有成员和保护成员都成为派生类的保护成员。这意味着它们只能被派生类或其进一步的派生类中的成员函数访问。</p>
+<li>
+<p>保护继承（protected）基类的公有成员和保护成员都成为派生类的保护成员。这意味着它们只能被派生类或其进一步的派生类中的成员函数访问。</p>
 </li>
-<li><p>私有继承（private）私有继承会将基类的公有成员和保护成员都变成派生类的私有成员。这意味着这些成员只能被派生类的成员函数访问，而不能被派生类的派生类访问。</p>
+<li>
+<p>私有继承（private）私有继承会将基类的公有成员和保护成员都变成派生类的私有成员。这意味着这些成员只能被派生类的成员函数访问，而不能被派生类的派生类访问。</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; C++是支持多重继承的，即可以从多个类派生一个类，但是通常建议谨慎使用，因为多重继承可能会引起一些复杂的问题。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 拓展：虚继承。</p>
+<p>     C++是支持多重继承的，即可以从多个类派生一个类，但是通常建议谨慎使用，因为多重继承可能会引起一些复杂的问题。</p>
+<p>     拓展：虚继承。</p>
 <p><strong>2.5.9、多态</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 多态允许派生类重写基类的虚拟函数，使得通过基类引用或指针调用这些函数时可以执行派生类的版本：</p>
+<p>     多态允许派生类重写基类的虚拟函数，使得通过基类引用或指针调用这些函数时可以执行派生类的版本：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">baseMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Base method&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">polymorphicMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Base polymorphic method&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Base</span>() &#123;&#125; <span class="comment">// 虚析构函数，用于多态</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 公有继承派生类</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Derived</span> : <span class="keyword">public</span> Base &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 重写基类的虚函数</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">polymorphicMethod</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        Base::<span class="built_in">polymorphicMethod</span>();  <span class="comment">// 可以通过添加限定域调用基类实现</span></span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Derived polymorphic method&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Derived d;</span><br><span class="line">    d.<span class="built_in">baseMethod</span>();           <span class="comment">// 调用基类的方法</span></span><br><span class="line">    d.<span class="built_in">polymorphicMethod</span>();    <span class="comment">// 调用派生类重写的方法</span></span><br><span class="line"></span><br><span class="line">    Base *b = &amp;d;</span><br><span class="line">    b-&gt;<span class="built_in">polymorphicMethod</span>();   <span class="comment">// 通过基类指针调用派生类的方法，体现多态</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 在类继承的场景中，基类的析构函数一般要声明为虚析构函数，这样才能保证在通过基类指针删除对象时，派生类的资源也能被正确的释放。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 拓展：虚函数表、动态绑定。</p>
+<p>     在类继承的场景中，基类的析构函数一般要声明为虚析构函数，这样才能保证在通过基类指针删除对象时，派生类的资源也能被正确的释放。</p>
+<p>     拓展：虚函数表、动态绑定。</p>
 <p><strong>2.5.9、抽象类和纯虚函数</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 如果一个类包含至少一个纯虚函数（以 &#x3D; 0 结尾），则该类被认为是抽象类，不能直接实例化，只包含纯虚函数而没有成员变量的抽象类和Java中的接口（Interface）功能类似。</p>
+<p>     如果一个类包含至少一个纯虚函数（以 = 0 结尾），则该类被认为是抽象类，不能直接实例化，只包含纯虚函数而没有成员变量的抽象类和Java中的接口（Interface）功能类似。</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Interface in C++</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IShape</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">draw</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>; <span class="comment">// 纯虚函数</span></span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IShape</span>() &#123;&#125; <span class="comment">// 虚析构函数以确保派生类的析构函数被调用</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> : <span class="keyword">public</span> IShape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 实现绘制圆形的代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> : <span class="keyword">public</span> IShape &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">draw</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 实现绘制矩形的代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
 <p><strong>2.5.10、模板类</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; C++模板类是一种强大的特性，它允许程序员编写泛型且可重用的代码。模板类可以用来定义在编译时可以指定类型参数的类，这意味着可以用相同的基本代码来处理不同的数据类型。可以这么说现代C++的很多功能强大的特性都和模板技术有关系下面是模板类的一般定义语法：</p>
+<p>     C++模板类是一种强大的特性，它允许程序员编写泛型且可重用的代码。模板类可以用来定义在编译时可以指定类型参数的类，这意味着可以用相同的基本代码来处理不同的数据类型。可以这么说现代C++的很多功能强大的特性都和模板技术有关系下面是模板类的一般定义语法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">emplate &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyTemplateClass</span> &#123;</span><br><span class="line">    <span class="function"><span class="type">const</span> T&amp; <span class="title">getValue</span><span class="params">()</span></span>;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    T myValue;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 因为模板类的复杂性，这里不做展开。因为模板是一种强大的语言特性，C++中常见的模板类应用在容器上，C++标准库中提供一系列的泛型容器，前面提到过的 vector、list、stack都是模板类实现的。相关容器的用法可以搜索对应的文档。</p>
+<p>     因为模板类的复杂性，这里不做展开。因为模板是一种强大的语言特性，C++中常见的模板类应用在容器上，C++标准库中提供一系列的泛型容器，前面提到过的 vector、list、stack都是模板类实现的。相关容器的用法可以搜索对应的文档。</p>
 <p><strong>2.6、智能指针</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 智能指针，同样是利用模板类技术实现的，它们提供了自动内存管理功能，可以帮助避免内存泄漏。下面是现代C++提供的智能指针：</p>
+<p>     智能指针，同样是利用模板类技术实现的，它们提供了自动内存管理功能，可以帮助避免内存泄漏。下面是现代C++提供的智能指针：</p>
 <ul>
-<li><p>std::unique_ptr：std::unique_ptr 是一个独有所有权的智能指针。它保证同一时间内只有一个智能指针实例可以拥有一个给定的对象。当 std::unique_ptr 被销毁时，它所拥有的对象也会被销毁。std::unique_ptr 通常用于对资源有独占所有权的情况，并且它是不可以被复制的，但可以被移动，以便所有权可以从一个 std::unique_ptr 转移到另一个。</p>
+<li>
+<p>std::unique_ptr：std::unique_ptr 是一个独有所有权的智能指针。它保证同一时间内只有一个智能指针实例可以拥有一个给定的对象。当 std::unique_ptr 被销毁时，它所拥有的对象也会被销毁。std::unique_ptr 通常用于对资源有独占所有权的情况，并且它是不可以被复制的，但可以被移动，以便所有权可以从一个 std::unique_ptr 转移到另一个。</p>
 </li>
-<li><p>std::shared_ptr：std::shared_ptr 实现了共享所有权的概念。它通过内部的引用计数机制来跟踪有多少个 std::shared_ptr 实例共享同一个对象。当最后一个这样的指针被销毁时，所拥有的对象将会被删除。std::shared_ptr 适用于多个拥有者需要管理同一个对象的生命周期的情况。</p>
+<li>
+<p>std::shared_ptr：std::shared_ptr 实现了共享所有权的概念。它通过内部的引用计数机制来跟踪有多少个 std::shared_ptr 实例共享同一个对象。当最后一个这样的指针被销毁时，所拥有的对象将会被删除。std::shared_ptr 适用于多个拥有者需要管理同一个对象的生命周期的情况。</p>
 </li>
-<li><p>std::weak_ptr：std::weak_ptr 是一种非拥有（弱）引用的智能指针。它不会增加对象的引用计数，因此不会阻止所指向的对象被销毁。std::weak_ptr 主要用于解决 std::shared_ptr 之间可能出现的循环引用问题。通过 std::weak_ptr，你可以观察一个对象，但不会造成所有权关系。</p>
+<li>
+<p>std::weak_ptr：std::weak_ptr 是一种非拥有（弱）引用的智能指针。它不会增加对象的引用计数，因此不会阻止所指向的对象被销毁。std::weak_ptr 主要用于解决 std::shared_ptr 之间可能出现的循环引用问题。通过 std::weak_ptr，你可以观察一个对象，但不会造成所有权关系。</p>
 </li>
 </ul>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 简单示例</span></span><br><span class="line"><span class="comment">// 定义智能指针</span></span><br><span class="line"><span class="comment">// C++11语法</span></span><br><span class="line"><span class="function">std::unique_ptr&lt;MyClass&gt; <span class="title">my_unique_ptr</span><span class="params">(<span class="keyword">new</span> MyClass())</span></span>;</span><br><span class="line"><span class="function">std::shared_ptr&lt;MyClass&gt; <span class="title">my_shared_ptr</span><span class="params">(<span class="keyword">new</span> MyClass())</span></span>;</span><br><span class="line"><span class="comment">// C++14提供了更安全更现代的方法</span></span><br><span class="line"><span class="keyword">auto</span> my_unique_ptr = std::<span class="built_in">make_unique</span>&lt;MyClass&gt;();</span><br><span class="line"><span class="keyword">auto</span> my_shared_ptr = std::<span class="built_in">make_shared</span>&lt;MyClass&gt;(); <span class="comment">// 可以按照构造函数的定义传参</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用类的方法和普通指针类似</span></span><br><span class="line">my_unique_ptr-&gt;<span class="built_in">func</span>();</span><br><span class="line">my_shared_ptr-&gt;<span class="built_in">func</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 在需要传对象指针和引用的场景</span></span><br><span class="line"><span class="comment">// 类指针类型</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testFunc1</span><span class="params">(MyClass * p)</span></span>;</span><br><span class="line"><span class="built_in">testFunc1</span>(my_unique_ptr.<span class="built_in">get</span>()); <span class="comment">// 通过get获取原始指针</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 引用类型</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">testFunc2</span><span class="params">(MyClass &amp; ref)</span></span>;</span><br><span class="line"><span class="built_in">testFunc2</span>(*my_unique_ptr);    <span class="comment">// 通过*运算符获取对象的引用</span></span><br></pre></td></tr></table></figure>
-
 <p><strong>2.7、函数对象</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; 上面介绍函数回调时说过的 std::function也是模板类，它是一个泛型函数封装器，其实例可以存储、复制和调用任何可调用对象，如普通函数、Lambda 表达式、函数对象（functors）以及其他函数指针。下面是一些典型用法：</p>
+<p>     上面介绍函数回调时说过的 std::function也是模板类，它是一个泛型函数封装器，其实例可以存储、复制和调用任何可调用对象，如普通函数、Lambda 表达式、函数对象（functors）以及其他函数指针。下面是一些典型用法：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 封装函数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Hello, World!&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line">std::function&lt;<span class="type">void</span>()&gt; func = printHello;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 封装Lambda表达式</span></span><br><span class="line">std::function&lt;<span class="type">int</span>(<span class="type">int</span>, <span class="type">int</span>)&gt; add = [](<span class="type">int</span> a, <span class="type">int</span> b) -&gt; <span class="type">int</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> sum = <span class="built_in">add</span>(<span class="number">2</span>, <span class="number">3</span>); <span class="comment">// sum 的值为 5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 封装成员函数</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyClass</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">memberFunction</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Member function called.&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">MyClass obj;</span><br><span class="line">std::function&lt;<span class="type">void</span>(<span class="type">const</span> MyClass &amp;)&gt; f = &amp;MyClass::memberFunction;</span><br><span class="line"><span class="built_in">f</span>(obj); <span class="comment">// 输出: Member function called.</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 封装带有绑定参数的函数</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">printSum</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;Sum: &quot;</span> &lt;&lt; a + b &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">namespace</span> std::placeholders; <span class="comment">// 对于 _1, _2, _3...</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 绑定第二个参数为 10，并将第一个参数留作后面指定</span></span><br><span class="line">    std::function&lt;<span class="type">void</span>(<span class="type">int</span>)&gt; func = std::<span class="built_in">bind</span>(printSum, _1, <span class="number">10</span>);</span><br><span class="line">    <span class="built_in">func</span>(<span class="number">5</span>); <span class="comment">// 输出: Sum: 15</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
       <!-- reward -->
       

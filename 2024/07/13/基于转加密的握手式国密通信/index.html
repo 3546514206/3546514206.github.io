@@ -41,7 +41,7 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
   </html>
 </html>
 
@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">440</span>
+            <span class="post-count">416</span>
         </span>
     </span>
 
@@ -103,49 +103,63 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1.png" alt="基于转加密的握手式国密通信"></p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>1、客户端上送 SM4 密钥密文：</strong></p>
+<p>     <strong>1、客户端上送 SM4 密钥密文：</strong></p>
 <ul>
-<li><p>客户端根据算法生成两把 SM4 密钥:sm4_key、h_mac_key；</p>
+<li>
+<p>客户端根据算法生成两把 SM4 密钥:sm4_key、h_mac_key；</p>
 </li>
-<li><p>客户端使用内置 SM2 公钥对 sm4_key、h_mac_key 加密得到密文 sm4_cipher_key、h_mac_cipher_key；</p>
+<li>
+<p>客户端使用内置 SM2 公钥对 sm4_key、h_mac_key 加密得到密文 sm4_cipher_key、h_mac_cipher_key；</p>
 </li>
-<li><p>调用服务端握手接口将  sm4_cipher_key、h_mac_cipher_key 发送到服务端；</p>
+<li>
+<p>调用服务端握手接口将  sm4_cipher_key、h_mac_cipher_key 发送到服务端；</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>2、服务端转加密取 SM4 密钥报文</strong></p>
+<p>     <strong>2、服务端转加密取 SM4 密钥报文</strong></p>
 <ul>
-<li><p>服务端根据算法生成 SM4 密钥 sm4_transfer_key 用于转加密；</p>
+<li>
+<p>服务端根据算法生成 SM4 密钥 sm4_transfer_key 用于转加密；</p>
 </li>
-<li><p>服务端使用内置的 SM2 公钥对 sm4_transfer_key 加密得到密文 sm4_transfer_cipher_key；</p>
+<li>
+<p>服务端使用内置的 SM2 公钥对 sm4_transfer_key 加密得到密文 sm4_transfer_cipher_key；</p>
 </li>
-<li><p>调用机密机接口上送 sm4_cipher_key、h_mac_cipher_key 密文和 sm4_transfer_cipher_key ；</p>
+<li>
+<p>调用机密机接口上送 sm4_cipher_key、h_mac_cipher_key 密文和 sm4_transfer_cipher_key ；</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>3、加密机做转加密</strong></p>
+<p>     <strong>3、加密机做转加密</strong></p>
 <ul>
-<li><p>加密机用 SM2 私钥对 sm4 密文解密得到 sm4_key;</p>
+<li>
+<p>加密机用 SM2 私钥对 sm4 密文解密得到 sm4_key;</p>
 </li>
-<li><p>机密机用 SM2 私钥对 sm4_transfer_cipher_key 解密得到 sm4_transfer_key;</p>
+<li>
+<p>机密机用 SM2 私钥对 sm4_transfer_cipher_key 解密得到 sm4_transfer_key;</p>
 </li>
-<li><p>加密机用 sm4_transfer 对 sm4_key 加密 sm4_key_cipher_transfer 并返回;</p>
+<li>
+<p>加密机用 sm4_transfer 对 sm4_key 加密 sm4_key_cipher_transfer 并返回;</p>
 </li>
-<li><p>加密机用 用同样的方式得到 h_mac_key_cipher_transfer 并返回;</p>
+<li>
+<p>加密机用 用同样的方式得到 h_mac_key_cipher_transfer 并返回;</p>
 </li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>4、服务端获取 SM4 密钥明文与 h_mac_key 明文并缓存作为后续报文交互</strong></p>
-<p>&ensp;&ensp;&ensp;&ensp; <strong>5、报文通讯加解密</strong></p>
+<p>     <strong>4、服务端获取 SM4 密钥明文与 h_mac_key 明文并缓存作为后续报文交互</strong></p>
+<p>     <strong>5、报文通讯加解密</strong></p>
 <ul>
-<li><p>客户端使用 sm4_key 对交易明文加密得到交易密文；</p>
+<li>
+<p>客户端使用 sm4_key 对交易明文加密得到交易密文；</p>
 </li>
-<li><p>客户端使用 h_mac_key 对交易明文计算 hmac ；</p>
+<li>
+<p>客户端使用 h_mac_key 对交易明文计算 hmac ；</p>
 </li>
-<li><p>客户端上送通讯加密报文（交易密文+hmac）；</p>
+<li>
+<p>客户端上送通讯加密报文（交易密文+hmac）；</p>
 </li>
-<li><p>服务端接收到通讯加密报文后使用 sm4_key 进行解密得到交易明文，使用 h_mac_key 对交易明文计算 hmac 并与上送的 hmac 进行对比校验报文的完整性。</p>
+<li>
+<p>服务端接收到通讯加密报文后使用 sm4_key 进行解密得到交易明文，使用 h_mac_key 对交易明文计算 hmac 并与上送的 hmac 进行对比校验报文的完整性。</p>
 </li>
 </ul>
 <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E5%AF%86%E7%A0%81%E6%9C%BA%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1%E7%AC%AC%E4%BA%8C%E7%89%88.png" alt="基于密码机转加密的握手式国密通信第二版"></p>
-<p>&ensp;&ensp;&ensp;&ensp; 由于密码机接口的设计问题，上述 3 步骤中，需要调用密码机两次，分别发送 sm4_key 和 h_mac_key 给服务端。修改为第二版之后，h_mac_key 用 sm4_key 进行 SM4 加密，这样经过服务端转加密流程解出 sm4_key 之后，直接解密 h_mac_cipher_key 得到 h_mac_key。</p>
+<p>     由于密码机接口的设计问题，上述 3 步骤中，需要调用密码机两次，分别发送 sm4_key 和 h_mac_key 给服务端。修改为第二版之后，h_mac_key 用 sm4_key 进行 SM4 加密，这样经过服务端转加密流程解出 sm4_key 之后，直接解密 h_mac_cipher_key 得到 h_mac_key。</p>
  
       <!-- reward -->
       

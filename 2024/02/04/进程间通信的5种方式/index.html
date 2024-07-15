@@ -41,7 +41,7 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
   </html>
 </html>
 
@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">408</span>
+            <span class="post-count">384</span>
         </span>
     </span>
 
@@ -104,15 +104,14 @@
        
   <p>以下是类UNIX操作系统（如Linux）中常见的5种通讯机制。</p>
 <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F.jpeg" alt="进程间通信的5种方式"></p>
-<p>&ensp;&ensp;&ensp;&ensp; 管道（Pipes）:管道是指连接两个或多个进程的输入和输出，常用于流式传输数据。例如，shell脚本通常使用管道运算符“|” 将命令链接在一起：</p>
+<p>     管道（Pipes）:管道是指连接两个或多个进程的输入和输出，常用于流式传输数据。例如，shell脚本通常使用管道运算符“|” 将命令链接在一起：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/syslog | grep &#x27;error&#x27; | less</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 消息队列（Message Queues）：消息队列通过允许进程以消息的形式交换数据来提供异步通信。写入队列的消息按先进先出的顺序处理。</p>
+<p>     消息队列（Message Queues）：消息队列通过允许进程以消息的形式交换数据来提供异步通信。写入队列的消息按先进先出的顺序处理。</p>
 <p>例如，服务器可能将作业分派到队列中，消费守护进程从中拉取并独立处理。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 信号（Signals）：信号提供了一种通知系统，能够让进程立即收到重要事件，如被强制终止。例如，SIGKILL提供了一种可靠的方法来结束无响应的应用程序。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 信号量（Semaphores）：信号量是是一种在多线程环境中使用的同步机制，旨在确保多个线程不会同时访问同一块共享内存区域或其他临界资源。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 共享内存（Shared Memory）：共享内存是允许直接访问共享内存区域，以便多个进程可以高效地读取和修改数据，而无需复制。一个示例用例是处理大型图像帧的程序，其中多个进程可以同时访问和处理图像的不同部分。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 这些IPC机制有时被组合在一起以实现高效的进程通信。</p>
+<p>     信号（Signals）：信号提供了一种通知系统，能够让进程立即收到重要事件，如被强制终止。例如，SIGKILL提供了一种可靠的方法来结束无响应的应用程序。</p>
+<p>     信号量（Semaphores）：信号量是是一种在多线程环境中使用的同步机制，旨在确保多个线程不会同时访问同一块共享内存区域或其他临界资源。</p>
+<p>     共享内存（Shared Memory）：共享内存是允许直接访问共享内存区域，以便多个进程可以高效地读取和修改数据，而无需复制。一个示例用例是处理大型图像帧的程序，其中多个进程可以同时访问和处理图像的不同部分。</p>
+<p>     这些IPC机制有时被组合在一起以实现高效的进程通信。</p>
  
       <!-- reward -->
       

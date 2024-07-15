@@ -41,7 +41,7 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
   </html>
 </html>
 
@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">214</span>
+            <span class="post-count">202</span>
         </span>
     </span>
 
@@ -102,15 +102,14 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>&ensp;&ensp;&ensp;&ensp; C++ 中有两种类型的表达式：</p>
+  <p>     C++ 中有两种类型的表达式：</p>
 <ul>
 <li>左值（lvalue）：指向内存位置的表达式被称为左值（lvalue）表达式。左值可以出现在赋值号的左边或右边。</li>
 <li>右值（rvalue）：术语右值（rvalue）指的是存储在内存中某些地址的数值。右值是不能对其进行赋值的表达式，也就是说，右值可以出现在赋值号的右边，但不能出现在赋值号的左边。</li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 变量是左值，因此可以出现在赋值号的左边。数值型的字面值是右值，因此不能被赋值，不能出现在赋值号的左边。下面是一个有效的语句：</p>
+<p>     变量是左值，因此可以出现在赋值号的左边。数值型的字面值是右值，因此不能被赋值，不能出现在赋值号的左边。下面是一个有效的语句：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> g = <span class="number">20</span>;</span><br></pre></td></tr></table></figure>
-
-<p>&ensp;&ensp;&ensp;&ensp; 但是下面这个就不是一个有效的语句，会生成编译时错误：</p>
+<p>     但是下面这个就不是一个有效的语句，会生成编译时错误：</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> = <span class="number">20</span>;</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       

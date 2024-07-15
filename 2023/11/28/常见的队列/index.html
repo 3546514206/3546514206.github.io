@@ -41,7 +41,7 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
   </html>
 </html>
 
@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">428</span>
+            <span class="post-count">400</span>
         </span>
     </span>
 
@@ -102,26 +102,26 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>&ensp;&ensp;&ensp;&ensp; 队列是系统中广泛使用的流行数据结构。上图显示了我们经常使用的4种不同类型的队列。</p>
+  <p>     队列是系统中广泛使用的流行数据结构。上图显示了我们经常使用的4种不同类型的队列。</p>
 <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/%E5%B8%B8%E8%A7%81%E7%9A%84%E9%98%9F%E5%88%97/640.gif" alt="常见的队列"></p>
 <ul>
 <li><strong>简单的FIFO队列</strong></li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 简单队列遵循 FIFO（先进先出）。新元素插入到队列的尾部，元素从队列的头部移除。如果我们想在收到付款响应时向用户发送电子邮件通知，我们可以使用 FIFO 队列。电子邮件将以与付款响应相同的顺序发送。</p>
+<p>     简单队列遵循 FIFO（先进先出）。新元素插入到队列的尾部，元素从队列的头部移除。如果我们想在收到付款响应时向用户发送电子邮件通知，我们可以使用 FIFO 队列。电子邮件将以与付款响应相同的顺序发送。</p>
 <ul>
 <li><strong>环形队列</strong></li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 环形队列也称为环形缓冲区或环形缓冲区。它的最后一个元素链接到第一个元素。插入发生在队列的前端，删除发生在队列的末尾。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 一个著名的实现是LMAX的低延迟环形缓冲区。交易组件通过环形缓冲区相互通信。这是在内存中实现的，速度非常快。</p>
+<p>     环形队列也称为环形缓冲区或环形缓冲区。它的最后一个元素链接到第一个元素。插入发生在队列的前端，删除发生在队列的末尾。</p>
+<p>     一个著名的实现是LMAX的低延迟环形缓冲区。交易组件通过环形缓冲区相互通信。这是在内存中实现的，速度非常快。</p>
 <ul>
 <li><strong>优先队列</strong></li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; 优先级队列中的元素具有预定义的优先级。我们从队列中取出具有最高（或最低）优先级的元素。在幕后，它使用最大堆或最小堆实现，其中具有最大或最低优先级的元素位于堆的根。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 一个典型的用例是将病情最严重的患者分配到急诊室，而将其他患者分配到普通病房。</p>
+<p>     优先级队列中的元素具有预定义的优先级。我们从队列中取出具有最高（或最低）优先级的元素。在幕后，它使用最大堆或最小堆实现，其中具有最大或最低优先级的元素位于堆的根。</p>
+<p>     一个典型的用例是将病情最严重的患者分配到急诊室，而将其他患者分配到普通病房。</p>
 <ul>
 <li><strong>Deque</strong></li>
 </ul>
-<p>&ensp;&ensp;&ensp;&ensp; Deque 也称为双端队列。插入和删除可以在头部和尾部同时发生。Deque 支持 FIFO 和 LIFO（后进先出），因此我们可以使用它来实现堆栈数据结构。</p>
+<p>     Deque 也称为双端队列。插入和删除可以在头部和尾部同时发生。Deque 支持 FIFO 和 LIFO（后进先出），因此我们可以使用它来实现堆栈数据结构。</p>
  
       <!-- reward -->
       

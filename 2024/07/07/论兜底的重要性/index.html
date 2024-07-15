@@ -41,7 +41,7 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
   </html>
 </html>
 
@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">363</span>
+            <span class="post-count">347</span>
         </span>
     </span>
 
@@ -103,11 +103,11 @@
     <div class="article-entry" itemprop="articleBody">
        
   <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%85%9C%E5%BA%95%E5%9C%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB.png" alt="系统调用关系"></p>
-<p>&ensp;&ensp;&ensp;&ensp; 生产环境存在如上图的调用关系，应用 AB 在往下游发起 RPC 调用时，都先去向全局的序列服务申请序列号，序列号用来作为全局流水号或者追踪号。TDSQL 架构如图：</p>
+<p>     生产环境存在如上图的调用关系，应用 AB 在往下游发起 RPC 调用时，都先去向全局的序列服务申请序列号，序列号用来作为全局流水号或者追踪号。TDSQL 架构如图：</p>
 <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%85%9C%E5%BA%95%E5%9C%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/TDSQL%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="TDSQL示意图"></p>
-<p>&ensp;&ensp;&ensp;&ensp; 三周前，TDSQL 做了序列服务数据库的机房迁移，从甲机房迁移到了乙机房，当晚验证没有问题。但是三周过后，硬件负载 F5 出了问题，导致 B 获取序列失败。由于 B 在实现上强依赖于序列服务，序列服务，整个 B 系统的所有交易都走不通了。但是 A 仍然可以正常发起 RPC 调用，因为 A 在实现上，如果调用失败，兜底的方案是会在本地生成序列。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 由于 A 应用依赖于 B 应用，而 B 缺少类似于 A 的兜底策略，导致整体对客的服务全都不可用。</p>
-<p>&ensp;&ensp;&ensp;&ensp; 事实上，序列号只不过是用来追踪程序的一个功能，A 应用的情况，就算不走全局序列服务来生成，本地生成一个序列号也没有任何影响，只不过序列服务那边溯源的时候查不到这笔交易。但是总好过 B 应用，在序列服务出问题的时候，连核心的交易都走不通要好。</p>
+<p>     三周前，TDSQL 做了序列服务数据库的机房迁移，从甲机房迁移到了乙机房，当晚验证没有问题。但是三周过后，硬件负载 F5 出了问题，导致 B 获取序列失败。由于 B 在实现上强依赖于序列服务，序列服务，整个 B 系统的所有交易都走不通了。但是 A 仍然可以正常发起 RPC 调用，因为 A 在实现上，如果调用失败，兜底的方案是会在本地生成序列。</p>
+<p>     由于 A 应用依赖于 B 应用，而 B 缺少类似于 A 的兜底策略，导致整体对客的服务全都不可用。</p>
+<p>     事实上，序列号只不过是用来追踪程序的一个功能，A 应用的情况，就算不走全局序列服务来生成，本地生成一个序列号也没有任何影响，只不过序列服务那边溯源的时候查不到这笔交易。但是总好过 B 应用，在序列服务出问题的时候，连核心的交易都走不通要好。</p>
  
       <!-- reward -->
       
