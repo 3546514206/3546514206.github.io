@@ -4,49 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cb472e6e-7aa8-4c19-ab82-6e536f95f0fc" name="更改" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023/05/02/做个狠人/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/05/02/做个狠人/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023/06/06/学习的本质/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/06/06/学习的本质/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023/06/29/风起于青萍之末，止于草莽之间/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/06/29/风起于青萍之末，止于草莽之间/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023/09/18/大大方方去做想要做的事情/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/09/18/大大方方去做想要做的事情/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023/11/14/允许一切发生/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/11/14/允许一切发生/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023/12/01/男人开始变成熟的迹象/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/12/01/男人开始变成熟的迹象/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023/12/21/永远不要觉得尴尬和丢脸/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/12/21/永远不要觉得尴尬和丢脸/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2024/01/02/强者思维：你根本不用害怕任何人/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2024/01/02/强者思维：你根本不用害怕任何人/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2024/07/06/日志框架简史/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2024/07/06/日志框架简史/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2024/07/15/大脑拯救计划/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2024/07/15/大脑拯救计划/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/4/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/5/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/6/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/6/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/8/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/8/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/page/9/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/9/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pic/基本功/编程基础/常见的算法时间复杂度/复杂度.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/search.xml" afterDir="false" />
-    </list>
+    <list default="true" id="cb472e6e-7aa8-4c19-ab82-6e536f95f0fc" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="杨海波 &lt;3546514206@qq.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "3546514206"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;3546514206&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "git@github.com:3546514206/3546514206.github.io.git",
-    "accountId": "b94641d1-aa93-491a-b624-cd0142bc87d2"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:3546514206/3546514206.github.io.git&quot;,
+    &quot;accountId&quot;: &quot;b94641d1-aa93-491a-b624-cd0142bc87d2&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -55,9 +38,9 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2jJ2UYgSDV8sKvuOTbgf9xYJWfy" />
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
@@ -68,20 +51,20 @@
     <option name="showLibraryContents" value="true" />
     <option name="showMembers" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.sync",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -100,10 +83,24 @@
       <updated>1711779851164</updated>
       <workItem from="1711779852193" duration="398000" />
       <workItem from="1721090876128" duration="348000" />
+      <workItem from="1721091252841" duration="1931000" />
     </task>
+    <task id="LOCAL-00001" summary="更新">
+      <option name="closed" value="true" />
+      <created>1721091301235</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1721091301235</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新" />
   </component>
 </project>
