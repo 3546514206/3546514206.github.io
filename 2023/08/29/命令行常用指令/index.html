@@ -80,7 +80,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">441</span>
+            <span class="post-count">475</span>
         </span>
     </span>
 
@@ -120,7 +120,8 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前 shell 是 zsh 还是 bash</span></span><br><span class="line">dscl . -read /Users/$USER UserShell</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果是 bash</span></span><br><span class="line">open ~/.bash_profile</span><br><span class="line">source ~/.bash_profile</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> 如果是 zsh</span></span><br><span class="line">open ~/.zshrc </span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
 <p>   IDEA 相关</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决 Goland 无法调试的问题。在 bin/goland.vmoptions 增加如下虚拟机参数</span></span><br><span class="line">-Djava.net.preferIPv4Stack=true</span><br><span class="line">-Djava.net.preferIPv6Addresses=true</span><br></pre></td></tr></table></figure>
- 
+<p>   ““prettyZoo.app”已损坏，无法打开。 您应该将它移到废纸篓。” 解决办法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xattr -rd com.apple.quarantine &#x27;/Applications/prettyZoo.app&#x27;</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
       <div id="reword-out">
