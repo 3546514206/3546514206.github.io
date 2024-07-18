@@ -1,6 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Kubernetes中原生的Sidecar容器</title>
+    <url>/2024/07/18/Kubernetes%E4%B8%AD%E5%8E%9F%E7%94%9F%E7%9A%84Sidecar%E5%AE%B9%E5%99%A8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="1-sidecar容器的概念"><strong>1、Sidecar容器的概念</strong></h4>
+<p>     sidecar 容器的概念在 Kubernetes 早期就已经存在。多年来，sidecar 模式在应用程序中变得越来越普遍，使用场景也变得更加多样化。其中比较经典的就是 Istio 通过 sidecar 容器实现了服务网格的功能，Envoy 作为 sidecar 容器与应用程序容器一起运行，负责处理所有的网络流量，实现了服务之间的安全通信、流量管理、监控等功能。</p>
+<p><img src="/pic/Kubernetes%E4%B8%AD%E5%8E%9F%E7%94%9F%E7%9A%84Sidecar%E5%AE%B9%E5%99%A8/sidecar.webp" alt="sidecar"></p>
+<h4 id="2-当前sidecar容器的问题"><strong>2、当前Sidecar容器的问题</strong></h4>
+<p>     当前的 Kubernetes 原语可以很好地处理这种模式，但是对于几个用例来说，它们还存在着不足，并且迫使应用程序采用奇怪的变通方法。</p>
+<h4 id="2-1-问题-1：使用-sidecar-容器的-job"><strong>2.1、问题 1：使用 Sidecar 容器的 Job</strong></h4>
+<p>     假设你有一个 Job，其中包含两个容器：一个是用于执行作业的主容器，另一个只是完成辅助任务的 sidecar 容器。这个辅助容器可以是用于服务网格、收集指标或者日志的服务等等。当 Job 中的主容器完成任务退出时，由于 sidecar 容器还在运行，最终会导致 Pod 无法正常终止。此外，对于 restartPolicy:Never 的 Job，当 sidecar 容器因为 OOM 被杀死时，它不会被重新启动，如果 sidecar 容器为其他容器提供网络或者安全通信，这可能会导致 Pod 无法使用。</p>
+<p>     下面我们可以通过一个简单的例子来演示这个问题。下面是一个 Job 的 YAML 文件，其中包含两个容器：一个是主容器 main-container-1，另一个是 sidecar 容器 sidecar-container-1。main-container-1 容器在完成一些任务后会正常退出，而 sidecar-container-1 容器会则一直运行。</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">batch/v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Job</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">myapp</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">template:</span></span><br><span class="line">    <span class="attr">spec:</span></span><br><span class="line">      <span class="attr">containers:</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">main-container-1</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">busybox:1.35</span></span><br><span class="line">          <span class="attr">command:</span> [<span class="string">&quot;sh&quot;</span>, <span class="string">&quot;-c&quot;</span>]</span><br><span class="line">          <span class="attr">args:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">|</span></span><br><span class="line"><span class="string">              echo &quot;main container is starting...&quot;</span></span><br><span class="line"><span class="string">              for i in $(seq 1 5); do</span></span><br><span class="line"><span class="string">                echo &quot;main container is doing some task: $i/5&quot;</span></span><br><span class="line"><span class="string">                sleep 3</span></span><br><span class="line"><span class="string">              done</span></span><br><span class="line"><span class="string">              echo &quot;main container completed tasks and exited&quot;</span></span><br><span class="line"><span class="string"></span>        <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">sidecar-container-1</span></span><br><span class="line">          <span class="attr">image:</span> <span class="string">busybox:1.35</span></span><br><span class="line">          <span class="attr">command:</span> [<span class="string">&quot;sh&quot;</span>, <span class="string">&quot;-c&quot;</span>]</span><br><span class="line">          <span class="attr">args:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">|</span></span><br><span class="line"><span class="string">              echo &quot;sidecar container is starting...&quot;</span></span><br><span class="line"><span class="string">              while true; do</span></span><br><span class="line"><span class="string">                echo &quot;sidecar container is collecting logs...&quot;</span></span><br><span class="line"><span class="string">                sleep 1</span></span><br><span class="line"><span class="string">              done</span></span><br><span class="line"><span class="string"></span>      <span class="attr">restartPolicy:</span> <span class="string">OnFailure</span></span><br></pre></td></tr></table></figure>
+<p>     执行以下命令应用上面的 Job 资源。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kubectl apply -f 1-job-cannot-complete.yaml</span><br></pre></td></tr></table></figure>
+<p>     在本文的实验中，我们会在一个 Pod 中同时运行多个容器，为了方便观察日志，我们可以使用 stern 这个开源工具。 stern 允许我们同时查看多个 Pod 中多个容器的日志，并且以不同颜色进行显示，方便我们直观地进行区分。</p>
+<p>     执行以下命令查看 myapp Pod 中所有容器的日志：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># --diff-container 参数会为每个容器的日志添加不同的颜色，默认情况下，只会为每个 Pod 的日志添加不同的颜色</span></span><br><span class="line">stern myapp --diff-container</span><br></pre></td></tr></table></figure>
+<p>     从日志中可以看到，main-container-1 容器完成任务后正常退出，而 sidecar-container-1 还在持续运行，最终导致这个 Job 无法正常结束。</p>
+<p><img src="/pic/Kubernetes%E4%B8%AD%E5%8E%9F%E7%94%9F%E7%9A%84Sidecar%E5%AE%B9%E5%99%A8/%E8%BE%B9%E8%BD%A6%E5%AE%B9%E5%99%A8%E6%97%A5%E5%BF%97.webp" alt="边车容器日志"></p>
+<p>     如果我们提前在另一个窗口执行 kubectl get pod -w 命令，可以观察到 Pod 的状态变化如下：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">NAME          READY   STATUS    RESTARTS   AGE</span><br><span class="line">myapp-fdpb7   0/2     Pending   0          0s</span><br><span class="line">myapp-fdpb7   0/2     Pending   0          0s</span><br><span class="line">myapp-fdpb7   0/2     ContainerCreating   0          0s</span><br><span class="line">myapp-fdpb7   2/2     Running             0          2s</span><br><span class="line">myapp-fdpb7   1/2     NotReady            0          17s</span><br></pre></td></tr></table></figure>
+<p>     每行状态的解释如下，完整的 Pod 资源内容请查看 logs/1-job-cannot-complete-status.yaml 文件：</p>
+<p>     1.Pod 创建后还未被调度，Pod 的 Phase 为 Pending。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">status:</span><br><span class="line">  phase: Pending</span><br><span class="line">  qosClass: BestEffort</span><br></pre></td></tr></table></figure>
+<p>     2.Pod 已经被调度到 Node 上，但是容器还未被创建，Pod 的 Phase 还是 Pending。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">status:</span><br><span class="line">  conditions:</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br><span class="line">      status: <span class="string">&quot;True&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: PodScheduled <span class="comment"># Pod 已经被调度到 Node 上</span></span><br><span class="line">  phase: Pending</span><br><span class="line">  qosClass: BestEffort</span><br></pre></td></tr></table></figure>
+<p>     3.正在等待创建容器，Pod 还没有处于 Ready 状态，Pod 的 Phase 仍为 Pending。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">status:</span><br><span class="line">  conditions:</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br><span class="line">      status: <span class="string">&quot;True&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: Initialized</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br><span class="line">      message: <span class="string">&#x27;containers with unready status: [main-container-1 sidecar-container-1]&#x27;</span></span><br><span class="line">      reason: ContainersNotReady</span><br><span class="line">      status: <span class="string">&quot;False&quot;</span> <span class="comment"># Pod 还没有处于 Ready 状态</span></span><br><span class="line">      <span class="built_in">type</span>: Ready</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br><span class="line">      message: <span class="string">&#x27;containers with unready status: [main-container-1 sidecar-container-1]&#x27;</span></span><br><span class="line">      reason: ContainersNotReady</span><br><span class="line">      status: <span class="string">&quot;False&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: ContainersReady</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br><span class="line">      status: <span class="string">&quot;True&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: PodScheduled</span><br><span class="line">  containerStatuses:</span><br><span class="line">    - image: busybox:1.35</span><br><span class="line">      imageID: <span class="string">&quot;&quot;</span></span><br><span class="line">      lastState: &#123;&#125;</span><br><span class="line">      name: main-container-1</span><br><span class="line">      ready: <span class="literal">false</span></span><br><span class="line">      restartCount: 0</span><br><span class="line">      started: <span class="literal">false</span></span><br><span class="line">      state:</span><br><span class="line">        waiting: <span class="comment"># 等待容器创建完成</span></span><br><span class="line">          reason: ContainerCreating </span><br><span class="line">    - image: busybox:1.35</span><br><span class="line">      imageID: <span class="string">&quot;&quot;</span></span><br><span class="line">      lastState: &#123;&#125;</span><br><span class="line">      name: sidecar-container-1</span><br><span class="line">      ready: <span class="literal">false</span></span><br><span class="line">      restartCount: 0</span><br><span class="line">      started: <span class="literal">false</span></span><br><span class="line">      state:</span><br><span class="line">        waiting: <span class="comment"># 等待容器创建完成</span></span><br><span class="line">          reason: ContainerCreating</span><br><span class="line">  hostIP: 172.19.0.2</span><br><span class="line">  phase: Pending</span><br><span class="line">  qosClass: BestEffort</span><br><span class="line">  startTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br></pre></td></tr></table></figure>
+<p>     4.所有容器在运行中，Pod 的 Phase 变为 Running。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">status:</span><br><span class="line">  conditions:</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br><span class="line">      status: <span class="string">&quot;True&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: Initialized</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:27Z&quot;</span></span><br><span class="line">      status: <span class="string">&quot;True&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: Ready</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:27Z&quot;</span></span><br><span class="line">      status: <span class="string">&quot;True&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: ContainersReady</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br><span class="line">      status: <span class="string">&quot;True&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: PodScheduled</span><br><span class="line">  containerStatuses:</span><br><span class="line">    - containerID: containerd://af182325a9bb106697dc56f7ff25e96d6dd22d45eb134990d9c4820349c11232</span><br><span class="line">      image: docker.io/library/busybox:1.35</span><br><span class="line">      imageID: docker.io/library/busybox@sha256:469d6089bc898ead80a47dab258a127ffdae15342eab860be3be9ed2acdee33b</span><br><span class="line">      lastState: &#123;&#125;</span><br><span class="line">      name: main-container-1</span><br><span class="line">      ready: <span class="literal">true</span></span><br><span class="line">      restartCount: 0</span><br><span class="line">      started: <span class="literal">true</span></span><br><span class="line">      state:</span><br><span class="line">        running: <span class="comment"># 主容器在运行中</span></span><br><span class="line">          startedAt: <span class="string">&quot;2024-05-28T13:05:26Z&quot;</span></span><br><span class="line">    - containerID: containerd://fb24805ffe5ee1fddb64a728ee8853299f9c093b2722b77d54808d9821b90b0e</span><br><span class="line">      image: docker.io/library/busybox:1.35</span><br><span class="line">      imageID: docker.io/library/busybox@sha256:469d6089bc898ead80a47dab258a127ffdae15342eab860be3be9ed2acdee33b</span><br><span class="line">      lastState: &#123;&#125;</span><br><span class="line">      name: sidecar-container-1</span><br><span class="line">      ready: <span class="literal">true</span></span><br><span class="line">      restartCount: 0</span><br><span class="line">      started: <span class="literal">true</span></span><br><span class="line">      state:</span><br><span class="line">        running: <span class="comment"># sidecar 容器在运行中</span></span><br><span class="line">          startedAt: <span class="string">&quot;2024-05-28T13:05:26Z&quot;</span></span><br><span class="line">  hostIP: 172.19.0.2</span><br><span class="line">  phase: Running</span><br><span class="line">  podIP: 10.244.0.7</span><br><span class="line">  podIPs:</span><br><span class="line">    - ip: 10.244.0.7</span><br><span class="line">  qosClass: BestEffort</span><br><span class="line">  startTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br></pre></td></tr></table></figure>
+<p>     5.main-container-1 容器完成任务后正常退出，而 sidecar-container-1 还在持续运行，最终这个 Job 无法正常结束。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">status:</span><br><span class="line">  conditions:</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br><span class="line">      status: <span class="string">&quot;True&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: Initialized</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:42Z&quot;</span></span><br><span class="line">      message: <span class="string">&#x27;containers with unready status: [main-container-1]&#x27;</span></span><br><span class="line">      reason: ContainersNotReady</span><br><span class="line">      status: <span class="string">&quot;False&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: Ready</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:42Z&quot;</span></span><br><span class="line">      message: <span class="string">&#x27;containers with unready status: [main-container-1]&#x27;</span></span><br><span class="line">      reason: ContainersNotReady</span><br><span class="line">      status: <span class="string">&quot;False&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: ContainersReady</span><br><span class="line">    - lastProbeTime: null</span><br><span class="line">      lastTransitionTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br><span class="line">      status: <span class="string">&quot;True&quot;</span></span><br><span class="line">      <span class="built_in">type</span>: PodScheduled</span><br><span class="line">  containerStatuses:</span><br><span class="line">    - containerID: containerd://af182325a9bb106697dc56f7ff25e96d6dd22d45eb134990d9c4820349c11232</span><br><span class="line">      image: docker.io/library/busybox:1.35</span><br><span class="line">      imageID: docker.io/library/busybox@sha256:469d6089bc898ead80a47dab258a127ffdae15342eab860be3be9ed2acdee33b</span><br><span class="line">      lastState: &#123;&#125;</span><br><span class="line">      name: main-container-1</span><br><span class="line">      ready: <span class="literal">false</span></span><br><span class="line">      restartCount: 0</span><br><span class="line">      started: <span class="literal">false</span></span><br><span class="line">      state:</span><br><span class="line">        terminated: <span class="comment"># 主容器已经正常退出</span></span><br><span class="line">          containerID: containerd://af182325a9bb106697dc56f7ff25e96d6dd22d45eb134990d9c4820349c11232</span><br><span class="line">          exitCode: 0</span><br><span class="line">          finishedAt: <span class="string">&quot;2024-05-28T13:05:41Z&quot;</span></span><br><span class="line">          reason: Completed</span><br><span class="line">          startedAt: <span class="string">&quot;2024-05-28T13:05:26Z&quot;</span></span><br><span class="line">    - containerID: containerd://fb24805ffe5ee1fddb64a728ee8853299f9c093b2722b77d54808d9821b90b0e</span><br><span class="line">      image: docker.io/library/busybox:1.35</span><br><span class="line">      imageID: docker.io/library/busybox@sha256:469d6089bc898ead80a47dab258a127ffdae15342eab860be3be9ed2acdee33b</span><br><span class="line">      lastState: &#123;&#125;</span><br><span class="line">      name: sidecar-container-1</span><br><span class="line">      ready: <span class="literal">true</span></span><br><span class="line">      restartCount: 0</span><br><span class="line">      started: <span class="literal">true</span></span><br><span class="line">      state:</span><br><span class="line">        running: <span class="comment"># sidecar 容器还在继续运行</span></span><br><span class="line">          startedAt: <span class="string">&quot;2024-05-28T13:05:26Z&quot;</span></span><br><span class="line">  hostIP: 172.19.0.2</span><br><span class="line">  phase: Running</span><br><span class="line">  podIP: 10.244.0.7</span><br><span class="line">  podIPs:</span><br><span class="line">    - ip: 10.244.0.7</span><br><span class="line">  qosClass: BestEffort</span><br><span class="line">  startTime: <span class="string">&quot;2024-05-28T13:05:25Z&quot;</span></span><br></pre></td></tr></table></figure>
+<p>     下面这张图展示了上面描述的 Pod 状态变化过程：</p>
+<p><img src="/pic/Kubernetes%E4%B8%AD%E5%8E%9F%E7%94%9F%E7%9A%84Sidecar%E5%AE%B9%E5%99%A8/Pod%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E8%BF%87%E7%A8%8B.webp" alt="Pod 状态变化过程"></p>
+<p>     这里有几个地方需要解释一下，在我们观察容器和 Pod 的状态时，Kubernetes 提供了一些字段来帮助我们理解 Pod 的状态：</p>
+<p>     <strong>Pod phase:</strong> Pod phase 是对 Pod 在其生命周期中所处位置的一个高层次的概括，包括 Pending、Running、Succeeded、Failed 和 Unknown。</p>
+<ul>
+<li>
+<p>Pending：Pod 已被 Kubernetes 系统接受，但有一个或者多个容器尚未被创建。此阶段包括等待 Pod 被调度的时间和通过网络下载镜像的时间。</p>
+</li>
+<li>
+<p>Running：Pod 中的所有容器都已经被创建，并且至少有一个容器正在运行，或者正在启动或者重启。</p>
+</li>
+<li>
+<p>Succeeded：Pod 中的所有容器都已经成功终止，并且不会再重启。</p>
+</li>
+<li>
+<p>Failed：Pod 中的所有容器都已经终止，但至少有一个容器是因为失败而终止。</p>
+</li>
+<li>
+<p>Unknown：Pod 的状态无法被获取，通常是由于与 Pod 应该运行的节点通信失败导致的。</p>
+</li>
+</ul>
+<p>     <strong>Container states:</strong> 容器的状态，包括 Waiting、Running 和 Terminated。我在上图右边部分的方框中用不同的颜色标记了这三种 Container states，另外在括号内部还对相同 Container states 的不同情况作了区分。</p>
+<ul>
+<li>
+<p>Waiting：容器正在等待某些条件满足，例如正在拉取镜像，或者应用 Secret 数据。</p>
+</li>
+<li>
+<p>Running：容器正在运行中。</p>
+</li>
+<li>
+<p>Terminated：容器已经终止，可能是正常结束或者因为某些原因失败。如果你使用 kubectl describe pod 或者 kubectl get pod 命令来查询包含 Terminated 状态的容器的 Pod 时， 你会看到容器进入此状态的原因、退出代码以及容器执行期间的起止时间。</p>
+</li>
+</ul>
+<p>     <strong>Pod Status：</strong> 在执行 kubectl get pod 命令时返回的 Pod 状态，该字段是 Pod 内所有容器状态的一个聚合，具体的源代码参见 printPod 函数.有以下几个常见的状态：</p>
+<ul>
+<li>
+<p>Init:N/M：Pod 包含 M 个 init 容器，其中 N 个已经运行完成。</p>
+</li>
+<li>
+<p>Init:Error：Pod 中的某个 init 容器执行失败。</p>
+</li>
+<li>
+<p>Init:CrashLoopBackOff：Pod 中的某个 init 容器多次失败。</p>
+</li>
+<li>
+<p>Pending：Pod 尚未开始创建 init 容器。</p>
+</li>
+<li>
+<p>PodInitializing：Pod 已经执行完所有 init 容器，在等待创建主容器。</p>
+</li>
+<li>
+<p>ContainerCreating：当 Pod 中不包含 init 容器时，在等待创建主容器时会显示这个状态。</p>
+</li>
+<li>
+<p>Running：Pod 中的所有容器都在运行中。</p>
+</li>
+</ul>
+<p>     <strong>Pod Ready：</strong> 以 Ready 的容器数量 / 所有容器的数量的形式展示。</p>
+<p>     测试完毕后，执行以下命令删除这个 Job。</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">kubectl delete -f 1-job-cannot-complete.yaml</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>云计算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>大丈夫之志</title>
     <url>/2024/07/16/%E5%A4%A7%E4%B8%88%E5%A4%AB%E4%B9%8B%E5%BF%97/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>     大丈夫身居天地之间，岂能郁郁久居人下？即使处于逆境，也当屈身守分，以待天时。夫英雄者，胸怀大志，富有良策，有包藏宇宙之机，吞吐天地之志也！</p>
@@ -13,7 +110,7 @@
   <entry>
     <title>大脑拯救计划</title>
     <url>/2024/07/15/%E5%A4%A7%E8%84%91%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer10" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer10"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/大脑拯救计划/大脑拯救计划.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer9" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer9"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/大脑拯救计划/大脑拯救计划.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>生理</tag>
@@ -126,7 +223,7 @@
   <entry>
     <title>日志框架简史</title>
     <url>/2024/07/06/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E7%AE%80%E5%8F%B2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer12" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer12"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer13" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer13"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -827,7 +924,7 @@
   <entry>
     <title>永远不要觉得尴尬和丢脸</title>
     <url>/2023/12/21/%E6%B0%B8%E8%BF%9C%E4%B8%8D%E8%A6%81%E8%A7%89%E5%BE%97%E5%B0%B4%E5%B0%AC%E5%92%8C%E4%B8%A2%E8%84%B8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer13" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer13"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/永远不要觉得尴尬和丢脸/永远不要觉得尴尬和丢脸.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer12" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer12"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/永远不要觉得尴尬和丢脸/永远不要觉得尴尬和丢脸.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -1916,7 +2013,7 @@
   <entry>
     <title>允许一切发生</title>
     <url>/2023/11/14/%E5%85%81%E8%AE%B8%E4%B8%80%E5%88%87%E5%8F%91%E7%94%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer5" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer5"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -7749,7 +7846,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>学习的本质</title>
     <url>/2023/06/06/%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%9C%AC%E8%B4%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer9" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer9"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/学习的本质/学习的本质.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer10" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer10"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/学习的本质/学习的本质.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -7758,7 +7855,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>做个狠人</title>
     <url>/2023/05/02/%E5%81%9A%E4%B8%AA%E7%8B%A0%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer5" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer5"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
