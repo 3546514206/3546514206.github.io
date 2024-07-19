@@ -421,7 +421,7 @@
 <p><img src="/pic/Kubernetes%E4%B8%AD%E5%8E%9F%E7%94%9F%E7%9A%84Sidecar%E5%AE%B9%E5%99%A8/Pod%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E8%BF%87%E7%A8%8B7.webp" alt="Pod状态变化过程7"></p>
 <p>     测试完毕后，执行以下命令删除这个 Pod。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kubectl delete -f 6-prestop-hook.yaml --force</span><br></pre></td></tr></table></figure>
-<h4 id="10-容器资源的-request-和-limit">__10、容器资源的 Request 和 Limit</h4>
+<h4 id="10-容器资源的-request-和-limit"><strong>10、容器资源的 Request 和 Limit</strong></h4>
 <p>     在 Kubernetes 中，我们可以为容器设置资源请求（request）和资源限制（limit）。当你为 Pod 中的容器指定了资源 request（请求）时，kube-scheduler 就根据该信息决定将 Pod 调度到哪个节点上。 当你为容器指定了资源 limit（限制） 时，kubelet 就可以确保运行的容器不会使用超出所设限制的资源。</p>
 <p>     在评估节点是否有足够的资源来运行 Pod 时，kube-scheduler 会根据不同情况来计算 Pod 中容器资源的最大请求量。在没有引入 sidecar 容器的情况下，计算方式比较简单：资源的最大请求量是单个 init 容器的最大请求量与所有主容器请求量总和之间的最大值。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Max ( Max(initContainers), Sum(Containers) )</span><br></pre></td></tr></table></figure>
@@ -815,7 +815,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <div id="dplayer13" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer13"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+  <div id="dplayer12" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer12"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
  
       <!-- reward -->
       

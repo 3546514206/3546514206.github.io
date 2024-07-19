@@ -243,7 +243,7 @@
 <p><img src="/pic/Kubernetes%E4%B8%AD%E5%8E%9F%E7%94%9F%E7%9A%84Sidecar%E5%AE%B9%E5%99%A8/Pod%E7%8A%B6%E6%80%81%E5%8F%98%E5%8C%96%E8%BF%87%E7%A8%8B7.webp" alt="Pod状态变化过程7"></p>
 <p>     测试完毕后，执行以下命令删除这个 Pod。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">kubectl delete -f 6-prestop-hook.yaml --force</span><br></pre></td></tr></table></figure>
-<h4 id="10-容器资源的-request-和-limit">__10、容器资源的 Request 和 Limit</h4>
+<h4 id="10-容器资源的-request-和-limit"><strong>10、容器资源的 Request 和 Limit</strong></h4>
 <p>     在 Kubernetes 中，我们可以为容器设置资源请求（request）和资源限制（limit）。当你为 Pod 中的容器指定了资源 request（请求）时，kube-scheduler 就根据该信息决定将 Pod 调度到哪个节点上。 当你为容器指定了资源 limit（限制） 时，kubelet 就可以确保运行的容器不会使用超出所设限制的资源。</p>
 <p>     在评估节点是否有足够的资源来运行 Pod 时，kube-scheduler 会根据不同情况来计算 Pod 中容器资源的最大请求量。在没有引入 sidecar 容器的情况下，计算方式比较简单：资源的最大请求量是单个 init 容器的最大请求量与所有主容器请求量总和之间的最大值。</p>
 <figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">Max ( Max(initContainers), Sum(Containers) )</span><br></pre></td></tr></table></figure>
@@ -391,7 +391,7 @@
   <entry>
     <title>日志框架简史</title>
     <url>/2024/07/06/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E7%AE%80%E5%8F%B2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer13" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer13"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer12" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer12"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -1092,7 +1092,7 @@
   <entry>
     <title>永远不要觉得尴尬和丢脸</title>
     <url>/2023/12/21/%E6%B0%B8%E8%BF%9C%E4%B8%8D%E8%A6%81%E8%A7%89%E5%BE%97%E5%B0%B4%E5%B0%AC%E5%92%8C%E4%B8%A2%E8%84%B8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer12" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer12"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/永远不要觉得尴尬和丢脸/永远不要觉得尴尬和丢脸.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer13" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer13"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/永远不要觉得尴尬和丢脸/永远不要觉得尴尬和丢脸.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -2181,7 +2181,7 @@
   <entry>
     <title>允许一切发生</title>
     <url>/2023/11/14/%E5%85%81%E8%AE%B8%E4%B8%80%E5%88%87%E5%8F%91%E7%94%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer5" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer5"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -8023,7 +8023,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>做个狠人</title>
     <url>/2023/05/02/%E5%81%9A%E4%B8%AA%E7%8B%A0%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer5" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer5"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
