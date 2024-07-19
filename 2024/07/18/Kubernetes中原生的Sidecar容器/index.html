@@ -374,6 +374,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">TAG=1.19.0-beta.0</span><br><span class="line">curl -L https://github.com/istio/istio/releases/download/$TAG/istio-$TAG-linux-amd64.tar.gz | tar xz</span><br><span class="line">./istioctl install --set values.pilot.env.ENABLE_NATIVE_SIDECARS=true -y</span><br></pre></td></tr></table></figure>
 <h4 id="12-总结"><strong>12、总结</strong></h4>
 <p>     本文首先回顾了传统 sidecar 模式存在的问题，包括 Job 无法正常终止、日志和指标收集不完整以及服务网格流量异常等等。随后，我们介绍了 Kubernetes 1.28 版本中引入的原生 sidecar 容器功能，这一功能旨在解决传统 sidecar 模式的局限性。我们还深入探讨了 sidecar 容器的其他特性，包括 sidecar 容器的启动顺序、重启策略、容器探针、停止顺序等。最后，我们简要地介绍了如何在 Istio 中利用原生 sidecar 容器来提升服务网格的可靠性。</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/x9bcRjWUiWdtQokHlU0MrQ">原文地址</a></p>
  
       <!-- reward -->
       
