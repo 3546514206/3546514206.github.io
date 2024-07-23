@@ -392,7 +392,7 @@
   <entry>
     <title>日志框架简史</title>
     <url>/2024/07/06/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E7%AE%80%E5%8F%B2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer12" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer12"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer13" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer13"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>Java</tag>
@@ -1120,7 +1120,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>你越静，就越赢</title>
     <url>/2024/02/12/%E4%BD%A0%E8%B6%8A%E9%9D%99%EF%BC%8C%E5%B0%B1%E8%B6%8A%E8%B5%A2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer3" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer3"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你越静，就越赢/你越静，就越赢.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer6" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer6"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你越静，就越赢/你越静，就越赢.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -1199,7 +1199,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>永远不要觉得尴尬和丢脸</title>
     <url>/2023/12/21/%E6%B0%B8%E8%BF%9C%E4%B8%8D%E8%A6%81%E8%A7%89%E5%BE%97%E5%B0%B4%E5%B0%AC%E5%92%8C%E4%B8%A2%E8%84%B8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer13" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer13"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/永远不要觉得尴尬和丢脸/永远不要觉得尴尬和丢脸.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer12" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer12"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/永远不要觉得尴尬和丢脸/永远不要觉得尴尬和丢脸.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -1414,7 +1414,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>你必须非常坚定的成为你想成为的那种人</title>
     <url>/2023/12/01/%E4%BD%A0%E5%BF%85%E9%A1%BB%E9%9D%9E%E5%B8%B8%E5%9D%9A%E5%AE%9A%E7%9A%84%E6%88%90%E4%B8%BA%E4%BD%A0%E6%83%B3%E6%88%90%E4%B8%BA%E7%9A%84%E9%82%A3%E7%A7%8D%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你必须非常坚定的成为你想成为的那种人/你必须非常坚定的成为你想成为的那种人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你必须非常坚定的成为你想成为的那种人/你必须非常坚定的成为你想成为的那种人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -2288,7 +2288,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>允许一切发生</title>
     <url>/2023/11/14/%E5%85%81%E8%AE%B8%E4%B8%80%E5%88%87%E5%8F%91%E7%94%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer6" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer6"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -2752,7 +2752,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
 <p>     抽象策略类定义了一个算法模板方法，这个模板方法规定了 exec 方法执行时发生的三个算法步骤：postChatRequest (执行前的参数处理)、doExec (执行通讯请求)、postChatResponse(通讯完成之后的响应报文处理)。但是我并没有对这三个步骤进行实现，他们都是抽象的，延迟到了将来的策略实现类去实现。</p>
 <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E6%8A%BD%E8%B1%A1%E7%AD%96%E7%95%A5%E7%B1%BB.jpg" alt="抽象策略类"></p>
 <p>     所有的策略实现类，实现的不是策略接口 IStrategy，而是继承抽象策略类 AbstractStrategy，也不再去实现 exec 方法，而是实现抽象类中算法模板规定的三个算法步骤。</p>
-<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E5%AE%9E%E7%8E%B0%E6%8A%BD%E8%B1%A1%E7%88%B6%E7%B1%BB%E7%9A%84%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95.jpg" alt="实现抽象策略类中规定的三个既定步骤"></p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E5%AE%9E%E7%8E%B0%E6%8A%BD%E8%B1%A1%E7%88%B6%E7%B1%BB%E7%9A%84%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95.PNG" alt="实现抽象策略类中规定的三个既定步骤"></p>
 <h4 id="5-其他一些想法"><strong>5、</strong> 其他一些想法</h4>
 <p>     面向对象语言最重要的三个基本特性：封装、多态、继承，是软件工程七大原则开闭原则，里氏代换原则，依赖倒转原则，接口隔离原则，迪米特原则和合成复用原则的重要支撑点，设计模式是一种如何最大化发挥三个基本特性，从而能够遵循七大原则的一种编码层级上的技术，这也是 Java、C++ 等完美支持 OOP 编程范式语言，在面临庞大复杂工程时，总能将源代码组织得很好的原因之一吧。从这个角度出发，Go 语言在多态、继承的表现力上不足，也许是因为我还比较缺乏 Go 开发的实战经验，所以我不确定在面临复杂的建模场景的时候，Go 语言的编程方式还能不能进行有效表达。</p>
 ]]></content>
@@ -8024,7 +8024,7 @@ use one vs other -->
   <entry>
     <title>做个狠人</title>
     <url>/2023/05/02/%E5%81%9A%E4%B8%AA%E7%8B%A0%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer3" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer3"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
