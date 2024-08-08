@@ -324,83 +324,6 @@
       </tags>
   </entry>
   <entry>
-    <title>基于转加密的握手式国密通信</title>
-    <url>/2024/07/13/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1.png" alt="基于转加密的握手式国密通信"></p>
-<p>     <strong>1、客户端上送 SM4 密钥密文：</strong></p>
-<ul>
-<li>
-<p>客户端根据算法生成两把 SM4 密钥:sm4_key、h_mac_key；</p>
-</li>
-<li>
-<p>客户端使用内置 SM2 公钥对 sm4_key、h_mac_key 加密得到密文 sm4_cipher_key、h_mac_cipher_key；</p>
-</li>
-<li>
-<p>调用服务端握手接口将  sm4_cipher_key、h_mac_cipher_key 发送到服务端；</p>
-</li>
-</ul>
-<p>     <strong>2、服务端转加密取 SM4 密钥报文</strong></p>
-<ul>
-<li>
-<p>服务端根据算法生成 SM4 密钥 sm4_transfer_key 用于转加密；</p>
-</li>
-<li>
-<p>服务端使用内置的 SM2 公钥对 sm4_transfer_key 加密得到密文 sm4_transfer_cipher_key；</p>
-</li>
-<li>
-<p>调用机密机接口上送 sm4_cipher_key、h_mac_cipher_key 密文和 sm4_transfer_cipher_key ；</p>
-</li>
-</ul>
-<p>     <strong>3、加密机做转加密</strong></p>
-<ul>
-<li>
-<p>加密机用 SM2 私钥对 sm4 密文解密得到 sm4_key;</p>
-</li>
-<li>
-<p>机密机用 SM2 私钥对 sm4_transfer_cipher_key 解密得到 sm4_transfer_key;</p>
-</li>
-<li>
-<p>加密机用 sm4_transfer 对 sm4_key 加密 sm4_key_cipher_transfer 并返回;</p>
-</li>
-<li>
-<p>加密机用 用同样的方式得到 h_mac_key_cipher_transfer 并返回;</p>
-</li>
-</ul>
-<p>     <strong>4、服务端获取 SM4 密钥明文与 h_mac_key 明文并缓存作为后续报文交互</strong></p>
-<p>     <strong>5、报文通讯加解密</strong></p>
-<ul>
-<li>
-<p>客户端使用 sm4_key 对交易明文加密得到交易密文；</p>
-</li>
-<li>
-<p>客户端使用 h_mac_key 对交易明文计算 hmac ；</p>
-</li>
-<li>
-<p>客户端上送通讯加密报文（交易密文+hmac）；</p>
-</li>
-<li>
-<p>服务端接收到通讯加密报文后使用 sm4_key 进行解密得到交易明文，使用 h_mac_key 对交易明文计算 hmac 并与上送的 hmac 进行对比校验报文的完整性。</p>
-</li>
-</ul>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E5%AF%86%E7%A0%81%E6%9C%BA%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1%E7%AC%AC%E4%BA%8C%E7%89%88.png" alt="基于密码机转加密的握手式国密通信第二版"></p>
-<p>     由于密码机接口的设计问题，上述 3 步骤中，需要调用密码机两次，分别发送 sm4_key 和 h_mac_key 给服务端。修改为第二版之后，h_mac_key 用 sm4_key 进行 SM4 加密，这样经过服务端转加密流程解出 sm4_key 之后，直接解密 h_mac_cipher_key 得到 h_mac_key。</p>
-]]></content>
-      <tags>
-        <tag>安全</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>基于服务端的握手式国密通信</title>
-    <url>/2024/07/11/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8F%A1%E6%89%8B%E7%9A%84%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1.drawio.png" alt="基于服务端的握手式国密通信"></p>
-<p>     <strong>基于服务端的握手式国密通信的问题</strong></p>
-<p>     私钥放在服务端，会被认为不安全。</p>
-]]></content>
-      <tags>
-        <tag>安全</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>兜底在系统设计中的重要性</title>
     <url>/2024/07/07/%E8%AE%BA%E5%85%9C%E5%BA%95%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%85%9C%E5%BA%95%E5%9C%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB.png" alt="系统调用关系"></p>
@@ -424,7 +347,7 @@
       </tags>
   </entry>
   <entry>
-    <title>GC——全流程</title>
+    <title>GC—全流程</title>
     <url>/2024/06/29/GC%E2%80%94%E5%85%A8%E8%BF%87%E7%A8%8B/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="1-minorgc-和-full-gc-区别"><strong>1、minorGC 和 Full GC 区别</strong></h4>
 <p>     新生代 GC（Minor GC）：指发生新生代的的垃圾收集动作，Minor GC 非常频繁，回收速度一般也比较快。</p>
@@ -476,7 +399,7 @@ XX:+Handle PromotionFailure，则触发MinorGC就会同时触发Full GC，哪怕
       </tags>
   </entry>
   <entry>
-    <title>GC——基础知识</title>
+    <title>GC—基础知识</title>
     <url>/2024/06/28/GC%E2%80%94%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>     JVM 的 GC 是指垃圾回收，主要是对堆内存的回收。本文将介绍 JVM 中一次完整的 GC 流程是怎样<br>
 的，首先抛出第一个问题，什么样的对象会是 JVM 回收的目标？</p>
@@ -1145,7 +1068,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>你越静，就越赢</title>
     <url>/2024/02/12/%E4%BD%A0%E8%B6%8A%E9%9D%99%EF%BC%8C%E5%B0%B1%E8%B6%8A%E8%B5%A2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer6" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer6"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你越静，就越赢/你越静，就越赢.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer3" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer3"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你越静，就越赢/你越静，就越赢.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -2313,7 +2236,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>允许一切发生</title>
     <url>/2023/11/14/%E5%85%81%E8%AE%B8%E4%B8%80%E5%88%87%E5%8F%91%E7%94%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer5" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer5"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -8022,10 +7945,87 @@ use one vs other -->
   <entry>
     <title>千万不要看见别人发光，就觉得自己黯淡</title>
     <url>/2023/07/28/%E5%8D%83%E4%B8%87%E4%B8%8D%E8%A6%81%E7%9C%8B%E8%A7%81%E5%88%AB%E4%BA%BA%E5%8F%91%E5%85%89%EF%BC%8C%E5%B0%B1%E8%A7%89%E5%BE%97%E8%87%AA%E5%B7%B1%E9%BB%AF%E6%B7%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer5" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer5"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/千万不要看见别人发光，就觉得自己黯淡/千万不要看见别人发光，就觉得自己黯淡.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer6" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer6"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/千万不要看见别人发光，就觉得自己黯淡/千万不要看见别人发光，就觉得自己黯淡.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于转加密的握手式国密通信</title>
+    <url>/2023/07/13/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1.png" alt="基于转加密的握手式国密通信"></p>
+<p>     <strong>1、客户端上送 SM4 密钥密文：</strong></p>
+<ul>
+<li>
+<p>客户端根据算法生成两把 SM4 密钥:sm4_key、h_mac_key；</p>
+</li>
+<li>
+<p>客户端使用内置 SM2 公钥对 sm4_key、h_mac_key 加密得到密文 sm4_cipher_key、h_mac_cipher_key；</p>
+</li>
+<li>
+<p>调用服务端握手接口将  sm4_cipher_key、h_mac_cipher_key 发送到服务端；</p>
+</li>
+</ul>
+<p>     <strong>2、服务端转加密取 SM4 密钥报文</strong></p>
+<ul>
+<li>
+<p>服务端根据算法生成 SM4 密钥 sm4_transfer_key 用于转加密；</p>
+</li>
+<li>
+<p>服务端使用内置的 SM2 公钥对 sm4_transfer_key 加密得到密文 sm4_transfer_cipher_key；</p>
+</li>
+<li>
+<p>调用机密机接口上送 sm4_cipher_key、h_mac_cipher_key 密文和 sm4_transfer_cipher_key ；</p>
+</li>
+</ul>
+<p>     <strong>3、加密机做转加密</strong></p>
+<ul>
+<li>
+<p>加密机用 SM2 私钥对 sm4 密文解密得到 sm4_key;</p>
+</li>
+<li>
+<p>机密机用 SM2 私钥对 sm4_transfer_cipher_key 解密得到 sm4_transfer_key;</p>
+</li>
+<li>
+<p>加密机用 sm4_transfer 对 sm4_key 加密 sm4_key_cipher_transfer 并返回;</p>
+</li>
+<li>
+<p>加密机用 用同样的方式得到 h_mac_key_cipher_transfer 并返回;</p>
+</li>
+</ul>
+<p>     <strong>4、服务端获取 SM4 密钥明文与 h_mac_key 明文并缓存作为后续报文交互</strong></p>
+<p>     <strong>5、报文通讯加解密</strong></p>
+<ul>
+<li>
+<p>客户端使用 sm4_key 对交易明文加密得到交易密文；</p>
+</li>
+<li>
+<p>客户端使用 h_mac_key 对交易明文计算 hmac ；</p>
+</li>
+<li>
+<p>客户端上送通讯加密报文（交易密文+hmac）；</p>
+</li>
+<li>
+<p>服务端接收到通讯加密报文后使用 sm4_key 进行解密得到交易明文，使用 h_mac_key 对交易明文计算 hmac 并与上送的 hmac 进行对比校验报文的完整性。</p>
+</li>
+</ul>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E5%AF%86%E7%A0%81%E6%9C%BA%E8%BD%AC%E5%8A%A0%E5%AF%86%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1%E7%AC%AC%E4%BA%8C%E7%89%88.png" alt="基于密码机转加密的握手式国密通信第二版"></p>
+<p>     由于密码机接口的设计问题，上述 3 步骤中，需要调用密码机两次，分别发送 sm4_key 和 h_mac_key 给服务端。修改为第二版之后，h_mac_key 用 sm4_key 进行 SM4 加密，这样经过服务端转加密流程解出 sm4_key 之后，直接解密 h_mac_cipher_key 得到 h_mac_key。</p>
+]]></content>
+      <tags>
+        <tag>安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>基于服务端的握手式国密通信</title>
+    <url>/2023/07/11/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E7%9A%84%E6%8F%A1%E6%89%8B%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1/%E5%9F%BA%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%8F%A1%E6%89%8B%E7%9A%84%E5%9B%BD%E5%AF%86%E9%80%9A%E4%BF%A1.drawio.png" alt="基于服务端的握手式国密通信"></p>
+<p>     <strong>基于服务端的握手式国密通信的问题</strong></p>
+<p>     私钥放在服务端，会被认为不安全。</p>
+]]></content>
+      <tags>
+        <tag>安全</tag>
       </tags>
   </entry>
   <entry>
@@ -8049,7 +8049,7 @@ use one vs other -->
   <entry>
     <title>做个狠人</title>
     <url>/2023/05/02/%E5%81%9A%E4%B8%AA%E7%8B%A0%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer3" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer3"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
