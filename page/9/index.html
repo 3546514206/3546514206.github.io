@@ -330,26 +330,28 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>   MySQL 创建数据库并指定字符集：</p>
+  <p>      MySQL 创建数据库并指定字符集：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drop schema if exists `test`;</span><br><span class="line">CREATE DATABASE `test` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;</span><br></pre></td></tr></table></figure>
-<p>   Brew 相关的</p>
+<p>      Brew 相关的</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">// 先卸载Homebrew</span><br><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/uninstall)&quot;</span><br><span class="line">// 然后在安装</span><br><span class="line">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;</span><br><span class="line">// 搜索包</span><br><span class="line">brew search mysql</span><br><span class="line">// 安装包</span><br><span class="line">brew install mysql</span><br><span class="line">// 查看包信息，比如目前的版本，依赖，安装后注意事项等</span><br><span class="line">brew info mysql</span><br><span class="line">// 卸载包</span><br><span class="line">brew uninstall wget</span><br><span class="line">// 显示已安装的包</span><br><span class="line">brew list</span><br><span class="line">// 查看brew的帮助</span><br><span class="line">brew –help</span><br><span class="line">// 更新， 这会更新 Homebrew 自己</span><br><span class="line">brew update</span><br><span class="line">// 检查过时（是否有新版本），这会列出所有安装的包里，哪些可以升级</span><br><span class="line">brew outdated</span><br><span class="line">brew outdated mysql</span><br><span class="line">// 升级所有可以升级的软件们</span><br><span class="line">brew upgrade</span><br><span class="line">brew upgrade mysql</span><br><span class="line">// 清理不需要的版本极其安装包缓存</span><br><span class="line">brew cleanup</span><br><span class="line">brew cleanup mysql</span><br></pre></td></tr></table></figure>
-<p>   MySQL 源码构建参数(将目录修改为你自己的)</p>
+<p>      MySQL 源码构建参数(将目录修改为你自己的)</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-DCMAKE_BUILD_TYPE=Debug</span><br><span class="line">-DWITH_BOOST=/Users/setsunayang/Documents/learning/mysql/boost_1_77_0</span><br><span class="line">-DCMAKE_INSTALL_PREFIX=/Users/setsunayang/Documents/learning/mysql/build</span><br><span class="line">-DWITH_SSL=system</span><br><span class="line"></span><br><span class="line">./mysqld --basedir=/Users/setsunayang/Documents/learning/mysql/build \</span><br><span class="line">--datadir=/Users/setsunayang/Documents/learning/mysql/build/data \</span><br><span class="line">--initialize-insecure --user=mysql</span><br></pre></td></tr></table></figure>
-<p>   Git 相关</p>
+<p>      Git 相关</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin </span><br><span class="line">git remote add origin [url]</span><br><span class="line">git config --global user.name &quot;杨海波&quot;</span><br><span class="line">git config --global user.email “3546514206@QQ.COM&quot;</span><br><span class="line"></span><br><span class="line">git rm -r --cached</span><br></pre></td></tr></table></figure>
-<p>   设置主机名称</p>
+<p>      设置主机名称</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo scutil --set HostName SetsunaYang</span><br></pre></td></tr></table></figure>
-<p>   Macbook Pro 显示被隐藏的文件或文件夹</p>
+<p>      Macbook Pro 显示被隐藏的文件或文件夹</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.finder AppleShowAllFiles -boolean true;killall Finder </span><br><span class="line">defaults write com.apple.finder AppleShowAllFiles -boolean false;killall Finder</span><br><span class="line"></span><br><span class="line">chflags hidden</span><br><span class="line">chflags nohidden</span><br></pre></td></tr></table></figure>
-<p>   设置环境变量</p>
+<p>      设置环境变量</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;export PATH=&quot;/opt/homebrew/opt/go@1.20/bin:$PATH&quot;&#x27; &gt;&gt; ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>   修改环境变量相关</p>
+<p>      修改环境变量相关</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看当前 shell 是 zsh 还是 bash</span></span><br><span class="line">dscl . -read /Users/$USER UserShell</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果是 bash</span></span><br><span class="line">open ~/.bash_profile</span><br><span class="line">source ~/.bash_profile</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"> 如果是 zsh</span></span><br><span class="line">open ~/.zshrc </span><br><span class="line">source ~/.zshrc</span><br></pre></td></tr></table></figure>
-<p>   IDEA 相关</p>
+<p>      IDEA 相关</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解决 Goland 无法调试的问题。在 bin/goland.vmoptions 增加如下虚拟机参数</span></span><br><span class="line">-Djava.net.preferIPv4Stack=true</span><br><span class="line">-Djava.net.preferIPv6Addresses=true</span><br></pre></td></tr></table></figure>
-<p>   ““prettyZoo.app”已损坏，无法打开。 您应该将它移到废纸篓。” 解决办法</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xattr -rd com.apple.quarantine &#x27;/Applications/prettyZoo.app&#x27;</span><br></pre></td></tr></table></figure> 
+<p>      ““prettyZoo.app”已损坏，无法打开。 您应该将它移到废纸篓。” 解决办法</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo xattr -rd com.apple.quarantine &#x27;/Applications/prettyZoo.app&#x27;</span><br></pre></td></tr></table></figure>
+<p>     Jetbrains 全家桶自定义虚拟机参数</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-Xms512m</span><br><span class="line">-Xmx8192m</span><br><span class="line"></span><br><span class="line">-XX:ErrorFile=/Users/setsunayang/Documents/JetBrains/ERROR/java_error_in_web_%p.log</span><br><span class="line">-XX:HeapDumpPath=/Users/setsunayang/Documents/JetBrains/ERROR/java_error_in_web.hprof</span><br><span class="line"></span><br><span class="line">-Dide.managed.by.toolbox=/Applications/JetBrains Toolbox.app/Contents/MacOS/jetbrains-toolbox</span><br><span class="line">-Dtoolbox.notification.token=f2154f48-d8ed-468a-b154-d82403469df5</span><br><span class="line">-Dtoolbox.notification.portFile=/Users/setsunayang/Library/Caches/JetBrains/Toolbox/ports/f96117ec-2396-417f-a3d8-406dde460690.port</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>
@@ -572,7 +574,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <div id="dplayer20" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer20"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/强者气场是练出来的/强者气场是练出来的.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+  <div id="dplayer21" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer21"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/强者气场是练出来的/强者气场是练出来的.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
  
       <!-- reward -->
       
@@ -622,7 +624,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <div id="dplayer21" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer21"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/征服一个人最好的方法“弃猫效应”/征服一个人最好的方法“弃猫效应”.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+  <div id="dplayer23" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer23"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/征服一个人最好的方法“弃猫效应”/征服一个人最好的方法“弃猫效应”.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
  
       <!-- reward -->
       
