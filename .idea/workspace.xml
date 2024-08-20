@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="58df4107-ed8a-4b1c-8e8d-f2dbb64d87ad" name="更改" comment="" />
+    <list default="true" id="58df4107-ed8a-4b1c-8e8d-f2dbb64d87ad" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/2024/08/20/实现一个健康检查模块/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -102,6 +104,7 @@
       <workItem from="1723712522498" duration="609000" />
       <workItem from="1723775976723" duration="15000" />
       <workItem from="1723789124862" duration="694000" />
+      <workItem from="1724136670145" duration="103000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <option name="closed" value="true" />
@@ -279,7 +282,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723789146344</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="更新">
+      <option name="closed" value="true" />
+      <created>1724136688007</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1724136688007</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
