@@ -154,6 +154,56 @@
     
     
     <article
+  id="post-日志框架简史"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/07/06/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E7%AE%80%E5%8F%B2/"
+    >日志框架简史</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/07/06/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E7%AE%80%E5%8F%B2/" class="article-date">
+  <time datetime="2024-07-06T05:00:45.000Z" itemprop="datePublished">2024-07-06</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <div id="dplayer25" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer25"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-GC—全过程"
   class="article article-type-post"
   itemscope
@@ -277,11 +327,7 @@ XX:+Handle PromotionFailure，则触发MinorGC就会同时触发Full GC，哪怕
   <p>     JVM 的 GC 是指垃圾回收，主要是对堆内存的回收。本文将介绍 JVM 中一次完整的 GC 流程是怎样<br>
 的，首先抛出第一个问题，什么样的对象会是 JVM 回收的目标？</p>
 <h4 id="1-可达性分析算法-gc-roots"><strong>1、可达性分析算法（GC Roots）</strong></h4>
-<p>     有一种引用计数法，可以用来判断对象被引用的次数，如果引用次数为0，则代表可以被回收。这种实现<br>
-方式比较简单，但对于循环引用的情况束手无策，所以 Java 采用了可达性分析算法。即判断某个对象是否与 GC Roots 的这类对象之<br>
-间的路径可达，若不可达，则有可能成为回收对象，被判定为不可达的对象要成为可回收对象必须至少经历两次标记过程，如果在这两次标<br>
-记过程中仍然没有逃脱成为可回收对象的可能性，则基本上就真的成为可回收对象了。在 Java 中，可作为 GC Roots 的对象包括以下<br>
-几种：</p>
+<p>     有一种引用计数法，可以用来判断对象被引用的次数，如果引用次数为0，则代表可以被回收。这种实现方式比较简单，但对于循环引用的情况束手无策，所以 Java 采用了可达性分析算法。即判断某个对象是否与 GC Roots 的这类对象之间的路径可达，若不可达，则有可能成为回收对象，被判定为不可达的对象要成为可回收对象必须至少经历两次标记过程，如果在这两次标记过程中仍然没有逃脱成为可回收对象的可能性，则基本上就真的成为可回收对象了。在 Java 中，可作为 GC Roots 的对象包括以下几种：</p>
 <ul>
 <li>虚拟机栈（本地变量表）中引用的对象</li>
 <li>方法区中类静态属性引用的对象</li>
@@ -523,7 +569,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
       
     <div class="article-entry" itemprop="articleBody">
        
-  <div id="dplayer8" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer8"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你开始炫耀自己，往往都是灾难的开始/你开始炫耀自己，往往都是灾难的开始.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> 
+  <div id="dplayer7" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer7"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你开始炫耀自己，往往都是灾难的开始/你开始炫耀自己，往往都是灾难的开始.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script> 
       <!-- reward -->
       
     </div>
@@ -1172,59 +1218,6 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%88%90%E9%95%BF/" rel="tag">成长</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
-  id="post-一个粗心的Java并发问题"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2024/03/15/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/"
-    >一个粗心的Java并发问题</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2024/03/15/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/" class="article-date">
-  <time datetime="2024-03-15T08:10:28.000Z" itemprop="datePublished">2024-03-15</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0.jpg" alt="问题描述"><br>
-<img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/%E9%97%AE%E9%A2%98%E8%AF%A6%E6%83%85.jpg" alt="问题详情"><br>
-<img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/%E5%BE%AE%E8%A7%82%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5.jpg" alt="微观场景下的多线程执行情况"><br>
-<img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/%E4%BF%AE%E5%A4%8D%E4%B9%8B%E5%90%8E%E7%9A%84%E4%BB%A3%E7%A0%81.jpg" alt="修复之后的代码"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>
