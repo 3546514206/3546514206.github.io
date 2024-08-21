@@ -26,12 +26,16 @@
       </tags>
   </entry>
   <entry>
-    <title>大无语事件之离谱架构</title>
+    <title>从离谱架构到工作态度的转变</title>
     <url>/2024/08/15/%E5%A4%A7%E6%97%A0%E8%AF%AD%E4%BA%8B%E4%BB%B6/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>     生产上的应用部署图如下：</p>
 <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%A4%A7%E6%97%A0%E8%AF%AD%E4%BA%8B%E4%BB%B6/%E5%A4%A7%E6%97%A0%E8%AF%AD%E4%BA%8B%E4%BB%B6.png" alt="图一"></p>
 <p>     子应用 A 事实上是用主应用重新部署的应用，也就是说，子应用 A 和主应用其实都是全量应用。只不过子应用 A 单独处理某一类接口请求(LB做文根匹配)。但实际上，主应用的请求转发到子应用 A 上，子应用 A 也完全能够处理。</p>
 <p>     相当于什么呢，相当于淘宝有用户模块、商品模块、订单模块、支付模块。然后觉得太臃肿了就把支付模块拆出来做个支付系统，结果最终的搞法是把整个淘宝重新部署了一份，只处理支付请求，重新部署的这个淘宝叫做支付子系统。代码一点没动，甚至连仓库都没重新建。</p>
+<p>     最近经常思考当前这份工作是否值得我尽心尽力乃至于热爱，回想起种种，便得到了一个论断：职业和工作是两码事，职业值得被热爱，并不是所有的工作都配得上自己的这份热爱。</p>
+<p>     我对于写程序，还是抱有热忱。但是当前的工作：几千号人的队伍，除去一半的外包，剩下的都是没什么正规编程训练的校招生。大多数的人，连基本常识都没有。少数程序写得漂亮的，工作勤勤勉勉，却几乎没有什么抛头露面的机会，因此升职晋升的时候，他们往往被雪藏。当时在德清，辉哥离职去大学当老师之前说：“有些人写了几条 sql ，整理一下表格就说自己在做数据科学了，劣币淘汰优币到了这种程度。”人知道自己不知道还是有希望的，但是如果人不知道自己不知道，还沾沾自喜自以为了不起，那走出去，是随时会“贻笑于大方之家”的。我大学四年学习上发愤图强，毕业四年工作上勤勤勉勉，却不知怎么就混到了与这辈人为伍的地步。在这里很难找到知己，更没有志同道合的人，少数同道中人，相见恨晚，却很快又已经拿到阿里云、华为等正规部队的 offer，离开了草台班子，去到了令人向往的世界。</p>
+<p>     就这样吧，工作而已，谋生的手段罢了，不过是为了心中热爱提供必要的经济条件。</p>
+<p>     寄情于开源世界罢了。</p>
 ]]></content>
       <tags>
         <tag>架构</tag>
@@ -365,7 +369,7 @@
   <entry>
     <title>大脑拯救计划</title>
     <url>/2024/07/15/%E5%A4%A7%E8%84%91%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer18" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer18"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/大脑拯救计划/大脑拯救计划.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer16" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer16"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/大脑拯救计划/大脑拯救计划.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>生理</tag>
@@ -1203,7 +1207,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>强者思维，极简主义</title>
     <url>/2024/01/22/%E5%BC%BA%E8%80%85%E6%80%9D%E7%BB%B4%EF%BC%8C%E6%9E%81%E7%AE%80%E4%B8%BB%E4%B9%89/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer20" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer20"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/强者思维，极简主义/强者思维，极简主义.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer19" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer19"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/强者思维，极简主义/强者思维，极简主义.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -1211,7 +1215,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>一定要目中无人</title>
     <url>/2024/01/11/%E4%B8%80%E5%AE%9A%E8%A6%81%E7%9B%AE%E4%B8%AD%E6%97%A0%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/一定要目中无人/一定要目中无人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer3" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer3"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/一定要目中无人/一定要目中无人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -1219,7 +1223,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>强者思维：你根本不用害怕任何人</title>
     <url>/2024/01/02/%E5%BC%BA%E8%80%85%E6%80%9D%E7%BB%B4%EF%BC%9A%E4%BD%A0%E6%A0%B9%E6%9C%AC%E4%B8%8D%E7%94%A8%E5%AE%B3%E6%80%95%E4%BB%BB%E4%BD%95%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer19" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer19"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/强者思维：你根本不用害怕任何人/强者思维：你根本不用害怕任何人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer20" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer20"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/强者思维：你根本不用害怕任何人/强者思维：你根本不用害怕任何人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -1228,7 +1232,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>永远不要觉得尴尬和丢脸</title>
     <url>/2023/12/21/%E6%B0%B8%E8%BF%9C%E4%B8%8D%E8%A6%81%E8%A7%89%E5%BE%97%E5%B0%B4%E5%B0%AC%E5%92%8C%E4%B8%A2%E8%84%B8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer28" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer28"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/永远不要觉得尴尬和丢脸/永远不要觉得尴尬和丢脸.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer27" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer27"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/永远不要觉得尴尬和丢脸/永远不要觉得尴尬和丢脸.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -1398,7 +1402,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>男人开始变成熟的迹象</title>
     <url>/2023/12/01/%E7%94%B7%E4%BA%BA%E5%BC%80%E5%A7%8B%E5%8F%98%E6%88%90%E7%86%9F%E7%9A%84%E8%BF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer27" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer27"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/男人开始变成熟地迹象/男人开始变成熟的迹象.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer28" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer28"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/男人开始变成熟地迹象/男人开始变成熟的迹象.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -2584,7 +2588,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>一个人的觉醒，是从三观破裂开始的</title>
     <url>/2023/11/05/%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E8%A7%89%E9%86%92%EF%BC%8C%E6%98%AF%E4%BB%8E%E4%B8%89%E8%A7%82%E7%A0%B4%E8%A3%82%E5%BC%80%E5%A7%8B%E7%9A%84/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer3" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer3"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/一个人的觉醒，是从三观破裂开始的/一个人的觉醒，是从三观破裂开始的.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer2" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer2"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/一个人的觉醒，是从三观破裂开始的/一个人的觉醒，是从三观破裂开始的.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8062,7 +8066,7 @@ use one vs other -->
   <entry>
     <title>强者气场是练出来的</title>
     <url>/2023/08/03/%E5%BC%BA%E8%80%85%E6%B0%94%E5%9C%BA%E6%98%AF%E7%BB%83%E5%87%BA%E6%9D%A5%E7%9A%84/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer23" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer23"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/强者气场是练出来的/强者气场是练出来的.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer21" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer21"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/强者气场是练出来的/强者气场是练出来的.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8071,7 +8075,7 @@ use one vs other -->
   <entry>
     <title>征服一个人最好的方法“弃猫效应”</title>
     <url>/2023/07/28/%E5%BE%81%E6%9C%8D%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%9C%80%E5%A5%BD%E7%9A%84%E6%96%B9%E6%B3%95%E2%80%9C%E5%BC%83%E7%8C%AB%E6%95%88%E5%BA%94%E2%80%9D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer21" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer21"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/征服一个人最好的方法“弃猫效应”/征服一个人最好的方法“弃猫效应”.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer22" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer22"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/征服一个人最好的方法“弃猫效应”/征服一个人最好的方法“弃猫效应”.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8089,7 +8093,7 @@ use one vs other -->
   <entry>
     <title>这段话真的好暖好有力量</title>
     <url>/2023/07/17/%E8%BF%99%E6%AE%B5%E8%AF%9D%E7%9C%9F%E7%9A%84%E5%A5%BD%E6%9A%96%E5%A5%BD%E6%9C%89%E5%8A%9B%E9%87%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer35" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer35"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/这段话真的好暖好有力量/这段话真的好暖好有力量.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer32" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer32"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/这段话真的好暖好有力量/这段话真的好暖好有力量.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -8097,7 +8101,7 @@ use one vs other -->
   <entry>
     <title>高敏感人格的究极形态</title>
     <url>/2023/07/14/%E9%AB%98%E6%95%8F%E6%84%9F%E4%BA%BA%E6%A0%BC%E7%9A%84%E7%A9%B6%E6%9E%81%E5%BD%A2%E6%80%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer33" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer33"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/高敏感人格的究极形态/高敏感人格的究极形态.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer34" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer34"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/高敏感人格的究极形态/高敏感人格的究极形态.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8183,7 +8187,7 @@ use one vs other -->
   <entry>
     <title>风起于青萍之末，止于草莽之间</title>
     <url>/2023/06/29/%E9%A3%8E%E8%B5%B7%E4%BA%8E%E9%9D%92%E8%90%8D%E4%B9%8B%E6%9C%AB%EF%BC%8C%E6%AD%A2%E4%BA%8E%E8%8D%89%E8%8E%BD%E4%B9%8B%E9%97%B4/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer32" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer32"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/风起于青萍之末，止于草莽之间/风起于青萍之末，止于草莽之间.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer33" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer33"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/风起于青萍之末，止于草莽之间/风起于青萍之末，止于草莽之间.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8201,7 +8205,7 @@ use one vs other -->
   <entry>
     <title>学会忍受悬而未决的状态</title>
     <url>/2023/06/29/%E5%AD%A6%E4%BC%9A%E5%BF%8D%E5%8F%97%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer16" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer16"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/学会忍受悬而未决的状态/学会忍受悬而未决的状态.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer18" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer18"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/学会忍受悬而未决的状态/学会忍受悬而未决的状态.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8218,7 +8222,7 @@ use one vs other -->
   <entry>
     <title>高能量人格的特质</title>
     <url>/2023/06/07/%E9%AB%98%E8%83%BD%E9%87%8F%E4%BA%BA%E6%A0%BC%E7%9A%84%E7%89%B9%E8%B4%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer34" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer34"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/高能量人格的特质/高能量人格的特质.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer35" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer35"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/高能量人格的特质/高能量人格的特质.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8236,7 +8240,7 @@ use one vs other -->
   <entry>
     <title>性张力：引而不发的神秘和认真做事的专注</title>
     <url>/2023/06/04/%E6%80%A7%E5%BC%A0%E5%8A%9B%EF%BC%9A%E5%BC%95%E8%80%8C%E4%B8%8D%E5%8F%91%E7%9A%84%E7%A5%9E%E7%A7%98%E5%92%8C%E8%AE%A4%E7%9C%9F%E5%81%9A%E4%BA%8B%E7%9A%84%E4%B8%93%E6%B3%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer22" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer22"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/性张力：引而不发的神秘和认真做事的专注/性张力：引而不发的神秘和认真做事的专注.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer23" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer23"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/性张力：引而不发的神秘和认真做事的专注/性张力：引而不发的神秘和认真做事的专注.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
