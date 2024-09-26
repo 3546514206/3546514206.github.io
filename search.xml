@@ -1,12 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>数据库背后的8种关键数据结构</title>
-    <url>/2024/09/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%83%8C%E5%90%8E%E7%9A%848%E7%A7%8D%E5%85%B3%E9%94%AE%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer25" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer25"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/数据库背后的8种关键数据结构/数据库背后的8种关键数据结构.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <title>设计一个监控模块</title>
+    <url>/2024/09/23/%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><h4 id="1-监控模块设计"><strong>1、监控模块设计</strong></h4>
+<p>       要在开发平台层设计一个监控模块，提供平台级监控能力。几乎所有的监控系统都基于 CS 模式设计，监控模块也基于 CS 模式。但是开发平台层不需要自己完全实现完整的 Server 端和 Client 端。就这样设计了第一版监控模块。</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97.drawio.png" alt="第一版监控模块"></p>
+<ul>
+<li>
+<p>server 端几乎无需自己实现，Client 只需要能以主动推送或者暴露接口的形式将监控数据提交至 server 端并展示即可。</p>
+</li>
+<li>
+<p>client 端在逻辑上划分三层：数据源、采集层、接口层；</p>
+</li>
+<li>
+<p>数据层是指被采集对象的整体，监控数据源自于这里。监控数据可以是业务数据，可以是开发平台层数据，例如 rpc 调用信息，还可以直接是应用环境三方的，任何可以被应用程序获取的信息，例如：Spring Boot Actuator。</p>
+</li>
+<li>
+<p>采集层是真正需要开发平台层实现的逻辑，需要采集的各项指标待定.</p>
+</li>
+<li>
+<p>接口层负责将数据交付给展示层。</p>
+</li>
+</ul>
+<p>       UML 设计如下：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/DefaultMetricsClient.png" alt="UML"></p>
+<h4 id="2-为何-server-端不采用-spring-boot-admin"><strong>2、为何 Server 端不采用 Spring Boot Admin</strong></h4>
+<p>       Spring Boot Actuator + Spring Boot Admin 是 Spring 官方标配。但是 Spring Boot Admin 生产部署作为监控平台的很少见，并且 Spring Boot Admin 由于在数据交互上没有统一的数据规范，展示层必须针对特定数据进行前端开发（重新开发spring-boot-admin-server-ui ）。目前 Spring Boot Admin 能展示的数据主要是 JVM 的进程信息以及依赖于 Spring 环境的相关信息（环境配置、beans、web）。</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/sba.png" alt="Spring Boot Admin"></p>
+<h4 id="3-各层的理想组合"><strong>3、各层的理想组合</strong></h4>
+<p>       micrometer 的数据结构与普罗米修斯数据结构设计上一致，生产环境的监控平台 prometheus + grafana 几乎是最常见的，Sping Boot Actuator 对 prometheus 已经天然支持（spring-boot-actuator-autoconfigure  @org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration）。因此将 Sping Boot Actuator 的 prometheus 端点作为接口层，将 prometheus + grafana 作为 Server 端，micrometer 作为采集层的采集工具，是最理想的组合。可行性验证效果展示：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/grafana.png" alt="prometheus + grafana"></p>
+<h4 id="4-定制化监控系统的引入"><strong>4、定制化监控系统的引入</strong></h4>
+<p>       因为引入了一体化监控平台 XXX，开发平台要考虑将 XXX 作为 Server 端。Xxx 将监控信息抽象为 XxxBean 对象，并通过派生 XxxBean 对象得到三种监控场景。设计方案如图所示：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/Xxx1.png" alt="Xxx 设计"></p>
+<p>       除了支持上报 XxxBean 监控对象，Xxx 还支持基于日志的交易监控：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/Xxx2.png" alt="Xxx 设计"></p>
+<p>       其中需要特别说明：1）业务系统接入 Xxx 上报监控的能力，必须在业务逻辑中组装 XxxBean 模型（可用性模型、事件模型、调度模型）；2）基于日志的交易监控，必须调整应用系统的日志输出格式。</p>
+<h4 id="5-基于度量指标的通用监控设计思路"><strong>5、基于度量指标的通用监控设计思路</strong></h4>
+<p>       Xxx 从使用场景出发设计了监控平台，开发平台需要考虑更加通用开放的监控标准，基于开发的监控标准设计监控能力，再进一步将通用的监控能力运用于具体场景。</p>
+<p>       在信息技术中，监控指的是对系统、网络、应用程序、基础设施等的持续观察、测量和分析，以确保其正常运行、性能优化和安全性。让我们回到监控这件事情本身来考虑，能否基于 V1 方案中 prometheus 协议进行设计，形成通用开发的监控能力，以应对类似于一体化监控平台等诸多展示层的接入需求。</p>
+<p>       假设系统生成有度量指指标：demo_cpu_usage、demo_mem_usage、demo_transfer_amount。分别记作 a、b、c。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">prometheus 协议数据</span></span><br><span class="line">&lt;metric_name&gt;&#123;&lt;label_name&gt;=&lt;label_value&gt;, ...&#125; &lt;value&gt; &lt;timestamp&gt;</span><br><span class="line"></span><br><span class="line">a: </span><br><span class="line">demo_cpu_usage&#123;target=&quot;192.168.1.2&quot;&#125; 81 1694116786000</span><br><span class="line"></span><br><span class="line">b:</span><br><span class="line">demo_mem_uasge&#123;target=&quot;192.168.1.2&quot;&#125; 81 1694116786000</span><br><span class="line"></span><br><span class="line">c:</span><br><span class="line">demo_transfer_amount&#123;vip_user=&quot;000000123&quot;&#125; 20000000 1694116786000</span><br></pre></td></tr></table></figure>
+<p>       另外设：</p>
+<p>       bool = g(x)：x.value 必须小于 80，否则 g 函数返回 false。</p>
+<p>       float = f(x)：当 x.tag.vip_user in vip_user_list，x.value 如果大于一百万，f 则返回 x.value。</p>
+<p>       以上 g 函数和 f 函数目的是分别通用的程序监控场景和业务场景，可以根据实际需要定义出更加复杂灵活的函数法则，函数法则施加于若干监控指标，从而得到一个具体的监控场景。以 g 函数和 f 函数为例：</p>
+<p>       场景一：当 cpu 或者 mem 内存低于 80 的时候，触发可用性监控，伪代码如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if g(a) || g(b) </span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">组装可用性 XxxBean 模型</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+<p>       场景二：当 VIP 用户转账金额超过 100 万时，触发事件监控，伪代码如下：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">if  f(c) &gt; 1000000</span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">组装事件 XxxBean 模型</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
+<p>       基于以上具体案例的分析可以看出，监控模型的上报场景，完全是可以从一些自定义的监控指标中得出的，因此基于 prometheus 协议监控度量指标的封装，可以当做一种通用监控能力。基于这种能力，也可以很方便对交易进行监控，不仅是基于 Xxx 模型地监控，还是基于 prometheus 协议的监控，都有能力做到，此不赘述。</p>
+<h4 id="6-监控优化方案"><strong>6、监控优化方案</strong></h4>
+<p>       对 V1 方案优化如下：</p>
+<p>       1）采集层基于 prometheus 协议设计出度量指标公共服务 MetricsService；</p>
+<p>       2）在接口层引入度量指标汇聚层，用于汇聚各项指标数据，根据展示层实际的接入方式进行转换。</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97_01.drawio.png" alt="监控优化方案"></p>
+<h4 id="7-知识补充一：prometheus"><strong>7、知识补充一：prometheus</strong></h4>
+<p>       Prometheus 是一个开源的监控系统，可以看做是一个时序数据库，它使用一种特定的数据格式来收集和存储时间序列数据。数据类型：</p>
+<ul>
+<li>
+<p>Counter（计数器）：一个单调递增的度量值，通常用于记录事件发生的次数。例如，	HTTP 请求的计数。</p>
+</li>
+<li>
+<p>Gauge（量表）：一个可以任意增减的度量值，通常用于记录某一时刻的状态或值。例如，当前的内存使用量、CPU 使用率等。</p>
+</li>
+<li>
+<p>Histogram（直方图）：用于测量样本的分布情况，比如请求延迟。它将数据样本划分到不同的桶（buckets）中，并记录每个桶中的样本数量。</p>
+</li>
+<li>
+<p>Summary（摘要）：类似于直方图，但会额外提供请求的总数和总和，通常用于计算百分位数等聚合度量。</p>
+</li>
+</ul>
+<p>       数据格式：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">&lt;metric_name&gt;&#123;&lt;label_name&gt;=&lt;label_value&gt;, ...&#125; &lt;value&gt; &lt;timestamp&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>
+<p>&lt;metric_name&gt;: 度量名称，必须符合正则表达式 [a-zA-Z_:][a-zA-Z0-9_:]*，例如：http_requests_total。</p>
+</li>
+<li>
+<p>{&lt;label_name&gt;=&lt;label_value&gt;, …}: 可选的标签部分，用来区分不同的时间序列，例如：{method=“GET”, endpoint=&quot;/api&quot;}。</p>
+</li>
+<li>
+<p><value>: 度量的值，是一个浮点数。</p>
+</li>
+<li>
+<p><timestamp>: 可选的 UNIX 时间戳，以毫秒为单位。</p>
+</li>
+</ul>
+<p>       数据样例：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">HELP http_requests_total Total number of HTTP requests.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">TYPE http_requests_total counter</span></span><br><span class="line">http_requests_total&#123;method=&quot;GET&quot;, handler=&quot;/home&quot;&#125; 1027 1694116786000</span><br><span class="line">http_requests_total&#123;method=&quot;POST&quot;, handler=&quot;/api&quot;&#125; 521 1694116786000</span><br></pre></td></tr></table></figure>
+<h4 id="8-知识补充二：采集工具比较"><strong>8、知识补充二：采集工具比较</strong></h4>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/%E9%87%87%E9%9B%86%E5%B7%A5%E5%85%B7%E6%AF%94%E8%BE%83.png" alt="采集工具比较"></p>
 ]]></content>
       <tags>
-        <tag>数据库</tag>
+        <tag>设计</tag>
       </tags>
   </entry>
   <entry>
@@ -19,21 +107,12 @@
       </tags>
   </entry>
   <entry>
-    <title>简述互联网的工作原理</title>
-    <url>/2024/09/09/%E7%AE%80%E8%BF%B0%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer31" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer31"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/简述互联网的工作原理/简述互联网的工作原理.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <title>应用的JVM优化案例</title>
+    <url>/2024/09/05/%E5%BA%94%E7%94%A8%E7%9A%84JVM%E4%BC%98%E5%8C%96%E6%A1%88%E4%BE%8B/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/%E4%B8%80%E6%AC%A1%E5%BA%94%E7%94%A8%E7%9A%84JVM%E8%B0%83%E4%BC%98%E7%A4%BA%E4%BE%8B/JVM%E8%B0%83%E4%BC%98%E7%A4%BA%E4%BE%8B.jpg" alt="应用的JVM优化案例"></p>
 ]]></content>
       <tags>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>简述Oauth2的工作原理</title>
-    <url>/2024/09/09/%E7%AE%80%E8%BF%B0Oauth2%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer33" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer33"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/简述Oauth2的工作原理/简述Oauth2的工作原理.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
-]]></content>
-      <tags>
-        <tag>安全</tag>
+        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -58,7 +137,7 @@
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">HealthHandler</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 聚合检查信息详情的服务</span></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> HealthCheckService healthCheckService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="type">ObjectMapper</span> <span class="variable">mapper</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 存活性健康检查</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &#123;&quot;/liveness&quot;&#125;, produces = &#123;&quot;text/plain;charset=UTF-8&quot;&#125;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">liveness</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;ok&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 就绪性健康检查</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@RequestMapping(value = &#123;&quot;/readiness&quot;&#125;, produces = &#123;&quot;text/plain;charset=UTF-8&quot;&#125;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">readiness</span><span class="params">(HttpServletResponse response)</span> &#123;</span><br><span class="line">        <span class="type">Health</span> <span class="variable">health</span> <span class="operator">=</span>  healthCheckService.doHealthCheck();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果就绪检查失败，则修改返回状态码</span></span><br><span class="line">        <span class="keyword">if</span>(health.getStatus() == <span class="literal">null</span> || health.getStatus() != Status.UP)&#123;</span><br><span class="line">            response.setStatus(HttpStatus.SC_INTERNAL_SERVER_ERROR);</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        String jsonStr;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            jsonStr = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(health);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (JsonProcessingException e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">AresRuntimeException</span>(<span class="string">&quot;健康检查模块执行失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> jsonStr;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>Java</tag>
+        <tag>设计</tag>
       </tags>
   </entry>
   <entry>
@@ -66,24 +145,10 @@
     <url>/2024/08/13/%E6%9C%BA%E6%88%BF%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E5%8F%A3/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>     服务器的网络端口分为两种：电口和光口，电口就是双绞线的水晶头接口，光口是光纤接口。光口的速率远远高于电口，因此实际生产机房中，光口一般用于数据通信，电口一般用于管理通信。</p>
 <p>     下面视频中，绿色线是光纤线，白色线是双绞线：</p>
-<div id="dplayer26" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer26"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/机房服务器网口/机房服务器网口.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+<div id="dplayer28" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer28"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/机房服务器网口/机房服务器网口.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>国内外优秀技术站点汇总</title>
-    <url>/2024/08/02/%E5%9B%BD%E5%86%85%E5%A4%96%E4%BC%98%E7%A7%80%E6%8A%80%E6%9C%AF%E7%AB%99%E7%82%B9%E6%B1%87%E6%80%BB/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://tech.meituan.com/">美团技术</a></p>
-<p><a href="https://developer.aliyun.com/group/idlefish/?spm=a2c6h.12873639.0.0.2c9618dd4mdBAQ%23%2F%3F_k%3Dkhoksz&amp;accounttraceid=e4dc90287c814d14a8849e3d9e9b8cf3glls#/">咸鱼技术</a></p>
-<p><a href="https://bugstack.cn/">小傅哥bugstack虫洞栈</a></p>
-<p><a href="https://javabetter.cn/">二哥的Java进阶之路</a></p>
-<p><a href="https://github.com/doocs/source-code-hunter">互联网公司常用框架源码赏析</a></p>
-<p><a href="https://cn.dubbo.apache.org/zh-cn/overview/home/">dubbo官方文档</a></p>
-]]></content>
-      <tags>
-        <tag>互联网</tag>
       </tags>
   </entry>
   <entry>
@@ -377,38 +442,6 @@
       </tags>
   </entry>
   <entry>
-    <title>我乃三姓家奴</title>
-    <url>/2024/07/16/%E6%88%91%E4%B9%83%E4%B8%89%E5%A7%93%E5%AE%B6%E5%A5%B4/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>     大丈夫身居天地之间，岂能郁郁久居人下？即使处于逆境，也当屈身守分，以待天时。夫英雄者，胸怀大志，富有良策，有包藏宇宙之机，吞吐天地之志也！</p>
-<div id="dplayer24" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer24"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/大丈夫之志/大丈夫之志.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
-]]></content>
-      <tags>
-        <tag>成长</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>大脑拯救计划</title>
-    <url>/2024/07/15/%E5%A4%A7%E8%84%91%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer17" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer17"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/大脑拯救计划/大脑拯救计划.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
-]]></content>
-      <tags>
-        <tag>生理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>边缘计算</title>
-    <url>/2024/07/13/%E5%B9%82%E7%AD%89%E5%B1%85%E7%84%B6%E9%9C%80%E8%A6%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8E%BB%E6%8A%8A%E6%8E%A7/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>     当然我没有在针对谁，只是什么时候开始，用户层点了两次按钮，服务端就理所当然可以出问题了？客户端不做防重复提交，服务端就没有幂等性了？</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%B9%82%E7%AD%89%E7%AC%91%E8%AF%9D/%E5%B9%82%E7%AD%89%E7%AC%91%E8%AF%9D.jpg" alt="幂等笑话"></p>
-<p>     这是我好朋友的嘲笑：</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%B9%82%E7%AD%89%E7%AC%91%E8%AF%9D/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97.jpg" alt="幂等笑话"></p>
-<p>     认真考虑下来，其实不单单是这个功能。整个系统的微服务改造其实没有任何意义，是为了微服务而微服务。于性能、于运维成本，都没有做到 10 到 5 的减负，反而是加了那部分 5 之后，10 的部分依旧尾大不掉，最终的负重变成了 15+。</p>
-]]></content>
-      <tags>
-        <tag>安全</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>兜底在系统设计中的重要性</title>
     <url>/2024/07/07/%E8%AE%BA%E5%85%9C%E5%BA%95%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%85%9C%E5%BA%95%E5%9C%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB.png" alt="系统调用关系"></p>
@@ -420,15 +453,6 @@
 ]]></content>
       <tags>
         <tag>架构</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>日志框架简史</title>
-    <url>/2024/07/06/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E7%AE%80%E5%8F%B2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer27" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer27"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
-]]></content>
-      <tags>
-        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -567,18 +591,9 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>你开始炫耀自己，往往都是灾难的开始</title>
     <url>/2024/04/10/%E4%BD%A0%E5%BC%80%E5%A7%8B%E7%82%AB%E8%80%80%E8%87%AA%E5%B7%B1%EF%BC%8C%E5%BE%80%E5%BE%80%E9%83%BD%E6%98%AF%E7%81%BE%E9%9A%BE%E7%9A%84%E5%BC%80%E5%A7%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer7" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer7"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你开始炫耀自己，往往都是灾难的开始/你开始炫耀自己，往往都是灾难的开始.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer8" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer8"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你开始炫耀自己，往往都是灾难的开始/你开始炫耀自己，往往都是灾难的开始.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>应用的JVM优化案例</title>
-    <url>/2024/04/05/%E5%BA%94%E7%94%A8%E7%9A%84JVM%E4%BC%98%E5%8C%96%E6%A1%88%E4%BE%8B/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/%E4%B8%80%E6%AC%A1%E5%BA%94%E7%94%A8%E7%9A%84JVM%E8%B0%83%E4%BC%98%E7%A4%BA%E4%BE%8B/JVM%E8%B0%83%E4%BC%98%E7%A4%BA%E4%BE%8B.jpg" alt="应用的JVM优化案例"></p>
-]]></content>
-      <tags>
-        <tag>JVM</tag>
       </tags>
   </entry>
   <entry>
@@ -1081,7 +1096,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>不要轻易把自己的目标告诉他人</title>
     <url>/2024/03/21/%E4%B8%8D%E8%A6%81%E8%BD%BB%E6%98%93%E6%8A%8A%E8%87%AA%E5%B7%B1%E7%9A%84%E7%9B%AE%E6%A0%87%E5%91%8A%E8%AF%89%E4%BB%96%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer11" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer11"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/不要轻易把自己的目标告诉他人/不要轻易把自己的目标告诉他人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/不要轻易把自己的目标告诉他人/不要轻易把自己的目标告诉他人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -1157,7 +1172,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>你越静，就越赢</title>
     <url>/2024/02/12/%E4%BD%A0%E8%B6%8A%E9%9D%99%EF%BC%8C%E5%B0%B1%E8%B6%8A%E8%B5%A2/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer9" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer9"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你越静，就越赢/你越静，就越赢.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer10" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer10"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你越静，就越赢/你越静，就越赢.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -1252,7 +1267,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>永远不要觉得尴尬和丢脸</title>
     <url>/2023/12/21/%E6%B0%B8%E8%BF%9C%E4%B8%8D%E8%A6%81%E8%A7%89%E5%BE%97%E5%B0%B4%E5%B0%AC%E5%92%8C%E4%B8%A2%E8%84%B8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer28" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer28"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/永远不要觉得尴尬和丢脸/永远不要觉得尴尬和丢脸.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer29" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer29"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/永远不要觉得尴尬和丢脸/永远不要觉得尴尬和丢脸.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -1320,6 +1335,15 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
 ]]></content>
       <tags>
         <tag>大前端</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>日志框架简史</title>
+    <url>/2023/12/06/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E7%AE%80%E5%8F%B2/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer27" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer27"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+]]></content>
+      <tags>
+        <tag>Java</tag>
       </tags>
   </entry>
   <entry>
@@ -1422,7 +1446,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>男人开始变成熟的迹象</title>
     <url>/2023/12/01/%E7%94%B7%E4%BA%BA%E5%BC%80%E5%A7%8B%E5%8F%98%E6%88%90%E7%86%9F%E7%9A%84%E8%BF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer30" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer30"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/男人开始变成熟地迹象/男人开始变成熟的迹象.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer33" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer33"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/男人开始变成熟地迹象/男人开始变成熟的迹象.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -1483,7 +1507,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>你必须非常坚定的成为你想成为的那种人</title>
     <url>/2023/12/01/%E4%BD%A0%E5%BF%85%E9%A1%BB%E9%9D%9E%E5%B8%B8%E5%9D%9A%E5%AE%9A%E7%9A%84%E6%88%90%E4%B8%BA%E4%BD%A0%E6%83%B3%E6%88%90%E4%B8%BA%E7%9A%84%E9%82%A3%E7%A7%8D%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer8" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer8"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你必须非常坚定的成为你想成为的那种人/你必须非常坚定的成为你想成为的那种人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer9" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer9"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/你必须非常坚定的成为你想成为的那种人/你必须非常坚定的成为你想成为的那种人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -1631,7 +1655,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>这段话彻底治好了我对于原生家庭的焦虑</title>
     <url>/2023/11/21/%E8%BF%99%E6%AE%B5%E8%AF%9D%E5%BD%BB%E5%BA%95%E6%B2%BB%E5%A5%BD%E4%BA%86%E6%88%91%E5%AF%B9%E4%BA%8E%E5%8E%9F%E7%94%9F%E5%AE%B6%E5%BA%AD%E7%9A%84%E7%84%A6%E8%99%91/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer35" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer35"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/这段话彻底治好了我对于原生家庭的焦虑/这段话彻底治好了我对于原生家庭的焦虑.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer38" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer38"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/这段话彻底治好了我对于原生家庭的焦虑/这段话彻底治好了我对于原生家庭的焦虑.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -2363,6 +2387,15 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
       </tags>
   </entry>
   <entry>
+    <title>大脑拯救计划</title>
+    <url>/2023/11/15/%E5%A4%A7%E8%84%91%E6%8B%AF%E6%95%91%E8%AE%A1%E5%88%92/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer17" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer17"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/大脑拯救计划/大脑拯救计划.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+]]></content>
+      <tags>
+        <tag>生理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>允许一切发生</title>
     <url>/2023/11/14/%E5%85%81%E8%AE%B8%E4%B8%80%E5%88%87%E5%8F%91%E7%94%9F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer13" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer13"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/允许一切发生/允许一切发生.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
@@ -2636,7 +2669,7 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
   <entry>
     <title>什么是强者思维</title>
     <url>/2023/10/03/%E4%BB%80%E4%B9%88%E6%98%AF%E5%BC%BA%E8%80%85%E6%80%9D%E7%BB%B4/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer4" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer4"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/什么是强者思维/什么是强者思维.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer6" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer6"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/什么是强者思维/什么是强者思维.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -2853,6 +2886,24 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
 ]]></content>
       <tags>
         <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简述Oauth2的工作原理</title>
+    <url>/2023/09/09/%E7%AE%80%E8%BF%B0Oauth2%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer30" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer30"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/简述Oauth2的工作原理/简述Oauth2的工作原理.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+]]></content>
+      <tags>
+        <tag>安全</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>简述互联网的工作原理</title>
+    <url>/2023/09/07/%E7%AE%80%E8%BF%B0%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer31" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer31"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/简述互联网的工作原理/简述互联网的工作原理.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+]]></content>
+      <tags>
+        <tag>计算机网络</tag>
       </tags>
   </entry>
   <entry>
@@ -8086,16 +8137,30 @@ use one vs other -->
   <entry>
     <title>强者气场是练出来的</title>
     <url>/2023/08/03/%E5%BC%BA%E8%80%85%E6%B0%94%E5%9C%BA%E6%98%AF%E7%BB%83%E5%87%BA%E6%9D%A5%E7%9A%84/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer22" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer22"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/强者气场是练出来的/强者气场是练出来的.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer24" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer24"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/强者气场是练出来的/强者气场是练出来的.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
   </entry>
   <entry>
+    <title>国内外优秀技术站点汇总</title>
+    <url>/2023/08/02/%E5%9B%BD%E5%86%85%E5%A4%96%E4%BC%98%E7%A7%80%E6%8A%80%E6%9C%AF%E7%AB%99%E7%82%B9%E6%B1%87%E6%80%BB/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><a href="https://tech.meituan.com/">美团技术</a></p>
+<p><a href="https://developer.aliyun.com/group/idlefish/?spm=a2c6h.12873639.0.0.2c9618dd4mdBAQ%23%2F%3F_k%3Dkhoksz&amp;accounttraceid=e4dc90287c814d14a8849e3d9e9b8cf3glls#/">咸鱼技术</a></p>
+<p><a href="https://bugstack.cn/">小傅哥bugstack虫洞栈</a></p>
+<p><a href="https://javabetter.cn/">二哥的Java进阶之路</a></p>
+<p><a href="https://github.com/doocs/source-code-hunter">互联网公司常用框架源码赏析</a></p>
+<p><a href="https://cn.dubbo.apache.org/zh-cn/overview/home/">dubbo官方文档</a></p>
+]]></content>
+      <tags>
+        <tag>互联网</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>征服一个人最好的方法“弃猫效应”</title>
     <url>/2023/07/28/%E5%BE%81%E6%9C%8D%E4%B8%80%E4%B8%AA%E4%BA%BA%E6%9C%80%E5%A5%BD%E7%9A%84%E6%96%B9%E6%B3%95%E2%80%9C%E5%BC%83%E7%8C%AB%E6%95%88%E5%BA%94%E2%80%9D/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer23" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer23"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/征服一个人最好的方法“弃猫效应”/征服一个人最好的方法“弃猫效应”.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer22" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer22"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/征服一个人最好的方法“弃猫效应”/征服一个人最好的方法“弃猫效应”.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8113,7 +8178,7 @@ use one vs other -->
   <entry>
     <title>这段话真的好暖好有力量</title>
     <url>/2023/07/17/%E8%BF%99%E6%AE%B5%E8%AF%9D%E7%9C%9F%E7%9A%84%E5%A5%BD%E6%9A%96%E5%A5%BD%E6%9C%89%E5%8A%9B%E9%87%8F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer36" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer36"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/这段话真的好暖好有力量/这段话真的好暖好有力量.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer35" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer35"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/这段话真的好暖好有力量/这段话真的好暖好有力量.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>]]></content>
       <tags>
         <tag>成长</tag>
       </tags>
@@ -8121,10 +8186,23 @@ use one vs other -->
   <entry>
     <title>高敏感人格的究极形态</title>
     <url>/2023/07/14/%E9%AB%98%E6%95%8F%E6%84%9F%E4%BA%BA%E6%A0%BC%E7%9A%84%E7%A9%B6%E6%9E%81%E5%BD%A2%E6%80%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer38" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer38"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/高敏感人格的究极形态/高敏感人格的究极形态.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer37" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer37"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/高敏感人格的究极形态/高敏感人格的究极形态.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>边缘计算</title>
+    <url>/2023/07/13/%E5%B9%82%E7%AD%89%E5%B1%85%E7%84%B6%E9%9C%80%E8%A6%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%8E%BB%E6%8A%8A%E6%8E%A7/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>     当然我没有在针对谁，只是什么时候开始，用户层点了两次按钮，服务端就理所当然可以出问题了？客户端不做防重复提交，服务端就没有幂等性了？</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%B9%82%E7%AD%89%E7%AC%91%E8%AF%9D/%E5%B9%82%E7%AD%89%E7%AC%91%E8%AF%9D.jpg" alt="幂等笑话"></p>
+<p>     这是我好朋友的嘲笑：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%B9%82%E7%AD%89%E7%AC%91%E8%AF%9D/%E8%BE%B9%E7%BC%98%E8%AE%A1%E7%AE%97.jpg" alt="幂等笑话"></p>
+<p>     认真考虑下来，其实不单单是这个功能。整个系统的微服务改造其实没有任何意义，是为了微服务而微服务。于性能、于运维成本，都没有做到 10 到 5 的减负，反而是加了那部分 5 之后，10 的部分依旧尾大不掉，最终的负重变成了 15+。</p>
+]]></content>
+      <tags>
+        <tag>安全</tag>
       </tags>
   </entry>
   <entry>
@@ -8205,9 +8283,18 @@ use one vs other -->
       </tags>
   </entry>
   <entry>
+    <title>数据库背后的8种关键数据结构</title>
+    <url>/2023/07/09/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%83%8C%E5%90%8E%E7%9A%848%E7%A7%8D%E5%85%B3%E9%94%AE%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer26" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer26"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/数据库背后的8种关键数据结构/数据库背后的8种关键数据结构.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+]]></content>
+      <tags>
+        <tag>数据库</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>风起于青萍之末，止于草莽之间</title>
     <url>/2023/06/29/%E9%A3%8E%E8%B5%B7%E4%BA%8E%E9%9D%92%E8%90%8D%E4%B9%8B%E6%9C%AB%EF%BC%8C%E6%AD%A2%E4%BA%8E%E8%8D%89%E8%8E%BD%E4%B9%8B%E9%97%B4/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer37" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer37"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/风起于青萍之末，止于草莽之间/风起于青萍之末，止于草莽之间.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer36" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer36"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/风起于青萍之末，止于草莽之间/风起于青萍之末，止于草莽之间.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8216,7 +8303,7 @@ use one vs other -->
   <entry>
     <title>从那天开始就没再主动找你</title>
     <url>/2023/06/29/%E4%BB%8E%E9%82%A3%E5%A4%A9%E5%BC%80%E5%A7%8B%E5%B0%B1%E6%B2%A1%E5%86%8D%E4%B8%BB%E5%8A%A8%E6%89%BE%E4%BD%A0/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer6" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer6"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/从那天开始就没再主动找你/从那天开始就没再主动找你.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer7" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer7"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/从那天开始就没再主动找你/从那天开始就没再主动找你.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8225,7 +8312,7 @@ use one vs other -->
   <entry>
     <title>学会忍受悬而未决的状态</title>
     <url>/2023/06/29/%E5%AD%A6%E4%BC%9A%E5%BF%8D%E5%8F%97%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E7%8A%B6%E6%80%81/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer18" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer18"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/学会忍受悬而未决的状态/学会忍受悬而未决的状态.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer19" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer19"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/学会忍受悬而未决的状态/学会忍受悬而未决的状态.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8251,7 +8338,7 @@ use one vs other -->
   <entry>
     <title>学习的本质</title>
     <url>/2023/06/06/%E5%AD%A6%E4%B9%A0%E7%9A%84%E6%9C%AC%E8%B4%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer19" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer19"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/学习的本质/学习的本质.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer18" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer18"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/学习的本质/学习的本质.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8260,7 +8347,7 @@ use one vs other -->
   <entry>
     <title>性张力：引而不发的神秘和认真做事的专注</title>
     <url>/2023/06/04/%E6%80%A7%E5%BC%A0%E5%8A%9B%EF%BC%9A%E5%BC%95%E8%80%8C%E4%B8%8D%E5%8F%91%E7%9A%84%E7%A5%9E%E7%A7%98%E5%92%8C%E8%AE%A4%E7%9C%9F%E5%81%9A%E4%BA%8B%E7%9A%84%E4%B8%93%E6%B3%A8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer29" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer29"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/性张力：引而不发的神秘和认真做事的专注/性张力：引而不发的神秘和认真做事的专注.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer25" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer25"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/性张力：引而不发的神秘和认真做事的专注/性张力：引而不发的神秘和认真做事的专注.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8287,7 +8374,7 @@ use one vs other -->
   <entry>
     <title>做个狠人</title>
     <url>/2023/05/02/%E5%81%9A%E4%B8%AA%E7%8B%A0%E4%BA%BA/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer10" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer10"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer11" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer11"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/做个狠人/做个狠人.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
@@ -8297,6 +8384,16 @@ use one vs other -->
     <title>不自证</title>
     <url>/2023/04/10/%E4%B8%8D%E8%87%AA%E8%AF%81/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><div id="dplayer5" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer5"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/不自证/不自证.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+]]></content>
+      <tags>
+        <tag>成长</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>我乃三姓家奴</title>
+    <url>/2022/07/16/%E6%88%91%E4%B9%83%E4%B8%89%E5%A7%93%E5%AE%B6%E5%A5%B4/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/assets/css/APlayer.min.css"><script src="/assets/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>     大丈夫身居天地之间，岂能郁郁久居人下？即使处于逆境，也当屈身守分，以待天时。夫英雄者，胸怀大志，富有良策，有包藏宇宙之机，吞吐天地之志也！</p>
+<div id="dplayer23" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer23"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/大丈夫之志/大丈夫之志.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
 ]]></content>
       <tags>
         <tag>成长</tag>
