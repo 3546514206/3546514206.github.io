@@ -90,7 +90,7 @@
   <script>
     try {
       var typed = new Typed("#subtitle", {
-        strings: ['大丈夫身居天地之间，岂能郁郁久居人下？', '即使处于逆境，也当屈身守分，以待天时。', '夫英雄者，胸怀大志，富有良策，有包藏宇宙之机，吞吐天地之志也！'],
+        strings: ['你好！我是一名软件工程师，最常用的编程语言是 Java 和 Python。', '我做过面向互联网渠道的、千万级用户基数的分布式应用，我也写过应用开发框架，我还参与过云基础设施的建设。', '我专注于修炼正规、大气的编程素养，立志于成为一位靠谱的工程师。'],
         startDelay: 2,
         typeSpeed: 100,
         loop: true,
@@ -254,16 +254,16 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;metric_name&gt;&#123;&lt;label_name&gt;=&lt;label_value&gt;, ...&#125; &lt;value&gt; &lt;timestamp&gt;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>
-<p>&lt;metric_name&gt;: 度量名称，必须符合正则表达式 [a-zA-Z_:][a-zA-Z0-9_:]*，例如：http_requests_total。</p>
+<p>metric_name: 度量名称，必须符合正则表达式 [a-zA-Z_:][a-zA-Z0-9_:]*，例如：http_requests_total。</p>
 </li>
 <li>
 <p>{&lt;label_name&gt;=&lt;label_value&gt;, …}: 可选的标签部分，用来区分不同的时间序列，例如：{method=“GET”, endpoint=&quot;/api&quot;}。</p>
 </li>
 <li>
-<p><value>: 度量的值，是一个浮点数。</p>
+<p>value: 度量的值，是一个浮点数。</p>
 </li>
 <li>
-<p><timestamp>: 可选的 UNIX 时间戳，以毫秒为单位。</p>
+<p>timestamp: 可选的 UNIX 时间戳，以毫秒为单位。</p>
 </li>
 </ul>
 <p>       数据样例：</p>
