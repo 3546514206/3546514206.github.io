@@ -6,6 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="58df4107-ed8a-4b1c-8e8d-f2dbb64d87ad" name="更改" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/05/02/做个狠人/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/05/02/做个狠人/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/06/07/高能量人格的特质/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/06/07/高能量人格的特质/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/06/29/风起于青萍之末，止于草莽之间/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/06/29/风起于青萍之末，止于草莽之间/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/09/07/简述互联网的工作原理/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/09/07/简述互联网的工作原理/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/09/09/简述Oauth2的工作原理/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/09/09/简述Oauth2的工作原理/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/09/18/大大方方去做想要做的事情/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/09/18/大大方方去做想要做的事情/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/10/03/什么是强者思维/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/10/03/什么是强者思维/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/11/15/大脑拯救计划/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/11/15/大脑拯救计划/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023/12/01/你必须非常坚定的成为你想成为的那种人/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2023/12/01/你必须非常坚定的成为你想成为的那种人/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2024/02/12/你越静，就越赢/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2024/02/12/你越静，就越赢/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2024/03/21/不要轻易把自己的目标告诉他人/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/2024/03/21/不要轻易把自己的目标告诉他人/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/10/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/10/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/11/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/11/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/6/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/6/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/7/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/7/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/8/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/8/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/page/9/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/page/9/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/search.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,8 +98,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.22855.74" />
-        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.22855.74" />
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
       </set>
     </attachedChunks>
   </component>
@@ -120,6 +143,8 @@
       <workItem from="1727340794184" duration="1261000" />
       <workItem from="1727342100165" duration="190000" />
       <workItem from="1727342913196" duration="6000" />
+      <workItem from="1727428478237" duration="47000" />
+      <workItem from="1727572004615" duration="11000" />
     </task>
     <task id="LOCAL-00001" summary="更新">
       <option name="closed" value="true" />
@@ -361,7 +386,15 @@
       <option name="project" value="LOCAL" />
       <updated>1727338968306</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="更新了主页的滚动自我介绍">
+      <option name="closed" value="true" />
+      <created>1727428503031</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1727428503031</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -384,6 +417,7 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="更新" />
     <MESSAGE value="设计一个监控模块" />
-    <option name="LAST_COMMIT_MESSAGE" value="设计一个监控模块" />
+    <MESSAGE value="更新了主页的滚动自我介绍" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新了主页的滚动自我介绍" />
   </component>
 </project>
