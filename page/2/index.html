@@ -154,6 +154,61 @@
     
     
     <article
+  id="post-论兜底的重要性"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/07/07/%E8%AE%BA%E5%85%9C%E5%BA%95%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/"
+    >兜底在系统设计中的重要性</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/07/07/%E8%AE%BA%E5%85%9C%E5%BA%95%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/" class="article-date">
+  <time datetime="2024-07-07T10:50:25.000Z" itemprop="datePublished">2024-07-07</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%85%9C%E5%BA%95%E5%9C%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB.png" alt="系统调用关系"></p>
+<p>     生产环境存在如上图的调用关系，应用 AB 在往下游发起 RPC 调用时，都先去向全局的序列服务申请序列号，序列号用来作为全局流水号或者追踪号。TDSQL 架构如图：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%85%9C%E5%BA%95%E5%9C%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/TDSQL%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="TDSQL示意图"></p>
+<p>     三周前，TDSQL 做了序列服务数据库的机房迁移，从甲机房迁移到了乙机房，当晚验证没有问题。但是三周过后，硬件负载 F5 出了问题，导致 B 获取序列失败。由于 B 在实现上强依赖于序列服务，序列服务，整个 B 系统的所有交易都走不通了。但是 A 仍然可以正常发起 RPC 调用，因为 A 在实现上，如果调用失败，兜底的方案是会在本地生成序列。</p>
+<p>     由于 A 应用依赖于 B 应用，而 B 缺少类似于 A 的兜底策略，导致整体对客的服务全都不可用。</p>
+<p>     事实上，序列号只不过是用来追踪程序的一个功能，A 应用的情况，就算不走全局序列服务来生成，本地生成一个序列号也没有任何影响，只不过序列服务那边溯源的时候查不到这笔交易。但是总好过 B 应用，在序列服务出问题的时候，连核心的交易都走不通要好。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag">架构</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-GC—全过程"
   class="article article-type-post"
   itemscope
@@ -1182,63 +1237,13 @@ XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在
 </article>
 
     
-    <article
-  id="post-互联网发展的历程"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2024/03/03/%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%91%E5%B1%95%E7%9A%84%E5%8E%86%E7%A8%8B/"
-    >互联网发展的历程</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2024/03/03/%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%91%E5%B1%95%E7%9A%84%E5%8E%86%E7%A8%8B/" class="article-date">
-  <time datetime="2024-03-03T10:06:52.000Z" itemprop="datePublished">2024-03-03</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%91%E5%B1%95%E7%9A%84%E5%8E%86%E7%A8%8B/%E4%BA%92%E8%81%94%E7%BD%91%E5%8E%86%E5%8F%B2.jpeg" alt="互联网发展的历程"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%92%E8%81%94%E7%BD%91/" rel="tag">互联网</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
   </nav>
   
 </section>

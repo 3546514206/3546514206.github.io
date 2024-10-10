@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>设计一个监控模块 |  杨海波</title>
+      <title>设计模式之模板方法模式和策略模式 |  杨海波</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/SETSUNAYANG.JPG" />
@@ -53,7 +53,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-监控模块设计"
+  id="post-设计模式之模板方法模式和策略模式"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -64,7 +64,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  设计一个监控模块
+  设计模式之模板方法模式和策略模式
 </h1>
  
 
@@ -72,15 +72,15 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2024/09/23/%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/" class="article-date">
-  <time datetime="2024-09-23T02:34:41.000Z" itemprop="datePublished">2024-09-23</time>
+      <a href="/2024/09/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" class="article-date">
+  <time datetime="2024-09-09T05:28:20.000Z" itemprop="datePublished">2024-09-09</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.8k</span>
+            <span class="post-count">1.1k</span>
         </span>
     </span>
 
@@ -89,7 +89,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">6 分钟</span>
+            <span class="post-count">3 分钟</span>
         </span>
     </span>
 </div>
@@ -104,95 +104,37 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h4 id="1-监控模块设计"><strong>1、监控模块设计</strong></h4>
-<p>       要在开发平台层设计一个监控模块，提供平台级监控能力。几乎所有的监控系统都基于 CS 模式设计，监控模块也基于 CS 模式。但是开发平台层不需要自己完全实现完整的 Server 端和 Client 端。就这样设计了第一版监控模块。</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97.drawio.png" alt="第一版监控模块"></p>
-<ul>
-<li>
-<p>server 端几乎无需自己实现，Client 只需要能以主动推送或者暴露接口的形式将监控数据提交至 server 端并展示即可。</p>
-</li>
-<li>
-<p>client 端在逻辑上划分三层：数据源、采集层、接口层；</p>
-</li>
-<li>
-<p>数据层是指被采集对象的整体，监控数据源自于这里。监控数据可以是业务数据，可以是开发平台层数据，例如 rpc 调用信息，还可以直接是应用环境三方的，任何可以被应用程序获取的信息，例如：Spring Boot Actuator。</p>
-</li>
-<li>
-<p>采集层是真正需要开发平台层实现的逻辑，需要采集的各项指标待定.</p>
-</li>
-<li>
-<p>接口层负责将数据交付给展示层。</p>
-</li>
-</ul>
-<p>       UML 设计如下：</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/DefaultMetricsClient.png" alt="UML"></p>
-<h4 id="2-为何-server-端不采用-spring-boot-admin"><strong>2、为何 Server 端不采用 Spring Boot Admin</strong></h4>
-<p>       Spring Boot Actuator + Spring Boot Admin 是 Spring 官方标配。但是 Spring Boot Admin 生产部署作为监控平台的很少见，并且 Spring Boot Admin 由于在数据交互上没有统一的数据规范，展示层必须针对特定数据进行前端开发（重新开发spring-boot-admin-server-ui ）。目前 Spring Boot Admin 能展示的数据主要是 JVM 的进程信息以及依赖于 Spring 环境的相关信息（环境配置、beans、web）。</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/sba.png" alt="Spring Boot Admin"></p>
-<h4 id="3-各层的理想组合"><strong>3、各层的理想组合</strong></h4>
-<p>       micrometer 的数据结构与普罗米修斯数据结构设计上一致，生产环境的监控平台 prometheus + grafana 几乎是最常见的，Sping Boot Actuator 对 prometheus 已经天然支持（spring-boot-actuator-autoconfigure  @org.springframework.boot.actuate.autoconfigure.metrics.export.prometheus.PrometheusMetricsExportAutoConfiguration）。因此将 Sping Boot Actuator 的 prometheus 端点作为接口层，将 prometheus + grafana 作为 Server 端，micrometer 作为采集层的采集工具，是最理想的组合。可行性验证效果展示：</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/grafana.png" alt="prometheus + grafana"></p>
-<h4 id="4-定制化监控系统的引入"><strong>4、定制化监控系统的引入</strong></h4>
-<p>       因为引入了一体化监控平台 XXX，开发平台要考虑将 XXX 作为 Server 端。Xxx 将监控信息抽象为 XxxBean 对象，并通过派生 XxxBean 对象得到三种监控场景。设计方案如图所示：</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/Xxx1.png" alt="Xxx 设计"></p>
-<p>       除了支持上报 XxxBean 监控对象，Xxx 还支持基于日志的交易监控：</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/Xxx2.png" alt="Xxx 设计"></p>
-<p>       其中需要特别说明：1）业务系统接入 Xxx 上报监控的能力，必须在业务逻辑中组装 XxxBean 模型（可用性模型、事件模型、调度模型）；2）基于日志的交易监控，必须调整应用系统的日志输出格式。</p>
-<h4 id="5-基于度量指标的通用监控设计思路"><strong>5、基于度量指标的通用监控设计思路</strong></h4>
-<p>       Xxx 从使用场景出发设计了监控平台，开发平台需要考虑更加通用开放的监控标准，基于开发的监控标准设计监控能力，再进一步将通用的监控能力运用于具体场景。</p>
-<p>       在信息技术中，监控指的是对系统、网络、应用程序、基础设施等的持续观察、测量和分析，以确保其正常运行、性能优化和安全性。让我们回到监控这件事情本身来考虑，能否基于 V1 方案中 prometheus 协议进行设计，形成通用开发的监控能力，以应对类似于一体化监控平台等诸多展示层的接入需求。</p>
-<p>       假设系统生成有度量指指标：demo_cpu_usage、demo_mem_usage、demo_transfer_amount。分别记作 a、b、c。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">prometheus 协议数据</span></span><br><span class="line">&lt;metric_name&gt;&#123;&lt;label_name&gt;=&lt;label_value&gt;, ...&#125; &lt;value&gt; &lt;timestamp&gt;</span><br><span class="line"></span><br><span class="line">a: </span><br><span class="line">demo_cpu_usage&#123;target=&quot;192.168.1.2&quot;&#125; 81 1694116786000</span><br><span class="line"></span><br><span class="line">b:</span><br><span class="line">demo_mem_uasge&#123;target=&quot;192.168.1.2&quot;&#125; 81 1694116786000</span><br><span class="line"></span><br><span class="line">c:</span><br><span class="line">demo_transfer_amount&#123;vip_user=&quot;000000123&quot;&#125; 20000000 1694116786000</span><br></pre></td></tr></table></figure>
-<p>       另外设：</p>
-<p>       bool = g(x)：x.value 必须小于 80，否则 g 函数返回 false。</p>
-<p>       float = f(x)：当 x.tag.vip_user in vip_user_list，x.value 如果大于一百万，f 则返回 x.value。</p>
-<p>       以上 g 函数和 f 函数目的是分别通用的程序监控场景和业务场景，可以根据实际需要定义出更加复杂灵活的函数法则，函数法则施加于若干监控指标，从而得到一个具体的监控场景。以 g 函数和 f 函数为例：</p>
-<p>       场景一：当 cpu 或者 mem 内存低于 80 的时候，触发可用性监控，伪代码如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if g(a) || g(b) </span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">组装可用性 XxxBean 模型</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-<p>       场景二：当 VIP 用户转账金额超过 100 万时，触发事件监控，伪代码如下：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if  f(c) &gt; 1000000</span><br><span class="line"><span class="meta prompt_">   # </span><span class="language-bash">组装事件 XxxBean 模型</span></span><br><span class="line">endif</span><br></pre></td></tr></table></figure>
-<p>       基于以上具体案例的分析可以看出，监控模型的上报场景，完全是可以从一些自定义的监控指标中得出的，因此基于 prometheus 协议监控度量指标的封装，可以当做一种通用监控能力。基于这种能力，也可以很方便对交易进行监控，不仅是基于 Xxx 模型地监控，还是基于 prometheus 协议的监控，都有能力做到，此不赘述。</p>
-<h4 id="6-监控优化方案"><strong>6、监控优化方案</strong></h4>
-<p>       对 V1 方案优化如下：</p>
-<p>       1）采集层基于 prometheus 协议设计出度量指标公共服务 MetricsService；</p>
-<p>       2）在接口层引入度量指标汇聚层，用于汇聚各项指标数据，根据展示层实际的接入方式进行转换。</p>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97_01.drawio.png" alt="监控优化方案"></p>
-<h4 id="7-知识补充一：prometheus"><strong>7、知识补充一：prometheus</strong></h4>
-<p>       Prometheus 是一个开源的监控系统，可以看做是一个时序数据库，它使用一种特定的数据格式来收集和存储时间序列数据。数据类型：</p>
-<ul>
-<li>
-<p>Counter（计数器）：一个单调递增的度量值，通常用于记录事件发生的次数。例如，	HTTP 请求的计数。</p>
-</li>
-<li>
-<p>Gauge（量表）：一个可以任意增减的度量值，通常用于记录某一时刻的状态或值。例如，当前的内存使用量、CPU 使用率等。</p>
-</li>
-<li>
-<p>Histogram（直方图）：用于测量样本的分布情况，比如请求延迟。它将数据样本划分到不同的桶（buckets）中，并记录每个桶中的样本数量。</p>
-</li>
-<li>
-<p>Summary（摘要）：类似于直方图，但会额外提供请求的总数和总和，通常用于计算百分位数等聚合度量。</p>
-</li>
-</ul>
-<p>       数据格式：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;metric_name&gt;&#123;&lt;label_name&gt;=&lt;label_value&gt;, ...&#125; &lt;value&gt; &lt;timestamp&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>
-<p>metric_name: 度量名称，必须符合正则表达式 [a-zA-Z_:][a-zA-Z0-9_:]*，例如：http_requests_total。</p>
-</li>
-<li>
-<p>{&lt;label_name&gt;=&lt;label_value&gt;, …}: 可选的标签部分，用来区分不同的时间序列，例如：{method=“GET”, endpoint=&quot;/api&quot;}。</p>
-</li>
-<li>
-<p>value: 度量的值，是一个浮点数。</p>
-</li>
-<li>
-<p>timestamp: 可选的 UNIX 时间戳，以毫秒为单位。</p>
-</li>
-</ul>
-<p>       数据样例：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">HELP http_requests_total Total number of HTTP requests.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">TYPE http_requests_total counter</span></span><br><span class="line">http_requests_total&#123;method=&quot;GET&quot;, handler=&quot;/home&quot;&#125; 1027 1694116786000</span><br><span class="line">http_requests_total&#123;method=&quot;POST&quot;, handler=&quot;/api&quot;&#125; 521 1694116786000</span><br></pre></td></tr></table></figure>
-<h4 id="8-知识补充二：采集工具比较"><strong>8、知识补充二：采集工具比较</strong></h4>
-<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97/%E9%87%87%E9%9B%86%E5%B7%A5%E5%85%B7%E6%AF%94%E8%BE%83.png" alt="采集工具比较"></p>
+  <p>     这篇博客的设计模式应用案例来自于这个仓库，完整代码可以参考本仓库：</p>
+<p>     <a target="_blank" rel="noopener" href="https://github.com/3546514206/WxChatGPT">微信大模型接入</a></p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E4%BB%93%E5%BA%93.png" alt="仓库主页"></p>
+<p>     简单介绍一下这个仓库：1）实现了微信接入；2）实现了大模型接入；3）将微信的提问发给大模型，将大模型的回答返回给微信（欢迎给个 star）。</p>
+<h4 id="1-背景分析"><strong>1、背景分析</strong></h4>
+<p>     1）我们预期接入的大模型肯定不止一种，现在市面上除了最牛的 GhatGPT，国内也陆续退出了豆包、文心一言、星火大模型等。为了获得良好的扩展性，我们可以基于策略模式对模型通讯模块进行封装，将不同的模型定义为一种通讯策略，程序中可以通过参数指定不同的模型工作；</p>
+<p>     2）通讯的过程无非就是三个阶段：通信前参数组装、进行通讯、通讯完成处理结果，这里显然是可以通过模板方法进行封装的。结合策略模式，我们可以规定将来接入新模型的时候，有统一的代码组织形式和良好的扩展接口。</p>
+<h4 id="2-知识补充"><strong>2、知识补充</strong></h4>
+<p>     我们这里不再对设计模式本身进行专门的讲解。</p>
+<p>     <a target="_blank" rel="noopener" href="https://www.runoob.com/design-pattern/strategy-pattern.html">策略模式</a></p>
+<p>     <a target="_blank" rel="noopener" href="https://www.runoob.com/design-pattern/template-pattern.html">模板方法模式</a></p>
+<h4 id="3-代码分析"><strong>3、代码分析</strong></h4>
+<p>     如下图所示，DefaultHandler 是程序写给微信接入模块的一个回调（实现了消息处理接口 IMsgHandlerFace），当微信接入模块接收到微信消息，便会触发此回调，执行用户预定义行为。也就是在这个地方，我们接入了大模型，并将模型的问答结果返回给微信。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E6%A8%A1%E5%9E%8B%E6%8E%A5%E5%85%A5%E7%9A%84%E5%9C%B0%E6%96%B9.png" alt="模型接入的地方"></p>
+<p>     一下三行代码的作用分别是：获取聊天模型的策略上下文（请参考上文中菜鸟教程——策略模式），返回的策略上下文会包含具体的执行策略，执行策略的选择是程序参数定义的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 聊天模型策略</span></span><br><span class="line"><span class="type">StrategyContext</span> <span class="variable">context</span> <span class="operator">=</span> getStrategyContext();</span><br><span class="line"><span class="comment">// 构建聊天请求</span></span><br><span class="line"><span class="type">ChatRequest</span> <span class="variable">request</span> <span class="operator">=</span> buildChatRequest(msg);</span><br><span class="line"><span class="comment">// 进行聊天</span></span><br><span class="line"><span class="type">ChatResponse</span> <span class="variable">response</span> <span class="operator">=</span> context.executeStrategy(request);</span><br></pre></td></tr></table></figure>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E5%8F%82%E6%95%B0%E6%8C%87%E5%AE%9A%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B.png" alt="程序参数指定执行策略"></p>
+<h4 id="3-策略模式实现"><strong>3、策略模式实现</strong></h4>
+<p>     首先，定义策略接口，策略接口中的 exec 方法是所有具体的策略类都需要实现的。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E6%8E%A5%E5%8F%A3.png" alt="策略接口"></p>
+<p>     定义策略上下文，上下文是统一交给用户侧的一个”句柄”（可以参考上文 DefaultHandler 的代码，用户侧通过获取策略上下文来执行具体的策略实现的），用于持有具体的策略实现。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E4%B8%8A%E4%B8%8B%E6%96%87.png" alt="策略上下文"></p>
+<p>     我们这里的策略实现类稍有不同，没有直接实现 exec 方法，也没有直接实现 IStrategy 接口。这涉及到另外一个设计模式——模板方法模式。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E7%AD%96%E7%95%A5%E7%B1%BB.png" alt="策略实现类"></p>
+<h4 id="4-模板方法模式"><strong>4、</strong> 模板方法模式</h4>
+<p>     抽象策略类定义了一个算法模板方法，这个模板方法规定了 exec 方法执行时发生的三个算法步骤：postChatRequest (执行前的参数处理)、doExec (执行通讯请求)、postChatResponse(通讯完成之后的响应报文处理)。但是我并没有对这三个步骤进行实现，他们都是抽象的，延迟到了将来的策略实现类去实现。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E6%8A%BD%E8%B1%A1%E7%AD%96%E7%95%A5%E7%B1%BB.jpg" alt="抽象策略类"></p>
+<p>     所有的策略实现类，实现的不是策略接口 IStrategy，而是继承抽象策略类 AbstractStrategy，也不再去实现 exec 方法，而是实现抽象类中算法模板规定的三个算法步骤。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/%E5%AE%9E%E7%8E%B0%E6%8A%BD%E8%B1%A1%E7%88%B6%E7%B1%BB%E7%9A%84%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95.PNG" alt="实现抽象策略类中规定的三个既定步骤"></p>
+<h4 id="5-其他一些想法"><strong>5、</strong> 其他一些想法</h4>
+<p>     面向对象语言最重要的三个基本特性：封装、多态、继承，是软件工程七大原则开闭原则，里氏代换原则，依赖倒转原则，接口隔离原则，迪米特原则和合成复用原则的重要支撑点，设计模式是一种如何最大化发挥三个基本特性，从而能够遵循七大原则的一种编码层级上的技术，这也是 Java、C++ 等完美支持 OOP 编程范式语言，在面临庞大复杂工程时，总能将源代码组织得很好的原因之一吧。从这个角度出发，Go 语言在多态、继承的表现力上不足，也许是因为我还比较缺乏 Go 开发的实战经验，所以我不确定在面临复杂的建模场景的时候，Go 语言的编程方式还能不能进行有效表达。</p>
  
       <!-- reward -->
       
@@ -251,12 +193,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://3546514206.github.io/2024/09/23/%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://3546514206.github.io/2024/09/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1/" rel="tag">设计</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li></ul>
 
     </footer>
   </div>
@@ -264,19 +206,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2024/10/09/%E4%BA%91%E4%B8%8A%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" class="article-nav-link">
+      <a href="/2024/09/23/0_%E7%9B%91%E6%8E%A7%E6%A8%A1%E5%9D%97%E8%AE%BE%E8%AE%A1/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            云上问题总结
+            设计一个监控模块
           
         </div>
       </a>
     
     
-      <a href="/2024/09/09/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F/" class="article-nav-link">
+      <a href="/2024/09/09/%E5%83%8F%E4%B8%93%E4%B8%9A%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E9%82%A3%E6%A0%B7%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">设计模式之模板方法模式和策略模式</div>
+        <div class="article-nav-title">像专业开发人员那样调试程序</div>
       </a>
     
   </nav>
