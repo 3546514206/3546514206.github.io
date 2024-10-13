@@ -203,56 +203,6 @@
 
     
     <article
-  id="post-云上问题总结"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2024/10/09/%E4%BA%91%E4%B8%8A%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/"
-    >云上问题总结</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2024/10/09/%E4%BA%91%E4%B8%8A%E9%97%AE%E9%A2%98%E6%80%BB%E7%BB%93/" class="article-date">
-  <time datetime="2024-10-09T00:22:29.000Z" itemprop="datePublished">2024-10-09</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h4 id="1-国密的性能测试问题"><strong>1、国密的性能测试问题</strong></h4>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/" rel="tag">云计算</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
   id="post-0_监控模块设计"
   class="article article-type-post"
   itemscope
@@ -498,7 +448,7 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <div id="dplayer13" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer13"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/像专业开发人员那样调试程序/像专业开发人员那样调试程序.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+  <div id="dplayer12" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer12"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/像专业开发人员那样调试程序/像专业开发人员那样调试程序.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
  
       <!-- reward -->
       
@@ -666,7 +616,7 @@
        
   <p>     服务器的网络端口分为两种：电口和光口，电口就是双绞线的水晶头接口，光口是光纤接口。光口的速率远远高于电口，因此实际生产机房中，光口一般用于数据通信，电口一般用于管理通信。</p>
 <p>     下面视频中，绿色线是光纤线，白色线是双绞线：</p>
-<div id="dplayer28" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer28"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/机房服务器网口/机房服务器网口.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+<div id="dplayer27" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer27"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/机房服务器网口/机房服务器网口.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
  
       <!-- reward -->
       
@@ -1060,13 +1010,68 @@
 </article>
 
     
+    <article
+  id="post-论兜底的重要性"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/07/07/%E8%AE%BA%E5%85%9C%E5%BA%95%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/"
+    >兜底在系统设计中的重要性</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/07/07/%E8%AE%BA%E5%85%9C%E5%BA%95%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/" class="article-date">
+  <time datetime="2024-07-07T10:50:25.000Z" itemprop="datePublished">2024-07-07</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%85%9C%E5%BA%95%E5%9C%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB.png" alt="系统调用关系"></p>
+<p>     生产环境存在如上图的调用关系，应用 AB 在往下游发起 RPC 调用时，都先去向全局的序列服务申请序列号，序列号用来作为全局流水号或者追踪号。TDSQL 架构如图：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%85%9C%E5%BA%95%E5%9C%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/TDSQL%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="TDSQL示意图"></p>
+<p>     三周前，TDSQL 做了序列服务数据库的机房迁移，从甲机房迁移到了乙机房，当晚验证没有问题。但是三周过后，硬件负载 F5 出了问题，导致 B 获取序列失败。由于 B 在实现上强依赖于序列服务，序列服务，整个 B 系统的所有交易都走不通了。但是 A 仍然可以正常发起 RPC 调用，因为 A 在实现上，如果调用失败，兜底的方案是会在本地生成序列。</p>
+<p>     由于 A 应用依赖于 B 应用，而 B 缺少类似于 A 的兜底策略，导致整体对客的服务全都不可用。</p>
+<p>     事实上，序列号只不过是用来追踪程序的一个功能，A 应用的情况，就算不走全局序列服务来生成，本地生成一个序列号也没有任何影响，只不过序列服务那边溯源的时候查不到这笔交易。但是总好过 B 应用，在序列服务出问题的时候，连核心的交易都走不通要好。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag">架构</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>
