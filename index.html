@@ -421,56 +421,6 @@
 
     
     <article
-  id="post-编程届等级划分"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2024/09/05/%E7%BC%96%E7%A8%8B%E5%B1%8A%E7%AD%89%E7%BA%A7%E5%88%92%E5%88%86/"
-    >编程界等级划分</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2024/09/05/%E7%BC%96%E7%A8%8B%E5%B1%8A%E7%AD%89%E7%BA%A7%E5%88%92%E5%88%86/" class="article-date">
-  <time datetime="2024-09-05T01:32:50.000Z" itemprop="datePublished">2024-09-05</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E7%BC%96%E7%A8%8B%E7%95%8C%E7%AD%89%E7%BA%A7%E5%88%92%E5%88%86/%E7%BC%96%E7%A8%8B%E5%B1%8A%E4%BF%AE%E7%82%BC%E7%AD%89%E7%BA%A7.drawio.png" alt="编程界等级划分"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
-
-    </footer>
-  </div>
-
-   
-   
-  
-</article>
-
-    
-    <article
   id="post-实现一个健康检查模块"
   class="article article-type-post"
   itemscope
@@ -566,7 +516,7 @@
        
   <p>     服务器的网络端口分为两种：电口和光口，电口就是双绞线的水晶头接口，光口是光纤接口。光口的速率远远高于电口，因此实际生产机房中，光口一般用于数据通信，电口一般用于管理通信。</p>
 <p>     下面视频中，绿色线是光纤线，白色线是双绞线：</p>
-<div id="dplayer27" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer27"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/机房服务器网口/机房服务器网口.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+<div id="dplayer28" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer28"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/机房服务器网口/机房服务器网口.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
  
       <!-- reward -->
       
@@ -1081,6 +1031,97 @@ XX:+Handle PromotionFailure，则触发MinorGC就会同时触发Full GC，哪怕
 <p>     在发生 Minor GC 之前，虚拟机会先检查老年代最大可用的连续空间是否大于新生代所有对象总空间，如果这个条件成立，那么 Minor GC 可以确保是安全的。如果不成立，则虚拟机会查看 HandlerPromotionFailure 这个参数设置的值（ true 或 flase ）是否允许担保失败（如果这个值为 true，代表着 JVM 说，我允许在这种条件下尝试执行 Minor GC，出了事我负责）。</p>
 <p>     如果允许，那么会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小，如果大于，将尝试进行一次 Minor GC，尽管这次 Minor GC 是有风险的；如果小于，或者 HandlerPromotionFailure 为 false，那么这次 Minor GC 将升级为 Full GC。如果老年代最大可用的连续空间大于历次晋升到老年代对象的平均大小，那么 HandlerPromotionFailure 为 true 的情况下，可以尝试进行一次 Minor GC，但这是有风险的，如果本次将要晋升到老年代的对象很多，那么 Minor GC 还是无法执行，此时还得改为 Full GC。</p>
 <p>     注意：JDK 6Update 24 之后，只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大 小就会进行 Minor GC，否则进行 Full GC。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
+  id="post-GC—基础知识"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2024/06/28/GC%E2%80%94%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
+    >GC—基础知识</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2024/06/28/GC%E2%80%94%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="article-date">
+  <time datetime="2024-06-28T15:31:37.000Z" itemprop="datePublished">2024-06-28</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>     JVM 的 GC 是指垃圾回收，主要是对堆内存的回收。本文将介绍 JVM 中一次完整的 GC 流程是怎样<br>
+的，首先抛出第一个问题，什么样的对象会是 JVM 回收的目标？</p>
+<h4 id="1-可达性分析算法-gc-roots"><strong>1、可达性分析算法（GC Roots）</strong></h4>
+<p>     有一种引用计数法，可以用来判断对象被引用的次数，如果引用次数为0，则代表可以被回收。这种实现方式比较简单，但对于循环引用的情况束手无策，所以 Java 采用了可达性分析算法。即判断某个对象是否与 GC Roots 的这类对象之间的路径可达，若不可达，则有可能成为回收对象，被判定为不可达的对象要成为可回收对象必须至少经历两次标记过程，如果在这两次标记过程中仍然没有逃脱成为可回收对象的可能性，则基本上就真的成为可回收对象了。在 Java 中，可作为 GC Roots 的对象包括以下几种：</p>
+<ul>
+<li>虚拟机栈（本地变量表）中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中引用的对象</li>
+</ul>
+<h4 id="2-jvm中的堆结构"><strong>2、JVM中的堆结构</strong></h4>
+<p>     JVM 中的堆可划分为两大部分，新生代和老年代，大小比例为1:2，如下：</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC%E2%80%94%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%A0%86%E5%8C%BA%E7%9A%84%E5%88%92%E5%88%86%E6%AF%94%E4%BE%8B.png" alt="JVM 分代比例"></p>
+<p>     其中，新生代分为 Eden 区和 Survivor 区， Survivor 幸存者区又分为大小相等的两块 from 和 to<br>
+区。这便是 JVM 中堆的结构和各部分默认的比例，当然这些比例都可通过对应 JVM 参数来调整。完整的 JMM 如下：</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC%E2%80%94%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/JVM%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="JVM 内存模型全景"></p>
+<h4 id="2-1-为何新生代要分为三个区"><strong>2.1、为何新生代要分为三个区</strong></h4>
+<p>     这里需要介绍新生代的垃圾回收算法——复制算法。该算法的核心是将可用内存按容量划分为大小<br>
+相等的两块，每次回收周期只用其中一块，当这一块的内存用完，就将还存活的对象复制到另一块上面，然后把已使用过的内存空间清理掉。</p>
+<p>     优点：不必考虑内存碎片问题；效率高。</p>
+<p>     缺点：可用容量减少为原来的一半，比较浪费。</p>
+<p>     最优设置：根据权威数据分析，90%的对象都是朝生夕死的，所以采用10%的空间用作交换区，因为交换区必须要有等量的两个，所以采用复制算法中新生代中三个区默认分配比例为8:1:1。</p>
+<h4 id="2-2-新生代对象的分配和回收"><strong>2.2、新生代对象的分配和回收</strong></h4>
+<p>     基本上新的对象优先在 Eden 区分配；</p>
+<p>     当 Eden 区没有足够空间时，会发起一次 Minor GC；</p>
+<p>     Minor GC 回收新生代采用复制回收算法的改进版本。即：<br>
+from 区和 to 区的两个交换区，这两个区只有一个区有数据。采用8:1:1的默认分配比例（-XX:SurvivorRatio默认为8，代表 Eden 区与 Survivor 区的大小比例）</p>
+<h4 id="2-3-老年代对象的分配和回收"><strong>2.3、老年代对象的分配和回收</strong></h4>
+<p>     老年代的对象一般来自于新生代中的长期存活对象。这里有一概念叫做年龄阈值，每个对象定义了年龄计数器，经<br>
+过一次 Minor GC （在交换区）后年龄加1，对象年龄达到15次后将会晋升到老年代，老年代空间不够时进行 Full GC。当然这个参数仍是可以通过 JVM 参数（-XX:MaxTenuringThreshold，默认15）来调整。</p>
+<p>     大对象直接进入老年代。即超过 Eden 区空间，或超过一个参数值（-<br>
+XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在Eden区及两个Survivor区之间发生大量的内存复制。</p>
+<p>     对象提前晋升到老年代（组团）。动态年龄判定：如果在 Survivor 区中相同年龄所有对象大小总和<br>
+大于 Survivor 区大小的一半，年龄大于或等于该年龄的对象就可以直接进入老年代，而无须等到自己<br>
+的晋升年龄。</p>
+<h4 id="3-jvm完整的gc流程"><strong>3、JVM完整的GC流程</strong></h4>
+<p>     对象的正常流程：Eden 区 -&gt; Survivor 区 -&gt; 老年代。</p>
+<p>     新生代GC：Minor GC；老年代GC：Full GC，比 Minor GC 慢10倍，JVM 会“stop the world”，严重<br>
+影响性能。</p>
+<p>     总结：内存区域不够用了，就会引发GC。Minor GC 避免不了，Full GC 尽量避免。<br>
+处理方式：保存堆栈快照日志、分析内存泄漏、调整内存设置控制垃圾回收频率，选择合适的垃圾<br>
+回收器等。</p>
  
       <!-- reward -->
       
