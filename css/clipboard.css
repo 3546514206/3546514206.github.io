@@ -19,7 +19,7 @@
   opacity: 0;
   transition: all linear 0.2s;
 }
-.btn-copy >i {
+.btn-copy > i {
   margin-right: 4px;
   font-size: 10px;
   transform: translateY(1px);
