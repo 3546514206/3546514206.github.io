@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8"/>
+    
+    
+    
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>
+        
+        </title>
+  <meta name="generator" content="hexo-theme-ayer">
+    
+        <link rel="shortcut icon" href="/images/SETSUNAYANG.JPG"/>
+    
+    
+<link rel="stylesheet" href="/dist/main.css">
+
+    
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+    
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+        <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+    
+    
+ 
+
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+    <!-- mermaid -->
+    
+    <style>
+        .swal2-styled.swal2-confirm {
+            font-size: 1.6rem;
+        }
+    </style>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /></head>
+</html>
+</html>
+
+
+<body>
+<div id="app">
+    
+    
+    <main class="content on">
+        
+    <section class="cover">
+        
+        <div class="cover-frame">
+            <div class="bg-box">
+                <img src="/images/pintan-compression.jpg" alt="image frame"/>
+            </div>
+            <div class="cover-inner text-center text-white">
+                <h1><a href="/"></a></h1>
+                <div id="subtitle-box">
+                    
+                        <span id="subtitle"></span>
+                    
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="cover-learn-more">
+            <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+        </div>
+    </section>
+
+
+
+    <script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+    <script>
+        try {
+            var typed = new Typed("#subtitle", {
+                strings: ['我叫杨海波，是一名软件工程师。', '我参与过机房和云基础设施的建设，负责过应用平台层的框架设计与落地，还参与过手机银行应用系统的架构设计，具备自下而上的全栈开发经验。', '我将软件工程作为安身立命之本，具备正规、大气的专业素养，并致力于成为软件工程行业的技术专家。'],
+                startDelay: 3,
+                typeSpeed: 88,
+                loop: true,
+                backSpeed: 100,
+                showCursor: true
+            });
+        } catch (err) {
+            console.log(err)
+        }
+    </script>
+
+<div id="main">
+    <section class="outer">
+    
+    
+        
+
+    <div class="notice" style="margin-top:50px">
+        <i class="ri-heart-fill"></i>
+        <div class="notice-content" id="broad"></div>
+    </div>
+    <script type="text/javascript">
+        fetch('https://v1.hitokoto.cn')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("broad").innerHTML = data.hitokoto;
+            })
+            .catch(console.error)
+    </script>
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+    
+    <article class="articles">
+        
+        
+        
+            
+                <article
+        id="post-GC—全过程"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/06/29/GC%E2%80%94%E5%85%A8%E8%BF%87%E7%A8%8B/"
+        >GC—全流程</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/06/29/GC%E2%80%94%E5%85%A8%E8%BF%87%E7%A8%8B/" class="article-date">
+    <time datetime="2024-06-29T07:46:59.000Z" itemprop="datePublished">2024-06-29</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <h4 id="1-minorgc-和-full-gc-区别"><strong>1、minorGC 和 Full GC 区别</strong></h4>
+<p>     新生代 GC（Minor GC）：指发生新生代的的垃圾收集动作，Minor GC 非常频繁，回收速度一般也比较快。</p>
+<p>     老年代 GC（Major GC/Full GC）：指发生在老年代的 GC，出现了 Major GC 经常会伴随至少一次的 Minor GC（并非绝对），Major GC 的速度一般会比 Minor GC 的慢 10 倍以上。</p>
+<h4 id="2-minorgc-过程详解"><strong>2、minorGC 过程详解</strong></h4>
+<p>     在初始阶段，新创建的对象被分配到 Eden 区，Survivor 的两块空间都为空。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC-%E5%85%A8%E6%B5%81%E7%A8%8B/GC%E5%85%A8%E6%B5%81%E7%A8%8B1.png" alt="图一"></p>
+<p>     当Eden区满了的时候，minor garbage 被触发。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC-%E5%85%A8%E6%B5%81%E7%A8%8B/GC%E5%85%A8%E6%B5%81%E7%A8%8B2.png" alt="图二"></p>
+<p>     经过扫描与标记，存活的对象被复制到S0，不存活的对象被回收， 并且存活的对象年龄都增大一岁。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC-%E5%85%A8%E6%B5%81%E7%A8%8B/GC%E5%85%A8%E6%B5%81%E7%A8%8B3.png" alt="图三"></p>
+<p>     在下一次的 Minor GC 中，Eden 区的情况和上面一致，没有引用的对象被回收，存活的对象被复制到 Survivor区。当 Eden 和 s0区空间满了，S0 的所有的数据都被复制到S1，需要注意的是，在上次 Minor GC 过程中移动到S0 中的两个对象在复制到 S1 后其年龄要加1。此时 Eden 区 S0 区被清空，所有存活的数据都复制到了 S1 区，并且 S1 区存在着年龄不一样的对象，过程如下图所示：</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC-%E5%85%A8%E6%B5%81%E7%A8%8B/GC%E5%85%A8%E6%B5%81%E7%A8%8B4.png" alt="图四"></p>
+<p>     再下一次 Minor GC 则重复这个过程，这一次 Survivor 的两个区对换，存活的对象被复制到 S0，存活的对象年龄加1，Eden 区和另一个 Survivor 区被清空。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC-%E5%85%A8%E6%B5%81%E7%A8%8B/GC%E5%85%A8%E6%B5%81%E7%A8%8B5.png" alt="图五"></p>
+<p>     再经过几次 Minor GC 之后，当存活对象的年龄达到一个阈值之后（-XX：MaxTenuringThreshold 默认是15），就会被从年轻代 Promotion 到老年代。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC-%E5%85%A8%E6%B5%81%E7%A8%8B/GC%E5%85%A8%E6%B5%81%E7%A8%8B6.png" alt="图六"></p>
+<p>     随着 MinorGC 一次又一次的进行，不断会有新的对象被 Promote 到老年代。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC-%E5%85%A8%E6%B5%81%E7%A8%8B/GC%E5%85%A8%E6%B5%81%E7%A8%8B7.png" alt="图七"></p>
+<p>     上面基本上覆盖了整个年轻代所有的回收过程。最终，MajorGC将会在老年代发生，老年代的空间将会被清除和压缩(标记-清除或者标记-整理)。从上面的过程可以看出，Eden 区是连续的空间，且 Survivor 总有一个为空。经过一次 GC 和复制，一个 Survivor 中保存着当前还活着的对象，而 Eden 区和另一个 Survivor 区的内容都不再需要了，可以直接清空，到下一次 GC 时，两个 Survivor 的角色再互换。因此，这种方式分配内存和清理内存的效率都极高，这种垃圾回收的方式就是著名的“停止-复制（Stop-and-copy）”清理法（将 Eden 区和一个 Survivor 中仍然存活的对象拷贝到另一个 Survivor 中），这不代表着停止复制清理法很高效，其实，它也只在这种情况下（基于大部分对象存活周期很短的事实）高效，如果在老年代采用停止复制，则是非常不合适的。</p>
+<p>     老年代存储的对象比年轻代多得多，而且不乏大对象，对老年代进行内存清理时，如果使用停止-复制算法，则相当低效。一般，老年代用的算法是标记-压缩算法，即：标记出仍然存活的对象（存在引用的），将所有存活的对象向一端移动，以保证内存的连续。在发生 Minor GC 时，虚拟机会检查每次晋升进入老年代的大小是否大于老年代的剩余空间大小，如果大于，则直接触发一次 Full GC，否则，就查看是否设置了-XX:+HandlePromotionFailure（允许担保失败），如果允许，则只会进行 MinorGC，此时可以容忍内存分配失败；如果不允许，则仍然进行Full GC（ 这代表着如果设置-<br>
+XX:+Handle PromotionFailure，则触发MinorGC就会同时触发Full GC，哪怕老年代还有很多内存，所以，最好不要这样做）。</p>
+<h4 id="3-整体描述"><strong>3、整体描述</strong></h4>
+<p>     大部分情况，对象都会首先在 Eden 区域分配，在一次新生代垃圾回收后，如果对象还存活，则会进入 s1(“To”)，并且对象的年龄还会加 1( Eden 区 -&gt; Survivor 区后对象的初始年龄变为 1)，当它的年龄增加到一定程度（默认为 15 岁），就会被晋升到老年代中。对象晋升到老年代的年龄阈值，可以通过参数 -XX:MaxTenuringThreshold 来设置。经过这次 GC 后，Eden 区和 From 区已经被清空。这个时候，From 和 To 会交换他们的角色，也就是新的 To 就是上次 GC 前的 From ，新的 From 就是上次 GC 前的 To。不管怎样，都会保证名为 To 的 Survivor 区域是空的。Minor GC 会一直重复这样的过程，直到 To 区被填满，To 区被填满之后，会将所有对象移动到年老代中。</p>
+<h4 id="4-gc-触发条件"><strong>4、GC 触发条件</strong></h4>
+<p>     Minor GC 触发条件：Eden 区满时。Full GC 触发条件：</p>
+<ul>
+<li>调用 System.gc 时，系统建议执行 Full GC，但是不必然执行；</li>
+<li>老年代空间不足；</li>
+<li>方法去空间不足；</li>
+<li>通过Minor GC后进入老年代的平均大小大于老年代的可用内存；</li>
+<li>由 Eden 区、From Space 区向 To Space 区复制时，对象大小大于 To Space 可用内存，则把该对象转存到老年代，且老年代的可用内存小于该对象大小。</li>
+</ul>
+<h4 id="5-对象进入老年代的四种情况"><strong>5、对象进入老年代的四种情况</strong></h4>
+<p>     假如进行Minor GC时发现，存活的对象在ToSpace区中存不下，那么把存活的对象存入老年代。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC-%E5%85%A8%E6%B5%81%E7%A8%8B/GC%E5%85%A8%E6%B5%81%E7%A8%8B8.png" alt="图八"></p>
+<p>     大对象直接进入老年代：假设新创建的对象很大，比如为5M(这个值可以通过PretenureSizeThreshold这个参数进行设置，默认3M)，那么即使Eden区有足够的空间来存放，也不会存放在Eden区，而是直接存入老年代。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC-%E5%85%A8%E6%B5%81%E7%A8%8B/GC%E5%85%A8%E6%B5%81%E7%A8%8B9.png" alt="图九"></p>
+<p>     长期存活的对象将进入老年代：此外，如果对象在Eden出生并且经过1次Minor GC后仍然存活，并且能被To区容纳，那么将被移动到To区，并且把对象的年龄设置为1，对象没&quot;熬过&quot;一次Minor GC(没有被回收，也没有因为To区没有空间而被移动到老年代中)，年龄就增加一岁，当它的年龄增加到一定程度(默认15岁，配置参数-XX:MaxTenuringThreshold)，就会被晋升到老年代中。</p>
+<p>     动态对象年龄判定：还有一种情况，如果在From空间中，相同年龄所有对象的大小总和大于Survivor空间的一半，那么年龄大于等于该年龄的对象就会被移动到老年代，而不用等到15岁(默认)。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC-%E5%85%A8%E6%B5%81%E7%A8%8B/GC%E5%85%A8%E6%B5%81%E7%A8%8B10.png" alt="图十"></p>
+<h4 id="6-空间分配担保"><strong>6、空间分配担保</strong></h4>
+<p>     在发生 Minor GC 之前，虚拟机会先检查老年代最大可用的连续空间是否大于新生代所有对象总空间，如果这个条件成立，那么 Minor GC 可以确保是安全的。如果不成立，则虚拟机会查看 HandlerPromotionFailure 这个参数设置的值（ true 或 flase ）是否允许担保失败（如果这个值为 true，代表着 JVM 说，我允许在这种条件下尝试执行 Minor GC，出了事我负责）。</p>
+<p>     如果允许，那么会继续检查老年代最大可用的连续空间是否大于历次晋升到老年代对象的平均大小，如果大于，将尝试进行一次 Minor GC，尽管这次 Minor GC 是有风险的；如果小于，或者 HandlerPromotionFailure 为 false，那么这次 Minor GC 将升级为 Full GC。如果老年代最大可用的连续空间大于历次晋升到老年代对象的平均大小，那么 HandlerPromotionFailure 为 true 的情况下，可以尝试进行一次 Minor GC，但这是有风险的，如果本次将要晋升到老年代的对象很多，那么 Minor GC 还是无法执行，此时还得改为 Full GC。</p>
+<p>     注意：JDK 6Update 24 之后，只要老年代的连续空间大于新生代对象总大小或者历次晋升的平均大 小就会进行 Minor GC，否则进行 Full GC。</p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-GC—基础知识"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/06/28/GC%E2%80%94%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"
+        >GC—基础知识</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/06/28/GC%E2%80%94%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="article-date">
+    <time datetime="2024-06-28T15:31:37.000Z" itemprop="datePublished">2024-06-28</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>     JVM 的 GC 是指垃圾回收，主要是对堆内存的回收。本文将介绍 JVM 中一次完整的 GC 流程是怎样<br>
+的，首先抛出第一个问题，什么样的对象会是 JVM 回收的目标？</p>
+<h4 id="1-可达性分析算法-gc-roots"><strong>1、可达性分析算法（GC Roots）</strong></h4>
+<p>     有一种引用计数法，可以用来判断对象被引用的次数，如果引用次数为0，则代表可以被回收。这种实现方式比较简单，但对于循环引用的情况束手无策，所以 Java 采用了可达性分析算法。即判断某个对象是否与 GC Roots 的这类对象之间的路径可达，若不可达，则有可能成为回收对象，被判定为不可达的对象要成为可回收对象必须至少经历两次标记过程，如果在这两次标记过程中仍然没有逃脱成为可回收对象的可能性，则基本上就真的成为可回收对象了。在 Java 中，可作为 GC Roots 的对象包括以下几种：</p>
+<ul>
+<li>虚拟机栈（本地变量表）中引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中引用的对象</li>
+</ul>
+<h4 id="2-jvm中的堆结构"><strong>2、JVM中的堆结构</strong></h4>
+<p>     JVM 中的堆可划分为两大部分，新生代和老年代，大小比例为1:2，如下：</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC%E2%80%94%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/%E5%A0%86%E5%8C%BA%E7%9A%84%E5%88%92%E5%88%86%E6%AF%94%E4%BE%8B.png" alt="JVM 分代比例"></p>
+<p>     其中，新生代分为 Eden 区和 Survivor 区， Survivor 幸存者区又分为大小相等的两块 from 和 to<br>
+区。这便是 JVM 中堆的结构和各部分默认的比例，当然这些比例都可通过对应 JVM 参数来调整。完整的 JMM 如下：</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/GC%E2%80%94%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/JVM%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="JVM 内存模型全景"></p>
+<h4 id="2-1-为何新生代要分为三个区"><strong>2.1、为何新生代要分为三个区</strong></h4>
+<p>     这里需要介绍新生代的垃圾回收算法——复制算法。该算法的核心是将可用内存按容量划分为大小<br>
+相等的两块，每次回收周期只用其中一块，当这一块的内存用完，就将还存活的对象复制到另一块上面，然后把已使用过的内存空间清理掉。</p>
+<p>     优点：不必考虑内存碎片问题；效率高。</p>
+<p>     缺点：可用容量减少为原来的一半，比较浪费。</p>
+<p>     最优设置：根据权威数据分析，90%的对象都是朝生夕死的，所以采用10%的空间用作交换区，因为交换区必须要有等量的两个，所以采用复制算法中新生代中三个区默认分配比例为8:1:1。</p>
+<h4 id="2-2-新生代对象的分配和回收"><strong>2.2、新生代对象的分配和回收</strong></h4>
+<p>     基本上新的对象优先在 Eden 区分配；</p>
+<p>     当 Eden 区没有足够空间时，会发起一次 Minor GC；</p>
+<p>     Minor GC 回收新生代采用复制回收算法的改进版本。即：<br>
+from 区和 to 区的两个交换区，这两个区只有一个区有数据。采用8:1:1的默认分配比例（-XX:SurvivorRatio默认为8，代表 Eden 区与 Survivor 区的大小比例）</p>
+<h4 id="2-3-老年代对象的分配和回收"><strong>2.3、老年代对象的分配和回收</strong></h4>
+<p>     老年代的对象一般来自于新生代中的长期存活对象。这里有一概念叫做年龄阈值，每个对象定义了年龄计数器，经<br>
+过一次 Minor GC （在交换区）后年龄加1，对象年龄达到15次后将会晋升到老年代，老年代空间不够时进行 Full GC。当然这个参数仍是可以通过 JVM 参数（-XX:MaxTenuringThreshold，默认15）来调整。</p>
+<p>     大对象直接进入老年代。即超过 Eden 区空间，或超过一个参数值（-<br>
+XX:PretenureSizeThreshold=30m，无默认值）。这样做的目的是避免在Eden区及两个Survivor区之间发生大量的内存复制。</p>
+<p>     对象提前晋升到老年代（组团）。动态年龄判定：如果在 Survivor 区中相同年龄所有对象大小总和<br>
+大于 Survivor 区大小的一半，年龄大于或等于该年龄的对象就可以直接进入老年代，而无须等到自己<br>
+的晋升年龄。</p>
+<h4 id="3-jvm完整的gc流程"><strong>3、JVM完整的GC流程</strong></h4>
+<p>     对象的正常流程：Eden 区 -&gt; Survivor 区 -&gt; 老年代。</p>
+<p>     新生代GC：Minor GC；老年代GC：Full GC，比 Minor GC 慢10倍，JVM 会“stop the world”，严重<br>
+影响性能。</p>
+<p>     总结：内存区域不够用了，就会引发GC。Minor GC 避免不了，Full GC 尽量避免。<br>
+处理方式：保存堆栈快照日志、分析内存泄漏、调整内存设置控制垃圾回收频率，选择合适的垃圾<br>
+回收器等。</p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-密码学算法分类"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/06/18/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/"
+        >密码学算法分类</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/06/18/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/" class="article-date">
+    <time datetime="2024-06-18T12:16:14.000Z" itemprop="datePublished">2024-06-18</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%88%86%E7%B1%BB.png" alt="密码学算法分类"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8/" rel="tag">安全</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-三段式国密"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/06/18/%E4%B8%89%E6%AE%B5%E5%BC%8F%E5%9B%BD%E5%AF%86/"
+        >三段式国密</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/06/18/%E4%B8%89%E6%AE%B5%E5%BC%8F%E5%9B%BD%E5%AF%86/" class="article-date">
+    <time datetime="2024-06-18T11:15:47.000Z" itemprop="datePublished">2024-06-18</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E4%B8%89%E6%AE%B5%E5%BC%8F%E5%9B%BD%E5%AF%86/%E4%B8%89%E6%AE%B5%E5%BC%8F%E5%9B%BD%E5%AF%86%E9%80%9A%E8%AE%AF.png" alt="三段式国密通讯"></p>
+<p>     <strong>三段式国密的问题</strong></p>
+<p>     1、三段式国密一次一密，每次通信都需要进行 SM2 运算，SM2 运算是对性能的极大损耗；</p>
+<p>     2、签名不能代替摘要，签名说的是不可抵赖性，摘要说的是防篡改性；</p>
+<p>     3、私钥放在了客户端。</p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8/" rel="tag">安全</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-https工作流程"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/06/16/https%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/"
+        >https工作流程</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/06/16/https%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/" class="article-date">
+    <time datetime="2024-06-16T12:33:32.000Z" itemprop="datePublished">2024-06-16</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p><img src="/pic/HTTPS%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B/HTTPS%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.drawio.png" alt="https工作流程"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-论兜底的重要性"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/04/07/%E8%AE%BA%E5%85%9C%E5%BA%95%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/"
+        >兜底在系统设计中的重要性</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/04/07/%E8%AE%BA%E5%85%9C%E5%BA%95%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/" class="article-date">
+    <time datetime="2024-04-07T10:50:25.000Z" itemprop="datePublished">2024-04-07</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%85%9C%E5%BA%95%E5%9C%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/%E7%B3%BB%E7%BB%9F%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB.png" alt="系统调用关系"></p>
+<p>     生产环境存在如上图的调用关系，应用 AB 在往下游发起 RPC 调用时，都先去向全局的序列服务申请序列号，序列号用来作为全局流水号或者追踪号。TDSQL 架构如图：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E5%85%9C%E5%BA%95%E5%9C%A8%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E6%80%A7/TDSQL%E7%A4%BA%E6%84%8F%E5%9B%BE.png" alt="TDSQL示意图"></p>
+<p>     三周前，TDSQL 做了序列服务数据库的机房迁移，从甲机房迁移到了乙机房，当晚验证没有问题。但是三周过后，硬件负载 F5 出了问题，导致 B 获取序列失败。由于 B 在实现上强依赖于序列服务，序列服务，整个 B 系统的所有交易都走不通了。但是 A 仍然可以正常发起 RPC 调用，因为 A 在实现上，如果调用失败，兜底的方案是会在本地生成序列。</p>
+<p>     由于 A 应用依赖于 B 应用，而 B 缺少类似于 A 的兜底策略，导致整体对客的服务全都不可用。</p>
+<p>     事实上，序列号只不过是用来追踪程序的一个功能，A 应用的情况，就算不走全局序列服务来生成，本地生成一个序列号也没有任何影响，只不过序列服务那边溯源的时候查不到这笔交易。但是总好过 B 应用，在序列服务出问题的时候，连核心的交易都走不通要好。</p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag">架构</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-一个粗心的Java并发问题"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/03/15/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/"
+        >一个粗心的Java并发问题</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/03/15/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/" class="article-date">
+    <time datetime="2024-03-15T08:10:28.000Z" itemprop="datePublished">2024-03-15</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0.jpg" alt="问题描述"><br>
+<img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/%E9%97%AE%E9%A2%98%E8%AF%A6%E6%83%85.jpg" alt="问题详情"><br>
+<img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/%E5%BE%AE%E8%A7%82%E5%9C%BA%E6%99%AF%E4%B8%8B%E7%9A%84%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%89%A7%E8%A1%8C%E6%83%85%E5%86%B5.jpg" alt="微观场景下的多线程执行情况"><br>
+<img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%B8%80%E4%B8%AA%E7%B2%97%E5%BF%83%E7%9A%84Java%E5%B9%B6%E5%8F%91%E9%97%AE%E9%A2%98/%E4%BF%AE%E5%A4%8D%E4%B9%8B%E5%90%8E%E7%9A%84%E4%BB%A3%E7%A0%81.jpg" alt="修复之后的代码"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-http是个高冷的女孩"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/03/07/http%E6%98%AF%E4%B8%AA%E9%AB%98%E5%86%B7%E7%9A%84%E5%A5%B3%E5%AD%A9/"
+        >http是个高冷的女孩</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/03/07/http%E6%98%AF%E4%B8%AA%E9%AB%98%E5%86%B7%E7%9A%84%E5%A5%B3%E5%AD%A9/" class="article-date">
+    <time datetime="2024-03-07T03:12:41.000Z" itemprop="datePublished">2024-03-07</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p><img src="/pic/%E7%AC%94%E8%AE%B0/http%E6%98%AF%E4%B8%AA%E9%AB%98%E5%86%B7%E7%9A%84%E5%A5%B3%E5%AD%A9/http%E6%98%AF%E4%B8%AA%E9%AB%98%E5%86%B7%E7%9A%84%E5%A5%B3%E5%AD%A9.jpg" alt="http是个高冷的女孩"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-互联网发展的历程"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/03/03/%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%91%E5%B1%95%E7%9A%84%E5%8E%86%E7%A8%8B/"
+        >互联网发展的历程</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/03/03/%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%91%E5%B1%95%E7%9A%84%E5%8E%86%E7%A8%8B/" class="article-date">
+    <time datetime="2024-03-03T10:06:52.000Z" itemprop="datePublished">2024-03-03</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E4%BA%92%E8%81%94%E7%BD%91%E5%8F%91%E5%B1%95%E7%9A%84%E5%8E%86%E7%A8%8B/%E4%BA%92%E8%81%94%E7%BD%91%E5%8E%86%E5%8F%B2.jpeg" alt="互联网发展的历程"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%92%E8%81%94%E7%BD%91/" rel="tag">互联网</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-String引用传值问题"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/03/01/String%E5%BC%95%E7%94%A8%E4%BC%A0%E5%80%BC%E9%97%AE%E9%A2%98/"
+        >String引用传值问题</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/03/01/String%E5%BC%95%E7%94%A8%E4%BC%A0%E5%80%BC%E9%97%AE%E9%A2%98/" class="article-date">
+    <time datetime="2024-03-01T01:05:27.000Z" itemprop="datePublished">2024-03-01</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>     Java 中是没有引用传递的，Java 中只有值传递。Java 中所谓的引用传递，也只是传递了&quot;引用变量保存的地址值&quot;。 Java 中判断&quot;引用传递&quot;有没有达到你预期的效果，前提要基于内存模型，并结合你的上下文，根据有没有利用引用变量&quot;传递&quot;的这个地址值去修改实际内存对象的数据来判断。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> edu.zjnu;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 杨海波</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2024/2/29 20:49</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> String 引用传值</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        test01();</span><br><span class="line">        test02();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test01</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;out&quot;</span>;</span><br><span class="line">        <span class="comment">// str = &quot;out2&quot;;</span></span><br><span class="line">        f01(str);</span><br><span class="line">        System.out.println(str);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 工程实践表明，java 中没有引用传递，只有值传递。</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;</span></span><br><span class="line"><span class="comment">     * Java 中所谓的引用传递，也只是传递了&quot;引用变量保存的地址值&quot;，如果无法做到</span></span><br><span class="line"><span class="comment">     * 根据这个引用指向的地址去修改实际对象的值，那么函数外部的实际对象无法被修改。</span></span><br><span class="line"><span class="comment">     * 特别的，String 是不可变对象：</span></span><br><span class="line"><span class="comment">     * 在 test01 这个例子中， 外部的 &#x27; str = &quot;out2&quot;;  这行代码只是在方法区的</span></span><br><span class="line"><span class="comment">     * 字符串常量池新建了一个字符串常量对象 &quot;out2&quot;,并将该对象的地址赋值给引用变</span></span><br><span class="line"><span class="comment">     * 量 str。内部的 str = &quot;in&quot;; 也是同理，但是当 f01 函数执行 str = &quot;in&quot;; </span></span><br><span class="line"><span class="comment">     * 这行代码时，引用变量保存的值（该值是尊从值传递的）是新的字符串常量对象 &quot;in&quot; </span></span><br><span class="line"><span class="comment">     * 的地址，当 f01 执行完毕，这个值尊从函数作用域规则消失了。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> str</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">f01</span><span class="params">(String str)</span> &#123;</span><br><span class="line">        str = <span class="string">&quot;in&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 解决办法如下</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">test02</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">StringWrapper</span> <span class="variable">str</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringWrapper</span>(<span class="string">&quot;out&quot;</span>);</span><br><span class="line">        f02(str);</span><br><span class="line">        System.out.println(str.value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">f02</span><span class="params">(StringWrapper str)</span> &#123;</span><br><span class="line">        str.value = <span class="string">&quot;in&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">class</span> <span class="title class_">StringWrapper</span> &#123;</span><br><span class="line">        <span class="comment">// 实际值</span></span><br><span class="line">        <span class="keyword">public</span> String value;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">public</span> <span class="title function_">StringWrapper</span><span class="params">(String value)</span> &#123;</span><br><span class="line">            <span class="built_in">this</span>.value = value;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+    </article>
+    
+
+    
+        <nav class="page-nav">
+            
+            <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+        </nav>
+    
+</section>
+</div>
+
+        <footer class="footer">
+    <div class="outer">
+        <ul>
+            <li>
+                Copyrights &copy;
+                2017
+                -
+                
+                2025
+                <i class="ri-heart-fill heart_icon"></i> 杨海波
+            </li>
+        </ul>
+        <ul>
+            <li>
+                
+            </li>
+        </ul>
+        <ul>
+            <li>
+                
+                    
+                    <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+                
+            </li>
+        </ul>
+        <ul>
+            
+        </ul>
+        <ul>
+            
+        </ul>
+        <ul>
+            <li>
+                <!-- cnzz统计 -->
+                
+            </li>
+        </ul>
+    </div>
+</footer>
+    </main>
+    <div class="float_btns">
+        <div class="totop" id="totop">
+    <i class="ri-arrow-up-line"></i>
+</div>
+
+    <div class="todark" id="todark">
+        <i class="ri-moon-line"></i>
+    </div>
+
+    </div>
+    <aside class="sidebar on">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+    
+        <div class="logo">
+            <a href="/"><img src="/images/SETSUNAYANG.JPG" alt=""></a>
+        </div>
+    
+    <ul class="nav nav-main">
+        
+            <li class="nav-item">
+                <a class="nav-item-link" href="/">主 页</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" href="/archives">归 档</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" href="/tags">标 签</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://github.com/3546514206">Github</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://gb.cpolar.cn/">Gitlab</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://tongyi.aliyun.com/">通义千问</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://yuanbao.tencent.com/">腾讯元宝</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.cpolar.com/">Cpolar</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://cr.cpolar.cn">隧 道</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="http://192.168.0.1/">Hotspot</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="http://192.168.31.1/cgi-bin/luci/web">MiRouter</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://javabetter.cn/">进阶之路</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://pdai.tech/">pdai.tech</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.mobibrw.com/">友链 一</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.wujunhao1024.com/">友链 二</a>
+            </li>
+        
+    </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+    <ul class="nav">
+        <li class="nav-item">
+            
+                <a class="nav-item-link nav-item-search" title="搜索">
+                    <i class="ri-search-line"></i>
+                </a>
+            
+            
+        </li>
+    </ul>
+</nav>
+<div class="search-form-wrap">
+    <div class="local-search local-search-plugin">
+    <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+    <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+    <span class="close"><i class="ri-close-line"></i></span>
+    <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+    <div class="reward-box">
+        
+            <div class="reward-item">
+                <img class="reward-img" src="/images/alipay.jpg">
+                <span class="reward-type">支付宝</span>
+            </div>
+        
+        
+            <div class="reward-item">
+                <img class="reward-img" src="/images/wechat.jpg">
+                <span class="reward-type">微信</span>
+            </div>
+        
+    </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+        rel="stylesheet"
+        href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+    var ayerConfig = {
+        mathjax: true,
+    };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds);
+    }
+
+    !function (e, t, a) {
+        var initCopyCode = function () {
+            var copyHtml = '';
+            copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+            copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+            copyHtml += '</button>';
+            $(".highlight .code pre").before(copyHtml);
+            $(".article pre code").before(copyHtml);
+            var clipboard = new ClipboardJS('.btn-copy', {
+                target: function (trigger) {
+                    return trigger.nextElementSibling;
+                }
+            });
+            clipboard.on('success', function (e) {
+                let $btn = $(e.trigger);
+                $btn.addClass('copied');
+                let $icon = $($btn.find('i'));
+                $icon.removeClass('ri-file-copy-2-line');
+                $icon.addClass('ri-checkbox-circle-line');
+                let $span = $($btn.find('span'));
+                $span[0].innerText = 'COPIED';
+
+                wait(function () { // 等待两秒钟后恢复
+                    $icon.removeClass('ri-checkbox-circle-line');
+                    $icon.addClass('ri-file-copy-2-line');
+                    $span[0].innerText = 'COPY';
+                }, 2000);
+            });
+            clipboard.on('error', function (e) {
+                e.clearSelection();
+                let $btn = $(e.trigger);
+                $btn.addClass('copy-failed');
+                let $icon = $($btn.find('i'));
+                $icon.removeClass('ri-file-copy-2-line');
+                $icon.addClass('ri-time-line');
+                let $span = $($btn.find('span'));
+                $span[0].innerText = 'COPY FAILED';
+
+                wait(function () { // 等待两秒钟后恢复
+                    $icon.removeClass('ri-time-line');
+                    $icon.addClass('ri-file-copy-2-line');
+                    $span[0].innerText = 'COPY';
+                }, 2000);
+            });
+        }
+        initCopyCode();
+    }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+    if (window.mermaid) {
+        mermaid.initialize({theme: "forest"});
+    }
+</script>
+
+
+    
+    
+
+</div>
+</body>
+
+</html>

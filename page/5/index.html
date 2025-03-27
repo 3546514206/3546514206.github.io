@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8"/>
+    
+    
+    
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>
+        
+        </title>
+  <meta name="generator" content="hexo-theme-ayer">
+    
+        <link rel="shortcut icon" href="/images/SETSUNAYANG.JPG"/>
+    
+    
+<link rel="stylesheet" href="/dist/main.css">
+
+    
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+    
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+        <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+    
+    
+ 
+
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+    <!-- mermaid -->
+    
+    <style>
+        .swal2-styled.swal2-confirm {
+            font-size: 1.6rem;
+        }
+    </style>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /><script src="/assets/js/DPlayer.min.js"></script></head>
+</html>
+</html>
+
+
+<body>
+<div id="app">
+    
+    
+    <main class="content on">
+        
+    <section class="cover">
+        
+        <div class="cover-frame">
+            <div class="bg-box">
+                <img src="/images/pintan-compression.jpg" alt="image frame"/>
+            </div>
+            <div class="cover-inner text-center text-white">
+                <h1><a href="/"></a></h1>
+                <div id="subtitle-box">
+                    
+                        <span id="subtitle"></span>
+                    
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="cover-learn-more">
+            <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+        </div>
+    </section>
+
+
+
+    <script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+    <script>
+        try {
+            var typed = new Typed("#subtitle", {
+                strings: ['我叫杨海波，是一名软件工程师。', '我参与过机房和云基础设施的建设，负责过应用平台层的框架设计与落地，还参与过手机银行应用系统的架构设计，具备自下而上的全栈开发经验。', '我将软件工程作为安身立命之本，具备正规、大气的专业素养，并致力于成为软件工程行业的技术专家。'],
+                startDelay: 3,
+                typeSpeed: 88,
+                loop: true,
+                backSpeed: 100,
+                showCursor: true
+            });
+        } catch (err) {
+            console.log(err)
+        }
+    </script>
+
+<div id="main">
+    <section class="outer">
+    
+    
+        
+
+    <div class="notice" style="margin-top:50px">
+        <i class="ri-heart-fill"></i>
+        <div class="notice-content" id="broad"></div>
+    </div>
+    <script type="text/javascript">
+        fetch('https://v1.hitokoto.cn')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("broad").innerHTML = data.hitokoto;
+            })
+            .catch(console.error)
+    </script>
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+    
+    <article class="articles">
+        
+        
+        
+            
+                <article
+        id="post-云原生之于服务端开发"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/02/29/%E4%BA%91%E5%8E%9F%E7%94%9F%E4%B9%8B%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/"
+        >云原生之于服务端开发</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/02/29/%E4%BA%91%E5%8E%9F%E7%94%9F%E4%B9%8B%E4%BA%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E5%8F%91/" class="article-date">
+    <time datetime="2024-02-29T01:38:18.000Z" itemprop="datePublished">2024-02-29</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>     每个服务端开发人员都应该了解云原生。云原生视角，是一个全栈的服务端视角—自下而上从硬件设备到应用架构。在云原生视角下回过头来看服务端开发的问题，有点降维打击的感觉。现在看服务端开发的问题，再复杂的问题，也只是局部的一个点，很小的问题。</p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/" rel="tag">云计算</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-像专业开发人员那样调试程序"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/02/09/%E5%83%8F%E4%B8%93%E4%B8%9A%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E9%82%A3%E6%A0%B7%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F/"
+        >像专业开发人员那样调试程序</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/02/09/%E5%83%8F%E4%B8%93%E4%B8%9A%E5%BC%80%E5%8F%91%E4%BA%BA%E5%91%98%E9%82%A3%E6%A0%B7%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F/" class="article-date">
+    <time datetime="2024-02-09T00:55:08.000Z" itemprop="datePublished">2024-02-09</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <div id="dplayer8" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer8"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/像专业开发人员那样调试程序/像专业开发人员那样调试程序.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%B7%A5%E5%85%B7/" rel="tag">工具</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-进程间通信的5种方式"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/02/04/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F/"
+        >进程间通信的5种方式</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/02/04/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F/" class="article-date">
+    <time datetime="2024-02-04T07:15:16.000Z" itemprop="datePublished">2024-02-04</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>以下是类UNIX操作系统（如Linux）中常见的5种通讯机制。</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F/%E8%BF%9B%E7%A8%8B%E9%97%B4%E9%80%9A%E4%BF%A1%E7%9A%845%E7%A7%8D%E6%96%B9%E5%BC%8F.jpeg" alt="进程间通信的5种方式"></p>
+<p>     管道（Pipes）:管道是指连接两个或多个进程的输入和输出，常用于流式传输数据。例如，shell脚本通常使用管道运算符“|” 将命令链接在一起：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat /var/log/syslog | grep &#x27;error&#x27; | less</span><br></pre></td></tr></table></figure>
+<p>     消息队列（Message Queues）：消息队列通过允许进程以消息的形式交换数据来提供异步通信。写入队列的消息按先进先出的顺序处理。</p>
+<p>例如，服务器可能将作业分派到队列中，消费守护进程从中拉取并独立处理。</p>
+<p>     信号（Signals）：信号提供了一种通知系统，能够让进程立即收到重要事件，如被强制终止。例如，SIGKILL提供了一种可靠的方法来结束无响应的应用程序。</p>
+<p>     信号量（Semaphores）：信号量是是一种在多线程环境中使用的同步机制，旨在确保多个线程不会同时访问同一块共享内存区域或其他临界资源。</p>
+<p>     共享内存（Shared Memory）：共享内存是允许直接访问共享内存区域，以便多个进程可以高效地读取和修改数据，而无需复制。一个示例用例是处理大型图像帧的程序，其中多个进程可以同时访问和处理图像的不同部分。</p>
+<p>     这些IPC机制有时被组合在一起以实现高效的进程通信。</p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-HTTPS是如何工作的"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/02/04/HTTPS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/"
+        >HTTPS是如何工作的</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/02/04/HTTPS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/" class="article-date">
+    <time datetime="2024-02-04T06:03:43.000Z" itemprop="datePublished">2024-02-04</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>     超文本传输协议安全（HTTPS）是超文本传输协议（HTTP）的扩展。</p>
+<p>     HTTPS使用传输层安全协议（TLS）来传输加密数据。如果数据在网上被劫持，劫持者得到的只是二进制代码。那么数据是如何加密和解密的呢？</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/HTTPS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84/HTTPS%E6%98%AF%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%E7%9A%84.jpeg" alt="HTTPS是如何工作的"></p>
+<ul>
+<li>
+<p>步骤1 - 客户端（浏览器）和服务器建立TCP连接。</p>
+</li>
+<li>
+<p>步骤2 - 客户端向服务器发送“客户端hello”。该消息包含一组必要的加密算法（密码套件）以及它可以支持的最新TLS版本。服务器通过发送“服务器hello”来响应，以便浏览器知道它是否支持算法和TLS版本。服务器然后向客户端发送SSL证书。证书包含公钥、主机名、过期日期等。客户端验证证书。</p>
+</li>
+<li>
+<p>步骤3 - 在验证SSL证书后，客户端生成会话密钥并使用公钥对其进行加密。服务器接收加密的会话密钥并使用私钥进行解密。</p>
+</li>
+<li>
+<p>步骤4 - 现在客户端和服务器都持有相同的会话密钥（对称加密），加密数据通过安全的双向通道进行传输。</p>
+</li>
+</ul>
+<p>     为什么HTTPS在数据传输期间会切换到对称加密？主要有两个原因：</p>
+<ul>
+<li>
+<p>1、安全：非对称加密只适用于单向。这意味着如果服务器尝试将加密数据发送回客户端，任何人都可以使用公钥解密数据。</p>
+</li>
+<li>
+<p>2、服务器资源：非对称加密增加了大量的数学开销。它不适合长会话中的数据传输。</p>
+</li>
+</ul>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-MQ组件的封装"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2024/01/31/MQ%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B0%81%E8%A3%85/"
+        >MQ组件的封装</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2024/01/31/MQ%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B0%81%E8%A3%85/" class="article-date">
+    <time datetime="2024-01-31T12:08:30.000Z" itemprop="datePublished">2024-01-31</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>     之前给人封装的一套消息发送工具。类层次设计得挺有感觉的。</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/MQ%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B0%81%E8%A3%85/MQ%E7%BB%84%E4%BB%B6%E7%9A%84%E5%B0%81%E8%A3%85.png" alt="MQ组件的封装"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" rel="tag">消息队列</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-常见面试题梳理"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/12/21/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%A2%B3%E7%90%86/"
+        >Java 开发常见面试知识点梳理</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/12/21/%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98%E6%A2%B3%E7%90%86/" class="article-date">
+    <time datetime="2023-12-21T01:46:16.000Z" itemprop="datePublished">2023-12-21</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br></pre></td><td class="code"><pre><span class="line">1、Java 部分</span><br><span class="line"></span><br><span class="line">设计模式：</span><br><span class="line">    单例模式（懒汉式、饿汉式、双重锁）</span><br><span class="line">    工厂模式（简单工厂、工厂方法、抽象工厂）</span><br><span class="line">    代理模式（静态代理、动态代理）</span><br><span class="line">    策略模式（解耦算法与业务）</span><br><span class="line">    观察者模式（发布-订阅模式）</span><br><span class="line">    装饰者模式（功能扩展）</span><br><span class="line"></span><br><span class="line">并发：</span><br><span class="line">    Java 线程基础（线程创建、状态、生命周期）</span><br><span class="line">    线程池（ThreadPoolExecutor 原理、线程池优化）</span><br><span class="line">    并发工具类（CountDownLatch、CyclicBarrier、Semaphore）</span><br><span class="line">    锁机制（synchronized、ReentrantLock、公平锁、读写锁）</span><br><span class="line">    CAS 与原子操作（Atomic 类的实现原理、ABA 问题）</span><br><span class="line">    volatile 与内存可见性（happens-before 原则）</span><br><span class="line">    AQS（AbstractQueuedSynchronizer）原理（锁的底层实现）</span><br><span class="line">    并发容器（ConcurrentHashMap 原理、CopyOnWriteArrayList）</span><br><span class="line"></span><br><span class="line">集合框架：</span><br><span class="line">    List（ArrayList、LinkedList 区别）</span><br><span class="line">    Set（HashSet、TreeSet、LinkedHashSet）</span><br><span class="line">    Map（HashMap、TreeMap、LinkedHashMap、ConcurrentHashMap）</span><br><span class="line">    Fail-fast 与 fail-safe（遍历过程中修改问题）</span><br><span class="line">    HashMap 的底层原理（链表转红黑树的条件）</span><br><span class="line"></span><br><span class="line">JVM：</span><br><span class="line">    JVM 内存模型（堆、栈、方法区、程序计数器）</span><br><span class="line">    类加载机制（双亲委派模型、类加载器）</span><br><span class="line">    垃圾回收算法（标记-清除、标记-整理、复制算法）</span><br><span class="line">    垃圾回收器（Serial、Parallel、CMS、G1 原理）</span><br><span class="line">    JVM 性能调优（JVM 参数、内存分析工具、GC 日志分析）</span><br><span class="line">    类文件结构（字节码结构、方法区细节）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2、框架部分</span><br><span class="line"></span><br><span class="line">Spring：</span><br><span class="line">    Spring IOC 容器（Bean 的生命周期、依赖注入）</span><br><span class="line">    AOP 原理（动态代理、CGLib 实现）</span><br><span class="line">    事务管理（声明式事务、事务传播机制）</span><br><span class="line">    Spring MVC（请求处理流程、DispatcherServlet、HandlerMapping）</span><br><span class="line">    Spring Boot（自动配置原理、嵌入式容器）</span><br><span class="line">    Spring Cloud（服务注册与发现、负载均衡、断路器）</span><br><span class="line"></span><br><span class="line">MyBatis：</span><br><span class="line">    MyBatis 基础（SQL 映射、动态 SQL、缓存机制）</span><br><span class="line">    一级缓存、二级缓存的原理和区别</span><br><span class="line">    MyBatis 插件机制（拦截器实现、性能优化）</span><br><span class="line">    性能调优（懒加载、批量处理、SQL 优化）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">3、缓存</span><br><span class="line"></span><br><span class="line">Redis 的基本数据结构：</span><br><span class="line">    String、List、Set、Sorted Set、Hash、Bitmap、HyperLogLog、Geo</span><br><span class="line"></span><br><span class="line">大Key 和 热Key：</span><br><span class="line">    概念，如何解决</span><br><span class="line"></span><br><span class="line">大Key问题：</span><br><span class="line">    如何拆分大Key，避免阻塞 Redis 线程</span><br><span class="line"></span><br><span class="line">热Key问题：</span><br><span class="line">    热点数据导致单节点压力过大，如何通过分片或缓存穿透防止单点瓶颈</span><br><span class="line"></span><br><span class="line">持久化：</span><br><span class="line">    RDB（快照）机制（优点、缺点、触发条件）</span><br><span class="line">    AOF（Append Only File）机制（优点、缺点、重写策略）</span><br><span class="line">    混合持久化（RDB+AOF 的结合）</span><br><span class="line"></span><br><span class="line">Redis 高可用：</span><br><span class="line">    主从复制（异步复制的原理）</span><br><span class="line">    哨兵模式（自动故障转移）</span><br><span class="line">    Redis Cluster（分片、槽位映射、Gossip 协议）</span><br><span class="line">    持久化与高可用的权衡</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">4、MySQL</span><br><span class="line"></span><br><span class="line">事务相关：</span><br><span class="line">    ACID 原则（原子性、一致性、隔离性、持久性）</span><br><span class="line">    事务隔离级别（读未提交、读已提交、可重复读、串行化）</span><br><span class="line">    锁机制（共享锁、排他锁、行锁、表锁）</span><br><span class="line">    MVCC（多版本并发控制，InnoDB 如何实现可重复读）</span><br><span class="line"></span><br><span class="line">死锁：</span><br><span class="line">    概念及其解决办法（死锁检测、回滚机制）</span><br><span class="line"></span><br><span class="line">SQL 优化：</span><br><span class="line">    索引设计与优化（覆盖索引、最左前缀原则、索引下推）</span><br><span class="line">    慢查询分析（explain、索引扫描、全表扫描）</span><br><span class="line">    分库分表（垂直拆分、水平拆分、分片策略）</span><br><span class="line">    读写分离（主从复制、读从库、写主库）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">5、消息队列</span><br><span class="line"></span><br><span class="line">消息类型：</span><br><span class="line">    点对点（Queue）：消息只能由一个消费者消费</span><br><span class="line">    发布-订阅（Topic）：消息广播给多个订阅者</span><br><span class="line">    延时消息：如 RabbitMQ 的 TTL 队列或 Kafka 延时消息</span><br><span class="line">    事务消息：RocketMQ 事务消息，用于实现分布式事务</span><br><span class="line"></span><br><span class="line">消息队列架构：</span><br><span class="line">    Broker、Producer、Consumer 模型（生产者、消费者、Broker 的架构）</span><br><span class="line"></span><br><span class="line">消息确认机制：</span><br><span class="line">    消息成功消费的确认流程，避免消息丢失</span><br><span class="line"></span><br><span class="line">负载均衡：</span><br><span class="line">    如何平衡消费者之间的消费压力</span><br><span class="line"></span><br><span class="line">可靠投递：</span><br><span class="line">    消息持久化（消息落盘，防止 Broker 宕机导致消息丢失）</span><br><span class="line">    幂等性保障（如何避免重复消费的问题，如幂等消费逻辑）</span><br><span class="line">    消息投递重试机制（失败后重试策略，死信队列）</span><br><span class="line"></span><br><span class="line">消息堆积：</span><br><span class="line">    消息积压问题：由于消费速度跟不上生产速度，消息在队列中堆积</span><br><span class="line">    如何应对：增加消费者并行消费能力、削峰填谷</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">6、分布式</span><br><span class="line"></span><br><span class="line">CAP 理论：</span><br><span class="line">    Consistency：一致性</span><br><span class="line">    Availability：可用性</span><br><span class="line">    Partition Tolerance：分区容错性</span><br><span class="line">    CAP 不可能三角：只能同时满足两者，典型场景举例</span><br><span class="line"></span><br><span class="line">微服务架构：</span><br><span class="line">    服务拆分与通信（REST、RPC、gRPC）</span><br><span class="line">    服务发现（Zookeeper、Eureka、Consul）</span><br><span class="line">    负载均衡（Ribbon、Nginx、Spring Cloud LoadBalancer）</span><br><span class="line">    服务容错（Hystrix、Sentinel 实现熔断降级）</span><br><span class="line"></span><br><span class="line">服务治理：</span><br><span class="line">    配置管理（Spring Cloud Config、Nacos）</span><br><span class="line">    服务监控（Prometheus、Grafana、Sleuth）</span><br><span class="line">    链路追踪（Zipkin、Jaeger，分布式追踪系统）</span><br><span class="line"></span><br><span class="line">7、项目准备</span><br></pre></td></tr></table></figure>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-日志框架简史"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/12/06/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E7%AE%80%E5%8F%B2/"
+        >日志框架简史</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/12/06/%E6%97%A5%E5%BF%97%E6%A1%86%E6%9E%B6%E7%AE%80%E5%8F%B2/" class="article-date">
+    <time datetime="2023-12-06T05:00:45.000Z" itemprop="datePublished">2023-12-06</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <div id="dplayer19" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer19"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/日志框架简史/日志框架简史.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-常见的算法时间复杂度由小到大依次为"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/12/06/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%94%B1%E5%B0%8F%E5%88%B0%E5%A4%A7%E4%BE%9D%E6%AC%A1%E4%B8%BA/"
+        >常见的算法时间复杂度由小到大依次为</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/12/06/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%94%B1%E5%B0%8F%E5%88%B0%E5%A4%A7%E4%BE%9D%E6%AC%A1%E4%B8%BA/" class="article-date">
+    <time datetime="2023-12-06T01:39:30.000Z" itemprop="datePublished">2023-12-06</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>O(1)常数阶 &lt; O(logn)对数阶 &lt; O(n)线性阶 &lt; O(nlogn)线性对数阶 &lt; O(n^2)平方阶 &lt; O(n^3)(立方阶) &lt; O(2^n) (指数阶) &lt; O(n!)</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/%E5%A4%8D%E6%9D%82%E5%BA%A6.png" alt="常见的算法时间复杂度"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" rel="tag">数据结构与算法</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-浅述Java对象的内存布局"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/12/05/%E6%B5%85%E8%BF%B0Java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/"
+        >浅述Java对象的内存布局</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/12/05/%E6%B5%85%E8%BF%B0Java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/" class="article-date">
+    <time datetime="2023-12-05T08:37:21.000Z" itemprop="datePublished">2023-12-05</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>     Java的实例对象、数组对象在内存中的组成包括如下三部分：对象头Hearder、实例数据、内存填充。示意图如下所示：</p>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E6%B5%85%E8%BF%B0Java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/%E5%AF%B9%E8%B1%A1%E5%A4%B4%E7%BB%93%E6%9E%84.png" alt="对象头结构"></p>
+<ul>
+<li>对象头：其主要包括两部分数据：Mark Word、Class对象指针。特别地对于数组对象而言，其还包括了数组长度数据。在64位的HotSpot虚拟机下，Mark Word占8个字节，其记录了Hash Code、GC信息、锁信息等相关信息；而Class对象指针则指向该实例的Class对象，在开启指针压缩的情况下占用4个字节，否则占8个字节；如果其是一个数组对象，则还需要4个字节用于记录数组长度信息。这里列出64位HotSpot虚拟机Mark Word的具体含义，以供参考。需要注意的是在下图的Mark Word中，左侧为高字节，右侧为低字节。</li>
+</ul>
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E6%B5%85%E8%BF%B0Java%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/%E5%AF%B9%E8%B1%A1%E5%A4%B4%E7%BB%86%E8%8A%82.jpg" alt="对象头细节"></p>
+<ul>
+<li>
+<p>实例数据：用于存放该对象的实例数据。</p>
+</li>
+<li>
+<p>内存填充：64位的HotSpot要求Java对象地址按8字节对齐，即每个对象所占内存的字节数必须是8字节的整数倍。因此Java对象需要通过内存填充来满足对齐要求。</p>
+</li>
+</ul>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-三高：高可用、高性能、高扩展"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/12/04/%E4%B8%89%E9%AB%98%EF%BC%9A%E9%AB%98%E5%8F%AF%E7%94%A8%E3%80%81%E9%AB%98%E6%80%A7%E8%83%BD%E3%80%81%E9%AB%98%E6%89%A9%E5%B1%95/"
+        >三高：高可用、高性能、高扩展</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/12/04/%E4%B8%89%E9%AB%98%EF%BC%9A%E9%AB%98%E5%8F%AF%E7%94%A8%E3%80%81%E9%AB%98%E6%80%A7%E8%83%BD%E3%80%81%E9%AB%98%E6%89%A9%E5%B1%95/" class="article-date">
+    <time datetime="2023-12-04T07:12:24.000Z" itemprop="datePublished">2023-12-04</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>     我们经常被要求设计高可用性、高可扩展性和高性能。上图包含了针对“三高”的常见解决方案。</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1/%E4%B8%89%E9%AB%98%EF%BC%9A%E9%AB%98%E5%8F%AF%E7%94%A8%E3%80%81%E9%AB%98%E6%80%A7%E8%83%BD%E3%80%81%E9%AB%98%E6%89%A9%E5%B1%95/640.gif" alt="git 分支模型"></p>
+<p><strong>高可用性</strong></p>
+<p>     这意味着我们需要确保系统高水平的正常运行时间。我们经常将设计目标描述为“3个9”或“4个9”。“4个9”，即99.99%的正常运行时间，意味着服务每天只能停机8.64秒。 为了实现高可用性，我们需要在系统中增加冗余节点。 有以下几种方法可以做到这一点：</p>
+<ul>
+<li>
+<p>hot-hot结构：两个实例接收相同的输入并将输出发送到下游服务。如果其中一个实例停机，另一个实例可以立即接管。由于双方都向下游发送输出，下游系统需要进行重复数据删除。</p>
+</li>
+<li>
+<p>hot-warm结构：两个实例接收相同的输入，只有hot实例将输出发送到下游服务。如果hot实例发生故障，warm实例将接管并开始向下游服务发送输出。</p>
+</li>
+<li>
+<p>single-leader Cluster：一个leader实例从上游系统接收数据并复制到其他副本。</p>
+</li>
+<li>
+<p>Leaderless cluster：在这种类型的集群中没有领导者。任何写入操作都会被复制到其他实例。只要写入实例的数量加上读取实例的数量大于实例的总数，我们就会得到有效数据。</p>
+</li>
+</ul>
+<p><strong>高性能</strong></p>
+<p>     这意味着服务需要在一段时间内处理大量请求。常用的指标是QPS（每秒查询数）或TPS（每秒事务数）。为了实现高性能，我们经常在架构中添加缓存，这样请求就可以在不命中数据库或磁盘等较慢的I/O设备的情况下返回。我们还可以增加计算密集型任务的线程数量。然而，添加太多线程可能会降低性能。最后，我们需要识别系统中的瓶颈并提高其性能。使用异步处理通常可以有效地隔离繁重的组件。</p>
+<p><strong>高可扩展性</strong></p>
+<p>     这意味着系统可以快速轻松地扩展以容纳更多容量（横向可扩展性）或更多功能（纵向可扩展性）。通常，我们会观察响应时间以决定是否需要扩展系统。为了实现高可扩展性，重要的是将服务的职责分离。为此，微服务被广泛采用。我们还利用服务注册表和负载均衡器将请求路由到适当的实例。</p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9E%B6%E6%9E%84/" rel="tag">架构</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+    </article>
+    
+
+    
+        <nav class="page-nav">
+            
+            <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+        </nav>
+    
+</section>
+</div>
+
+        <footer class="footer">
+    <div class="outer">
+        <ul>
+            <li>
+                Copyrights &copy;
+                2017
+                -
+                
+                2025
+                <i class="ri-heart-fill heart_icon"></i> 杨海波
+            </li>
+        </ul>
+        <ul>
+            <li>
+                
+            </li>
+        </ul>
+        <ul>
+            <li>
+                
+                    
+                    <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+                
+            </li>
+        </ul>
+        <ul>
+            
+        </ul>
+        <ul>
+            
+        </ul>
+        <ul>
+            <li>
+                <!-- cnzz统计 -->
+                
+            </li>
+        </ul>
+    </div>
+</footer>
+    </main>
+    <div class="float_btns">
+        <div class="totop" id="totop">
+    <i class="ri-arrow-up-line"></i>
+</div>
+
+    <div class="todark" id="todark">
+        <i class="ri-moon-line"></i>
+    </div>
+
+    </div>
+    <aside class="sidebar on">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+    
+        <div class="logo">
+            <a href="/"><img src="/images/SETSUNAYANG.JPG" alt=""></a>
+        </div>
+    
+    <ul class="nav nav-main">
+        
+            <li class="nav-item">
+                <a class="nav-item-link" href="/">主 页</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" href="/archives">归 档</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" href="/tags">标 签</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://github.com/3546514206">Github</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://gb.cpolar.cn/">Gitlab</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://tongyi.aliyun.com/">通义千问</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://yuanbao.tencent.com/">腾讯元宝</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.cpolar.com/">Cpolar</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://cr.cpolar.cn">隧 道</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="http://192.168.0.1/">Hotspot</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="http://192.168.31.1/cgi-bin/luci/web">MiRouter</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://javabetter.cn/">进阶之路</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://pdai.tech/">pdai.tech</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.mobibrw.com/">友链 一</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.wujunhao1024.com/">友链 二</a>
+            </li>
+        
+    </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+    <ul class="nav">
+        <li class="nav-item">
+            
+                <a class="nav-item-link nav-item-search" title="搜索">
+                    <i class="ri-search-line"></i>
+                </a>
+            
+            
+        </li>
+    </ul>
+</nav>
+<div class="search-form-wrap">
+    <div class="local-search local-search-plugin">
+    <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+    <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+    <span class="close"><i class="ri-close-line"></i></span>
+    <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+    <div class="reward-box">
+        
+            <div class="reward-item">
+                <img class="reward-img" src="/images/alipay.jpg">
+                <span class="reward-type">支付宝</span>
+            </div>
+        
+        
+            <div class="reward-item">
+                <img class="reward-img" src="/images/wechat.jpg">
+                <span class="reward-type">微信</span>
+            </div>
+        
+    </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+        rel="stylesheet"
+        href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+    var ayerConfig = {
+        mathjax: true,
+    };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds);
+    }
+
+    !function (e, t, a) {
+        var initCopyCode = function () {
+            var copyHtml = '';
+            copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+            copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+            copyHtml += '</button>';
+            $(".highlight .code pre").before(copyHtml);
+            $(".article pre code").before(copyHtml);
+            var clipboard = new ClipboardJS('.btn-copy', {
+                target: function (trigger) {
+                    return trigger.nextElementSibling;
+                }
+            });
+            clipboard.on('success', function (e) {
+                let $btn = $(e.trigger);
+                $btn.addClass('copied');
+                let $icon = $($btn.find('i'));
+                $icon.removeClass('ri-file-copy-2-line');
+                $icon.addClass('ri-checkbox-circle-line');
+                let $span = $($btn.find('span'));
+                $span[0].innerText = 'COPIED';
+
+                wait(function () { // 等待两秒钟后恢复
+                    $icon.removeClass('ri-checkbox-circle-line');
+                    $icon.addClass('ri-file-copy-2-line');
+                    $span[0].innerText = 'COPY';
+                }, 2000);
+            });
+            clipboard.on('error', function (e) {
+                e.clearSelection();
+                let $btn = $(e.trigger);
+                $btn.addClass('copy-failed');
+                let $icon = $($btn.find('i'));
+                $icon.removeClass('ri-file-copy-2-line');
+                $icon.addClass('ri-time-line');
+                let $span = $($btn.find('span'));
+                $span[0].innerText = 'COPY FAILED';
+
+                wait(function () { // 等待两秒钟后恢复
+                    $icon.removeClass('ri-time-line');
+                    $icon.addClass('ri-file-copy-2-line');
+                    $span[0].innerText = 'COPY';
+                }, 2000);
+            });
+        }
+        initCopyCode();
+    }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+    if (window.mermaid) {
+        mermaid.initialize({theme: "forest"});
+    }
+</script>
+
+
+    
+    
+
+</div>
+</body>
+
+</html>

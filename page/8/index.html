@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8"/>
+    
+    
+    
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <title>
+        
+        </title>
+  <meta name="generator" content="hexo-theme-ayer">
+    
+        <link rel="shortcut icon" href="/images/SETSUNAYANG.JPG"/>
+    
+    
+<link rel="stylesheet" href="/dist/main.css">
+
+    
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+    
+<link rel="stylesheet" href="/css/custom.css">
+
+    
+        <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+    
+    
+ 
+
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+    <!-- mermaid -->
+    
+    <style>
+        .swal2-styled.swal2-confirm {
+            font-size: 1.6rem;
+        }
+    </style>
+<link href="https://cdn.bootcss.com/KaTeX/0.11.1/katex.min.css" rel="stylesheet" /><script src="/assets/js/DPlayer.min.js"></script></head>
+</html>
+</html>
+
+
+<body>
+<div id="app">
+    
+    
+    <main class="content on">
+        
+    <section class="cover">
+        
+        <div class="cover-frame">
+            <div class="bg-box">
+                <img src="/images/pintan-compression.jpg" alt="image frame"/>
+            </div>
+            <div class="cover-inner text-center text-white">
+                <h1><a href="/"></a></h1>
+                <div id="subtitle-box">
+                    
+                        <span id="subtitle"></span>
+                    
+                </div>
+                <div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="cover-learn-more">
+            <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+        </div>
+    </section>
+
+
+
+    <script src="https://cdn.staticfile.org/typed.js/2.0.12/typed.min.js"></script>
+
+
+<!-- Subtitle -->
+
+    <script>
+        try {
+            var typed = new Typed("#subtitle", {
+                strings: ['我叫杨海波，是一名软件工程师。', '我参与过机房和云基础设施的建设，负责过应用平台层的框架设计与落地，还参与过手机银行应用系统的架构设计，具备自下而上的全栈开发经验。', '我将软件工程作为安身立命之本，具备正规、大气的专业素养，并致力于成为软件工程行业的技术专家。'],
+                startDelay: 3,
+                typeSpeed: 88,
+                loop: true,
+                backSpeed: 100,
+                showCursor: true
+            });
+        } catch (err) {
+            console.log(err)
+        }
+    </script>
+
+<div id="main">
+    <section class="outer">
+    
+    
+        
+
+    <div class="notice" style="margin-top:50px">
+        <i class="ri-heart-fill"></i>
+        <div class="notice-content" id="broad"></div>
+    </div>
+    <script type="text/javascript">
+        fetch('https://v1.hitokoto.cn')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("broad").innerHTML = data.hitokoto;
+            })
+            .catch(console.error)
+    </script>
+
+<style>
+    .notice {
+        padding: 20px;
+        border: 1px dashed #e6e6e6;
+        color: #969696;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        background: #fbfbfb50;
+        border-radius: 10px;
+    }
+
+    .notice i {
+        float: left;
+        color: #999;
+        font-size: 16px;
+        padding-right: 10px;
+        vertical-align: middle;
+        margin-top: -2px;
+    }
+
+    .notice-content {
+        display: initial;
+        vertical-align: middle;
+    }
+</style>
+    
+    <article class="articles">
+        
+        
+        
+            
+                <article
+        id="post-简述Oauth2的工作原理"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/09/09/%E7%AE%80%E8%BF%B0Oauth2%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"
+        >简述Oauth2的工作原理</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/09/09/%E7%AE%80%E8%BF%B0Oauth2%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" class="article-date">
+    <time datetime="2023-09-09T00:48:46.000Z" itemprop="datePublished">2023-09-09</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <div id="dplayer23" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer23"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/简述Oauth2的工作原理/简述Oauth2的工作原理.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AE%89%E5%85%A8/" rel="tag">安全</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-简述互联网的工作原理"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/09/07/%E7%AE%80%E8%BF%B0%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/"
+        >简述互联网的工作原理</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/09/07/%E7%AE%80%E8%BF%B0%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" class="article-date">
+    <time datetime="2023-09-07T00:53:27.000Z" itemprop="datePublished">2023-09-07</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <div id="dplayer22" class="dplayer hexo-tag-dplayer-mark" style="margin-bottom: 20px;"></div><script>(function(){var player = new DPlayer({"container":document.getElementById("dplayer22"),"theme":"#FADFA3","loop":true,"lang":"zh-cn","screenshot":true,"hotkey":true,"preload":"auto","volume":0.9,"mutex":true,"video":{"url":"/video/简述互联网的工作原理/简述互联网的工作原理.mp4"}});window.dplayers||(window.dplayers=[]);window.dplayers.push(player);})()</script>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-应用的JVM优化案例"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/09/05/%E5%BA%94%E7%94%A8%E7%9A%84JVM%E4%BC%98%E5%8C%96%E6%A1%88%E4%BE%8B/"
+        >应用的JVM优化案例</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/09/05/%E5%BA%94%E7%94%A8%E7%9A%84JVM%E4%BC%98%E5%8C%96%E6%A1%88%E4%BE%8B/" class="article-date">
+    <time datetime="2023-09-05T08:47:33.000Z" itemprop="datePublished">2023-09-05</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/%E4%B8%80%E6%AC%A1%E5%BA%94%E7%94%A8%E7%9A%84JVM%E8%B0%83%E4%BC%98%E7%A4%BA%E4%BE%8B/JVM%E8%B0%83%E4%BC%98%E7%A4%BA%E4%BE%8B.jpg" alt="应用的JVM优化案例"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JVM/" rel="tag">JVM</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-编程届等级划分"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/09/05/%E7%BC%96%E7%A8%8B%E5%B1%8A%E7%AD%89%E7%BA%A7%E5%88%92%E5%88%86/"
+        >编程界等级划分</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/09/05/%E7%BC%96%E7%A8%8B%E5%B1%8A%E7%AD%89%E7%BA%A7%E5%88%92%E5%88%86/" class="article-date">
+    <time datetime="2023-09-05T01:32:50.000Z" itemprop="datePublished">2023-09-05</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/%E7%BC%96%E7%A8%8B%E7%95%8C%E7%AD%89%E7%BA%A7%E5%88%92%E5%88%86/%E7%BC%96%E7%A8%8B%E5%B1%8A%E4%BF%AE%E7%82%BC%E7%AD%89%E7%BA%A7.drawio.png" alt="编程界等级划分"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-OSI-ISO七层网络"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/08/31/OSI-ISO%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C/"
+        >OSI/ISO七层网络</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/08/31/OSI-ISO%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C/" class="article-date">
+    <time datetime="2023-08-31T06:42:29.000Z" itemprop="datePublished">2023-08-31</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>   七层网络的常见设备，如下图所示：<br>
+<img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E7%9A%84%E5%B8%B8%E8%A7%81%E8%AE%BE%E5%A4%87.png" alt="七层网络的常见设备"></p>
+<p>   七层网络的常见协议与功能，如下图所示：<br>
+<img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C/%E4%B8%83%E5%B1%82%E7%BD%91%E7%BB%9C%E5%B8%B8%E8%A7%81%E5%8D%8F%E8%AE%AE%E4%B8%8E%E5%8A%9F%E8%83%BD%E8%AF%B4%E6%98%8E.gif" alt="七层网络的常见协议与功能"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-一次Mybatis升级引发的线上事故"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/08/31/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/"
+        >深入 OGNL 与  Mybatis 源代码分析一次 Mybatis 升级引发的线上事故</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/08/31/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/" class="article-date">
+    <time datetime="2023-08-31T02:16:04.000Z" itemprop="datePublished">2023-08-31</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>     项目中对 Mybatis 做了一次升级。前后版本如下，3.2.5 -&gt; 3.4.4：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/mybatis%E5%89%8D%E5%90%8E%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7.png" alt="mybatis前后版本升级"></p>
+<p>     结果第二天巡检发现如下报错，过了两个小时业务高峰期，前台业务人员不断反馈某最核心的业务无法进行：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/%E6%8A%A5%E9%94%99%E4%BF%A1%E6%81%AF.png" alt="报错信息"></p>
+<p>     我们当时定位到错误的地方，根据经验修改之后验证通过，重新上线之后得以解决。可能涉及敏感数据，所以不展示实际的报错与弥补方案。</p>
+<p>     以下是我在本地的问题复现。在本地的一个标准的 SSM 工程中分别引入以下两个版本的 Mybatis 依赖:</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/%E5%88%86%E5%88%AB%E5%BC%95%E5%85%A5%E4%B8%A4%E4%B8%AA%E7%89%88%E6%9C%AC%E7%9A%84%E4%BE%9D%E8%B5%96.png" alt="分别引入两个版本的依赖"></p>
+<p>     编写如下数据库脚本:</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/%E6%95%B0%E6%8D%AE%E5%BA%93%E8%84%9A%E6%9C%AC.png" alt="数据库脚本"></p>
+<p>     dao 层调用方法如下：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/dao%E5%B1%82%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8.png" alt="dao层方法调用"></p>
+<p>     当 Mybatis 依赖为 3.2.5 的较低版本时，不会报错；当 Mybatis 依赖版本为 3.4.4 的较高版本时，则会报出上面的错误:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">invalid comparision:  java.util.HashMap and java.lang.String</span><br></pre></td></tr></table></figure>
+<p>     在本地问题得到复现。问题的关键在于数据库脚本中的 if 条件编译语句的这一个子句 _parameter!=’’ 将_parameter 与 ‘’ 做比较，_parameter 是 Mybatis 的一个内置对象，你不需要知道它的作用，只需要知道他是 Map 类型的就行了，显然 ‘’ 是 String 类型的。到这里我们其实已经猜出来了，正是因为这种不规范的比较导致数据库脚本执行失败（实际上是 Mybatis 编译 SQL 失败）。</p>
+<p>     但是问题又来了，<strong>为什么 Mybatis 较低版本的时候没有问题，而较高版本则暴露出这个问题了？</strong> 我们深入源码分析一下。因为我对 Mybatis 源码比较熟悉，加上实际生产中报错的堆栈信息也很全，所以直接定位到了 Mybatis 的这个类型：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/ifnode.png" alt="ifnode"></p>
+<p>     上述代码的作用：在我们上述 SQL 脚本中，根据 if 子句的测试语句（就是 … &amp;&amp; _parameter!=’’ 那一坨）判断，当前 if 子句所包裹的 sql 是否需要动态编译进最终的执行sql中。当我们进一步追踪，就进入到了 OGNL 的源码中，OGNL 是一套表达式解析引擎，一直定位下去就到了具体报错的方法。到这里我们补充一下版本依赖关系：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mybatis-3.2.5  -&gt;  ognl-2.6.9</span><br><span class="line">mybatis-3.4.4  -&gt;  ognl-3.1.14</span><br></pre></td></tr></table></figure>
+<p>     高版本 OGNL 源码如下：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/%E9%AB%98%E7%89%88%E6%9C%ACOGNL%E4%BB%A3%E7%A0%81.png" alt="高版本 OGNL 代码"></p>
+<p>     低版本 OGNL 源码如下：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/%E4%BD%8E%E7%89%88%E6%9C%ACOGNL%E4%BB%A3%E7%A0%81.png" alt="低版本 OGNL 代码"></p>
+<p>     类型标识相关的源码如下：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/%E7%B1%BB%E5%9E%8B%E6%A0%87%E8%AE%B0.png" alt="类型标记"></p>
+<p>     case 为 NONUMBERIC 的含义是当比较的值是非数值类型，所以 _parameter!=’’ 子句的判断自然是走该分支语句的代码。t1、t2，v1、v2 的含义是两个待比值（ _parameter 和 ‘’）的类型和 value，在这个场景中分别是如下调试面板所示的（不明白的请观察为了复现问题所编写的 SQL 脚本和 dao 层语句）：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/%E8%B0%83%E8%AF%95%E4%BF%A1%E6%81%AF%E5%A6%82%E4%B8%8B.png" alt="调试信息如下"></p>
+<p>     解释一下：t1 = t2 = 10，表示 _parameter 与 ‘’ 都是非数值类型。v1 表明了 _parameter 是个 HashMap 类型的变量，有一个 (blurname,cat) 的键值对，v2 = ‘’。另外，类的 Class 实例中有一个 isAssignableFrom 方法，这个方法是用来判断两个类的之间的关联关系，也可以说是一个类是否可以被强制转换为另外一个实例对象。</p>
+<p>     至此所需信息全部已经准备完毕，我们可以来分析高低版本 OGNL 的源码了。高版本 OGNL 中，我们直接看 case:NONUMBERIC 的分支子句。代码含义为：</p>
+<p>     <strong>如果 V1 是 Comparable 类型的并且 V1 可以强转为 V2 的类型，则进入 if 分支，否则进入 else 分支，而 else 分支直接报错，而且报错信息是我们实际生产环境中遇到的。显然，V1 既不是 Comparable 类型，也无法转换为 V2 的类型（HashMap -&gt; String），所以进入了 else 分支，mybatis 升级之后携带 OGNL 的升级，数据库不规范的写法导致 mybatis 编译 sql 语句报错，阻塞了业务</strong></p>
+<p>     低版本的 OGNL 的 case:NONUMBERIC 的分支子句的代码逻辑说实话非常拧巴，含义是：</p>
+<p>     <strong>如果 v1、v2 任一变量为 null，则进入 if 分支，显然不会进入。else 先判断v1、v2 是否能互转，显然不能，直接跳过。接下来是重中之重：如果 equals 为 true ,跳出 case，否则报错。我们根据结果看，equals 必定为 true，因为我们那种不规范的 mybatis 在这个地方，它每没报错——事实上是应该将该问题抛出来的，从而引导开发者更正 mybatis 脚本。接下来我们看方法外面这个 equals 的来源：</strong></p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95%E4%B8%8E%E4%BA%8B%E6%95%85%E5%A4%8D%E7%9B%98/%E4%B8%80%E6%AC%A1Mybatis%E5%8D%87%E7%BA%A7%E5%BC%95%E5%8F%91%E7%9A%84%E7%BA%BF%E4%B8%8A%E4%BA%8B%E6%95%85/equals.png" alt="equals"></p>
+<p>     我惊呆了，直接写死传经来的，至于这个 equals 意欲何为，当初作者为什么这么写，也许只有作者自己知道。反正高版本的 OGNL 已经将这部分的代码逻辑全部重构了。</p>
+<p>     我们可以得到如下结论： _<em>低版本的 mybatis 依赖了低版本的 OGNL ，低版本的 OGNL 在上述分析的函数中存在一定缺陷，这个缺陷会导致我们在编写 Mybatis 脚本的时候类似于 <em>parameter!=’’ 的不规范写法不被发现。当我们升级了 Mybatis 之后，这种不规范的写法反而兜不住暴露出来了，加上组件升级测试不充分，直接上到了生产环境。</em></em></p>
+<p>     <strong>反思：</strong></p>
+<ul>
+<li><strong>日常开发要严格要求自己，追求正规、大气的编程素养，每一行代码，每一个字符，都要过大脑，不要太随便，不要随便复制粘贴能跑就行。</strong></li>
+<li><strong>组件升级要慎之又慎，测试要充分。</strong></li>
+</ul>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MyBatis/" rel="tag">MyBatis</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-K8S架构图"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/08/29/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE/"
+        >K8S架构图</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/08/29/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE/" class="article-date">
+    <time datetime="2023-08-29T02:33:27.000Z" itemprop="datePublished">2023-08-29</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>     谷歌早期内部 Brog 系统架构图：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E4%BA%91%E8%AE%A1%E7%AE%97/K8S/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE/Brog%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="Brog架构图"></p>
+<p>     K8S 架构图：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E4%BA%91%E8%AE%A1%E7%AE%97/K8S/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE.png" alt="K8S架构图"></p>
+<p>     K8S 分层架构：</p>
+<p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E4%BA%91%E8%AE%A1%E7%AE%97/K8S/K8S%E6%9E%B6%E6%9E%84%E5%9B%BE/K8S%E5%88%86%E5%B1%82%E6%9E%B6%E6%9E%84.webp" alt="K8S分层架构"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E4%BA%91%E8%AE%A1%E7%AE%97/" rel="tag">云计算</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-IP数据报"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/08/29/IP%E6%95%B0%E6%8D%AE%E6%8A%A5/"
+        >IP数据报</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/08/29/IP%E6%95%B0%E6%8D%AE%E6%8A%A5/" class="article-date">
+    <time datetime="2023-08-28T17:29:54.000Z" itemprop="datePublished">2023-08-29</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p>     IP 协议控制传输的协议单元称为 IP 数据报（IP Datagram，IP数据报、IP包或IP分组）。IP协议屏蔽了下层各种物理子网的差异，能够向上层提供统一格式的IP数据报。lP数据报采用数据报分组传输的方式，提供的服务是无连接方式。IP数据报的格式能够说明lP协议具有什么功能。IPv4数据报由报头和数据两部分组成，其中，数据是高层需要传输的数据，报头是为了正确传输高层数据而增加的控制信息。报头的前一部分长度固定，共20字节，是所有IP数据报必须具有。在首部固定部分的后面是可选字段，长度可变。</p>
+<!-- ![IP报文结构](https://github.com/3546514206/ImageHost.Github.IO/blob/main/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/IP%E6%95%B0%E6%8D%AE%E6%8A%A5/IP%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84.png?raw=true) -->
+<p><img src="/pic/%E5%9F%BA%E6%9C%AC%E5%8A%9F/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/IP%E6%95%B0%E6%8D%AE%E6%8A%A5/IP%E6%8A%A5%E6%96%87%E7%BB%93%E6%9E%84.png" alt="IP报文结构"></p>
+<h4 id="1-固定部分"><strong>1、固定部分</strong></h4>
+<ul>
+<li>版本：占 4 位，指 IP 协议的版本。通信双方使用的 IP 协议版本必须一致。广泛使用的 IP 协议版本号为 4（即 IPv4）。关于 IPv6，还处于草案阶段。</li>
+<li>首部长度：占 4 位，可表示的最大十进制数值是 15。请注意，这个字段所表示数的单位是 32 位字长（1 个 32 位字长是 4 字节），因此，当 IP 的首部长度为 1111 时（即十进制的 15），首部长度就达到 60 字节。当 IP 分组的首部长度不是 4 字节的整数倍时，必须利用最后的填充字段加以填充。因此数据部分永远在 4 字节的整数倍开始，这样在实现 IP 协议时较为方便。首部长度限制为 60 字节的缺点是有时可能不够用。但这样做是希望用户尽量减少开销。最常用的首部长度就是 20 字节（即首部长度为 0101），这时不使用任何选项。</li>
+<li>区分服务：占 8 位，用来获得更好的服务。这个字段在旧标准中叫做服务类型，但实际上一直没有被使用过。1998 年 IETF 把这个字段改名为区分服务DS(Differentiated Services)。只有在使用区分服务时，这个字段才起作用。</li>
+<li>总长度：总长度指首部和数据之和的长度，单位为字节。总长度字长为 16 位，因此数据报的最大长度为 2^16-1=65535 字节。在 IP 层下面的每一种数据链路层都有自己的帧格式，其中包括帧格式中的数据字段的最大长度，这称为最大传送单元 MTU（Maximum Transfer Unit）。当一个数据报封装成链路层的帧时，此数据报的总长度（即首部加上数据部分）一定不能超过下面的数据链路层的 MTU 值。</li>
+<li>标识：占 16 位。IP 软件在存储器中维持一个计数器，每产生一个数据报，计数器就加1，并将此值赋给标识字段。但这个“标识”并不是序号，因为IP是无连接服务，数据报不存在按序接收的问题。当数据报由于长度超过网络的 MTU 而必须分片时，这个标识字段的值就被复制到所有的数据报的标识字段中。相同的标识字段的值使分片后的各数据报片最后能正确地重装成为原来的数据报。</li>
+<li>标志：占 3 位，但只有 2 位有意义。标志字段中的最低位记为 MF（More Fragment）。MF=1 即表示后面“还有分片”的数据报。MF=0 表示这已是若干数据报片中的最后一个。标志字段中间的一位记为 DF（Don’t Fragment），意思是“不能分片”。只有当 DF=0 时才允许分片。</li>
+<li>片偏移：占 13 位。片偏移指出：较长的分组在分片后，某片在原分组中的相对位置。也就是说，相对用户数据字段的起点，该片从何处开始。片偏移以 8  个字节为偏移单位。这就是说，除了最后一个分片，每个分片的长度一定是 8 字节（64 位）的整数倍。</li>
+<li>生存时间：占 8 位，生存时间字段常用的的英文缩写是 TTL（Time To Live），表明是数据报在网络中的寿命。由发出数据报的源点设置这个字段。其目的是防止无法交付的数据报无限制地在因特网中兜圈子，因而白白消耗网络资源。最初的设计是以秒作为 TTL 的单位。每经过一个路由器时，就把 TTL 减去数据报在路由器消耗掉的一段时间。若数据报在路由器消耗的时间小于 1 秒，就把 TTL 值减 1。当 TTL 值为 0 时，就丢弃这个数据报。后来把 TTL 字段的功能改为“跳数限制”（但名称不变）。路由器在转发数据报之前就把 TTL 值减 1。若 TTL 值减少到零，就丢弃这个数据报，不再转发。因此，TTL 的单位不再是秒，而是跳数。TTL 的意义是指明数据报在网络中至多可经过多少个路由器。显然，数据报在网络上经过的路由器的最大数值是 255。若把 TTL 的初始值设为 1，就表示这个数据报只能在本局域网中传送。</li>
+<li>协议：占 8 位，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的 IP 层知道应将数据部分上交给哪个处理过程。6 指 TCP 协议，17 指的是 UDP 协议。</li>
+<li>首部校验和：占16位。这个字段只检验数据报的首部，但不包括数据部分。这是因为数据报每经过一个路由器，路由器都要重新计算一下首部检验和（一些字段，如生存时间、标志、片偏移等都可能发生变化）。不检验数据部分可减少计算的工作量。</li>
+<li>源地址和目的地址：32位，IPV4 地址。</li>
+</ul>
+<h4 id="2-可变部分"><strong>2、可变部分</strong></h4>
+<p>     IP 首部的可变部分就是一个可选字段。选项字段用来支持排错、测量以及安全等措施，内容很丰富。此字段的长度可变，从 1 个字节到 40 个字节不等，取决于所选择的项目。某些选项项目只需要 1 个字节，它只包括 1 个字节的选项代码。但还有些选项需要多个字节，这些选项一个个拼接起来，中间不需要有分隔符，最后用全 0 的填充字段补齐成为 4 字节的整数倍。增加首部的可变部分是为了增加 IP 数据报的功能，但这同时也使得 IP 数据报的首部长度成为可变的。这就增加了每一个路由器处理数据报的开销。实际上这些选项很少被使用。新的 IP 版本 IPv6 就将 IP 数据报的首部长度做成固定的。这些任选项定义如下：</p>
+<ul>
+<li>安全和处理限制（用于军事领域）。</li>
+<li>记录路径（让每个路由器都记下它的IP地址）。</li>
+<li>时间戳（Time Stamp）（让每个路由器都记下IP数据报经过每一个路由器的IP地址和当地时间）。</li>
+<li>宽松的源站路由（Loose Source Route）（为数据报指定一系列必须经过的IP地址）。</li>
+<li>严格的源站路由（Strict Source Route）（与宽松的源站路由类似，但是要求只能经过指定的这些地址，不能经过其他的地址）。</li>
+</ul>
+<p>     这些选项很少被使用，并非所有主机和路由器都支持这些选项。</p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-Innodb中的事务隔离级别和锁实现"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/08/29/Innodb%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E5%92%8C%E9%94%81%E5%AE%9E%E7%8E%B0/"
+        >Innodb中的事务隔离级别和锁实现</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/08/29/Innodb%E4%B8%AD%E7%9A%84%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB%E5%92%8C%E9%94%81%E5%AE%9E%E7%8E%B0/" class="article-date">
+    <time datetime="2023-08-28T17:28:46.000Z" itemprop="datePublished">2023-08-29</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+                <article
+        id="post-Spring全景"
+        class="article article-type-post"
+        itemscope
+        itemprop="blogPost"
+        data-scroll-reveal
+>
+    <div class="article-inner">
+        
+            <header class="article-header">
+                 
+    <h2 itemprop="name">
+        <a class="article-title" href="/2023/08/29/Spring%E5%85%A8%E6%99%AF/"
+        >Spring全景</a>
+    </h2>
+ 
+
+                
+            </header>
+        
+        
+            <div class="article-meta">
+                <a href="/2023/08/29/Spring%E5%85%A8%E6%99%AF/" class="article-date">
+    <time datetime="2023-08-28T17:20:39.000Z" itemprop="datePublished">2023-08-29</time>
+</a> 
+                 
+                
+            </div>
+        
+        
+        
+            <div class="article-entry" itemprop="articleBody">
+                 
+
+                 <p><img src="/pic/%E5%B7%A5%E7%A8%8B/%E6%9C%8D%E5%8A%A1%E7%AB%AF/Spring/Spring%E5%85%A8%E6%99%AF/Spring%E5%85%A8%E6%99%AF.png" alt="Spring 全景图"></p>
+
+                
+                <!-- reward -->
+                
+            </div>
+        
+
+        <!-- copyright -->
+        
+        <footer class="article-footer">
+            
+            
+    <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Spring/" rel="tag">Spring</a></li></ul>
+
+        </footer>
+    </div>
+
+    
+    
+    
+    
+</article>
+
+            
+    </article>
+    
+
+    
+        <nav class="page-nav">
+            
+            <a class="extend prev" rel="prev" href="/page/7/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/">下一页</a>
+        </nav>
+    
+</section>
+</div>
+
+        <footer class="footer">
+    <div class="outer">
+        <ul>
+            <li>
+                Copyrights &copy;
+                2017
+                -
+                
+                2025
+                <i class="ri-heart-fill heart_icon"></i> 杨海波
+            </li>
+        </ul>
+        <ul>
+            <li>
+                
+            </li>
+        </ul>
+        <ul>
+            <li>
+                
+                    
+                    <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+                
+            </li>
+        </ul>
+        <ul>
+            
+        </ul>
+        <ul>
+            
+        </ul>
+        <ul>
+            <li>
+                <!-- cnzz统计 -->
+                
+            </li>
+        </ul>
+    </div>
+</footer>
+    </main>
+    <div class="float_btns">
+        <div class="totop" id="totop">
+    <i class="ri-arrow-up-line"></i>
+</div>
+
+    <div class="todark" id="todark">
+        <i class="ri-moon-line"></i>
+    </div>
+
+    </div>
+    <aside class="sidebar on">
+        <button class="navbar-toggle"></button>
+<nav class="navbar">
+    
+        <div class="logo">
+            <a href="/"><img src="/images/SETSUNAYANG.JPG" alt=""></a>
+        </div>
+    
+    <ul class="nav nav-main">
+        
+            <li class="nav-item">
+                <a class="nav-item-link" href="/">主 页</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" href="/archives">归 档</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" href="/tags">标 签</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://github.com/3546514206">Github</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://gb.cpolar.cn/">Gitlab</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://tongyi.aliyun.com/">通义千问</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://yuanbao.tencent.com/">腾讯元宝</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.cpolar.com/">Cpolar</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://cr.cpolar.cn">隧 道</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="http://192.168.0.1/">Hotspot</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="http://192.168.31.1/cgi-bin/luci/web">MiRouter</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://javabetter.cn/">进阶之路</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://pdai.tech/">pdai.tech</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.mobibrw.com/">友链 一</a>
+            </li>
+        
+            <li class="nav-item">
+                <a class="nav-item-link" target="_blank" rel="noopener" href="https://www.wujunhao1024.com/">友链 二</a>
+            </li>
+        
+    </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+    <ul class="nav">
+        <li class="nav-item">
+            
+                <a class="nav-item-link nav-item-search" title="搜索">
+                    <i class="ri-search-line"></i>
+                </a>
+            
+            
+        </li>
+    </ul>
+</nav>
+<div class="search-form-wrap">
+    <div class="local-search local-search-plugin">
+    <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+    <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+    <span class="close"><i class="ri-close-line"></i></span>
+    <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+    <div class="reward-box">
+        
+            <div class="reward-item">
+                <img class="reward-img" src="/images/alipay.jpg">
+                <span class="reward-type">支付宝</span>
+            </div>
+        
+        
+            <div class="reward-item">
+                <img class="reward-img" src="/images/wechat.jpg">
+                <span class="reward-type">微信</span>
+            </div>
+        
+    </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+        rel="stylesheet"
+        href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+            processEscapes: true,
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+    });
+
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+    var ayerConfig = {
+        mathjax: true,
+    };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+    function wait(callback, seconds) {
+        var timelag = null;
+        timelag = window.setTimeout(callback, seconds);
+    }
+
+    !function (e, t, a) {
+        var initCopyCode = function () {
+            var copyHtml = '';
+            copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+            copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+            copyHtml += '</button>';
+            $(".highlight .code pre").before(copyHtml);
+            $(".article pre code").before(copyHtml);
+            var clipboard = new ClipboardJS('.btn-copy', {
+                target: function (trigger) {
+                    return trigger.nextElementSibling;
+                }
+            });
+            clipboard.on('success', function (e) {
+                let $btn = $(e.trigger);
+                $btn.addClass('copied');
+                let $icon = $($btn.find('i'));
+                $icon.removeClass('ri-file-copy-2-line');
+                $icon.addClass('ri-checkbox-circle-line');
+                let $span = $($btn.find('span'));
+                $span[0].innerText = 'COPIED';
+
+                wait(function () { // 等待两秒钟后恢复
+                    $icon.removeClass('ri-checkbox-circle-line');
+                    $icon.addClass('ri-file-copy-2-line');
+                    $span[0].innerText = 'COPY';
+                }, 2000);
+            });
+            clipboard.on('error', function (e) {
+                e.clearSelection();
+                let $btn = $(e.trigger);
+                $btn.addClass('copy-failed');
+                let $icon = $($btn.find('i'));
+                $icon.removeClass('ri-file-copy-2-line');
+                $icon.addClass('ri-time-line');
+                let $span = $($btn.find('span'));
+                $span[0].innerText = 'COPY FAILED';
+
+                wait(function () { // 等待两秒钟后恢复
+                    $icon.removeClass('ri-time-line');
+                    $icon.addClass('ri-file-copy-2-line');
+                    $span[0].innerText = 'COPY';
+                }, 2000);
+            });
+        }
+        initCopyCode();
+    }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+    if (window.mermaid) {
+        mermaid.initialize({theme: "forest"});
+    }
+</script>
+
+
+    
+    
+
+</div>
+</body>
+
+</html>
